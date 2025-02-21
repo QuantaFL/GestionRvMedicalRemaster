@@ -10,18 +10,16 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1.views.Med
 {
-    public partial class frmAccueilMed : Form
+    public partial class frmMedAgenda : Form
     {
-        public frmAccueilMed()
+        public frmMedAgenda()
         {
             InitializeComponent();
         }
 
-        private void btnAjouterAgenda_Click(object sender, EventArgs e)
+        private void btnFermer_Click(object sender, EventArgs e)
         {
-            //TODO : Partir sur Agenda avec l'id du Medecin 
-            frmMedAgenda frmMedAgenda = new frmMedAgenda();
-            frmMedAgenda.ShowDialog();
+            this.Close();
         }
     }
 }

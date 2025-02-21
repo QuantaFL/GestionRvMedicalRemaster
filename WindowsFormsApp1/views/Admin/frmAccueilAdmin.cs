@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp1.views.Admin;
 
 namespace WindowsFormsApp1.views
 {
@@ -15,6 +16,12 @@ namespace WindowsFormsApp1.views
         public frmAccueilAdmin()
         {
             InitializeComponent();
+        }
+
+        private void btnAjouterUtilisateur_Click(object sender, EventArgs e)
+        {
+            frmAdminAjouterUtilisateur ajouterUtilisateur = new frmAdminAjouterUtilisateur();
+            ajouterUtilisateur.Show();
         }
     }
 }

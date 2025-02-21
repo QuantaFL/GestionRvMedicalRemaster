@@ -28,30 +28,53 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAccueilAdmin));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnCorbeille = new System.Windows.Forms.Button();
+            this.txtRechercher = new System.Windows.Forms.TextBox();
             this.btnBloquerUtilisateur = new System.Windows.Forms.Button();
             this.btnRechercherUtilisateur = new System.Windows.Forms.Button();
             this.btnAjouterUtilisateur = new System.Windows.Forms.Button();
             this.dgUtilisateur = new System.Windows.Forms.DataGridView();
-            this.txtRechercher = new System.Windows.Forms.TextBox();
-            this.btnCorbeille = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgUtilisateur)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(169)))), ((int)(((byte)(155)))));
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(108)))), ((int)(((byte)(100)))));
             this.panel1.Controls.Add(this.btnCorbeille);
             this.panel1.Controls.Add(this.txtRechercher);
             this.panel1.Controls.Add(this.btnBloquerUtilisateur);
             this.panel1.Controls.Add(this.btnRechercherUtilisateur);
             this.panel1.Controls.Add(this.btnAjouterUtilisateur);
             this.panel1.Controls.Add(this.dgUtilisateur);
+            this.panel1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.panel1.Location = new System.Drawing.Point(6, 4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1245, 747);
             this.panel1.TabIndex = 0;
+            // 
+            // btnCorbeille
+            // 
+            this.btnCorbeille.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCorbeille.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(169)))), ((int)(((byte)(155)))));
+            this.btnCorbeille.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnCorbeille.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCorbeille.ForeColor = System.Drawing.Color.White;
+            this.btnCorbeille.Location = new System.Drawing.Point(6, 66);
+            this.btnCorbeille.Name = "btnCorbeille";
+            this.btnCorbeille.Size = new System.Drawing.Size(218, 43);
+            this.btnCorbeille.TabIndex = 5;
+            this.btnCorbeille.Text = "&Voir la corbeille";
+            this.btnCorbeille.UseVisualStyleBackColor = true;
+            // 
+            // txtRechercher
+            // 
+            this.txtRechercher.Location = new System.Drawing.Point(740, 45);
+            this.txtRechercher.Name = "txtRechercher";
+            this.txtRechercher.Size = new System.Drawing.Size(257, 22);
+            this.txtRechercher.TabIndex = 4;
             // 
             // btnBloquerUtilisateur
             // 
@@ -60,9 +83,9 @@
             this.btnBloquerUtilisateur.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnBloquerUtilisateur.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBloquerUtilisateur.ForeColor = System.Drawing.Color.White;
-            this.btnBloquerUtilisateur.Location = new System.Drawing.Point(179, 8);
+            this.btnBloquerUtilisateur.Location = new System.Drawing.Point(263, 8);
             this.btnBloquerUtilisateur.Name = "btnBloquerUtilisateur";
-            this.btnBloquerUtilisateur.Size = new System.Drawing.Size(170, 31);
+            this.btnBloquerUtilisateur.Size = new System.Drawing.Size(226, 43);
             this.btnBloquerUtilisateur.TabIndex = 3;
             this.btnBloquerUtilisateur.Text = "&Bloquer un utilisateur";
             this.btnBloquerUtilisateur.UseVisualStyleBackColor = true;
@@ -75,7 +98,7 @@
             this.btnRechercherUtilisateur.ForeColor = System.Drawing.Color.White;
             this.btnRechercherUtilisateur.Location = new System.Drawing.Point(1017, 40);
             this.btnRechercherUtilisateur.Name = "btnRechercherUtilisateur";
-            this.btnRechercherUtilisateur.Size = new System.Drawing.Size(196, 32);
+            this.btnRechercherUtilisateur.Size = new System.Drawing.Size(211, 32);
             this.btnRechercherUtilisateur.TabIndex = 2;
             this.btnRechercherUtilisateur.Text = "&Rechercher un utilisateur";
             this.btnRechercherUtilisateur.UseVisualStyleBackColor = true;
@@ -89,10 +112,11 @@
             this.btnAjouterUtilisateur.ForeColor = System.Drawing.Color.White;
             this.btnAjouterUtilisateur.Location = new System.Drawing.Point(6, 8);
             this.btnAjouterUtilisateur.Name = "btnAjouterUtilisateur";
-            this.btnAjouterUtilisateur.Size = new System.Drawing.Size(152, 31);
+            this.btnAjouterUtilisateur.Size = new System.Drawing.Size(218, 43);
             this.btnAjouterUtilisateur.TabIndex = 1;
             this.btnAjouterUtilisateur.Text = "&Ajouter un utilisateur";
             this.btnAjouterUtilisateur.UseVisualStyleBackColor = true;
+            this.btnAjouterUtilisateur.Click += new System.EventHandler(this.btnAjouterUtilisateur_Click);
             // 
             // dgUtilisateur
             // 
@@ -108,27 +132,6 @@
             this.dgUtilisateur.Size = new System.Drawing.Size(1236, 629);
             this.dgUtilisateur.TabIndex = 0;
             // 
-            // txtRechercher
-            // 
-            this.txtRechercher.Location = new System.Drawing.Point(740, 45);
-            this.txtRechercher.Name = "txtRechercher";
-            this.txtRechercher.Size = new System.Drawing.Size(257, 22);
-            this.txtRechercher.TabIndex = 4;
-            // 
-            // btnCorbeille
-            // 
-            this.btnCorbeille.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCorbeille.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(169)))), ((int)(((byte)(155)))));
-            this.btnCorbeille.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnCorbeille.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCorbeille.ForeColor = System.Drawing.Color.White;
-            this.btnCorbeille.Location = new System.Drawing.Point(95, 57);
-            this.btnCorbeille.Name = "btnCorbeille";
-            this.btnCorbeille.Size = new System.Drawing.Size(152, 31);
-            this.btnCorbeille.TabIndex = 5;
-            this.btnCorbeille.Text = "&Corbeille";
-            this.btnCorbeille.UseVisualStyleBackColor = true;
-            // 
             // frmAccueilAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -136,7 +139,9 @@
             this.ClientSize = new System.Drawing.Size(1263, 763);
             this.ControlBox = false;
             this.Controls.Add(this.panel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmAccueilAdmin";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Acceuil";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
