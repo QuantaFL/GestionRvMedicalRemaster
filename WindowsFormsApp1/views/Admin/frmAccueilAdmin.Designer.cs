@@ -41,6 +41,7 @@
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(169)))), ((int)(((byte)(155)))));
             this.panel1.Controls.Add(this.btnCorbeille);
             this.panel1.Controls.Add(this.txtRechercher);
             this.panel1.Controls.Add(this.btnBloquerUtilisateur);
@@ -55,10 +56,13 @@
             // btnBloquerUtilisateur
             // 
             this.btnBloquerUtilisateur.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnBloquerUtilisateur.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(169)))), ((int)(((byte)(155)))));
             this.btnBloquerUtilisateur.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnBloquerUtilisateur.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBloquerUtilisateur.ForeColor = System.Drawing.Color.White;
             this.btnBloquerUtilisateur.Location = new System.Drawing.Point(179, 8);
             this.btnBloquerUtilisateur.Name = "btnBloquerUtilisateur";
-            this.btnBloquerUtilisateur.Size = new System.Drawing.Size(152, 31);
+            this.btnBloquerUtilisateur.Size = new System.Drawing.Size(170, 31);
             this.btnBloquerUtilisateur.TabIndex = 3;
             this.btnBloquerUtilisateur.Text = "&Bloquer un utilisateur";
             this.btnBloquerUtilisateur.UseVisualStyleBackColor = true;
@@ -67,9 +71,11 @@
             // 
             this.btnRechercherUtilisateur.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnRechercherUtilisateur.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnRechercherUtilisateur.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRechercherUtilisateur.ForeColor = System.Drawing.Color.White;
             this.btnRechercherUtilisateur.Location = new System.Drawing.Point(1017, 40);
             this.btnRechercherUtilisateur.Name = "btnRechercherUtilisateur";
-            this.btnRechercherUtilisateur.Size = new System.Drawing.Size(170, 32);
+            this.btnRechercherUtilisateur.Size = new System.Drawing.Size(196, 32);
             this.btnRechercherUtilisateur.TabIndex = 2;
             this.btnRechercherUtilisateur.Text = "&Rechercher un utilisateur";
             this.btnRechercherUtilisateur.UseVisualStyleBackColor = true;
@@ -77,7 +83,10 @@
             // btnAjouterUtilisateur
             // 
             this.btnAjouterUtilisateur.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAjouterUtilisateur.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(169)))), ((int)(((byte)(155)))));
             this.btnAjouterUtilisateur.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnAjouterUtilisateur.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAjouterUtilisateur.ForeColor = System.Drawing.Color.White;
             this.btnAjouterUtilisateur.Location = new System.Drawing.Point(6, 8);
             this.btnAjouterUtilisateur.Name = "btnAjouterUtilisateur";
             this.btnAjouterUtilisateur.Size = new System.Drawing.Size(152, 31);
@@ -89,6 +98,7 @@
             // 
             this.dgUtilisateur.AllowUserToAddRows = false;
             this.dgUtilisateur.AllowUserToDeleteRows = false;
+            this.dgUtilisateur.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.dgUtilisateur.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgUtilisateur.Location = new System.Drawing.Point(6, 115);
             this.dgUtilisateur.Name = "dgUtilisateur";
@@ -108,7 +118,10 @@
             // btnCorbeille
             // 
             this.btnCorbeille.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCorbeille.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(169)))), ((int)(((byte)(155)))));
             this.btnCorbeille.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnCorbeille.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCorbeille.ForeColor = System.Drawing.Color.White;
             this.btnCorbeille.Location = new System.Drawing.Point(95, 57);
             this.btnCorbeille.Name = "btnCorbeille";
             this.btnCorbeille.Size = new System.Drawing.Size(152, 31);
