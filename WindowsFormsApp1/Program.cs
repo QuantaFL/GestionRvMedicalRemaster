@@ -35,7 +35,7 @@ namespace WindowsFormsApp1
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmConnexion());
+            Application.Run(new SideB());
 
             // vider linstance seri/og
            // Log.CloseAndFlush();
