@@ -15,6 +15,41 @@ namespace WindowsFormsApp1
         [STAThread]
         static void Main()
         {
+            using System;
+using System.Windows.Forms;
+using Serilog;
+
+namespace WindowsFormsApp
+{
+    static class Program
+    {
+        [STAThread]
+        static void Main()
+        {
+            string elasticSearchUrl = "http://localhost:9200";
+            // init des logs seri/ogs
+         //   Log.Logger = new LoggerConfiguration()
+                //.WriteTo.Console()
+              //  .WriteTo.File("app.log", rollingInterval: RollingInterval.Day)
+           //  .WriteTo.Elasticsearch(new ElasticsearchSinkOptions(new Uri(elasticSearchUrl))
+          //  {
+           //     AutoRegisterTemplate = true,
+            //    IndexFormat = "log-{0:yyyy.MM.dd}", 
+          //  })
+          //      .CreateLogger();
+
+          //  Log.Information("Lancement de lapplication...");
+
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new MainForm());
+
+            // vider linstance seri/og
+           // Log.CloseAndFlush();
+        }
+    }
+}
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
            // new FrmConnexion()
