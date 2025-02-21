@@ -18,7 +18,7 @@ namespace WindowsFormsApp1
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
            // new FrmConnexion()
-            Application.Run(new SideBar());
+            Application.Run(new FrmConnexion());
         }
     }
 }

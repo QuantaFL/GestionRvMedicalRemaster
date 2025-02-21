@@ -197,12 +197,6 @@
     <Compile Include="views\frmRdv.Designer.cs">
       <DependentUpon>frmRdv.cs</DependentUpon>
     </Compile>
-    <Compile Include="views\SideBar.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="views\SideBar.Designer.cs">
-      <DependentUpon>SideBar.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -241,9 +235,6 @@
     <EmbeddedResource Include="views\frmRdv.resx">
       <DependentUpon>frmRdv.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="views\SideBar.resx">
-      <DependentUpon>SideBar.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -272,30 +263,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\lgcr.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\user-doctor.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\users-medical %281%29.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\burger-menu.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\settings.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\booking %281%29.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\booking %281%291.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\calendar-day.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\calendar-day1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
