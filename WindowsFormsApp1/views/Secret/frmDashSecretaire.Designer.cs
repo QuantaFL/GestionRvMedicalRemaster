@@ -38,7 +38,7 @@
             this.btnCorbeille = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnPatient = new System.Windows.Forms.Button();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.button2 = new System.Windows.Forms.Button();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
@@ -64,7 +64,7 @@
             this.panel4.Controls.Add(this.pictureBox4);
             this.panel4.Controls.Add(this.button2);
             this.panel4.Controls.Add(this.pictureBox3);
-            this.panel4.Controls.Add(this.button1);
+            this.panel4.Controls.Add(this.btnPatient);
             this.panel4.Controls.Add(this.pictureBox5);
             this.panel4.Controls.Add(this.pictureBox2);
             this.panel4.Controls.Add(this.pictureBox1);
@@ -76,7 +76,7 @@
             this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(419, 1106);
+            this.panel4.Size = new System.Drawing.Size(419, 1050);
             this.panel4.TabIndex = 7;
             // 
             // pictureBox5
@@ -158,10 +158,10 @@
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.pictureBox7);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Location = new System.Drawing.Point(12, 25);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(416, 218);
+            this.panel1.Size = new System.Drawing.Size(404, 193);
             this.panel1.TabIndex = 0;
             // 
             // label1
@@ -175,18 +175,19 @@
             this.label1.TabIndex = 6;
             this.label1.Text = "Health Care";
             // 
-            // button1
+            // btnPatient
             // 
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button1.Location = new System.Drawing.Point(81, 623);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(326, 60);
-            this.button1.TabIndex = 9;
-            this.button1.Text = "&Patients";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnPatient.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPatient.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPatient.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnPatient.Location = new System.Drawing.Point(81, 623);
+            this.btnPatient.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnPatient.Name = "btnPatient";
+            this.btnPatient.Size = new System.Drawing.Size(326, 60);
+            this.btnPatient.TabIndex = 9;
+            this.btnPatient.Text = "&Patients";
+            this.btnPatient.UseVisualStyleBackColor = false;
+            this.btnPatient.Click += new System.EventHandler(this.btnPatient_Click);
             // 
             // pictureBox3
             // 
@@ -275,7 +276,6 @@
             this.ClientSize = new System.Drawing.Size(1460, 1106);
             this.ControlBox = false;
             this.Controls.Add(this.panel4);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
             this.Name = "frmDashSecretaire";
@@ -309,7 +309,7 @@
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnPatient;
         private System.Windows.Forms.PictureBox pictureBox7;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;

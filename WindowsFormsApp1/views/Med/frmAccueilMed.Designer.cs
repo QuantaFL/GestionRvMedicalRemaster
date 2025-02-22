@@ -48,27 +48,30 @@
             this.panel1.Controls.Add(this.btnModifierAgenda);
             this.panel1.Controls.Add(this.btnVoirRdv);
             this.panel1.Controls.Add(this.btnAjouterAgenda);
-            this.panel1.Location = new System.Drawing.Point(0, 12);
+            this.panel1.Location = new System.Drawing.Point(0, 15);
+            this.panel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1927, 1044);
+            this.panel1.Size = new System.Drawing.Size(2168, 1305);
             this.panel1.TabIndex = 0;
             // 
             // dgAgendaMedecin
             // 
             this.dgAgendaMedecin.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.dgAgendaMedecin.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgAgendaMedecin.Location = new System.Drawing.Point(0, 124);
+            this.dgAgendaMedecin.Location = new System.Drawing.Point(0, 155);
+            this.dgAgendaMedecin.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dgAgendaMedecin.Name = "dgAgendaMedecin";
             this.dgAgendaMedecin.RowHeadersWidth = 51;
             this.dgAgendaMedecin.RowTemplate.Height = 24;
-            this.dgAgendaMedecin.Size = new System.Drawing.Size(1924, 920);
+            this.dgAgendaMedecin.Size = new System.Drawing.Size(2164, 1150);
             this.dgAgendaMedecin.TabIndex = 11;
             // 
             // txtDateChercher
             // 
-            this.txtDateChercher.Location = new System.Drawing.Point(658, 36);
+            this.txtDateChercher.Location = new System.Drawing.Point(740, 45);
+            this.txtDateChercher.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtDateChercher.Name = "txtDateChercher";
-            this.txtDateChercher.Size = new System.Drawing.Size(320, 22);
+            this.txtDateChercher.Size = new System.Drawing.Size(360, 26);
             this.txtDateChercher.TabIndex = 10;
             // 
             // btnRechercherAgenda
@@ -78,9 +81,10 @@
             this.btnRechercherAgenda.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnRechercherAgenda.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRechercherAgenda.ForeColor = System.Drawing.Color.White;
-            this.btnRechercherAgenda.Location = new System.Drawing.Point(1007, 32);
+            this.btnRechercherAgenda.Location = new System.Drawing.Point(1133, 40);
+            this.btnRechercherAgenda.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnRechercherAgenda.Name = "btnRechercherAgenda";
-            this.btnRechercherAgenda.Size = new System.Drawing.Size(196, 32);
+            this.btnRechercherAgenda.Size = new System.Drawing.Size(220, 40);
             this.btnRechercherAgenda.TabIndex = 9;
             this.btnRechercherAgenda.Text = "&Rechercher un agenda";
             this.btnRechercherAgenda.UseVisualStyleBackColor = true;
@@ -91,9 +95,10 @@
             this.btnModifierAgenda.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(169)))), ((int)(((byte)(155)))));
             this.btnModifierAgenda.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnModifierAgenda.ForeColor = System.Drawing.Color.White;
-            this.btnModifierAgenda.Location = new System.Drawing.Point(14, 77);
+            this.btnModifierAgenda.Location = new System.Drawing.Point(16, 96);
+            this.btnModifierAgenda.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnModifierAgenda.Name = "btnModifierAgenda";
-            this.btnModifierAgenda.Size = new System.Drawing.Size(217, 31);
+            this.btnModifierAgenda.Size = new System.Drawing.Size(244, 39);
             this.btnModifierAgenda.TabIndex = 8;
             this.btnModifierAgenda.Text = "&Modifier un Agenda";
             this.btnModifierAgenda.UseVisualStyleBackColor = true;
@@ -104,9 +109,10 @@
             this.btnVoirRdv.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(169)))), ((int)(((byte)(155)))));
             this.btnVoirRdv.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnVoirRdv.ForeColor = System.Drawing.Color.White;
-            this.btnVoirRdv.Location = new System.Drawing.Point(272, 26);
+            this.btnVoirRdv.Location = new System.Drawing.Point(306, 32);
+            this.btnVoirRdv.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnVoirRdv.Name = "btnVoirRdv";
-            this.btnVoirRdv.Size = new System.Drawing.Size(220, 31);
+            this.btnVoirRdv.Size = new System.Drawing.Size(248, 39);
             this.btnVoirRdv.TabIndex = 7;
             this.btnVoirRdv.Text = "&Voir mes rendez-vous";
             this.btnVoirRdv.UseVisualStyleBackColor = true;
@@ -118,9 +124,10 @@
             this.btnAjouterAgenda.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnAjouterAgenda.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAjouterAgenda.ForeColor = System.Drawing.Color.White;
-            this.btnAjouterAgenda.Location = new System.Drawing.Point(14, 26);
+            this.btnAjouterAgenda.Location = new System.Drawing.Point(16, 32);
+            this.btnAjouterAgenda.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnAjouterAgenda.Name = "btnAjouterAgenda";
-            this.btnAjouterAgenda.Size = new System.Drawing.Size(217, 31);
+            this.btnAjouterAgenda.Size = new System.Drawing.Size(244, 39);
             this.btnAjouterAgenda.TabIndex = 6;
             this.btnAjouterAgenda.Text = "Ajouter un Ag&enda";
             this.btnAjouterAgenda.UseVisualStyleBackColor = true;
@@ -128,12 +135,13 @@
             // 
             // frmAccueilMed
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1918, 963);
+            this.ClientSize = new System.Drawing.Size(1946, 1106);
             this.ControlBox = false;
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "frmAccueilMed";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AccueilMed";

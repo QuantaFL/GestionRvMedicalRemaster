@@ -41,7 +41,7 @@ namespace WindowsFormsApp1
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmDashAdmin());
+            Application.Run(new frmDashSecretaire());
 
             // vider linstance seri/og
            // Log.CloseAndFlush();
