@@ -160,16 +160,6 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmMDI.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmMDI.Designer.cs">
-      <DependentUpon>frmMDI.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202502191838463_test.cs" />
-    <Compile Include="Migrations\202502191838463_test.Designer.cs">
-      <DependentUpon>202502191838463_test.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Agenda.cs" />
     <Compile Include="Models\bdRdvMedicalContext.cs" />
@@ -181,6 +171,7 @@
     <Compile Include="Models\Patient.cs" />
     <Compile Include="Models\Personne.cs" />
     <Compile Include="Models\RendezVous.cs" />
+    <Compile Include="Models\Role.cs" />
     <Compile Include="Models\Secretaire.cs" />
     <Compile Include="Models\SelectListViewModel.cs" />
     <Compile Include="Models\Soin.cs" />
@@ -211,36 +202,6 @@
     </Compile>
     <Compile Include="views\Admin\frmDashAdmin.Designer.cs">
       <DependentUpon>frmDashAdmin.cs</DependentUpon>
-    </Compile>
-    <Compile Include="views\FrmAgenda.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="views\FrmAgenda.Designer.cs">
-      <DependentUpon>FrmAgenda.cs</DependentUpon>
-    </Compile>
-    <Compile Include="views\frmMedecin.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="views\frmMedecin.Designer.cs">
-      <DependentUpon>frmMedecin.cs</DependentUpon>
-    </Compile>
-    <Compile Include="views\frmPatient.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="views\frmPatient.Designer.cs">
-      <DependentUpon>frmPatient.cs</DependentUpon>
-    </Compile>
-    <Compile Include="views\frmPrintTicket.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="views\frmPrintTicket.Designer.cs">
-      <DependentUpon>frmPrintTicket.cs</DependentUpon>
-    </Compile>
-    <Compile Include="views\frmRdv.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="views\frmRdv.Designer.cs">
-      <DependentUpon>frmRdv.cs</DependentUpon>
     </Compile>
     <Compile Include="views\Med\frmDashMed.cs">
       <SubType>Form</SubType>
@@ -275,12 +236,6 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmMDI.resx">
-      <DependentUpon>frmMDI.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202502191838463_test.resx">
-      <DependentUpon>202502191838463_test.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -303,21 +258,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="views\Admin\frmDashAdmin.resx">
       <DependentUpon>frmDashAdmin.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="views\FrmAgenda.resx">
-      <DependentUpon>FrmAgenda.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="views\frmMedecin.resx">
-      <DependentUpon>frmMedecin.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="views\frmPatient.resx">
-      <DependentUpon>frmPatient.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="views\frmPrintTicket.resx">
-      <DependentUpon>frmPrintTicket.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="views\frmRdv.resx">
-      <DependentUpon>frmRdv.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="views\Med\frmAccueilMed.resx">
       <DependentUpon>frmAccueilMed.cs</DependentUpon>

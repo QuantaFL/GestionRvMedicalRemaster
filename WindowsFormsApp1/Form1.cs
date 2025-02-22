@@ -24,9 +24,7 @@ namespace WindowsFormsApp1
 
         private void btnSeConnecter_Click(object sender, EventArgs e)
         {
-            frmMDI frmMDI = new frmMDI();
-            frmMDI.Show();
-            this.Hide();
+           
         }
 
         private void btnQuitter_Click(object sender, EventArgs e)
