@@ -152,6 +152,7 @@
             this.Name = "frmAccueilAdmin";
             this.ShowIcon = false;
             this.Text = "Acceuil";
+            this.Load += new System.EventHandler(this.frmAccueilAdmin_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgUtilisateur)).EndInit();

@@ -23,5 +23,10 @@ namespace WindowsFormsApp1.views
             frmAdminAjouterUtilisateur ajouterUtilisateur = new frmAdminAjouterUtilisateur();
             ajouterUtilisateur.Show();
         }
+
+        private void frmAccueilAdmin_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
