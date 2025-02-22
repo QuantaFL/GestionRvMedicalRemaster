@@ -10,7 +10,7 @@ namespace WindowsFormsApp1.Models
     public class Personne
     {
         [Key]
-        public int IdU {  get; set; }
+        public int IdP {  get; set; }
         [Required,MaxLength(100)]
         public string NomPrenom {  get; set; }
         [Required, MaxLength(100)]
@@ -19,7 +19,8 @@ namespace WindowsFormsApp1.Models
         public string Email { get; set; }
         [Required, MaxLength(100)]
         public string Tel { get; set; }
-
+        [Required]
+        DateTime DateNaissance { get; set; }
 
     }
 }

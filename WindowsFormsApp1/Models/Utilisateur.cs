@@ -16,5 +16,9 @@ namespace WindowsFormsApp1.Models
         [MaxLength(250)]
         public string MotDePasse { get; set; }
         public bool Status {  get; set; }
+        public int IdRole { get; set; }
+        [ForeignKey("IdRole")]
+        public virtual Role Role { get; set; }
+        public int PremiereConnexion { get; set; }
     }
 }

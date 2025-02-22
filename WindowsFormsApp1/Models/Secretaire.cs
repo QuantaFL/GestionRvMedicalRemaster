@@ -11,5 +11,7 @@ namespace WindowsFormsApp1.Models
     {
         [MaxLength(15)]
         public string TelephoneFixe { get; set; }
+        [MaxLength(30)]
+        public string Matricule;
     }
 }

@@ -9,7 +9,7 @@ namespace WindowsFormsApp1.Models
 {
     public class Patient:Personne
     {
-        [Required,MaxLength(3)]
+        [MaxLength(3)]
         public string GroupeSanguin {  get; set; }
 
         [Required]
