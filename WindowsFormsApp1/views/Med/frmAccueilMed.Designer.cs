@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAccueilMed));
             this.panel1 = new System.Windows.Forms.Panel();
             this.dgAgendaMedecin = new System.Windows.Forms.DataGridView();
             this.txtDateChercher = new System.Windows.Forms.DateTimePicker();
@@ -42,27 +41,27 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(108)))), ((int)(((byte)(100)))));
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(114)))), ((int)(((byte)(144)))));
             this.panel1.Controls.Add(this.dgAgendaMedecin);
             this.panel1.Controls.Add(this.txtDateChercher);
             this.panel1.Controls.Add(this.btnRechercherAgenda);
             this.panel1.Controls.Add(this.btnModifierAgenda);
             this.panel1.Controls.Add(this.btnVoirRdv);
             this.panel1.Controls.Add(this.btnAjouterAgenda);
-            this.panel1.Location = new System.Drawing.Point(12, 12);
+            this.panel1.Location = new System.Drawing.Point(0, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1281, 810);
+            this.panel1.Size = new System.Drawing.Size(1927, 1044);
             this.panel1.TabIndex = 0;
             // 
             // dgAgendaMedecin
             // 
-            this.dgAgendaMedecin.BackgroundColor = System.Drawing.Color.Gray;
+            this.dgAgendaMedecin.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.dgAgendaMedecin.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgAgendaMedecin.Location = new System.Drawing.Point(14, 124);
+            this.dgAgendaMedecin.Location = new System.Drawing.Point(0, 124);
             this.dgAgendaMedecin.Name = "dgAgendaMedecin";
             this.dgAgendaMedecin.RowHeadersWidth = 51;
             this.dgAgendaMedecin.RowTemplate.Height = 24;
-            this.dgAgendaMedecin.Size = new System.Drawing.Size(1189, 552);
+            this.dgAgendaMedecin.Size = new System.Drawing.Size(1924, 920);
             this.dgAgendaMedecin.TabIndex = 11;
             // 
             // txtDateChercher
@@ -131,10 +130,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1227, 700);
+            this.ClientSize = new System.Drawing.Size(1918, 963);
             this.ControlBox = false;
             this.Controls.Add(this.panel1);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmAccueilMed";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AccueilMed";

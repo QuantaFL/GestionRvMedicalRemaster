@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAdminAjouterUtilisateur));
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnFermer = new System.Windows.Forms.Button();
             this.btnValiderAjoutUtilisateur = new System.Windows.Forms.Button();
             this.txtNumeroOrdre = new System.Windows.Forms.TextBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
@@ -44,7 +45,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnFermer = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -60,7 +60,7 @@
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(108)))), ((int)(((byte)(100)))));
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(114)))), ((int)(((byte)(144)))));
             this.panel2.Controls.Add(this.btnFermer);
             this.panel2.Controls.Add(this.btnValiderAjoutUtilisateur);
             this.panel2.Controls.Add(this.txtNumeroOrdre);
@@ -79,6 +79,17 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(532, 545);
             this.panel2.TabIndex = 1;
+            // 
+            // btnFermer
+            // 
+            this.btnFermer.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnFermer.Location = new System.Drawing.Point(295, 455);
+            this.btnFermer.Name = "btnFermer";
+            this.btnFermer.Size = new System.Drawing.Size(138, 43);
+            this.btnFermer.TabIndex = 13;
+            this.btnFermer.Text = "Fermer";
+            this.btnFermer.UseVisualStyleBackColor = true;
+            this.btnFermer.Click += new System.EventHandler(this.btnFermer_Click);
             // 
             // btnValiderAjoutUtilisateur
             // 
@@ -198,17 +209,6 @@
             this.label1.Size = new System.Drawing.Size(102, 18);
             this.label1.TabIndex = 0;
             this.label1.Text = "Nom Prenom ";
-            // 
-            // btnFermer
-            // 
-            this.btnFermer.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnFermer.Location = new System.Drawing.Point(295, 455);
-            this.btnFermer.Name = "btnFermer";
-            this.btnFermer.Size = new System.Drawing.Size(138, 43);
-            this.btnFermer.TabIndex = 13;
-            this.btnFermer.Text = "Fermer";
-            this.btnFermer.UseVisualStyleBackColor = true;
-            this.btnFermer.Click += new System.EventHandler(this.btnFermer_Click);
             // 
             // frmAdminAjouterUtilisateur
             // 

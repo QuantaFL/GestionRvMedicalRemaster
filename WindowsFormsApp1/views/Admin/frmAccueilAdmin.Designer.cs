@@ -42,7 +42,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(108)))), ((int)(((byte)(100)))));
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(114)))), ((int)(((byte)(144)))));
             this.panel1.Controls.Add(this.btnCorbeille);
             this.panel1.Controls.Add(this.txtRechercher);
             this.panel1.Controls.Add(this.btnBloquerUtilisateur);
@@ -50,9 +50,9 @@
             this.panel1.Controls.Add(this.btnAjouterUtilisateur);
             this.panel1.Controls.Add(this.dgUtilisateur);
             this.panel1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.panel1.Location = new System.Drawing.Point(6, 4);
+            this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1245, 747);
+            this.panel1.Size = new System.Drawing.Size(1918, 1078);
             this.panel1.TabIndex = 0;
             // 
             // btnCorbeille
@@ -71,7 +71,7 @@
             // 
             // txtRechercher
             // 
-            this.txtRechercher.Location = new System.Drawing.Point(740, 45);
+            this.txtRechercher.Location = new System.Drawing.Point(855, 29);
             this.txtRechercher.Name = "txtRechercher";
             this.txtRechercher.Size = new System.Drawing.Size(257, 22);
             this.txtRechercher.TabIndex = 4;
@@ -96,7 +96,7 @@
             this.btnRechercherUtilisateur.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnRechercherUtilisateur.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRechercherUtilisateur.ForeColor = System.Drawing.Color.White;
-            this.btnRechercherUtilisateur.Location = new System.Drawing.Point(1017, 40);
+            this.btnRechercherUtilisateur.Location = new System.Drawing.Point(1132, 24);
             this.btnRechercherUtilisateur.Name = "btnRechercherUtilisateur";
             this.btnRechercherUtilisateur.Size = new System.Drawing.Size(211, 32);
             this.btnRechercherUtilisateur.TabIndex = 2;
@@ -124,24 +124,24 @@
             this.dgUtilisateur.AllowUserToDeleteRows = false;
             this.dgUtilisateur.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.dgUtilisateur.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgUtilisateur.Location = new System.Drawing.Point(6, 115);
+            this.dgUtilisateur.Location = new System.Drawing.Point(0, 115);
             this.dgUtilisateur.Name = "dgUtilisateur";
             this.dgUtilisateur.ReadOnly = true;
             this.dgUtilisateur.RowHeadersWidth = 51;
             this.dgUtilisateur.RowTemplate.Height = 24;
-            this.dgUtilisateur.Size = new System.Drawing.Size(1236, 629);
+            this.dgUtilisateur.Size = new System.Drawing.Size(1918, 963);
             this.dgUtilisateur.TabIndex = 0;
             // 
             // frmAccueilAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1263, 763);
+            this.ClientSize = new System.Drawing.Size(1942, 1102);
             this.ControlBox = false;
             this.Controls.Add(this.panel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmAccueilAdmin";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Acceuil";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

@@ -28,9 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMedAgenda));
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.txtDateAgenda = new System.Windows.Forms.DateTimePicker();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtTitreAgenda = new System.Windows.Forms.TextBox();
             this.btnFermer = new System.Windows.Forms.Button();
             this.btnValiderAjoutUtilisateur = new System.Windows.Forms.Button();
             this.txtHeureDebut = new System.Windows.Forms.TextBox();
@@ -42,9 +44,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtTitreAgenda = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.txtDateAgenda = new System.Windows.Forms.DateTimePicker();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -60,7 +59,7 @@
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(108)))), ((int)(((byte)(100)))));
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(114)))), ((int)(((byte)(144)))));
             this.panel2.Controls.Add(this.txtDateAgenda);
             this.panel2.Controls.Add(this.textBox1);
             this.panel2.Controls.Add(this.txtTitreAgenda);
@@ -79,6 +78,27 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(532, 545);
             this.panel2.TabIndex = 1;
+            // 
+            // txtDateAgenda
+            // 
+            this.txtDateAgenda.Location = new System.Drawing.Point(101, 375);
+            this.txtDateAgenda.Name = "txtDateAgenda";
+            this.txtDateAgenda.Size = new System.Drawing.Size(332, 22);
+            this.txtDateAgenda.TabIndex = 16;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(101, 311);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(332, 22);
+            this.textBox1.TabIndex = 15;
+            // 
+            // txtTitreAgenda
+            // 
+            this.txtTitreAgenda.Location = new System.Drawing.Point(101, 75);
+            this.txtTitreAgenda.Name = "txtTitreAgenda";
+            this.txtTitreAgenda.Size = new System.Drawing.Size(332, 22);
+            this.txtTitreAgenda.TabIndex = 14;
             // 
             // btnFermer
             // 
@@ -188,27 +208,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Lieu";
             // 
-            // txtTitreAgenda
-            // 
-            this.txtTitreAgenda.Location = new System.Drawing.Point(101, 75);
-            this.txtTitreAgenda.Name = "txtTitreAgenda";
-            this.txtTitreAgenda.Size = new System.Drawing.Size(332, 22);
-            this.txtTitreAgenda.TabIndex = 14;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(101, 311);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(332, 22);
-            this.textBox1.TabIndex = 15;
-            // 
-            // txtDateAgenda
-            // 
-            this.txtDateAgenda.Location = new System.Drawing.Point(101, 375);
-            this.txtDateAgenda.Name = "txtDateAgenda";
-            this.txtDateAgenda.Size = new System.Drawing.Size(332, 22);
-            this.txtDateAgenda.TabIndex = 16;
-            // 
             // frmMedAgenda
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -216,7 +215,6 @@
             this.ClientSize = new System.Drawing.Size(740, 604);
             this.ControlBox = false;
             this.Controls.Add(this.panel1);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmMedAgenda";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Mes Agenda";

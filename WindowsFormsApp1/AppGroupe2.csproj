@@ -51,6 +51,9 @@
     <Reference Include="CrystalDecisions.Windows.Forms">
       <HintPath>..\..\..\..\program files (x86)\sap businessobjects\crystal reports for .net framework 4.0\common\sap businessobjects enterprise xi 4.0\win64_x64\dotnet\CrystalDecisions.Windows.Forms.dll</HintPath>
     </Reference>
+    <Reference Include="Elasticsearch.Net, Version=7.0.0.0, Culture=neutral, PublicKeyToken=96c599bbe3e70f5d, processorArchitecture=MSIL">
+      <HintPath>..\packages\Elasticsearch.Net.7.17.5\lib\net461\Elasticsearch.Net.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.5.1\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -78,6 +81,27 @@
     </Reference>
     <Reference Include="MySql.Data.EntityFramework, Version=9.2.0.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <HintPath>..\packages\MySql.Data.EntityFramework.9.2.0\lib\net48\MySql.Data.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Serilog, Version=4.2.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serilog.4.2.0\lib\net471\Serilog.dll</HintPath>
+    </Reference>
+    <Reference Include="Serilog.Formatting.Compact, Version=2.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serilog.Formatting.Compact.2.0.0\lib\net471\Serilog.Formatting.Compact.dll</HintPath>
+    </Reference>
+    <Reference Include="Serilog.Formatting.Elasticsearch, Version=10.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serilog.Formatting.Elasticsearch.10.0.0\lib\netstandard2.0\Serilog.Formatting.Elasticsearch.dll</HintPath>
+    </Reference>
+    <Reference Include="Serilog.Sinks.Console, Version=6.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serilog.Sinks.Console.6.0.0\lib\net471\Serilog.Sinks.Console.dll</HintPath>
+    </Reference>
+    <Reference Include="Serilog.Sinks.Elasticsearch, Version=10.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serilog.Sinks.Elasticsearch.10.0.0\lib\netstandard2.0\Serilog.Sinks.Elasticsearch.dll</HintPath>
+    </Reference>
+    <Reference Include="Serilog.Sinks.File, Version=5.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serilog.Sinks.File.5.0.0\lib\net45\Serilog.Sinks.File.dll</HintPath>
+    </Reference>
+    <Reference Include="Serilog.Sinks.PeriodicBatching, Version=4.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serilog.Sinks.PeriodicBatching.4.0.0\lib\net462\Serilog.Sinks.PeriodicBatching.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
@@ -107,6 +131,9 @@
       <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
     <Reference Include="System.Security" />
+    <Reference Include="System.Threading.Channels, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Channels.8.0.0\lib\net462\System.Threading.Channels.dll</HintPath>
+    </Reference>
     <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
     </Reference>
@@ -167,6 +194,24 @@
       <DependentUpon>rptTicketRv.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="views\Admin\frmAccueilAdmin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\Admin\frmAccueilAdmin.Designer.cs">
+      <DependentUpon>frmAccueilAdmin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="views\Admin\frmAdminAjouterUtilisateur.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\Admin\frmAdminAjouterUtilisateur.Designer.cs">
+      <DependentUpon>frmAdminAjouterUtilisateur.cs</DependentUpon>
+    </Compile>
+    <Compile Include="views\Admin\frmDashAdmin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\Admin\frmDashAdmin.Designer.cs">
+      <DependentUpon>frmDashAdmin.cs</DependentUpon>
+    </Compile>
     <Compile Include="views\FrmAgenda.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -197,11 +242,29 @@
     <Compile Include="views\frmRdv.Designer.cs">
       <DependentUpon>frmRdv.cs</DependentUpon>
     </Compile>
+    <Compile Include="views\Med\frmDashMed.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\Med\frmDashMed.Designer.cs">
+      <DependentUpon>frmDashMed.cs</DependentUpon>
+    </Compile>
     <Compile Include="views\SideB.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="views\SideB.Designer.cs">
       <DependentUpon>SideB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="views\Med\frmAccueilMed.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\Med\frmAccueilMed.Designer.cs">
+      <DependentUpon>frmAccueilMed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="views\Med\frmMedAgenda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\Med\frmMedAgenda.Designer.cs">
+      <DependentUpon>frmMedAgenda.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -226,6 +289,15 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptTicketRv.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="views\Admin\frmAccueilAdmin.resx">
+      <DependentUpon>frmAccueilAdmin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="views\Admin\frmAdminAjouterUtilisateur.resx">
+      <DependentUpon>frmAdminAjouterUtilisateur.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="views\Admin\frmDashAdmin.resx">
+      <DependentUpon>frmDashAdmin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="views\FrmAgenda.resx">
       <DependentUpon>FrmAgenda.cs</DependentUpon>
     </EmbeddedResource>
@@ -240,6 +312,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="views\frmRdv.resx">
       <DependentUpon>frmRdv.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="views\Med\frmAccueilMed.resx">
+      <DependentUpon>frmAccueilMed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="views\Med\frmDashMed.resx">
+      <DependentUpon>frmDashMed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="views\Med\frmMedAgenda.resx">
+      <DependentUpon>frmMedAgenda.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="views\SideB.resx">
       <DependentUpon>SideB.cs</DependentUpon>
@@ -293,6 +374,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\burger-menu1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\poubelle-de-recyclage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\calendrier.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rendez-vous-medical.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rendez-vous-medical %281%29.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

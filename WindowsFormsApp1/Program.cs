@@ -4,6 +4,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApp1.views;
+using WindowsFormsApp1.views.Admin;
+using WindowsFormsApp1.views.Med;
+using System;
+using System.Windows.Forms;
+using Serilog;
 
 namespace WindowsFormsApp1
 {
@@ -15,9 +20,9 @@ namespace WindowsFormsApp1
         [STAThread]
         static void Main()
         {
-//            using System;
-//using System.Windows.Forms;
-//using Serilog;
+        //            using System;
+        //using System.Windows.Forms;
+        //using Serilog;
 
            // string elasticSearchUrl = "http://localhost:9200";
             // init des logs seri/ogs
@@ -35,7 +40,7 @@ namespace WindowsFormsApp1
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new SideB());
+            Application.Run(new frmDashAdmin());
 
             // vider linstance seri/og
            // Log.CloseAndFlush();
