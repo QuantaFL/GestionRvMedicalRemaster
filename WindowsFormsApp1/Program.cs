@@ -9,6 +9,7 @@ using WindowsFormsApp1.views.Med;
 using System;
 using System.Windows.Forms;
 using Serilog;
+using WindowsFormsApp1.views.Secret;
 
 namespace WindowsFormsApp1
 {

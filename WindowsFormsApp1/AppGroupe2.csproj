@@ -248,11 +248,11 @@
     <Compile Include="views\Med\frmDashMed.Designer.cs">
       <DependentUpon>frmDashMed.cs</DependentUpon>
     </Compile>
-    <Compile Include="views\SideB.cs">
+    <Compile Include="views\Secret\frmAcceuilSecret.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="views\SideB.Designer.cs">
-      <DependentUpon>SideB.cs</DependentUpon>
+    <Compile Include="views\Secret\frmAcceuilSecret.Designer.cs">
+      <DependentUpon>frmAcceuilSecret.cs</DependentUpon>
     </Compile>
     <Compile Include="views\Med\frmAccueilMed.cs">
       <SubType>Form</SubType>
@@ -265,6 +265,12 @@
     </Compile>
     <Compile Include="views\Med\frmMedAgenda.Designer.cs">
       <DependentUpon>frmMedAgenda.cs</DependentUpon>
+    </Compile>
+    <Compile Include="views\Secret\frmDashSecretaire.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\Secret\frmDashSecretaire.Designer.cs">
+      <DependentUpon>frmDashSecretaire.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -322,8 +328,11 @@
     <EmbeddedResource Include="views\Med\frmMedAgenda.resx">
       <DependentUpon>frmMedAgenda.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="views\SideB.resx">
-      <DependentUpon>SideB.cs</DependentUpon>
+    <EmbeddedResource Include="views\Secret\frmAcceuilSecret.resx">
+      <DependentUpon>frmAcceuilSecret.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="views\Secret\frmDashSecretaire.resx">
+      <DependentUpon>frmDashSecretaire.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -387,6 +396,7 @@
   <ItemGroup>
     <None Include="Resources\rendez-vous-medical %281%29.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

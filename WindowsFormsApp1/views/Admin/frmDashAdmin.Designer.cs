@@ -30,20 +30,20 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDashAdmin));
             this.panel4 = new System.Windows.Forms.Panel();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnParametre = new System.Windows.Forms.Button();
             this.btnListeUtilisateur = new System.Windows.Forms.Button();
             this.btnCorbeille = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.panel4.SuspendLayout();
+            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.SuspendLayout();
             // 
@@ -61,51 +61,18 @@
             this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(364, 853);
+            this.panel4.Size = new System.Drawing.Size(410, 1050);
             this.panel4.TabIndex = 6;
-            // 
-            // pictureBox5
-            // 
-            this.pictureBox5.Image = global::WindowsFormsApp1.Properties.Resources.settings;
-            this.pictureBox5.Location = new System.Drawing.Point(12, 317);
-            this.pictureBox5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(54, 38);
-            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox5.TabIndex = 8;
-            this.pictureBox5.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = global::WindowsFormsApp1.Properties.Resources.user1;
-            this.pictureBox2.Location = new System.Drawing.Point(3, 154);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(63, 48);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 7;
-            this.pictureBox2.TabStop = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::WindowsFormsApp1.Properties.Resources.poubelle_de_recyclage;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 233);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(75, 48);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 6;
-            this.pictureBox1.TabStop = false;
             // 
             // btnParametre
             // 
             this.btnParametre.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnParametre.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnParametre.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnParametre.Location = new System.Drawing.Point(74, 317);
+            this.btnParametre.Location = new System.Drawing.Point(83, 396);
             this.btnParametre.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnParametre.Name = "btnParametre";
-            this.btnParametre.Size = new System.Drawing.Size(287, 47);
+            this.btnParametre.Size = new System.Drawing.Size(323, 59);
             this.btnParametre.TabIndex = 7;
             this.btnParametre.Text = "Parametres";
             this.btnParametre.UseVisualStyleBackColor = false;
@@ -115,10 +82,10 @@
             this.btnListeUtilisateur.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnListeUtilisateur.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnListeUtilisateur.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnListeUtilisateur.Location = new System.Drawing.Point(71, 154);
+            this.btnListeUtilisateur.Location = new System.Drawing.Point(80, 192);
             this.btnListeUtilisateur.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnListeUtilisateur.Name = "btnListeUtilisateur";
-            this.btnListeUtilisateur.Size = new System.Drawing.Size(290, 48);
+            this.btnListeUtilisateur.Size = new System.Drawing.Size(326, 60);
             this.btnListeUtilisateur.TabIndex = 5;
             this.btnListeUtilisateur.Text = "Afficher les &Utilisateurs";
             this.btnListeUtilisateur.UseVisualStyleBackColor = false;
@@ -129,10 +96,10 @@
             this.btnCorbeille.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCorbeille.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCorbeille.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnCorbeille.Location = new System.Drawing.Point(74, 234);
+            this.btnCorbeille.Location = new System.Drawing.Point(83, 292);
             this.btnCorbeille.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCorbeille.Name = "btnCorbeille";
-            this.btnCorbeille.Size = new System.Drawing.Size(287, 47);
+            this.btnCorbeille.Size = new System.Drawing.Size(323, 59);
             this.btnCorbeille.TabIndex = 4;
             this.btnCorbeille.Text = "&Corbeille";
             this.btnCorbeille.UseVisualStyleBackColor = false;
@@ -144,50 +111,85 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(361, 71);
+            this.panel1.Size = new System.Drawing.Size(406, 89);
             this.panel1.TabIndex = 0;
-            // 
-            // pictureBox6
-            // 
-            this.pictureBox6.Image = global::WindowsFormsApp1.Properties.Resources.burger_menu;
-            this.pictureBox6.Location = new System.Drawing.Point(12, 17);
-            this.pictureBox6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(25, 36);
-            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox6.TabIndex = 8;
-            this.pictureBox6.TabStop = false;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label1.Location = new System.Drawing.Point(43, 14);
+            this.label1.Location = new System.Drawing.Point(48, 18);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(102, 39);
+            this.label1.Size = new System.Drawing.Size(119, 46);
             this.label1.TabIndex = 6;
             this.label1.Text = "Menu";
             // 
+            // pictureBox5
+            // 
+            this.pictureBox5.Image = global::WindowsFormsApp1.Properties.Resources.settings;
+            this.pictureBox5.Location = new System.Drawing.Point(14, 396);
+            this.pictureBox5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(61, 48);
+            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox5.TabIndex = 8;
+            this.pictureBox5.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::WindowsFormsApp1.Properties.Resources.user1;
+            this.pictureBox2.Location = new System.Drawing.Point(3, 192);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(71, 60);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 7;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::WindowsFormsApp1.Properties.Resources.poubelle_de_recyclage;
+            this.pictureBox1.Location = new System.Drawing.Point(0, 291);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(84, 60);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 6;
+            this.pictureBox1.TabStop = false;
+            // 
+            // pictureBox6
+            // 
+            this.pictureBox6.Image = global::WindowsFormsApp1.Properties.Resources.burger_menu;
+            this.pictureBox6.Location = new System.Drawing.Point(14, 21);
+            this.pictureBox6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(28, 45);
+            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox6.TabIndex = 8;
+            this.pictureBox6.TabStop = false;
+            // 
             // frmDashAdmin
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1482, 853);
+            this.ClientSize = new System.Drawing.Size(1667, 1050);
             this.ControlBox = false;
             this.Controls.Add(this.panel4);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "frmDashAdmin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tableau de bord";
             this.Load += new System.EventHandler(this.frmDashAdmin_Load);
             this.panel4.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             this.ResumeLayout(false);
 
