@@ -12,6 +12,7 @@ using System.Transactions;
 using System.Windows.Forms;
 using Serilog;
 using WindowsFormsApp1.Models;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace WindowsFormsApp1.views.Med
 {
@@ -34,7 +35,6 @@ namespace WindowsFormsApp1.views.Med
 
         private void btnValiderAjoutUtilisateur_Click(object sender, EventArgs e)
         {
-
             try
             {
                 Log.Information("Tentative de connexion a la base");
@@ -42,47 +42,86 @@ namespace WindowsFormsApp1.views.Med
                 {
                     var transaction = context.Database.BeginTransaction();
                     Log.Information("Tentative de recuperation des informations medecin");
+
                     var medecin = context.Personnes
-          .Where(p => p.IdP == 1)
-          .OfType<Medecin>()
-          .FirstOrDefault();
+                        .Where(p => p.IdP == 1)
+                        .OfType<Medecin>()
+                        .FirstOrDefault();
+
                     if (medecin == null)
                     {
-                        MessageBox.Show("Médecin introuvable.");
+                        MessageBox.Show("Medecin introuvable.");
+                        Log.Warning("Medecin introuvable avec l'ID specifie.");
                         return;
                     }
-                    Log.Information("Creation etat agenda");
+
+                    Log.Information("Verification des champs obligatoires");
+
+                    if (string.IsNullOrEmpty(txtTitreAgenda.Text) || string.IsNullOrEmpty(txtLieu.Text) ||
+                        string.IsNullOrEmpty(txtCrenneau.Text) || string.IsNullOrEmpty(txtHeureDebut.Text) ||
+                        string.IsNullOrEmpty(txtHeureFin.Text))
+                    {
+                        MessageBox.Show("Tous les champs doivent etre remplis.");
+                        Log.Warning("Des champs obligatoires sont vides.");
+                        return;
+                    }
+
+                    if (!int.TryParse(txtCrenneau.Text, out int creneau) || creneau <= 0)
+                    {
+                        MessageBox.Show("Veuillez entrer un creneau valide.");
+                        Log.Warning("Creneau invalide ou non numérique.");
+                        return;
+                    }
+
+                    Log.Information("Creation de l'agenda");
+
                     try
                     {
                         var agenda = new Agenda()
                         {
-
                             Titre = txtTitreAgenda.Text,
                             Lieu = txtLieu.Text,
-                            Creneau = int.Parse(txtCrenneau.Text),
+                            Creneau = creneau,
                             HeureDebut = txtHeureDebut.Text,
                             HeureFin = txtHeureFin.Text,
                             DataPlanifier = txtDateAgenda.Value,
                             IdMedecin = medecin.IdP
-
                         };
+
+                        Log.Information("Tentative d'enregistrement de l'agenda");
+
                         context.Agenda.Add(agenda);
-                        Log.Information("Tentative d'enregistrement de l'agenda au niveau de la base");
                         context.SaveChanges();
                         transaction.Commit();
-                    }catch(Exception ex)
+
+                        resetForm();
+
+                        MessageBox.Show("L'ajout a ete effectue avec succes !");
+                        Log.Information("Agenda ajouter avec succes.");
+                    }
+                    catch (Exception ex)
                     {
-                        Log.Fatal($"Echec de l'action {ex.Message} de {ex.Source}");
+                        Log.Fatal($"Echec de l'action lors de l'ajout de l'agenda: {ex.Message} - {ex.Source}");
                         transaction.Rollback();
                     }
                 }
-                MessageBox.Show("L'ajout a été effectué avec succès !");
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Erreur durant 'la creation");
-                Log.Fatal($"Echec de l'action {ex.Message} {ex.InnerException}");
+                MessageBox.Show("Erreur durant la creation");
+                Log.Fatal($"Erreur generale lors de la tentative de creation: {ex.Message} {ex.InnerException}");
             }
+        }
+
+        private void resetForm()
+        {
+            txtTitreAgenda.Text = "";
+            txtLieu.Text = "";
+            txtHeureDebut.Text = "";
+            txtHeureFin.Text = "";
+            txtCrenneau.Text = "";
+            txtDateAgenda.Value = DateTime.Now;
+
         }
 
         private void panel2_Paint(object sender, PaintEventArgs e)
