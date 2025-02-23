@@ -84,7 +84,7 @@ namespace WindowsFormsApp1.views.Med
                             Creneau = creneau,
                             HeureDebut = txtHeureDebut.Text,
                             HeureFin = txtHeureFin.Text,
-                            DataPlanifier = txtDateAgenda.Value,
+                            DataPlanifier = txtDateAgenda.Value.Date,
                             IdMedecin = medecin.IdP
                         };
 

@@ -7,6 +7,7 @@ using System.Data.Entity;
 
 using MySql.Data.EntityFramework;
 using System.Reflection.Emit;
+using System.Data.Entity.Migrations;
 
 namespace WindowsFormsApp1.Models
 {
@@ -17,10 +18,10 @@ namespace WindowsFormsApp1.Models
         {
         }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            
+        {   
         }
 
+       
         public DbSet<Personne> Personnes {get; set;}
         public DbSet<Patient> Patients{ get; set; }
 

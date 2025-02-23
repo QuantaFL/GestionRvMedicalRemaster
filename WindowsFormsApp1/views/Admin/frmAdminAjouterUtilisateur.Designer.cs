@@ -31,6 +31,10 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAdminAjouterUtilisateur));
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.txtAdresse = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.cbbSpecialite = new System.Windows.Forms.ComboBox();
+            this.lblSpecialite = new System.Windows.Forms.Label();
             this.btnFermer = new System.Windows.Forms.Button();
             this.btnValiderAjoutUtilisateur = new System.Windows.Forms.Button();
             this.txtNumeroOrdre = new System.Windows.Forms.TextBox();
@@ -45,10 +49,10 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.lblSpecialite = new System.Windows.Forms.Label();
-            this.cbbSpecialite = new System.Windows.Forms.ComboBox();
-            this.txtAdresse = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
+            this.txtTelFixe = new System.Windows.Forms.TextBox();
+            this.lblTelFixe = new System.Windows.Forms.Label();
+            this.txtMatricule = new System.Windows.Forms.TextBox();
+            this.lblMatricule = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -57,14 +61,18 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.Controls.Add(this.panel2);
-            this.panel1.Location = new System.Drawing.Point(12, 12);
+            this.panel1.Location = new System.Drawing.Point(0, -1);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(716, 580);
+            this.panel1.Size = new System.Drawing.Size(806, 772);
             this.panel1.TabIndex = 0;
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(114)))), ((int)(((byte)(144)))));
+            this.panel2.Controls.Add(this.txtMatricule);
+            this.panel2.Controls.Add(this.lblMatricule);
+            this.panel2.Controls.Add(this.txtTelFixe);
+            this.panel2.Controls.Add(this.lblTelFixe);
             this.panel2.Controls.Add(this.txtAdresse);
             this.panel2.Controls.Add(this.label5);
             this.panel2.Controls.Add(this.cbbSpecialite);
@@ -83,15 +91,53 @@
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.label1);
-            this.panel2.Location = new System.Drawing.Point(86, 17);
+            this.panel2.Location = new System.Drawing.Point(12, 17);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(532, 545);
+            this.panel2.Size = new System.Drawing.Size(782, 743);
             this.panel2.TabIndex = 1;
+            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
+            // 
+            // txtAdresse
+            // 
+            this.txtAdresse.Location = new System.Drawing.Point(223, 170);
+            this.txtAdresse.Name = "txtAdresse";
+            this.txtAdresse.Size = new System.Drawing.Size(332, 22);
+            this.txtAdresse.TabIndex = 17;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.Location = new System.Drawing.Point(220, 149);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(70, 18);
+            this.label5.TabIndex = 16;
+            this.label5.Text = "Addresse";
+            // 
+            // cbbSpecialite
+            // 
+            this.cbbSpecialite.FormattingEnabled = true;
+            this.cbbSpecialite.Location = new System.Drawing.Point(223, 522);
+            this.cbbSpecialite.Name = "cbbSpecialite";
+            this.cbbSpecialite.Size = new System.Drawing.Size(332, 24);
+            this.cbbSpecialite.TabIndex = 15;
+            // 
+            // lblSpecialite
+            // 
+            this.lblSpecialite.AutoSize = true;
+            this.lblSpecialite.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSpecialite.ForeColor = System.Drawing.Color.White;
+            this.lblSpecialite.Location = new System.Drawing.Point(220, 501);
+            this.lblSpecialite.Name = "lblSpecialite";
+            this.lblSpecialite.Size = new System.Drawing.Size(71, 18);
+            this.lblSpecialite.TabIndex = 14;
+            this.lblSpecialite.Text = "Specialite";
             // 
             // btnFermer
             // 
             this.btnFermer.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnFermer.Location = new System.Drawing.Point(292, 476);
+            this.btnFermer.Location = new System.Drawing.Point(414, 630);
             this.btnFermer.Name = "btnFermer";
             this.btnFermer.Size = new System.Drawing.Size(138, 43);
             this.btnFermer.TabIndex = 13;
@@ -102,7 +148,7 @@
             // btnValiderAjoutUtilisateur
             // 
             this.btnValiderAjoutUtilisateur.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnValiderAjoutUtilisateur.Location = new System.Drawing.Point(98, 476);
+            this.btnValiderAjoutUtilisateur.Location = new System.Drawing.Point(220, 630);
             this.btnValiderAjoutUtilisateur.Name = "btnValiderAjoutUtilisateur";
             this.btnValiderAjoutUtilisateur.Size = new System.Drawing.Size(138, 43);
             this.btnValiderAjoutUtilisateur.TabIndex = 12;
@@ -112,28 +158,28 @@
             // 
             // txtNumeroOrdre
             // 
-            this.txtNumeroOrdre.Location = new System.Drawing.Point(101, 375);
+            this.txtNumeroOrdre.Location = new System.Drawing.Point(223, 463);
             this.txtNumeroOrdre.Name = "txtNumeroOrdre";
             this.txtNumeroOrdre.Size = new System.Drawing.Size(332, 22);
             this.txtNumeroOrdre.TabIndex = 11;
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(101, 256);
+            this.txtEmail.Location = new System.Drawing.Point(223, 344);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(332, 22);
             this.txtEmail.TabIndex = 10;
             // 
             // txtNumeroTelephone
             // 
-            this.txtNumeroTelephone.Location = new System.Drawing.Point(101, 198);
+            this.txtNumeroTelephone.Location = new System.Drawing.Point(223, 286);
             this.txtNumeroTelephone.Name = "txtNumeroTelephone";
             this.txtNumeroTelephone.Size = new System.Drawing.Size(332, 22);
             this.txtNumeroTelephone.TabIndex = 9;
             // 
             // txtNomPrenom
             // 
-            this.txtNomPrenom.Location = new System.Drawing.Point(101, 139);
+            this.txtNomPrenom.Location = new System.Drawing.Point(223, 227);
             this.txtNomPrenom.Name = "txtNomPrenom";
             this.txtNomPrenom.Size = new System.Drawing.Size(332, 22);
             this.txtNomPrenom.TabIndex = 8;
@@ -141,7 +187,7 @@
             // cbbRoleUtilisateur
             // 
             this.cbbRoleUtilisateur.FormattingEnabled = true;
-            this.cbbRoleUtilisateur.Location = new System.Drawing.Point(101, 23);
+            this.cbbRoleUtilisateur.Location = new System.Drawing.Point(223, 67);
             this.cbbRoleUtilisateur.Name = "cbbRoleUtilisateur";
             this.cbbRoleUtilisateur.Size = new System.Drawing.Size(332, 24);
             this.cbbRoleUtilisateur.TabIndex = 7;
@@ -149,7 +195,7 @@
             // 
             // txtDateNaissance
             // 
-            this.txtDateNaissance.Location = new System.Drawing.Point(98, 311);
+            this.txtDateNaissance.Location = new System.Drawing.Point(220, 399);
             this.txtDateNaissance.Name = "txtDateNaissance";
             this.txtDateNaissance.Size = new System.Drawing.Size(332, 22);
             this.txtDateNaissance.TabIndex = 6;
@@ -159,7 +205,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(98, 2);
+            this.label6.Location = new System.Drawing.Point(220, 46);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(43, 18);
             this.label6.TabIndex = 5;
@@ -170,7 +216,7 @@
             this.lblNumeroOrdre.AutoSize = true;
             this.lblNumeroOrdre.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNumeroOrdre.ForeColor = System.Drawing.Color.White;
-            this.lblNumeroOrdre.Location = new System.Drawing.Point(98, 354);
+            this.lblNumeroOrdre.Location = new System.Drawing.Point(220, 442);
             this.lblNumeroOrdre.Name = "lblNumeroOrdre";
             this.lblNumeroOrdre.Size = new System.Drawing.Size(104, 18);
             this.lblNumeroOrdre.TabIndex = 4;
@@ -181,7 +227,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(98, 290);
+            this.label4.Location = new System.Drawing.Point(220, 378);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(113, 18);
             this.label4.TabIndex = 3;
@@ -192,7 +238,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(98, 235);
+            this.label3.Location = new System.Drawing.Point(220, 323);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(45, 18);
             this.label3.TabIndex = 2;
@@ -203,7 +249,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(98, 177);
+            this.label2.Location = new System.Drawing.Point(220, 265);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(139, 18);
             this.label2.TabIndex = 1;
@@ -214,54 +260,59 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(98, 118);
+            this.label1.Location = new System.Drawing.Point(220, 206);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(102, 18);
             this.label1.TabIndex = 0;
             this.label1.Text = "Nom Prenom ";
             // 
-            // lblSpecialite
+            // txtTelFixe
             // 
-            this.lblSpecialite.AutoSize = true;
-            this.lblSpecialite.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSpecialite.ForeColor = System.Drawing.Color.White;
-            this.lblSpecialite.Location = new System.Drawing.Point(98, 413);
-            this.lblSpecialite.Name = "lblSpecialite";
-            this.lblSpecialite.Size = new System.Drawing.Size(71, 18);
-            this.lblSpecialite.TabIndex = 14;
-            this.lblSpecialite.Text = "Specialite";
+            this.txtTelFixe.Enabled = false;
+            this.txtTelFixe.Location = new System.Drawing.Point(220, 581);
+            this.txtTelFixe.Name = "txtTelFixe";
+            this.txtTelFixe.Size = new System.Drawing.Size(332, 22);
+            this.txtTelFixe.TabIndex = 19;
+            this.txtTelFixe.Visible = false;
             // 
-            // cbbSpecialite
+            // lblTelFixe
             // 
-            this.cbbSpecialite.FormattingEnabled = true;
-            this.cbbSpecialite.Location = new System.Drawing.Point(101, 434);
-            this.cbbSpecialite.Name = "cbbSpecialite";
-            this.cbbSpecialite.Size = new System.Drawing.Size(332, 24);
-            this.cbbSpecialite.TabIndex = 15;
+            this.lblTelFixe.AutoSize = true;
+            this.lblTelFixe.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTelFixe.ForeColor = System.Drawing.Color.White;
+            this.lblTelFixe.Location = new System.Drawing.Point(217, 560);
+            this.lblTelFixe.Name = "lblTelFixe";
+            this.lblTelFixe.Size = new System.Drawing.Size(108, 18);
+            this.lblTelFixe.TabIndex = 18;
+            this.lblTelFixe.Text = "Telephone Fixe";
+            this.lblTelFixe.Visible = false;
             // 
-            // txtAdresse
+            // txtMatricule
             // 
-            this.txtAdresse.Location = new System.Drawing.Point(101, 82);
-            this.txtAdresse.Name = "txtAdresse";
-            this.txtAdresse.Size = new System.Drawing.Size(332, 22);
-            this.txtAdresse.TabIndex = 17;
+            this.txtMatricule.Enabled = false;
+            this.txtMatricule.Location = new System.Drawing.Point(223, 124);
+            this.txtMatricule.Name = "txtMatricule";
+            this.txtMatricule.Size = new System.Drawing.Size(332, 22);
+            this.txtMatricule.TabIndex = 21;
+            this.txtMatricule.Visible = false;
             // 
-            // label5
+            // lblMatricule
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(98, 61);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(70, 18);
-            this.label5.TabIndex = 16;
-            this.label5.Text = "Addresse";
+            this.lblMatricule.AutoSize = true;
+            this.lblMatricule.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMatricule.ForeColor = System.Drawing.Color.White;
+            this.lblMatricule.Location = new System.Drawing.Point(220, 103);
+            this.lblMatricule.Name = "lblMatricule";
+            this.lblMatricule.Size = new System.Drawing.Size(68, 18);
+            this.lblMatricule.TabIndex = 20;
+            this.lblMatricule.Text = "Matricule";
+            this.lblMatricule.Visible = false;
             // 
             // frmAdminAjouterUtilisateur
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(740, 604);
+            this.ClientSize = new System.Drawing.Size(806, 771);
             this.ControlBox = false;
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -299,5 +350,9 @@
         private System.Windows.Forms.ComboBox cbbSpecialite;
         private System.Windows.Forms.TextBox txtAdresse;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtTelFixe;
+        private System.Windows.Forms.Label lblTelFixe;
+        private System.Windows.Forms.TextBox txtMatricule;
+        private System.Windows.Forms.Label lblMatricule;
     }
 }

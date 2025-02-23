@@ -81,14 +81,13 @@ namespace WindowsFormsApp1.views.Admin
             txtNumeroOrdre.Enabled = false;
             txtNumeroOrdre.Visible = false;
             cbbSpecialite.Enabled = false;
-            lblNumeroOrdre.Visible = false ;
+            lblNumeroOrdre.Visible = false;
             cbbSpecialite.Visible = false;
             lblSpecialite.Visible = false;
-
         }
         public List<SelectListViewModel> loadRoleccb()
         {
-            var s = db.Role.Where(a => a.IdRole>1).ToList();
+            var s = db.Role.Where(a => a.CodeRole!="ADM").ToList();
             List<SelectListViewModel> liste = new List<SelectListViewModel>();
             SelectListViewModel b = new SelectListViewModel();
             b.Text = "Selectionner une valeur";
@@ -224,7 +223,7 @@ namespace WindowsFormsApp1.views.Admin
             int IdRole = int.Parse(cbbRoleUtilisateur.SelectedValue.ToString());
             int IdSpecialite = int.Parse(cbbSpecialite.SelectedValue.ToString());
             var role = db.Role.Find(IdRole);
-            if (role.CodeRole == "Med") {
+            if (role.CodeRole == "MED") {
                 Guid myuuid = Guid.NewGuid();
                 Guid myuuid2 = Guid.NewGuid();
                 string mdpTmp = myuuid.ToString().Substring(0,8);
@@ -272,10 +271,10 @@ namespace WindowsFormsApp1.views.Admin
                 }
               
 
+            }else
+            {
+
             }
-
-            
-
         }
 
         private void btnFermer_Click_1(object sender, EventArgs e)
@@ -285,12 +284,12 @@ namespace WindowsFormsApp1.views.Admin
 
         private void cbbRoleUtilisateur_Leave(object sender, EventArgs e)
         {
-            if (cbbRoleUtilisateur.Text!="" && cbbRoleUtilisateur.Text=="Medecin") {
+            if (cbbRoleUtilisateur.Text!="" && (cbbRoleUtilisateur.Text=="MEDECIN"|| cbbRoleUtilisateur.Text == "SECRETAIRE")) {
                 try {
                     int IdRole = int.Parse(cbbRoleUtilisateur.SelectedValue.ToString());
                     var role = db.Role.Find(IdRole);
                     string codeRole = role.CodeRole;
-                    if (IdRole == 2)
+                    if (IdRole == 3)
                     {
                         //  Log.Information(codeRole);
                         txtNumeroOrdre.Visible=true;
@@ -299,8 +298,14 @@ namespace WindowsFormsApp1.views.Admin
                         cbbSpecialite.Visible = true;
                         lblNumeroOrdre.Visible = true;
                         lblSpecialite.Visible = true;
-
-
+                    }
+                    else
+                    {
+                        txtTelFixe.Visible = true;
+                        txtTelFixe.Enabled = true;
+                        lblTelFixe.Visible = true;
+                        txtMatricule.Visible = true;
+                        lblMatricule.Visible = true;
                     }
                 }
                 catch {
@@ -310,8 +315,20 @@ namespace WindowsFormsApp1.views.Admin
             }
             else
             {
-                ResetForm();
+                txtNumeroOrdre.Enabled = false;
+                txtNumeroOrdre.Visible = false;
+                cbbSpecialite.Enabled = false;
+                lblNumeroOrdre.Visible = false;
+                cbbSpecialite.Visible = false;
+                lblSpecialite.Visible = false;
+                cbbRoleUtilisateur.ValueMember = "Value";
+                cbbRoleUtilisateur.DisplayMember = "Text";
             }
+
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
 
         }
     }

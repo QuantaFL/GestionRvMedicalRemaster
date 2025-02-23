@@ -15,7 +15,7 @@ namespace WindowsFormsApp1.config
             {
                 if (logEvent.Level == LogEventLevel.Fatal || logEvent.Level == LogEventLevel.Error)
                 {
-                    SendWhatsAppMessage("Critical error: " + logEvent.MessageTemplate.Text).Wait();
+                    //SendWhatsAppMessage("Critical error: " + logEvent.MessageTemplate.Text).Wait();
                 }
             }
             public  async Task SendWhatsAppMessage(string message)
