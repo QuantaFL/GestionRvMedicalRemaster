@@ -19,7 +19,7 @@ namespace WindowsFormsApp1
             // init des logs seri/ogs
             Log.Logger = new LoggerConfiguration()
                 .WriteTo.Console()
-                .WriteTo.File(@"C:\Users\cheikh\Documents\app.log", rollingInterval: RollingInterval.Day)
+                .WriteTo.File(@"C:/Users/UL16/OneDrive/Bureau/Logs/app.log", rollingInterval: RollingInterval.Day)
                 //  .WriteTo.Elasticsearch(new ElasticsearchSinkOptions(new Uri(elasticSearchUrl))
                 //  {
                 //     AutoRegisterTemplate = true,

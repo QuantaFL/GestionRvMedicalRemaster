@@ -20,6 +20,11 @@ namespace WindowsFormsApp1.views.Med
         public frmMedAgenda()
         {
             InitializeComponent();
+            txtHeureDebut.Mask = "00:00";
+            txtHeureFin.Mask = "00:00";
+            txtHeureDebut.ValidatingType = typeof(DateTime);
+            txtHeureFin.ValidatingType = typeof(DateTime);
+            
         }
 
         private void btnFermer_Click(object sender, EventArgs e)
@@ -56,7 +61,7 @@ namespace WindowsFormsApp1.views.Med
                             Lieu = txtLieu.Text,
                             Creneau = int.Parse(txtCrenneau.Text),
                             HeureDebut = txtHeureDebut.Text,
-                            HeureFin = textBox1.Text,
+                            HeureFin = txtHeureFin.Text,
                             DataPlanifier = txtDateAgenda.Value,
                             IdMedecin = medecin.IdP
 
@@ -82,6 +87,30 @@ namespace WindowsFormsApp1.views.Med
 
         private void panel2_Paint(object sender, PaintEventArgs e)
         {
+
+        }
+
+        private void heureDebutChanged(object sender, EventArgs e)
+        {
+            if (txtHeureDebut.Text.Length > 1)
+            {
+                txtHeureDebut.Text += ":";
+            }else if (txtHeureDebut.Text.Length == 2)
+            {
+
+            }
+        }
+
+        private void heureFinChanged(object sender, EventArgs e)
+        {
+            if (txtHeureFin.Text.Length > 1)
+            {
+                txtHeureFin.Text += ":";
+            }
+            else if (txtHeureFin.Text.Length == 2)
+            {
+
+            }
 
         }
     }
