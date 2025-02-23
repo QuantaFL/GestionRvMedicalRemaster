@@ -1,16 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using WindowsFormsApp1.views;
-using WindowsFormsApp1.views.Admin;
 using WindowsFormsApp1.views.Med;
-using System;
-using System.Windows.Forms;
 using Serilog;
-using WindowsFormsApp1.views.Secret;
-using Serilog.Sinks.Elasticsearch;
 
 namespace WindowsFormsApp1
 {
@@ -40,11 +31,11 @@ namespace WindowsFormsApp1
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmDashAdmin());
+            //Application.Run(new frmDashAdmin());
+            Application.Run(new frmAccueilMed());
 
             // vider linstance seri/og
-            Log.CloseAndFlush();
-
+           // Log.CloseAndFlush();
         }
     }
 }
