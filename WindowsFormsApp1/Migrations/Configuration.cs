@@ -73,6 +73,32 @@
                }
             );
             context.SaveChanges();
+            context.Soins.AddOrUpdate(
+                sn => sn.IdSoin,
+                new Soin
+                {
+                    CodeSoin = "VA",
+                    LibelleSoin = "VISITE ANNUELLE",
+                    StatusSoin = true,
+                    CoutSoin = 10000
+                },
+                new Soin
+                {
+                    CodeSoin = "RAD",
+                    LibelleSoin = "RADIO",
+                    StatusSoin = true,
+                    CoutSoin = 15000
+                },
+                new Soin
+                {
+                    CodeSoin = "CSLT",
+                    LibelleSoin = "CONSULATATION",
+                    StatusSoin = true,
+                    CoutSoin = 2000
+
+                }
+                );
+            context.SaveChanges();
             context.Medecins.AddOrUpdate(
                 s => s.IdP,
                 new Medecin
