@@ -205,6 +205,12 @@
     <Compile Include="views\Admin\frmAccueilAdmin.Designer.cs">
       <DependentUpon>frmAccueilAdmin.cs</DependentUpon>
     </Compile>
+    <Compile Include="views\Admin\frmAdminAjouterSecretaire.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\Admin\frmAdminAjouterSecretaire.Designer.cs">
+      <DependentUpon>frmAdminAjouterSecretaire.cs</DependentUpon>
+    </Compile>
     <Compile Include="views\Admin\frmAdminAjouterUtilisateur.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -278,6 +284,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="views\Admin\frmAccueilAdmin.resx">
       <DependentUpon>frmAccueilAdmin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="views\Admin\frmAdminAjouterSecretaire.resx">
+      <DependentUpon>frmAdminAjouterSecretaire.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="views\Admin\frmAdminAjouterUtilisateur.resx">
       <DependentUpon>frmAdminAjouterUtilisateur.cs</DependentUpon>

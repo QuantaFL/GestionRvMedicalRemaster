@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Serilog;
 using WindowsFormsApp1.Models;
 using WindowsFormsApp1.views.Admin;
 
@@ -34,6 +35,50 @@ namespace WindowsFormsApp1.views
         public void loadData()
         {
           dgUtilisateur.DataSource = db.Utilisateurs.ToList();
+        }
+
+        private void btnAjouterSecretaire_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAjouterSecretaire_Click_1(object sender, EventArgs e)
+        {
+            frmAdminAjouterSecretaire frmAdminAjouterSecretaire = new frmAdminAjouterSecretaire();
+            frmAdminAjouterSecretaire.Show();
+        }
+        
+        private void btnRechercherMedecin_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtRechercherMedecin.Text))
+            {
+                Log.Information("valeur saisie invalide");
+            }
+            else
+            {
+
+                try
+                {
+                    var medecin = db.Medecins.Where(m => m.NumeroOrdre == txtRechercherMedecin.Text).First();
+                    if (medecin == null)
+                    {
+                        Log.Information("aucun medecin n'a ce numero d'ordre");
+                        return;
+                    }
+
+
+
+
+
+                }
+                catch (Exception ex)
+                {
+                    Log.Error($" l 'erreur {ex.Message} est survenue lors de la recherche du medecin ");
+                }
+
+            }
+                
+
         }
     }
 }

@@ -1,0 +1,231 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Net.Mail;
+using System.Net;
+using System.Net.NetworkInformation;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using Serilog;
+using WindowsFormsApp1.Models;
+using WindowsFormsApp1.views.Secret;
+
+namespace WindowsFormsApp1.views.Admin
+{
+    public partial class frmAdminAjouterSecretaire : Form
+    {
+        public frmAdminAjouterSecretaire()
+        {
+            InitializeComponent();
+        }
+        bdRdvMedicalContext db = new bdRdvMedicalContext();
+        private void frmAdminAjouterSecretaire_Load(object sender, EventArgs e)
+        {
+            ResetForm();
+
+        }
+        /// <summary>
+        /// cette fonction verifie la saisie des entrées utilisateurs.
+        /// Retourne true si un seul champ est vide , null ou 
+        /// contient des espaces blanc false sinon
+        /// </summary>
+        /// <returns></returns>
+        public bool chechkInput()
+        {
+            return   string.IsNullOrWhiteSpace(txtNomPrenom.Text) ||
+                     string.IsNullOrWhiteSpace(txtEmail.Text) ||
+                     string.IsNullOrWhiteSpace(txtNumeroTelephone.Text)||
+                     string.IsNullOrEmpty(txtTelephoneFixe.Text)
+                     ;
+
+        }
+        /// <summary>
+        /// cette fonction permet de faire un ping vers google pour verfier si l'appareil est connecté a internet.
+        /// Elle retourne true si oui false si non
+        /// </summary>
+        /// <returns></returns>
+        public Boolean ping_google()
+        {
+            string host = "google.com";
+            Boolean is_pinged = false;
+            Ping ping = new Ping();
+            try
+            {
+                PingReply reply = ping.Send(host);
+                if (reply.Status == IPStatus.Success)
+                {
+                    is_pinged = true;
+                }
+            }
+            catch (PingException pe)
+            {
+
+                MessageBox.Show("votre appreil ne parvient pas a se connecter a internet veuillez vérifier votre connexion", "connexion internet lente ou inexistante", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return is_pinged;
+        }
+        /// <summary>
+        /// cette fonction verifie si l'utilisateur saisie a au moins 20 ans.
+        /// Elle renvoie 1 si oui sinon 0
+        /// </summary>
+        /// <returns></returns>
+        public int AgeUtilisateur()
+        {
+            DateTime dateDonne = txtDateNaissance.Value;
+            DateTime now = DateTime.Now;
+            int age = now.Year - dateDonne.Year;
+            return age >= 20 ? 1 : 0;
+        }
+        /// <summary>
+        /// cette fonction envoie un mail a l'addresse donner en paramètre avec le mot de passe et l'identifiant
+        /// </summary>
+        /// <param name="To">le mail qui recevra le message</param>
+        /// <param name="mdp">le mot de passe par defaut</param>
+        /// <param name="identifiant">l'identifiant par defaut</param>
+        public void sendMail(string To, string mdp, string identifiant)
+        {
+            // string documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments); //obtenir le chemin vers le dossier documents 
+            //  string fileName = "ticket1.pdf"; // le nom du fichier a envoyer 
+            //  string filePath = Path.Combine(documentsPath, fileName); //le chemin complet
+
+            MailMessage mailMessage = new MailMessage();
+            // Attachment fichier = new Attachment(filePath);
+            SmtpClient smtpClient = new SmtpClient("smtp.gmail.com");
+            mailMessage.From = new MailAddress("benirosinard19@gmail.com");
+            mailMessage.To.Add(To);
+            mailMessage.Subject = "Bienvenue !";
+            mailMessage.Body = $"Pour votre primière connexion veuillez saisir comme   mot de passe par defaut {mdp} et  votre identifiant  {identifiant}  vous serez inviter a changer ses informations";
+            // mailMessage.Attachments.Add(fichier);
+
+            smtpClient.Port = 587;
+            smtpClient.Credentials = new NetworkCredential("benirosinard19@gmail.com", "vust rvfc dbuf vtuq");
+            smtpClient.EnableSsl = true;
+
+            try
+            {
+                smtpClient.Send(mailMessage);
+                Log.Information("Mail envoyer");
+
+            }
+            catch (WebException ex)
+            {
+                Log.Error(ex.ToString());
+
+                MessageBox.Show(ex.Message);
+            }
+        }
+        /// <summary>
+        /// cette fonction reinitiaalise les champs
+        /// </summary>
+        public void ResetForm()
+        {
+            txtNomPrenom.Text = string.Empty;
+            txtEmail.Text = string.Empty;
+            txtNumeroTelephone.Text = string.Empty;
+            txtTelephoneFixe.Text = string.Empty;
+            textMatricule.Text = generateMatricule();
+            txtDateNaissance.Value = DateTime.Now;
+            txtAdresse.Text = string.Empty;
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+           
+        }
+        /// <summary>
+        /// cette fonction genere un matricule de manière automatique en le codifiant 
+        /// </summary>
+        /// <returns></returns>
+        private string generateMatricule()
+        {
+            string matricule;
+            var nbrSecretaire = db.Secretaires.Count();
+            if (nbrSecretaire == 0)
+            {
+                nbrSecretaire = 1;
+            }
+            else {
+                nbrSecretaire++;
+            }
+            return matricule = "HL-DKR-" + DateTime.Now.Year + "-" + nbrSecretaire;
+
+        }
+
+        private void btnValiderAjoutUtilisateur_Click(object sender, EventArgs e)
+        {
+            if (chechkInput())
+            {
+                Log.Information("veuillez remplir tous les champs");
+                return;
+            }
+            if (AgeUtilisateur() == 0)
+            {
+                Log.Information("une secretaire  ne peut avoir moins de 20 ans");
+                return;
+            }
+            if (!ping_google())
+            {
+                Log.Fatal("pas de connexion ");
+                return;
+            }
+            var role = db.Role.Where(r => r.CodeRole == "SEC").FirstOrDefault();
+            int IdRole = role.IdRole;
+            Guid myuuid = Guid.NewGuid();
+            Guid myuuid2 = Guid.NewGuid();
+            string mdpTmp = myuuid.ToString().Substring(0, 8);
+            string identfiantTmp = myuuid.ToString().Substring(0, 6);
+            Secretaire secretaire = new Secretaire();
+
+            try
+            {
+                secretaire.Addresse = txtAdresse.Text;
+                secretaire.NomPrenom = txtNomPrenom.Text;
+                secretaire.Email = txtEmail.Text;
+                secretaire.Tel = txtNumeroTelephone.Text;
+                secretaire.DateNaissance = txtDateNaissance.Value;
+
+                secretaire.Status = true;
+                secretaire.IdRole = IdRole;
+                secretaire.Identifiant = identfiantTmp;
+                secretaire.MotDePasse = mdpTmp;
+                secretaire.PremiereConnexion = 0;
+
+                secretaire.Matricule = generateMatricule();
+                secretaire.TelephoneFixe = txtTelephoneFixe.Text;
+                db.Secretaires.Add(secretaire);
+                db.SaveChanges();
+
+
+                Log.Information("ajout de la secretaire");
+
+                sendMail(txtEmail.Text, mdpTmp, identfiantTmp);
+                Log.Information("envoie du mail à la secretaire");
+                ResetForm();
+            }
+            catch (Exception ex) {
+                Log.Error($" l' erreur {ex} lors de l'ajout de secretaire ");
+            }
+
+            
+           
+
+        }
+
+        private void btnFermer_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            frmAccueilAdmin frmAccueilAdmin =  Application.OpenForms["frmAccueilAdmin"] as frmAccueilAdmin;
+            frmAccueilAdmin.loadData();
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+    }
+}

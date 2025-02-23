@@ -24,6 +24,7 @@ namespace WindowsFormsApp1.views.Admin
         //TODO : Creer un formulaire avec nos propres controles qui afficheront des messages aux utilisateurs
         //TODO : faire un loader pour le formulaire au moment du click
         // TODO : Verifier si le mail se termine par @gmail.com
+        // TODO : dans le resetForm ajouter la fonction pour vider des champs
 
 
         bdRdvMedicalContext db = new bdRdvMedicalContext();
@@ -71,21 +72,33 @@ namespace WindowsFormsApp1.views.Admin
         }
         public void  ResetForm()
         {
-            cbbRoleUtilisateur.ValueMember = "Value";
-            cbbRoleUtilisateur.DisplayMember = "Text";
-            cbbRoleUtilisateur.DataSource = loadRoleccb();
+           // cbbRoleUtilisateur.ValueMember = "Value";
+           // cbbRoleUtilisateur.DisplayMember = "Text";
+          //  cbbRoleUtilisateur.DataSource = loadRoleccb();
             cbbSpecialite.ValueMember = "Value";
             cbbSpecialite.DisplayMember = "Text";
             cbbSpecialite.DataSource = loadSpecialiteccb();
-            cbbRoleUtilisateur.Focus();
-            txtNumeroOrdre.Enabled = false;
-            txtNumeroOrdre.Visible = false;
-            cbbSpecialite.Enabled = false;
-            lblNumeroOrdre.Visible = false;
-            cbbSpecialite.Visible = false;
-            lblSpecialite.Visible = false;
+            //cbbRoleUtilisateur.Focus();
+            txtAdresse.Focus();
+            txtAdresse.Text = string.Empty;
+            txtDateNaissance.Value = DateTime.Now;
+            txtEmail.Text = string.Empty;
+            txtNumeroOrdre.Text  = string.Empty ;
+            txtNumeroTelephone.Text = string.Empty ;
+            txtNomPrenom.Text = string.Empty ;
+            /*
+
+                  txtNumeroOrdre.Enabled = false;
+             txtNumeroOrdre.Visible = false;
+             cbbSpecialite.Enabled = false;
+             lblNumeroOrdre.Visible = false;
+             cbbSpecialite.Visible = false;
+             lblSpecialite.Visible = false;
+             */
         }
-        public List<SelectListViewModel> loadRoleccb()
+        /*
+         
+                 public List<SelectListViewModel> loadRoleccb()
         {
             var s = db.Role.Where(a => a.CodeRole!="ADM").ToList();
             List<SelectListViewModel> liste = new List<SelectListViewModel>();
@@ -103,6 +116,8 @@ namespace WindowsFormsApp1.views.Admin
             }
             return liste;
         }
+
+         */
         public List<SelectListViewModel> loadSpecialiteccb()
         {
             var s = db.Specialite.ToList();
@@ -219,35 +234,15 @@ namespace WindowsFormsApp1.views.Admin
                 Log.Fatal("pas de connexion ");
                 return;
             }
-
-            int IdRole = int.Parse(cbbRoleUtilisateur.SelectedValue.ToString());
-            int IdSpecialite = int.Parse(cbbSpecialite.SelectedValue.ToString());
-            var role = db.Role.Find(IdRole);
-            if (role.CodeRole == "MED") {
+                var role  = db.Role.Where(r=> r.CodeRole=="MED").FirstOrDefault();
+                int IdRole = role.IdRole;
+                int IdSpecialite = int.Parse(cbbSpecialite.SelectedValue.ToString());
                 Guid myuuid = Guid.NewGuid();
                 Guid myuuid2 = Guid.NewGuid();
                 string mdpTmp = myuuid.ToString().Substring(0,8);
                 string identfiantTmp = myuuid.ToString().Substring(0, 5);
-
                 // Models.Admin admin = new Models.Admin();
                 Medecin medecin = new Medecin();
-                // medecin.Specialite = ;
-                /*
-                 medecin.Status = true;
-                medecin.Email = txtEmail.Text;
-                medecin.NumeroOrdre = txtNumeroOrdre.Text;
-                medecin.PremiereConnexion = 0;
-                medecin.Addresse = "dakar";
-                medecin.Tel = txtNumeroTelephone.Text;
-                medecin.Identifiant = "AA123"+txtNumeroOrdre+"221PP";
-                medecin.MotDePasse = "Passer@1";
-                medecin.IdRole = IdRole ;
-                medecin.NomPrenom = txtNomPrenom.Text;
-                medecin.DateNaissance = txtDateNaissance.Value;
-                medecin.IdSpecialite = int.Parse("1");
-                 
-                 */
-
                 medecin.NomPrenom = txtNomPrenom.Text;
                 medecin.Addresse = txtAdresse.Text;
                 medecin.Email = txtEmail.Text;
@@ -263,7 +258,10 @@ namespace WindowsFormsApp1.views.Admin
                 db.Medecins.Add(medecin);
                 try {
                     db.SaveChanges();
+                    Log.Information("medecin ajouter");
                     sendMail(txtEmail.Text, mdpTmp, identfiantTmp);
+                    Log.Information($" mail envoyer à {txtEmail.Text}");
+                    ResetForm();
 
                 }
                 catch (Exception ex) { 
@@ -271,59 +269,58 @@ namespace WindowsFormsApp1.views.Admin
                 }
               
 
-            }else
-            {
-
-            }
+            
         }
 
         private void btnFermer_Click_1(object sender, EventArgs e)
         {
             this.Close();
+            frmAccueilAdmin frmAccueilAdmin = Application.OpenForms["frmAccueilAdmin"] as frmAccueilAdmin;
+            frmAccueilAdmin.loadData();
         }
 
         private void cbbRoleUtilisateur_Leave(object sender, EventArgs e)
         {
-            if (cbbRoleUtilisateur.Text!="" && (cbbRoleUtilisateur.Text=="MEDECIN"|| cbbRoleUtilisateur.Text == "SECRETAIRE")) {
-                try {
-                    int IdRole = int.Parse(cbbRoleUtilisateur.SelectedValue.ToString());
-                    var role = db.Role.Find(IdRole);
-                    string codeRole = role.CodeRole;
-                    if (IdRole == 3)
-                    {
-                        //  Log.Information(codeRole);
-                        txtNumeroOrdre.Visible=true;
-                        txtNumeroOrdre.Enabled = true;
-                        cbbSpecialite.Enabled = true;
-                        cbbSpecialite.Visible = true;
-                        lblNumeroOrdre.Visible = true;
-                        lblSpecialite.Visible = true;
-                    }
-                    else
-                    {
-                        txtTelFixe.Visible = true;
-                        txtTelFixe.Enabled = true;
-                        lblTelFixe.Visible = true;
-                        txtMatricule.Visible = true;
-                        lblMatricule.Visible = true;
-                    }
-                }
-                catch {
-                    Log.Warning("Heure de saisie");
-                
-                }
-            }
-            else
-            {
-                txtNumeroOrdre.Enabled = false;
-                txtNumeroOrdre.Visible = false;
-                cbbSpecialite.Enabled = false;
-                lblNumeroOrdre.Visible = false;
-                cbbSpecialite.Visible = false;
-                lblSpecialite.Visible = false;
-                cbbRoleUtilisateur.ValueMember = "Value";
-                cbbRoleUtilisateur.DisplayMember = "Text";
-            }
+            /*
+
+              if (cbbRoleUtilisateur.Text!="" && (cbbRoleUtilisateur.Text=="MEDECIN"|| cbbRoleUtilisateur.Text == "SECRETAIRE")) {
+                 try {
+                     int IdRole = int.Parse(cbbRoleUtilisateur.SelectedValue.ToString());
+                     var role = db.Role.Find(IdRole);
+                     string codeRole = role.CodeRole;
+                     if (IdRole == 3)
+                     {
+                         //  Log.Information(codeRole);
+                         txtNumeroOrdre.Visible=true;
+                         txtNumeroOrdre.Enabled = true;
+                         cbbSpecialite.Enabled = true;
+                         cbbSpecialite.Visible = true;
+                         lblNumeroOrdre.Visible = true;
+                         lblSpecialite.Visible = true;
+                     }
+                     else
+                     {
+
+                     }
+                 }
+                 catch {
+                     Log.Warning("Heure de saisie");
+
+                 }
+             }
+             else
+             {
+                 txtNumeroOrdre.Enabled = false;
+                 txtNumeroOrdre.Visible = false;
+                 cbbSpecialite.Enabled = false;
+                 lblNumeroOrdre.Visible = false;
+                 cbbSpecialite.Visible = false;
+                 lblSpecialite.Visible = false;
+                 cbbRoleUtilisateur.ValueMember = "Value";
+                 cbbRoleUtilisateur.DisplayMember = "Text";
+             }
+
+             */
 
         }
 
