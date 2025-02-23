@@ -32,7 +32,7 @@ namespace WindowsFormsApp1
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new frmDashAdmin());
-            Application.Run(new frmMedAgenda());
+            Application.Run(new frmAccueilMed());
 
             // vider linstance seri/og
             Log.CloseAndFlush();

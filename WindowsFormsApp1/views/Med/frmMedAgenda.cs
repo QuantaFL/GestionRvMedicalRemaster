@@ -152,5 +152,10 @@ namespace WindowsFormsApp1.views.Med
             }
 
         }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

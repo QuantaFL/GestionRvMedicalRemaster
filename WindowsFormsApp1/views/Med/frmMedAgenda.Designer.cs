@@ -30,6 +30,8 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.txtHeureFin = new System.Windows.Forms.MaskedTextBox();
+            this.txtHeureDebut = new System.Windows.Forms.MaskedTextBox();
             this.txtDateAgenda = new System.Windows.Forms.DateTimePicker();
             this.txtTitreAgenda = new System.Windows.Forms.TextBox();
             this.btnFermer = new System.Windows.Forms.Button();
@@ -39,11 +41,9 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtHeureDebut = new System.Windows.Forms.MaskedTextBox();
-            this.txtHeureFin = new System.Windows.Forms.MaskedTextBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -57,6 +57,7 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(806, 725);
             this.panel1.TabIndex = 1;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // panel2
             // 
@@ -81,6 +82,22 @@
             this.panel2.Size = new System.Drawing.Size(598, 681);
             this.panel2.TabIndex = 1;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
+            // 
+            // txtHeureFin
+            // 
+            this.txtHeureFin.Location = new System.Drawing.Point(114, 399);
+            this.txtHeureFin.Name = "txtHeureFin";
+            this.txtHeureFin.Size = new System.Drawing.Size(373, 26);
+            this.txtHeureFin.TabIndex = 18;
+            this.txtHeureFin.TextChanged += new System.EventHandler(this.heureFinChanged);
+            // 
+            // txtHeureDebut
+            // 
+            this.txtHeureDebut.Location = new System.Drawing.Point(114, 320);
+            this.txtHeureDebut.Name = "txtHeureDebut";
+            this.txtHeureDebut.Size = new System.Drawing.Size(373, 26);
+            this.txtHeureDebut.TabIndex = 17;
+            this.txtHeureDebut.TextChanged += new System.EventHandler(this.heureDebutChanged);
             // 
             // txtDateAgenda
             // 
@@ -171,6 +188,17 @@
             this.label4.TabIndex = 3;
             this.label4.Text = "Heure Fin";
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(110, 294);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(112, 22);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Heure Debut";
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -192,33 +220,6 @@
             this.label1.Size = new System.Drawing.Size(44, 22);
             this.label1.TabIndex = 0;
             this.label1.Text = "Lieu";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(110, 294);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(112, 22);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Heure Debut";
-            // 
-            // txtHeureDebut
-            // 
-            this.txtHeureDebut.Location = new System.Drawing.Point(114, 320);
-            this.txtHeureDebut.Name = "txtHeureDebut";
-            this.txtHeureDebut.Size = new System.Drawing.Size(373, 26);
-            this.txtHeureDebut.TabIndex = 17;
-            this.txtHeureDebut.TextChanged += new System.EventHandler(this.heureDebutChanged);
-            // 
-            // txtHeureFin
-            // 
-            this.txtHeureFin.Location = new System.Drawing.Point(114, 399);
-            this.txtHeureFin.Name = "txtHeureFin";
-            this.txtHeureFin.Size = new System.Drawing.Size(373, 26);
-            this.txtHeureFin.TabIndex = 18;
-            this.txtHeureFin.TextChanged += new System.EventHandler(this.heureFinChanged);
             // 
             // frmMedAgenda
             // 

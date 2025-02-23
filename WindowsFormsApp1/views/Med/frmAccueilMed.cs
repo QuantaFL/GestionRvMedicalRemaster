@@ -4,9 +4,11 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp1.Models;
 
 namespace WindowsFormsApp1.views.Med
 {
@@ -15,7 +17,10 @@ namespace WindowsFormsApp1.views.Med
         public frmAccueilMed()
         {
             InitializeComponent();
+            LoadAgenda();
         }
+
+        bdRdvMedicalContext bd = new bdRdvMedicalContext();
 
         private void btnAjouterAgenda_Click(object sender, EventArgs e)
         {
@@ -23,5 +28,17 @@ namespace WindowsFormsApp1.views.Med
             frmMedAgenda frmMedAgenda = new frmMedAgenda();
             frmMedAgenda.ShowDialog();
         }
+        public void LoadAgenda()
+
+        {
+            var medecin = bd.Personnes
+                       .Where(p => p.IdP == 1)
+                       .OfType<Medecin>()
+                       .FirstOrDefault();
+            dgAgendaMedecin.DataSource = medecin.agenda.ToList();
+
+        }
     }
+
+   
 }
