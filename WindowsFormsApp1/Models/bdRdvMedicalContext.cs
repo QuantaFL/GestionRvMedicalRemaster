@@ -35,6 +35,6 @@ namespace WindowsFormsApp1.Models
         public DbSet<GroupeSanguin> GroupeSanguins {get; set;}
         public DbSet<MoyenDePaiement> MoyenDePaiements {get; set;}
         public DbSet<Role> Role { get; set;}
-
+        public DbSet<Admin> Admin { get; set;}
     }
 }

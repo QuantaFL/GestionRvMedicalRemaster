@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp1.Models;
 using WindowsFormsApp1.views.Admin;
 
 namespace WindowsFormsApp1.views
@@ -17,6 +18,7 @@ namespace WindowsFormsApp1.views
         {
             InitializeComponent();
         }
+        bdRdvMedicalContext db = new bdRdvMedicalContext();
 
         private void btnAjouterUtilisateur_Click(object sender, EventArgs e)
         {
@@ -26,7 +28,12 @@ namespace WindowsFormsApp1.views
 
         private void frmAccueilAdmin_Load(object sender, EventArgs e)
         {
+            loadData();
 
+        }
+        public void loadData()
+        {
+          dgUtilisateur.DataSource = db.Utilisateurs.ToList();
         }
     }
 }

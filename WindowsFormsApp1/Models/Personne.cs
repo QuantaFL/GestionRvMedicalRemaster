@@ -20,7 +20,7 @@ namespace WindowsFormsApp1.Models
         [Required, MaxLength(100)]
         public string Tel { get; set; }
         [Required]
-        DateTime DateNaissance { get; set; }
+       public  DateTime DateNaissance { get; set; }
 
     }
 }

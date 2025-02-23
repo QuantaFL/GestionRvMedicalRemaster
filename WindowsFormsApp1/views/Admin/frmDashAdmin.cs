@@ -34,9 +34,9 @@ namespace WindowsFormsApp1.views.Admin
                     control.BackColor = Color.White;
                 }
             }
-           Computer myComputer = new Computer();
+            Computer myComputer = new Computer();
             this.Width = myComputer.Screen.Bounds.Width;
-           this.Height = myComputer.Screen.Bounds.Height;
+            this.Height = myComputer.Screen.Bounds.Height;
             this.Location = new Point(0, 0);
         }
 
@@ -46,7 +46,8 @@ namespace WindowsFormsApp1.views.Admin
             frmAccueilAdmin frmAccueilAdmin = new frmAccueilAdmin();
             frmAccueilAdmin.MdiParent = this;
             frmAccueilAdmin.Show();
-           frmAccueilAdmin.WindowState = FormWindowState.Maximized;
+            frmAccueilAdmin.WindowState = FormWindowState.Maximized;
+
         }
     }
 }

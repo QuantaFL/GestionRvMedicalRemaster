@@ -10,7 +10,7 @@ namespace WindowsFormsApp1.Models
 {
     public class Utilisateur : Personne
     {
-        [MaxLength(20)]
+        [MaxLength(100)]
         public string Identifiant {  get; set; }
 
         [MaxLength(250)]

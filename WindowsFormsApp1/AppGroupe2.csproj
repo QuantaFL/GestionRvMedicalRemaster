@@ -161,6 +161,7 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Admin.cs" />
     <Compile Include="Models\Agenda.cs" />
     <Compile Include="Models\bdRdvMedicalContext.cs" />
     <Compile Include="Models\ClassReportTicketRv.cs" />

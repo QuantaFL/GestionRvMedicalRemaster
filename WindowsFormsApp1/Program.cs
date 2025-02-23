@@ -10,6 +10,7 @@ using System;
 using System.Windows.Forms;
 using Serilog;
 using WindowsFormsApp1.views.Secret;
+using Serilog.Sinks.Elasticsearch;
 
 namespace WindowsFormsApp1
 {
@@ -21,30 +22,29 @@ namespace WindowsFormsApp1
         [STAThread]
         static void Main()
         {
-        //            using System;
-        //using System.Windows.Forms;
-        //using Serilog;
+       
 
-           // string elasticSearchUrl = "http://localhost:9200";
+            string elasticSearchUrl = "http://localhost:9200";
             // init des logs seri/ogs
-         //   Log.Logger = new LoggerConfiguration()
-                //.WriteTo.Console()
-              //  .WriteTo.File("app.log", rollingInterval: RollingInterval.Day)
-           //  .WriteTo.Elasticsearch(new ElasticsearchSinkOptions(new Uri(elasticSearchUrl))
-          //  {
-           //     AutoRegisterTemplate = true,
-            //    IndexFormat = "log-{0:yyyy.MM.dd}", 
-          //  })
-          //      .CreateLogger();
+            Log.Logger = new LoggerConfiguration()
+                .WriteTo.Console()
+               .WriteTo.File("app.log", rollingInterval: RollingInterval.Day)
+           //.WriteTo.Elasticsearch(new ElasticsearchSinkOptions(new Uri(elasticSearchUrl))
+           // {
+               // AutoRegisterTemplate = true,
+             //  IndexFormat = "log-{0:yyyy.MM.dd}", 
+          // })
+                .CreateLogger();
 
-          //  Log.Information("Lancement de lapplication...");
+            Log.Information("Lancement de lapplication...");
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new frmDashAdmin());
 
             // vider linstance seri/og
-           // Log.CloseAndFlush();
+            Log.CloseAndFlush();
+
         }
     }
 }

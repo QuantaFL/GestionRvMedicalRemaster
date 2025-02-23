@@ -122,9 +122,11 @@
             // 
             this.dgUtilisateur.AllowUserToAddRows = false;
             this.dgUtilisateur.AllowUserToDeleteRows = false;
+            this.dgUtilisateur.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.dgUtilisateur.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.dgUtilisateur.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgUtilisateur.Location = new System.Drawing.Point(0, 131);
+            this.dgUtilisateur.MinimumSize = new System.Drawing.Size(1200, 300);
             this.dgUtilisateur.Name = "dgUtilisateur";
             this.dgUtilisateur.ReadOnly = true;
             this.dgUtilisateur.RowHeadersWidth = 51;
