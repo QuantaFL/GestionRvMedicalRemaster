@@ -7,12 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.VisualBasic;
 using Microsoft.VisualBasic.Devices;
 
 namespace WindowsFormsApp1.views.Med
 {
     public partial class frmDashMed : Form
     {
+       
         public frmDashMed()
         {
             InitializeComponent();

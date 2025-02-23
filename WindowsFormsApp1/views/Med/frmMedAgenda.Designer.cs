@@ -78,6 +78,7 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(532, 545);
             this.panel2.TabIndex = 1;
+            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // txtDateAgenda
             // 
@@ -120,6 +121,7 @@
             this.btnValiderAjoutUtilisateur.TabIndex = 12;
             this.btnValiderAjoutUtilisateur.Text = "Valider l\'Ajout";
             this.btnValiderAjoutUtilisateur.UseVisualStyleBackColor = true;
+            this.btnValiderAjoutUtilisateur.Click += new System.EventHandler(this.btnValiderAjoutUtilisateur_Click);
             // 
             // txtHeureDebut
             // 
