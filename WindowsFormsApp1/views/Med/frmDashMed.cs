@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.VisualBasic;
 using Microsoft.VisualBasic.Devices;
+using WindowsFormsApp1.views.Secret;
 
 namespace WindowsFormsApp1.views.Med
 {
@@ -47,11 +48,14 @@ namespace WindowsFormsApp1.views.Med
         private void btnListerAgenda_Click(object sender, EventArgs e)
         {
             fermer();
-            frmAccueilMed  frmAccueilMed = new frmAccueilMed();
-            frmAccueilMed.MdiParent = this;
-            frmAccueilMed.Show();
-            frmAccueilMed.WindowState = FormWindowState.Maximized;
-
+            frmAcceuilSecret frmAcceuilSecret = new frmAcceuilSecret();
+            frmAcceuilSecret.MdiParent = this;
+            frmAcceuilSecret.Show();
+            frmAcceuilSecret.WindowState = FormWindowState.Maximized;
+            //frmAccueilMed  frmAccueilMed = new frmAccueilMed();
+            //frmAccueilMed.MdiParent = this;
+            //frmAccueilMed.Show();
+            //frmAccueilMed.WindowState = FormWindowState.Maximized;
         }
     }
 }

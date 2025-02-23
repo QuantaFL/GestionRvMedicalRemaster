@@ -16,8 +16,9 @@ namespace WindowsFormsApp1.views.Secret
         public frmDashSecretaire()
         {
             InitializeComponent();
+
         }
-        private void fermer()
+        public void fermer()
         {
             Form[] charr = this.MdiChildren;
             foreach (Form f in charr)
@@ -52,11 +53,17 @@ namespace WindowsFormsApp1.views.Secret
 
         private void btnPatient_Click(object sender, EventArgs e)
         {
+           
+        }
+
+        private void btnListeUtilisateur_Click(object sender, EventArgs e)
+        {
             fermer();
             frmAcceuilSecret frmAcceuilSecret = new frmAcceuilSecret();
             frmAcceuilSecret.MdiParent = this;
             frmAcceuilSecret.Show();
             frmAcceuilSecret.WindowState = FormWindowState.Maximized;
         }
+
     }
 }

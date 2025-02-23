@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp1.Models;
 
 namespace WindowsFormsApp1.views.Secret
 {
@@ -15,6 +16,113 @@ namespace WindowsFormsApp1.views.Secret
         public frmAcceuilSecret()
         {
             InitializeComponent();
+        }
+
+        private void btnRechercherPatient_Click(object sender, EventArgs e)
+        {
+            using (var context = new bdRdvMedicalContext())
+            {
+                if (!string.IsNullOrEmpty(txtEmail.Text))
+                {
+                    var patient = context.Patients
+                        .Where(p => p.Email == txtEmail.Text)
+                        .FirstOrDefault();
+
+                    if (patient == null)
+                    {
+                        ShowPatientTrouvePrompt(patient);
+                    }
+                    else
+                    {
+                        ShowNoPatientPrompt();
+                    }
+                }
+                else if (!string.IsNullOrEmpty(txtTelephone.Text))
+                {
+                    var patient = context.Patients
+                        .Where(p => p.Tel == txtTelephone.Text)
+                        .FirstOrDefault();
+
+                    if (patient != null)
+                    {
+                        ShowPatientTrouvePrompt(patient);
+                    }
+                    else
+                    {
+                        ShowNoPatientPrompt();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Veuillez svp remplir un champ");
+                }
+            }
+        }
+
+        private static void ShowPatientTrouvePrompt(Patient patient)
+        {
+            var result = MessageBox.Show(
+                "Patient : " ,
+                "Voulez vous prend un rv pour cette personne ?",
+                MessageBoxButtons.OKCancel,
+                MessageBoxIcon.Information
+            );
+
+            if (result == DialogResult.OK)
+            {
+                frmRdv frmRdv = new frmRdv();
+                frmDashSecretaire parentForm = Application.OpenForms["frmDashSecretaire"] as frmDashSecretaire;
+                parentForm.fermer();
+                frmRdv.MdiParent = parentForm;
+                frmRdv.WindowState = FormWindowState.Maximized;
+                frmRdv.Show();
+                //fermer();
+                //frmAcceuilSecret frmAcceuilSecret = new frmAcceuilSecret();
+                //frmAcceuilSecret.MdiParent = this;
+                //frmAcceuilSecret.Show();
+                //frmAcceuilSecret.WindowState = FormWindowState.Maximized;
+            }
+            else if (result == DialogResult.Cancel)
+            {
+                //TODO
+            }
+        }
+
+        private static void ShowNoPatientPrompt()
+        {
+            var result = MessageBox.Show(
+                "Le Patient N'existe pas dans la base ",
+                "Voulez vous l'ajouter ?",
+                MessageBoxButtons.OKCancel,
+                MessageBoxIcon.Information
+            );
+
+            if (result == DialogResult.OK)
+            {
+                
+            }
+            else if (result == DialogResult.Cancel)
+            {
+                //TODO
+            }
+        }
+
+
+
+        private void txtTelephone_Enter(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtEmail.Text))
+            {
+                txtEmail.Text = "";
+            }
+        }
+
+        private void txtEmail_Enter(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtTelephone.Text))
+            {
+                txtTelephone.Text = "";
+            }
         }
     }
 }

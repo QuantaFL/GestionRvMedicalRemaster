@@ -5,6 +5,7 @@ using Serilog;
 using WindowsFormsApp1.config;
 using static WindowsFormsApp1.config.LogManagement;
 using WindowsFormsApp1.views.Admin;
+using WindowsFormsApp1.views.Secret;
 
 namespace WindowsFormsApp1
 {
@@ -37,7 +38,7 @@ namespace WindowsFormsApp1
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new frmDashAdmin());
-            Application.Run(new frmDashAdmin());
+            Application.Run(new frmDashSecretaire());
 
             // vider linstance seri/og
            // Log.CloseAndFlush();
