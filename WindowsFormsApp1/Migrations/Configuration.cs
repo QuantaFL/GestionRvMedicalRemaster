@@ -25,6 +25,7 @@
                 new Role { CodeRole = "SEC", LibelleRole = "SECRETAIRE" },
                 new Role { CodeRole = "MED", LibelleRole = "MEDECIN" }
             );
+            context.SaveChanges();
             context.GroupeSanguins.AddOrUpdate(
                 g => g.CodeGroupeSanguin,
                 new GroupeSanguin { CodeGroupeSanguin = "A+" },
@@ -36,15 +37,42 @@
                 new GroupeSanguin { CodeGroupeSanguin = "O+" },
                 new GroupeSanguin { CodeGroupeSanguin = "O-" }
                 );
+            context.SaveChanges();
             context.Secretaires.AddOrUpdate(
                 s => s.IdP,
-                new Secretaire {DateNaissance = DateTime.Now,Identifiant
-                    = "secret",Email = "secretaire@gmail.com",
-                    NomPrenom = "Rama Fall",IdRole = 3, MotDePasse = "passer",
-                    TelephoneFixe = "7777777", PremiereConnexion = 1,
+                new Secretaire
+                {
+                    DateNaissance = DateTime.Now,
+                    Identifiant
+                    = "secret",
+                    Email = "secretaire@gmail.com",
+                    NomPrenom = "Rama Fall",
+                    IdRole = 3,
+                    MotDePasse = "passer",
+                    TelephoneFixe = "7777777",
+                    PremiereConnexion = 1,
                     Addresse = "medina",
-                    Status = true, Matricule = "rtyrtty", Tel = "7898797" }
+                    Status = true,
+                    Matricule = "rtyrtty",
+                    Tel = "7898797"
+                }
                 );
+            context.SaveChanges();
+
+            context.Specialite.AddOrUpdate(
+              sp => sp.Id,
+              new Specialite
+              {
+                  CodeSpecialte="CAR",
+                  NomSpecialte="CARDIOLOGIE"
+              },
+               new Specialite
+               {
+                   CodeSpecialte = "CHIR",
+                   NomSpecialte = "CHIRURGIE"
+               }
+            );
+            context.SaveChanges();
             context.Medecins.AddOrUpdate(
                 s => s.IdP,
                 new Medecin

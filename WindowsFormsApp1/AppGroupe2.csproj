@@ -247,6 +247,18 @@
     <Compile Include="views\Secret\frmDashSecretaire.Designer.cs">
       <DependentUpon>frmDashSecretaire.cs</DependentUpon>
     </Compile>
+    <Compile Include="views\Secret\frmRdv.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\Secret\frmRdv.Designer.cs">
+      <DependentUpon>frmRdv.cs</DependentUpon>
+    </Compile>
+    <Compile Include="views\Secret\frmValiderRdv.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\Secret\frmValiderRdv.Designer.cs">
+      <DependentUpon>frmValiderRdv.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -287,6 +299,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="views\Secret\frmDashSecretaire.resx">
       <DependentUpon>frmDashSecretaire.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="views\Secret\frmRdv.resx">
+      <DependentUpon>frmRdv.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="views\Secret\frmValiderRdv.resx">
+      <DependentUpon>frmValiderRdv.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
