@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -11,10 +11,11 @@ namespace WindowsFormsApp1.Models
     {
         [Key]
         public int IdSoin {  get; set; }
-        [Required]
+        [Required, MaxLength(10)]
         public string CodeSoin { get; set; }
-        public string LibelleSoin { get; set; }
-        public bool StatusSoin { get; set; }
-        public float CoutSoin { get; set; }
+        [Required, MaxLength(100)]
+        public string NomSoin { get; set; }
+        [Required]
+        public int CoutSoin { get; set; }
     }
 }
