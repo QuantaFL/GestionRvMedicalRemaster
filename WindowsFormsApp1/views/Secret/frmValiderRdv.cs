@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Data.Entity;
-using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Serilog;
@@ -13,191 +9,204 @@ using WindowsFormsApp1.Models;
 
 namespace WindowsFormsApp1.views.Secret
 {
-
     public partial class frmValiderRdv : Form
     {
-        Patient patient;
-        Agenda agenda;
+        private readonly Patient patient;
+        private readonly Agenda agenda;
+        private readonly bdRdvMedicalContext _bd = new bdRdvMedicalContext();
+
         public frmValiderRdv(Patient p, Agenda a)
         {
             InitializeComponent();
-            cbbMoyenPaiement.DataSource = loadModePaiementccb();
-            cbbSoins.DataSource = loadSoinsccb();
+            patient = p;
+            agenda = a;
+            InitCombos();
+        }
+
+        private async void InitCombos()
+        {
+            cbbMoyenPaiement.DataSource = await LoadPaiementsAsync();
+            cbbSoins.DataSource = await LoadSoinsAsync();
+            cbbCreneaux.DataSource = await LoadCreneauxAsync(agenda);
+            ResetCombos();
+        }
+
+        private void ResetCombos()
+        {
             cbbSoins.DisplayMember = "Text";
             cbbSoins.ValueMember = "Value";
             cbbMoyenPaiement.DisplayMember = "Text";
             cbbMoyenPaiement.ValueMember = "Value";
-            cbbCreneaux.DataSource = loadCreneaux(a);
-            cbbCreneaux.DisplayMember = "Text";  // Show the formatted time slot in the ComboBox
+            cbbCreneaux.DisplayMember = "Text";
             cbbCreneaux.ValueMember = "Value";
-            patient = p;
-            agenda = a;
-
+            cbbSoins.SelectedIndex = -1;
+            cbbMoyenPaiement.SelectedIndex = 0;
+            cbbCreneaux.SelectedIndex = 0;
         }
 
-        bdRdvMedicalContext bd = new bdRdvMedicalContext();
-        private void panel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void btnValider_Click(object sender, EventArgs e)
-        {
-            try
-    {
-        var selectedCreneau = cbbCreneaux.SelectedValue.ToString();
-        var selectedSoinId = cbbSoins.SelectedValue.ToString();
-        var selectedPatientId = patient.IdP;
-
-        DateTime dateRv = DateTime.Parse(agenda.DataPlanifier.Value.ToString("yyyy-MM-dd") + " " + selectedCreneau);
-                RendezVous newRdv = new RendezVous
-        {
-            DateRv = dateRv,
-            HeureRv = selectedCreneau,
-            IdSoin = int.Parse(selectedSoinId),
-            IdPatient = selectedPatientId,
-            IdMedecin = agenda.IdMedecin,
-            IdAgenda = agenda.IdAgenda
-        };
-
-        bd.RendezVous.Add(newRdv);
-        bd.SaveChanges();
-
-        Log.Information("Rendez-vous confirmé pour le patient: {PatientId} à {HeureRv}", selectedPatientId, selectedCreneau);
-
-        cbbCreneaux.DataSource = loadCreneaux(agenda);
-
-        MessageBox.Show("Rendez-vous validé avec succès.");
-    }
-    catch (Exception ex)
-    {
-        Log.Error(ex, "Erreur lors de la validation du rendez-vous.");
-        MessageBox.Show("Erreur lors de la validation du rendez-vous: " + ex.Message);
-    }
-        }
-
-        public List<SelectListViewModel> loadModePaiementccb()
+        private async void btnValider_Click(object sender, EventArgs e)
         {
             try
             {
-                Log.Information("Chargement des paiements pour le combobox.");
-                var s = bd.MoyenDePaiements.ToList();
-                List<SelectListViewModel> liste = new List<SelectListViewModel>();
-                SelectListViewModel b = new SelectListViewModel();
-                b.Text = "Selectionner une valeur";
-                b.Value = "";
-                liste.Add(b);
-                foreach (var item in s)
+                if (cbbCreneaux.SelectedValue == null || cbbSoins.SelectedValue == null)
                 {
-                    SelectListViewModel a = new SelectListViewModel();
-                    a.Text = item.LibelleMoyenPaiement;
-                    a.Value = item.IdMoy.ToString();
-                    liste.Add(a);
+                    MessageBox.Show("Selectionner un créneau et un soin.");
+                    return;
                 }
 
-                Log.Information("Paiement chargées: {NombrePaiement}", s.Count);
+                var creneau = cbbCreneaux.SelectedValue.ToString();
+                var soinId = cbbSoins.SelectedValue.ToString();
+                var patientId = patient.IdP;
+
+                string dateRv = agenda.DataPlanifier.Value.ToString("yyyy-MM-dd") + " " + creneau;
+                var rdv = new RendezVous
+                {
+                    DateRv = dateRv,
+                    HeureRv = creneau,
+                    IdSoin = int.Parse(soinId),
+                    IdPatient = patientId,
+                    IdMedecin = agenda.IdMedecin,
+                    IdAgenda = agenda.IdAgenda
+                };
+
+                _bd.RendezVous.Add(rdv);
+                await _bd.SaveChangesAsync();
+
+                Log.Information("Rdv confirme pour patient: {PatientId} a {HeureRv}", patientId, creneau);
+
+                cbbCreneaux.DataSource = await LoadCreneauxAsync(agenda);
+                ResetForm();
+
+                MessageBox.Show("Rdv valide avec succes.");
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, "Erreur lors de validation du rdv.");
+                MessageBox.Show("Erreur validation: " + ex.Message);
+            }
+        }
+
+        private void ResetForm()
+        {
+            ResetCombos();
+            txtCout.Clear();
+            cbbCreneaux.Focus();
+        }
+
+        private async Task<List<SelectListViewModel>> LoadPaiementsAsync()
+        {
+            try
+            {
+                Log.Information("Chargement des paiements.");
+                var s = await _bd.MoyenDePaiements.ToListAsync();
+                var liste = new List<SelectListViewModel>
+                {
+                    new SelectListViewModel { Text = "Selectionner", Value = "" }
+                };
+                liste.AddRange(s.Select(item => new SelectListViewModel
+                {
+                    Text = item.LibelleMoyenPaiement,
+                    Value = item.IdMoy.ToString()
+                }));
+
+                Log.Information("Paiements charges: {NombrePaiements}", s.Count);
                 return liste;
             }
             catch (Exception ex)
             {
-                Log.Error(ex, "Erreur lors du chargement des Paiement.");
-                MessageBox.Show("Erreur lors du chargement des paiement.");
+                Log.Error(ex, "Erreur lors du chargement des paiements.");
+                MessageBox.Show("Erreur paiement.");
                 return new List<SelectListViewModel>();
             }
         }
-        public List<SelectListViewModel> loadSoinsccb()
+
+        private async Task<List<SelectListViewModel>> LoadSoinsAsync()
         {
             try
             {
-                Log.Information("Chargement des soins pour le combobox.");
-                var s = bd.Soins.ToList();
-                List<SelectListViewModel> liste = new List<SelectListViewModel>();
-                SelectListViewModel b = new SelectListViewModel();
-                b.Text = "Selectionner une valeur";
-                b.Value = "";
-                liste.Add(b);
-                foreach (var item in s)
+                Log.Information("Chargement des soins.");
+                var s = await _bd.Soins.ToListAsync();
+                var liste = new List<SelectListViewModel>
                 {
-                    SelectListViewModel a = new SelectListViewModel();
-                    a.Text = item.NomSoin;
-                    a.Value = item.IdSoin.ToString();
-                    liste.Add(a);
-                }
+                    new SelectListViewModel { Text = "Selectionner", Value = "" }
+                };
+                liste.AddRange(s.Select(item => new SelectListViewModel
+                {
+                    Text = item.NomSoin,
+                    Value = item.IdSoin.ToString()
+                }));
 
-                Log.Information("Soins chargées: {NombrePaiement}", s.Count);
+                Log.Information("Soins charges: {NombreSoins}", s.Count);
                 return liste;
             }
             catch (Exception ex)
             {
                 Log.Error(ex, "Erreur lors du chargement des soins.");
-                MessageBox.Show("Erreur lors du chargement des soins.");
+                MessageBox.Show("Erreur soins.");
                 return new List<SelectListViewModel>();
             }
         }
-      public List<SelectListViewModel> loadCreneaux(Agenda agenda)
-{
-    try
-    {
-        Log.Information("Chargement des créneaux pour l'agenda.");
 
-        List<SelectListViewModel> creneauxList = new List<SelectListViewModel>();
-
-        DateTime startTime = DateTime.Parse(agenda.HeureDebut);
-        DateTime endTime = DateTime.Parse(agenda.HeureFin);
-        int creneauxDurationInMinutes = agenda.Creneau;
-
-        // Fetch all RendezVous entries into memory (no filtering by DateRv here)
-        var allAppointments = bd.RendezVous.ToList();  // Fetch all records into memory
-
-        // Perform the slot checking logic in memory
-        while (startTime.AddMinutes(creneauxDurationInMinutes) <= endTime)
+        private async Task<List<SelectListViewModel>> LoadCreneauxAsync(Agenda agenda)
         {
-            DateTime endSlot = startTime.AddMinutes(creneauxDurationInMinutes);
-            string formattedSlot = $"{startTime.ToString("HH:mm")} - {endSlot.ToString("HH:mm")}";
-            string slotStartTime = startTime.ToString("HH:mm");
-
-            // Check if this slot is already booked by any existing appointment
-            bool isSlotBooked = allAppointments
-                .Any(r => r.DateRv.Date == agenda.DataPlanifier.Value.Date && r.HeureRv == slotStartTime);
-
-            if (!isSlotBooked)
+            try
             {
-                creneauxList.Add(new SelectListViewModel
+                Log.Information("Chargement des créneaux.");
+
+                var creneauxList = new List<SelectListViewModel>();
+                DateTime startTime = DateTime.Parse(agenda.HeureDebut);
+                DateTime endTime = DateTime.Parse(agenda.HeureFin);
+                int creneauxDurationInMinutes = agenda.Creneau;
+
+                var allAppointments = await _bd.RendezVous.ToListAsync();
+
+                var appointmentsForSelectedDate = allAppointments
+                    .Where(r => DateTime.Parse(r.DateRv).Date == agenda.DataPlanifier.Value.Date)
+                    .ToList();
+
+                var bookedSlots = appointmentsForSelectedDate
+                    .Select(r => r.HeureRv)
+                    .ToList();
+
+                while (startTime.AddMinutes(creneauxDurationInMinutes) <= endTime)
                 {
-                    Text = formattedSlot,
-                    Value = slotStartTime
-                });
+                    DateTime endSlot = startTime.AddMinutes(creneauxDurationInMinutes);
+                    string formattedSlot = $"{startTime:HH:mm} - {endSlot:HH:mm}";
+                    string slotStartTime = startTime.ToString("HH:mm");
+
+                    if (!bookedSlots.Contains(slotStartTime))
+                    {
+                        creneauxList.Add(new SelectListViewModel
+                        {
+                            Text = formattedSlot,
+                            Value = slotStartTime
+                        });
+                    }
+
+                    startTime = endSlot;
+                }
+
+                Log.Information("Créneaux charges: {NombreCreneaux}", creneauxList.Count);
+                return creneauxList;
             }
-
-            startTime = endSlot;
-        }
-
-        Log.Information("Créneaux chargés: {NombreCreneaux}", creneauxList.Count);
-        return creneauxList;
-    }
-    catch (Exception ex)
-    {
-        Log.Error(ex, "Erreur lors du chargement des créneaux.");
-        MessageBox.Show("Erreur lors du chargement des créneaux: " + ex.Message);
-        return new List<SelectListViewModel>();
-    }
-}
-    private void cbbCreneaux_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
+            catch (Exception ex)
+            {
+                Log.Error(ex, "Erreur lors du chargement des créneaux.");
+                MessageBox.Show("Erreur créneaux: " + ex.Message);
+                return new List<SelectListViewModel>();
+            }
         }
 
         private void cbbSoins_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var selectedSoinId = cbbSoins.SelectedValue.ToString();
+            var soinId = cbbSoins.SelectedValue?.ToString();
+            if (soinId == null) return;
 
-            var selectedSoin = bd.Soins.FirstOrDefault(s => s.IdSoin.ToString() == selectedSoinId);
-
-            if (selectedSoin != null)
+            var soin = _bd.Soins.FirstOrDefault(s => s.IdSoin.ToString() == soinId);
+            if (soin != null)
             {
-                txtCout.Text = selectedSoin.CoutSoin.ToString();
+                txtCout.Text = soin.CoutSoin.ToString();
             }
         }
-
     }
 }

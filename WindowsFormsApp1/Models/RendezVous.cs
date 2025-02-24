@@ -12,8 +12,10 @@ namespace WindowsFormsApp1.Models
     {
         [Key]
         public int IdRendezVous { get; set; }
-        public DateTime DateRv;
-        public String HeureRv;
+        [Required]
+        public String DateRv { get; set; }
+        [Required, Column]
+        public String HeureRv { get; set; }
         public int? IdSoin { get; set; }
         [ForeignKey("IdSoin")]
         public virtual Soin Soin { get; set; }

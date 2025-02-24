@@ -52,7 +52,7 @@
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(114)))), ((int)(((byte)(144)))));
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Location = new System.Drawing.Point(0, -1);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1286, 684);
             this.panel1.TabIndex = 0;
@@ -74,23 +74,23 @@
             this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.cbbCreneaux);
             this.panel2.Location = new System.Drawing.Point(279, 2);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(339, 415);
             this.panel2.TabIndex = 1;
-            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // btnValider
             // 
             this.btnValider.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(114)))), ((int)(((byte)(144)))));
             this.btnValider.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnValider.Location = new System.Drawing.Point(121, 370);
-            this.btnValider.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnValider.Margin = new System.Windows.Forms.Padding(2);
             this.btnValider.Name = "btnValider";
             this.btnValider.Size = new System.Drawing.Size(99, 29);
             this.btnValider.TabIndex = 13;
             this.btnValider.Text = "Valider";
             this.btnValider.UseVisualStyleBackColor = false;
+            this.btnValider.Click += new System.EventHandler(this.btnValider_Click);
             // 
             // label4
             // 
@@ -104,8 +104,9 @@
             // 
             // txtCout
             // 
+            this.txtCout.Enabled = false;
             this.txtCout.Location = new System.Drawing.Point(17, 337);
-            this.txtCout.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtCout.Margin = new System.Windows.Forms.Padding(2);
             this.txtCout.Name = "txtCout";
             this.txtCout.Size = new System.Drawing.Size(87, 20);
             this.txtCout.TabIndex = 11;
@@ -114,10 +115,11 @@
             // 
             this.cbbSoins.FormattingEnabled = true;
             this.cbbSoins.Location = new System.Drawing.Point(17, 285);
-            this.cbbSoins.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbbSoins.Margin = new System.Windows.Forms.Padding(2);
             this.cbbSoins.Name = "cbbSoins";
             this.cbbSoins.Size = new System.Drawing.Size(171, 21);
             this.cbbSoins.TabIndex = 10;
+            this.cbbSoins.SelectedIndexChanged += new System.EventHandler(this.cbbSoins_SelectedIndexChanged);
             // 
             // Soins
             // 
@@ -132,7 +134,7 @@
             // textBox1
             // 
             this.textBox1.Location = new System.Drawing.Point(17, 222);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(2);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(87, 20);
             this.textBox1.TabIndex = 8;
@@ -151,7 +153,7 @@
             // 
             this.cbbMoyenPaiement.FormattingEnabled = true;
             this.cbbMoyenPaiement.Location = new System.Drawing.Point(17, 150);
-            this.cbbMoyenPaiement.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbbMoyenPaiement.Margin = new System.Windows.Forms.Padding(2);
             this.cbbMoyenPaiement.Name = "cbbMoyenPaiement";
             this.cbbMoyenPaiement.Size = new System.Drawing.Size(82, 21);
             this.cbbMoyenPaiement.TabIndex = 4;
@@ -193,7 +195,7 @@
             this.cbbCreneaux.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbbCreneaux.FormattingEnabled = true;
             this.cbbCreneaux.Location = new System.Drawing.Point(17, 84);
-            this.cbbCreneaux.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbbCreneaux.Margin = new System.Windows.Forms.Padding(2);
             this.cbbCreneaux.Name = "cbbCreneaux";
             this.cbbCreneaux.Size = new System.Drawing.Size(82, 21);
             this.cbbCreneaux.TabIndex = 0;
@@ -213,7 +215,7 @@
             this.ClientSize = new System.Drawing.Size(913, 487);
             this.ControlBox = false;
             this.Controls.Add(this.panel1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmValiderRdv";
             this.Text = "frmValiderRdv";
             this.panel1.ResumeLayout(false);
