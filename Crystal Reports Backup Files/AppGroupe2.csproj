@@ -40,16 +40,19 @@
       <HintPath>..\packages\BouncyCastle.Cryptography.2.3.1\lib\net461\BouncyCastle.Cryptography.dll</HintPath>
     </Reference>
     <Reference Include="CrystalDecisions.CrystalReports.Engine">
-      <HintPath>..\..\..\..\program files (x86)\sap businessobjects\crystal reports for .net framework 4.0\common\sap businessobjects enterprise xi 4.0\win64_x64\dotnet\CrystalDecisions.CrystalReports.Engine.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\program files (x86)\sap businessobjects\crystal reports for .net framework 4.0\common\sap businessobjects enterprise xi 4.0\win64_x64\dotnet\CrystalDecisions.CrystalReports.Engine.dll</HintPath>
     </Reference>
     <Reference Include="CrystalDecisions.ReportSource">
-      <HintPath>..\..\..\..\program files (x86)\sap businessobjects\crystal reports for .net framework 4.0\common\sap businessobjects enterprise xi 4.0\win64_x64\dotnet\CrystalDecisions.ReportSource.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\program files (x86)\sap businessobjects\crystal reports for .net framework 4.0\common\sap businessobjects enterprise xi 4.0\win64_x64\dotnet\CrystalDecisions.ReportSource.dll</HintPath>
     </Reference>
     <Reference Include="CrystalDecisions.Shared">
-      <HintPath>..\..\..\..\program files (x86)\sap businessobjects\crystal reports for .net framework 4.0\common\sap businessobjects enterprise xi 4.0\win64_x64\dotnet\CrystalDecisions.Shared.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\program files (x86)\sap businessobjects\crystal reports for .net framework 4.0\common\sap businessobjects enterprise xi 4.0\win64_x64\dotnet\CrystalDecisions.Shared.dll</HintPath>
     </Reference>
     <Reference Include="CrystalDecisions.Windows.Forms">
-      <HintPath>..\..\..\..\program files (x86)\sap businessobjects\crystal reports for .net framework 4.0\common\sap businessobjects enterprise xi 4.0\win64_x64\dotnet\CrystalDecisions.Windows.Forms.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\program files (x86)\sap businessobjects\crystal reports for .net framework 4.0\common\sap businessobjects enterprise xi 4.0\win64_x64\dotnet\CrystalDecisions.Windows.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="Elasticsearch.Net, Version=7.0.0.0, Culture=neutral, PublicKeyToken=96c599bbe3e70f5d, processorArchitecture=MSIL">
+      <HintPath>..\packages\Elasticsearch.Net.7.17.5\lib\net461\Elasticsearch.Net.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.5.1\lib\net45\EntityFramework.dll</HintPath>
@@ -69,8 +72,8 @@
     <Reference Include="K4os.Hash.xxHash, Version=1.0.8.0, Culture=neutral, PublicKeyToken=32cd54395057cec3, processorArchitecture=MSIL">
       <HintPath>..\packages\K4os.Hash.xxHash.1.0.8\lib\net462\K4os.Hash.xxHash.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.5.0.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.8.0.0\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="MySql.Data, Version=9.2.0.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
@@ -78,6 +81,30 @@
     </Reference>
     <Reference Include="MySql.Data.EntityFramework, Version=9.2.0.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <HintPath>..\packages\MySql.Data.EntityFramework.9.2.0\lib\net48\MySql.Data.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp, Version=112.1.0.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.112.1.0\lib\net48\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Serilog, Version=4.2.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serilog.4.2.0\lib\net471\Serilog.dll</HintPath>
+    </Reference>
+    <Reference Include="Serilog.Formatting.Compact, Version=2.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serilog.Formatting.Compact.2.0.0\lib\net471\Serilog.Formatting.Compact.dll</HintPath>
+    </Reference>
+    <Reference Include="Serilog.Formatting.Elasticsearch, Version=10.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serilog.Formatting.Elasticsearch.10.0.0\lib\netstandard2.0\Serilog.Formatting.Elasticsearch.dll</HintPath>
+    </Reference>
+    <Reference Include="Serilog.Sinks.Console, Version=6.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serilog.Sinks.Console.6.0.0\lib\net471\Serilog.Sinks.Console.dll</HintPath>
+    </Reference>
+    <Reference Include="Serilog.Sinks.Elasticsearch, Version=10.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serilog.Sinks.Elasticsearch.10.0.0\lib\netstandard2.0\Serilog.Sinks.Elasticsearch.dll</HintPath>
+    </Reference>
+    <Reference Include="Serilog.Sinks.File, Version=5.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serilog.Sinks.File.5.0.0\lib\net45\Serilog.Sinks.File.dll</HintPath>
+    </Reference>
+    <Reference Include="Serilog.Sinks.PeriodicBatching, Version=4.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serilog.Sinks.PeriodicBatching.4.0.0\lib\net462\Serilog.Sinks.PeriodicBatching.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
@@ -107,10 +134,22 @@
       <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
     <Reference Include="System.Security" />
+    <Reference Include="System.Text.Encodings.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Encodings.Web.8.0.0\lib\net462\System.Text.Encodings.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Json, Version=8.0.0.4, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Json.8.0.4\lib\net462\System.Text.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Channels, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Channels.8.0.0\lib\net462\System.Threading.Channels.dll</HintPath>
+    </Reference>
     <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="System.Transactions" />
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
@@ -127,23 +166,27 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="config\WhatsappSink.cs" />
+    <Compile Include="CustomControls\frmEchecExecution.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomControls\frmEchecExecution.Designer.cs">
+      <DependentUpon>frmEchecExecution.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\frmExecutionReussie.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomControls\frmExecutionReussie.Designer.cs">
+      <DependentUpon>frmExecutionReussie.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmMDI.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmMDI.Designer.cs">
-      <DependentUpon>frmMDI.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202502191838463_test.cs" />
-    <Compile Include="Migrations\202502191838463_test.Designer.cs">
-      <DependentUpon>202502191838463_test.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Admin.cs" />
     <Compile Include="Models\Agenda.cs" />
     <Compile Include="Models\bdRdvMedicalContext.cs" />
     <Compile Include="Models\ClassReportTicketRv.cs" />
@@ -154,6 +197,7 @@
     <Compile Include="Models\Patient.cs" />
     <Compile Include="Models\Personne.cs" />
     <Compile Include="Models\RendezVous.cs" />
+    <Compile Include="Models\Role.cs" />
     <Compile Include="Models\Secretaire.cs" />
     <Compile Include="Models\SelectListViewModel.cs" />
     <Compile Include="Models\Soin.cs" />
@@ -167,44 +211,86 @@
       <DependentUpon>rptTicketRv.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="views\FrmAgenda.cs">
+    <Compile Include="views\Admin\frmAccueilAdmin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="views\FrmAgenda.Designer.cs">
-      <DependentUpon>FrmAgenda.cs</DependentUpon>
+    <Compile Include="views\Admin\frmAccueilAdmin.Designer.cs">
+      <DependentUpon>frmAccueilAdmin.cs</DependentUpon>
     </Compile>
-    <Compile Include="views\frmMedecin.cs">
+    <Compile Include="views\Admin\frmAdminAjouterSecretaire.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="views\frmMedecin.Designer.cs">
-      <DependentUpon>frmMedecin.cs</DependentUpon>
+    <Compile Include="views\Admin\frmAdminAjouterSecretaire.Designer.cs">
+      <DependentUpon>frmAdminAjouterSecretaire.cs</DependentUpon>
     </Compile>
-    <Compile Include="views\frmPatient.cs">
+    <Compile Include="views\Admin\frmAdminAjouterUtilisateur.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="views\frmPatient.Designer.cs">
-      <DependentUpon>frmPatient.cs</DependentUpon>
+    <Compile Include="views\Admin\frmAdminAjouterUtilisateur.Designer.cs">
+      <DependentUpon>frmAdminAjouterUtilisateur.cs</DependentUpon>
     </Compile>
-    <Compile Include="views\frmPrintTicket.cs">
+    <Compile Include="views\Admin\frmDashAdmin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="views\frmPrintTicket.Designer.cs">
-      <DependentUpon>frmPrintTicket.cs</DependentUpon>
+    <Compile Include="views\Admin\frmDashAdmin.Designer.cs">
+      <DependentUpon>frmDashAdmin.cs</DependentUpon>
     </Compile>
-    <Compile Include="views\frmRdv.cs">
+    <Compile Include="CustomControls\frmMessage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="views\frmRdv.Designer.cs">
+    <Compile Include="CustomControls\frmMessage.Designer.cs">
+      <DependentUpon>frmMessage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="views\Med\frmDashMed.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\Med\frmDashMed.Designer.cs">
+      <DependentUpon>frmDashMed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="views\Secret\frmAcceuilSecret.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\Secret\frmAcceuilSecret.Designer.cs">
+      <DependentUpon>frmAcceuilSecret.cs</DependentUpon>
+    </Compile>
+    <Compile Include="views\Med\frmAccueilMed.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\Med\frmAccueilMed.Designer.cs">
+      <DependentUpon>frmAccueilMed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="views\Med\frmMedAgenda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\Med\frmMedAgenda.Designer.cs">
+      <DependentUpon>frmMedAgenda.cs</DependentUpon>
+    </Compile>
+    <Compile Include="views\Secret\frmDashSecretaire.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\Secret\frmDashSecretaire.Designer.cs">
+      <DependentUpon>frmDashSecretaire.cs</DependentUpon>
+    </Compile>
+    <Compile Include="views\Secret\frmRdv.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\Secret\frmRdv.Designer.cs">
       <DependentUpon>frmRdv.cs</DependentUpon>
     </Compile>
+    <Compile Include="views\Secret\frmValiderRdv.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\Secret\frmValiderRdv.Designer.cs">
+      <DependentUpon>frmValiderRdv.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="CustomControls\frmEchecExecution.resx">
+      <DependentUpon>frmEchecExecution.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomControls\frmExecutionReussie.resx">
+      <DependentUpon>frmExecutionReussie.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmMDI.resx">
-      <DependentUpon>frmMDI.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202502191838463_test.resx">
-      <DependentUpon>202502191838463_test.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -220,20 +306,41 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptTicketRv.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="views\FrmAgenda.resx">
-      <DependentUpon>FrmAgenda.cs</DependentUpon>
+    <EmbeddedResource Include="views\Admin\frmAccueilAdmin.resx">
+      <DependentUpon>frmAccueilAdmin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="views\frmMedecin.resx">
-      <DependentUpon>frmMedecin.cs</DependentUpon>
+    <EmbeddedResource Include="views\Admin\frmAdminAjouterSecretaire.resx">
+      <DependentUpon>frmAdminAjouterSecretaire.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="views\frmPatient.resx">
-      <DependentUpon>frmPatient.cs</DependentUpon>
+    <EmbeddedResource Include="views\Admin\frmAdminAjouterUtilisateur.resx">
+      <DependentUpon>frmAdminAjouterUtilisateur.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="views\frmPrintTicket.resx">
-      <DependentUpon>frmPrintTicket.cs</DependentUpon>
+    <EmbeddedResource Include="views\Admin\frmDashAdmin.resx">
+      <DependentUpon>frmDashAdmin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="views\frmRdv.resx">
+    <EmbeddedResource Include="CustomControls\frmMessage.resx">
+      <DependentUpon>frmMessage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="views\Med\frmAccueilMed.resx">
+      <DependentUpon>frmAccueilMed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="views\Med\frmDashMed.resx">
+      <DependentUpon>frmDashMed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="views\Med\frmMedAgenda.resx">
+      <DependentUpon>frmMedAgenda.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="views\Secret\frmAcceuilSecret.resx">
+      <DependentUpon>frmAcceuilSecret.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="views\Secret\frmDashSecretaire.resx">
+      <DependentUpon>frmDashSecretaire.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="views\Secret\frmRdv.resx">
       <DependentUpon>frmRdv.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="views\Secret\frmValiderRdv.resx">
+      <DependentUpon>frmValiderRdv.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -263,6 +370,54 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\lgcr.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\users-medical %281%291.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\users-medical %281%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user-doctor1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\booking %281%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\calendar-day2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\settings1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\burger-menu1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\poubelle-de-recyclage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\calendrier.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rendez-vous-medical.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rendez-vous-medical %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fermer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\question.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconeLogo.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\coches.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\annuler.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

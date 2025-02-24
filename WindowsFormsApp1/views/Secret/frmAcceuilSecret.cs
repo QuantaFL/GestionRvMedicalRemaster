@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApp1.Models;
+using WindowsFormsApp1.views.Admin;
 
 namespace WindowsFormsApp1.views.Secret
 {
@@ -28,7 +29,7 @@ namespace WindowsFormsApp1.views.Secret
                         .Where(p => p.Email == txtEmail.Text)
                         .FirstOrDefault();
 
-                    if (patient == null)
+                    if (patient != null)
                     {
                         ShowPatientTrouvePrompt(patient);
                     }
@@ -61,8 +62,9 @@ namespace WindowsFormsApp1.views.Secret
 
         private static void ShowPatientTrouvePrompt(Patient patient)
         {
+            frmMessage frmMessage = new frmMessage();
             var result = MessageBox.Show(
-                "Patient : " ,
+                "Patient : " + patient.NomPrenom,
                 "Voulez vous prend un rv pour cette personne ?",
                 MessageBoxButtons.OKCancel,
                 MessageBoxIcon.Information
@@ -70,7 +72,7 @@ namespace WindowsFormsApp1.views.Secret
 
             if (result == DialogResult.OK)
             {
-                frmRdv frmRdv = new frmRdv();
+                frmRdv frmRdv = new frmRdv(patient);
                 frmDashSecretaire parentForm = Application.OpenForms["frmDashSecretaire"] as frmDashSecretaire;
                 parentForm.fermer();
                 frmRdv.MdiParent = parentForm;
@@ -99,7 +101,7 @@ namespace WindowsFormsApp1.views.Secret
 
             if (result == DialogResult.OK)
             {
-                
+
             }
             else if (result == DialogResult.Cancel)
             {
@@ -123,6 +125,11 @@ namespace WindowsFormsApp1.views.Secret
             {
                 txtTelephone.Text = "";
             }
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
