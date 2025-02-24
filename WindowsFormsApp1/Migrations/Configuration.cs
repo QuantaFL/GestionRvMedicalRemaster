@@ -12,7 +12,6 @@
         {
             AutomaticMigrationsEnabled = true;
         }
-
         protected override void Seed(WindowsFormsApp1.Models.bdRdvMedicalContext context)
         {
             //  This method will be called after migrating to the latest version.
@@ -72,31 +71,34 @@
                    NomSpecialte = "CHIRURGIE"
                }
             );
-            context.SaveChanges();
-            context.Soins.AddOrUpdate(
-                sn => sn.IdSoin,
-                new Soin
+            context.MoyenDePaiements.AddOrUpdate(
+                mp => mp.IdMoy,
+                new MoyenDePaiement { CodeMoyenPaiement = "WAV", LibelleMoyenPaiement = "WAVE" },
+                new MoyenDePaiement { CodeMoyenPaiement = "ESP", LibelleMoyenPaiement = "ESPECE" },
+                new MoyenDePaiement {CodeMoyenPaiement = "ORA", LibelleMoyenPaiement = "ORANGE MONEY" }
+                );
+            context.Patients.AddOrUpdate(
+                pt => pt.IdP,
+                new Patient
                 {
-                    CodeSoin = "VA",
-                    LibelleSoin = "VISITE ANNUELLE",
-                    StatusSoin = true,
-                    CoutSoin = 10000
-                },
-                new Soin
-                {
-                    CodeSoin = "RAD",
-                    LibelleSoin = "RADIO",
-                    StatusSoin = true,
-                    CoutSoin = 15000
-                },
-                new Soin
-                {
-                    CodeSoin = "CSLT",
-                    LibelleSoin = "CONSULATATION",
-                    StatusSoin = true,
-                    CoutSoin = 2000
-
+                    DateNaissance = DateTime.Now,
+                    Email = "patien@gmail.com",
+                    NomPrenom = "Patient Fall",
+                    Addresse = "medina",
+                    Tel = "7898797",
+                    Poids = 70,
+                    Taille = 180,
+                    GroupeSanguin = "A+"
                 }
+                );
+            context.Soins.AddOrUpdate(
+                so => so.IdSoin,
+                new Soin { IdSoin = 1, CodeSoin = "CONS", NomSoin = "CONSULTATION" ,CoutSoin = 5000},
+                new Soin { IdSoin = 2, CodeSoin = "URGE", NomSoin = "URGENCE", CoutSoin = 50000},
+                new Soin { IdSoin = 3, CodeSoin = "HOSP", NomSoin = "HOSPITALISATION", CoutSoin = 235000 },
+                new Soin { IdSoin = 4, CodeSoin = "SUIV", NomSoin = "SUIVI MEDICAL", CoutSoin = 20000 },
+                new Soin { IdSoin = 5, CodeSoin = "VACC", NomSoin = "VACCINATION",CoutSoin = 5000 },
+                new Soin { IdSoin = 6, CodeSoin = "BILA", NomSoin = "BILAN" , CoutSoin =75000 }
                 );
             context.SaveChanges();
             context.Medecins.AddOrUpdate(
@@ -119,6 +121,33 @@
                 }
                 );
 
+            context.SaveChanges();
+            context.Agenda.AddOrUpdate(
+              ag => ag.IdAgenda,
+              new Agenda
+              {
+                  IdMedecin = 3,
+                  Lieu = "Health Care",
+                  HeureDebut = "08:00",
+                  HeureFin = "16:00",
+                  Creneau = 45,
+                  Titre = "Test",
+                  DataPlanifier = DateTime.Now,
+                  Statut = "ACTIVE"
+              },
+              new Agenda
+              {
+                  IdMedecin = 3,
+                  Lieu = "Health Care",
+                  HeureDebut = "08:00",
+                  HeureFin = "16:00",
+                  Creneau = 35,
+                  Titre = "Test1",
+                  DataPlanifier = DateTime.Now.AddDays(1),
+                  Statut = "ACTIVE"
+              }
+
+          );
             context.SaveChanges();
         }
     }
