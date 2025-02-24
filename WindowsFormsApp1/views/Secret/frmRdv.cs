@@ -1,21 +1,184 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApp1.Models;
+using Serilog;
 
 namespace WindowsFormsApp1.views.Secret
 {
     public partial class frmRdv : Form
     {
-        public frmRdv(Patient patient)
+        readonly Patient patient;
+        Agenda agenda;
+
+        public frmRdv(Patient p)
         {
             InitializeComponent();
+            dgAgendaMedecin.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            cbbSpecialite.ValueMember = "Value";
+            cbbSpecialite.DisplayMember = "Text";
+            cbbSpecialite.DataSource = loadSpecialiteccb();
+            patient = p;
+            SetDatePickerLimits();
+
+            Log.Information("Formulaire de RDV initialisé avec patient {PatientId}", patient.IdP);
+        }
+        bdRdvMedicalContext bd = new bdRdvMedicalContext();
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            Log.Information("Cellule de DataGrid cliquée à la position {Row}, {Column}", e.RowIndex, e.ColumnIndex);
+        }
+
+        public void LoadAgenda(DateTime val, String s)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(cbbSpecialite.ValueMember))
+                {
+                    Log.Warning("Aucune spécialité sélectionnée.");
+                    MessageBox.Show("Selectionner une specialite");
+                    return;
+                }
+
+                if (txtDateChercher.Value < DateTime.Now.Date)
+                {
+                    Log.Warning("Date invalide sélectionnée: {DateSelectionnee}", txtDateChercher.Value);
+                    MessageBox.Show("Selectionner une date valide");
+                    return;
+                }
+
+                Log.Information("Chargement des agendas pour la spécialité {Specialite} à partir de {Date}", s, val);
+
+                var medecins = bd.Personnes
+                    .OfType<Medecin>()
+                    .Where(m => m.Specialite.NomSpecialte == s)
+                    .ToList();
+
+                if (medecins.Count == 0)
+                {
+                    Log.Warning("Aucun médecin trouvé pour la spécialité {Specialite}", s);
+                    MessageBox.Show("Aucun médecin trouvé pour cette spécialité.");
+                }
+
+                var agendas = new List<Agenda>();
+                foreach (var medecin in medecins)
+                {
+                    var availableAgendas = medecin.agenda
+                        .Where(a => a.DataPlanifier >= val)
+                        .ToList();
+                    agendas.AddRange(availableAgendas);
+                }
+
+                dgAgendaMedecin.DataSource = agendas;
+                Log.Information("Agendas chargés: {NombreAgendas}", agendas.Count);
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, "Erreur lors du chargement des agendas pour la spécialité {Specialite}", s);
+                MessageBox.Show("Erreur lors du chargement des agendas.");
+            }
+        }
+
+        private void btnRechercherDispo_Click(object sender, EventArgs e)
+        {
+            Log.Information("Recherche de disponibilité lancée pour la date {Date} et spécialité {Specialite}", txtDateChercher.Value, cbbSpecialite.Text);
+            LoadAgenda(txtDateChercher.Value, cbbSpecialite.Text);
+        }
+
+        private void cbbSpecialite_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Log.Information("Changement de sélection dans la spécialité: {Specialite}", cbbSpecialite.Text);
+        }
+
+        public List<SelectListViewModel> loadSpecialiteccb()
+        {
+            try
+            {
+                Log.Information("Chargement des spécialités pour le combobox.");
+                var s = bd.Specialite.ToList();
+                List<SelectListViewModel> liste = new List<SelectListViewModel>();
+                SelectListViewModel b = new SelectListViewModel();
+                b.Text = "Selectionner une valeur";
+                b.Value = "";
+                liste.Add(b);
+                foreach (var item in s)
+                {
+                    SelectListViewModel a = new SelectListViewModel();
+                    a.Text = item.NomSpecialte;
+                    a.Value = item.Id.ToString();
+                    liste.Add(a);
+                }
+
+                Log.Information("Spécialités chargées: {NombreSpecialites}", s.Count);
+                return liste;
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, "Erreur lors du chargement des spécialités.");
+                MessageBox.Show("Erreur lors du chargement des spécialités.");
+                return new List<SelectListViewModel>();
+            }
+        }
+
+        private void SetDatePickerLimits()
+        {
+            try
+            {
+                var minDate = DateTime.Now.AddHours(-8);
+                var maxDate = DateTime.Now.AddMonths(1);
+
+                txtDateChercher.MinDate = minDate;
+                txtDateChercher.MaxDate = maxDate;
+
+                Log.Information("Limites de date définies: MinDate={MinDate}, MaxDate={MaxDate}", minDate, maxDate);
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, "Erreur lors de la configuration des limites de date.");
+                MessageBox.Show("Erreur lors de la configuration des limites de date.");
+            }
+        }
+
+        private void btnAjouterRendezvous_Click(object sender, EventArgs e)
+        {
+            if (dgAgendaMedecin.SelectedRows.Count > 0)
+            {
+                //agenda = (Agenda)dgAgendaMedecin.CurrentRow.Cells[0].Value;
+                var idAgenda = int.Parse(dgAgendaMedecin.CurrentRow.Cells[0].Value.ToString());
+                MessageBox.Show(idAgenda.ToString());
+                agenda = bd.Agenda
+                    .Where(a => a.IdAgenda == idAgenda)
+                    .FirstOrDefault();
+                Log.Information("Agenda selectionne: {AgendaId}, Date: {AgendaDate}", agenda.IdAgenda, agenda.DataPlanifier);
+
+                frmValiderRdv frmValiderRdv = new frmValiderRdv(patient, agenda);
+
+                frmDashSecretaire parentForm = Application.OpenForms["frmDashSecretaire"] as frmDashSecretaire;
+                parentForm.fermer();
+
+                frmValiderRdv.MdiParent = parentForm;
+                frmValiderRdv.WindowState = FormWindowState.Maximized;
+                frmValiderRdv.Show();
+
+                Log.Information("Navigation vers le formulaire de validation de RDV.");
+            }
+            else
+            {
+                Log.Warning("Aucun agenda selectionné pour la prise de rendez-vous.");
+                MessageBox.Show("Veuillez selectionner un agenda.");
+            }
+        }
+
+        private void cbbSpecialite_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtDateChercher_ValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

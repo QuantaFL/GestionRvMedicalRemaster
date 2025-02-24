@@ -12,7 +12,7 @@ namespace WindowsFormsApp1.views.Secret
 {
     public partial class frmValiderRdv : Form
     {
-        public frmValiderRdv()
+        public frmValiderRdv(Models.Patient patient)
         {
             InitializeComponent();
         }
