@@ -186,7 +186,7 @@ namespace WindowsFormsApp1.views.Secret
                     startTime = endSlot;
                 }
 
-                Log.Information("Créneaux charges: {NombreCreneaux}", creneauxList.Count);
+                Log.Information("Creneaux charges: {NombreCreneaux}", creneauxList.Count);
                 return creneauxList;
             }
             catch (Exception ex)

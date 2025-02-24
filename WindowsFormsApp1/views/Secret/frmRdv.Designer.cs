@@ -93,6 +93,8 @@
             // 
             // cbbSpecialite
             // 
+            this.cbbSpecialite.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cbbSpecialite.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbbSpecialite.FormattingEnabled = true;
             this.cbbSpecialite.Location = new System.Drawing.Point(18, 35);
             this.cbbSpecialite.Margin = new System.Windows.Forms.Padding(2);

@@ -113,6 +113,8 @@
             // 
             // cbbSoins
             // 
+            this.cbbSoins.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cbbSoins.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbbSoins.FormattingEnabled = true;
             this.cbbSoins.Location = new System.Drawing.Point(17, 285);
             this.cbbSoins.Margin = new System.Windows.Forms.Padding(2);
@@ -151,6 +153,8 @@
             // 
             // cbbMoyenPaiement
             // 
+            this.cbbMoyenPaiement.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cbbMoyenPaiement.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbbMoyenPaiement.FormattingEnabled = true;
             this.cbbMoyenPaiement.Location = new System.Drawing.Point(17, 150);
             this.cbbMoyenPaiement.Margin = new System.Windows.Forms.Padding(2);
