@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.VisualBasic.Devices;
+using Serilog;
 
 namespace WindowsFormsApp1.views.Admin
 {
@@ -48,6 +49,21 @@ namespace WindowsFormsApp1.views.Admin
             frmAccueilAdmin.Show();
             frmAccueilAdmin.WindowState = FormWindowState.Maximized;
 
+        }
+
+        private void btnCorbeille_Click(object sender, EventArgs e)
+        {
+            Log.Information("hello");
+            frmMessage frmMessage = new frmMessage("Tentative de suppression");
+            frmMessage.Show();
+            if (frmMessage.CustomDialogResult == DialogResult.No) {
+                Log.Information("NON");
+
+            }
+            else
+            {
+                Log.Information("OUI2");
+            }
         }
     }
 }
