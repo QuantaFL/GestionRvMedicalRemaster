@@ -14,19 +14,16 @@ namespace WindowsFormsApp1.Models
         public int IdAgenda { get; set; }
         public DateTime? DataPlanifier { get; set; }
         public string HeureDebut { get; set; }
-        public string HeureFin {  get; set; }
+        public string HeureFin { get; set; }
 
         public string Lieu { get; set; }
         public string Titre { get; set; }
 
         public string Statut { get; set; }
-
-       
-        public virtual ICollection<RendezVous> rendezVous { get; set; }
+        public int Creneau { get; set; }
+        public virtual ICollection<RendezVous> rendezVous { get; set; } = new List<RendezVous>();
         public int IdMedecin { get; set; }
         [ForeignKey("IdMedecin")]
         public Medecin Medecin { get; set; }
-
-        public int Creneau { get; set; }
     }
 }

@@ -35,7 +35,7 @@
             this.cbbSpecialite = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnRechercherAgenda = new System.Windows.Forms.Button();
+            this.btnRechercherDispo = new System.Windows.Forms.Button();
             this.btnAjouterAgenda = new System.Windows.Forms.Button();
             this.dgAgendaMedecin = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
@@ -49,7 +49,7 @@
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(114)))), ((int)(((byte)(144)))));
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Location = new System.Drawing.Point(-2, 2);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1282, 681);
             this.panel1.TabIndex = 0;
@@ -58,11 +58,11 @@
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(114)))), ((int)(((byte)(144)))));
             this.panel2.Controls.Add(this.groupBox1);
-            this.panel2.Controls.Add(this.btnRechercherAgenda);
+            this.panel2.Controls.Add(this.btnRechercherDispo);
             this.panel2.Controls.Add(this.btnAjouterAgenda);
             this.panel2.Controls.Add(this.dgAgendaMedecin);
             this.panel2.Location = new System.Drawing.Point(-8, -20);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1298, 720);
             this.panel2.TabIndex = 1;
@@ -75,9 +75,9 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.groupBox1.Location = new System.Drawing.Point(83, 25);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox1.Size = new System.Drawing.Size(620, 106);
             this.groupBox1.TabIndex = 15;
             this.groupBox1.TabStop = false;
@@ -86,7 +86,7 @@
             // txtDateChercher
             // 
             this.txtDateChercher.Location = new System.Drawing.Point(18, 77);
-            this.txtDateChercher.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtDateChercher.Margin = new System.Windows.Forms.Padding(2);
             this.txtDateChercher.Name = "txtDateChercher";
             this.txtDateChercher.Size = new System.Drawing.Size(470, 20);
             this.txtDateChercher.TabIndex = 24;
@@ -95,7 +95,7 @@
             // 
             this.cbbSpecialite.FormattingEnabled = true;
             this.cbbSpecialite.Location = new System.Drawing.Point(18, 35);
-            this.cbbSpecialite.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbbSpecialite.Margin = new System.Windows.Forms.Padding(2);
             this.cbbSpecialite.Name = "cbbSpecialite";
             this.cbbSpecialite.Size = new System.Drawing.Size(470, 21);
             this.cbbSpecialite.TabIndex = 23;
@@ -120,20 +120,21 @@
             this.label1.TabIndex = 21;
             this.label1.Text = "Specialite";
             // 
-            // btnRechercherAgenda
+            // btnRechercherDispo
             // 
-            this.btnRechercherAgenda.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnRechercherAgenda.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(169)))), ((int)(((byte)(155)))));
-            this.btnRechercherAgenda.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnRechercherAgenda.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRechercherAgenda.ForeColor = System.Drawing.Color.White;
-            this.btnRechercherAgenda.Location = new System.Drawing.Point(707, 46);
-            this.btnRechercherAgenda.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.btnRechercherAgenda.Name = "btnRechercherAgenda";
-            this.btnRechercherAgenda.Size = new System.Drawing.Size(147, 26);
-            this.btnRechercherAgenda.TabIndex = 14;
-            this.btnRechercherAgenda.Text = "&Voir Disponibilites";
-            this.btnRechercherAgenda.UseVisualStyleBackColor = true;
+            this.btnRechercherDispo.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRechercherDispo.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(169)))), ((int)(((byte)(155)))));
+            this.btnRechercherDispo.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnRechercherDispo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRechercherDispo.ForeColor = System.Drawing.Color.White;
+            this.btnRechercherDispo.Location = new System.Drawing.Point(707, 46);
+            this.btnRechercherDispo.Margin = new System.Windows.Forms.Padding(2);
+            this.btnRechercherDispo.Name = "btnRechercherDispo";
+            this.btnRechercherDispo.Size = new System.Drawing.Size(147, 26);
+            this.btnRechercherDispo.TabIndex = 14;
+            this.btnRechercherDispo.Text = "&Voir Disponibilites";
+            this.btnRechercherDispo.UseVisualStyleBackColor = true;
+            this.btnRechercherDispo.Click += new System.EventHandler(this.btnRechercherDispo_Click);
             // 
             // btnAjouterAgenda
             // 
@@ -143,19 +144,20 @@
             this.btnAjouterAgenda.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAjouterAgenda.ForeColor = System.Drawing.Color.White;
             this.btnAjouterAgenda.Location = new System.Drawing.Point(707, 94);
-            this.btnAjouterAgenda.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnAjouterAgenda.Margin = new System.Windows.Forms.Padding(2);
             this.btnAjouterAgenda.Name = "btnAjouterAgenda";
             this.btnAjouterAgenda.Size = new System.Drawing.Size(155, 25);
             this.btnAjouterAgenda.TabIndex = 11;
             this.btnAjouterAgenda.Text = "Prendre &Rendez-Vous";
             this.btnAjouterAgenda.UseVisualStyleBackColor = true;
+            this.btnAjouterAgenda.Click += new System.EventHandler(this.btnAjouterRendezvous_Click);
             // 
             // dgAgendaMedecin
             // 
             this.dgAgendaMedecin.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.dgAgendaMedecin.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgAgendaMedecin.Location = new System.Drawing.Point(12, 135);
-            this.dgAgendaMedecin.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgAgendaMedecin.Margin = new System.Windows.Forms.Padding(2);
             this.dgAgendaMedecin.Name = "dgAgendaMedecin";
             this.dgAgendaMedecin.RowHeadersWidth = 62;
             this.dgAgendaMedecin.RowTemplate.Height = 28;
@@ -170,7 +172,7 @@
             this.ControlBox = false;
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmRdv";
             this.Text = "Rendez vous";
             this.panel1.ResumeLayout(false);
@@ -189,7 +191,7 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnRechercherAgenda;
+        private System.Windows.Forms.Button btnRechercherDispo;
         private System.Windows.Forms.Button btnAjouterAgenda;
         private System.Windows.Forms.DataGridView dgAgendaMedecin;
         private System.Windows.Forms.ComboBox cbbSpecialite;

@@ -14,7 +14,7 @@ namespace WindowsFormsApp1.Models
         public int IdRendezVous { get; set; }
         public DateTime DateRv;
         public String HeureRv;
-        public int? IdSoin {  get; set; }
+        public int? IdSoin { get; set; }
         [ForeignKey("IdSoin")]
         public virtual Soin Soin { get; set; }
 
@@ -25,5 +25,8 @@ namespace WindowsFormsApp1.Models
         public int? IdMedecin { get; set; }
         [ForeignKey("IdMedecin")]
         public virtual Medecin Medecin { get; set; }
+        public int? IdAgenda { get; set; }
+        [ForeignKey("IdAgenda")]
+        public virtual Agenda Agenda { get; set; }
     }
 }
