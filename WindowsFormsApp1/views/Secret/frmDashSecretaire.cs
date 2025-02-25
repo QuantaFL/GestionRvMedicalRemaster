@@ -14,9 +14,11 @@ namespace WindowsFormsApp1.views.Secret
 {
     public partial class frmDashSecretaire : Form
     {
-        public frmDashSecretaire()
+        FrmConnexion frmConnexionInstance;
+        public frmDashSecretaire(FrmConnexion f)
         {
             InitializeComponent();
+            frmConnexionInstance = f;
 
         }
         public void fermer()
@@ -52,9 +54,10 @@ namespace WindowsFormsApp1.views.Secret
 
         }
 
+
         private void btnPatient_Click(object sender, EventArgs e)
         {
-           
+
         }
 
         private void btnListeUtilisateur_Click(object sender, EventArgs e)
@@ -62,5 +65,9 @@ namespace WindowsFormsApp1.views.Secret
             CustomNavigatorMdi.push(this, btnListeUtilisateur, new frmAcceuilSecret());
         }
 
+        private void btnDeconnexion_Click(object sender, EventArgs e)
+        {
+            frmConnexionInstance.Show();
+        }
     }
 }
