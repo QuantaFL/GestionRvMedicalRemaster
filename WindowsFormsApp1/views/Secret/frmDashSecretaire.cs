@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp1.config;
 
 namespace WindowsFormsApp1.views.Secret
 {
@@ -58,11 +59,7 @@ namespace WindowsFormsApp1.views.Secret
 
         private void btnListeUtilisateur_Click(object sender, EventArgs e)
         {
-            fermer();
-            frmAcceuilSecret frmAcceuilSecret = new frmAcceuilSecret();
-            frmAcceuilSecret.MdiParent = this;
-            frmAcceuilSecret.Show();
-            frmAcceuilSecret.WindowState = FormWindowState.Maximized;
+            CustomNavigatorMdi.push(this, btnListeUtilisateur, new frmAcceuilSecret());
         }
 
     }

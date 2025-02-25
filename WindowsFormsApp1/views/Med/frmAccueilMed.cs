@@ -35,11 +35,21 @@ namespace WindowsFormsApp1.views.Med
                        .Where(p => p.IdP == FrmConnexion.user.IdP)
                        .OfType<Medecin>()
                        .FirstOrDefault();
-            dgAgendaMedecin.DataSource = medecin.agenda.ToList();
+            dgAgendaMedecin.DataSource = medecin.agenda.Select(ag => new {ag.DataPlanifier.Value.Date,ag.Creneau,ag.HeureDebut,ag.HeureFin} ).ToList();
 
         }
 
         private void btnVoirRdv_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void frmAccueilMed_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgAgendaMedecin_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }

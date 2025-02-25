@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using WindowsFormsApp1.Models;
 using Serilog;
 using System.Drawing;
+using WindowsFormsApp1.CustomControls;
 
 namespace WindowsFormsApp1.views.Secret
 {
@@ -39,14 +40,14 @@ namespace WindowsFormsApp1.views.Secret
                 if (string.IsNullOrEmpty(cbbSpecialite.ValueMember))
                 {
                     Log.Warning("Aucune spécialité sélectionnée.");
-                    MessageBox.Show("Selectionner une specialite");
+                    new frmInformation("Selectionner une specialite");
                     return;
                 }
 
                 if (txtDateChercher.Value < DateTime.Now.Date)
                 {
                     Log.Warning("Date invalide sélectionnée: {DateSelectionnee}", txtDateChercher.Value);
-                    MessageBox.Show("Selectionner une date valide");
+                    new frmInformation("Selectionner une date valide");
                     return;
                 }
 
@@ -60,7 +61,7 @@ namespace WindowsFormsApp1.views.Secret
                 if (medecins.Count == 0)
                 {
                     Log.Warning("Aucun médecin trouvé pour la spécialité {Specialite}", s);
-                    MessageBox.Show("Aucun médecin trouvé pour cette spécialité.");
+                    new frmInformation("Aucun médecin trouvé pour cette spécialité.");
                 }
 
                 var agendas = new List<Agenda>();
@@ -78,7 +79,7 @@ namespace WindowsFormsApp1.views.Secret
             catch (Exception ex)
             {
                 Log.Error(ex, "Erreur lors du chargement des agendas pour la spécialité {Specialite}", s);
-                MessageBox.Show("Erreur lors du chargement des agendas.");
+                new frmEchecExecution("Erreur lors du chargement des agendas.");
             }
         }
 
@@ -118,7 +119,7 @@ namespace WindowsFormsApp1.views.Secret
             catch (Exception ex)
             {
                 Log.Error(ex, "Erreur lors du chargement des spécialités.");
-                MessageBox.Show("Erreur lors du chargement des spécialités.");
+                new frmEchecExecution("Erreur lors du chargement des spécialités.");
                 return new List<SelectListViewModel>();
             }
         }
@@ -138,7 +139,7 @@ namespace WindowsFormsApp1.views.Secret
             catch (Exception ex)
             {
                 Log.Error(ex, "Erreur lors de la configuration des limites de date.");
-                MessageBox.Show("Erreur lors de la configuration des limites de date.");
+                new frmEchecExecution("Erreur lors de la configuration des limites de date.");
             }
         }
 
@@ -169,7 +170,7 @@ namespace WindowsFormsApp1.views.Secret
             else
             {
                 Log.Warning("Aucun agenda selectionné pour la prise de rendez-vous.");
-                MessageBox.Show("Veuillez selectionner un agenda.");
+                new frmInformation("Veuillez selectionner un agenda.");
             }
         }
 
