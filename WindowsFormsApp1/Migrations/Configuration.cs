@@ -19,6 +19,7 @@
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method
             //  to avoid creating duplicate seed data.
+            
             context.Role.AddOrUpdate(
                 r => r.CodeRole,
                 new Role { CodeRole = "ADM", LibelleRole = "ADMIN" },

@@ -17,6 +17,7 @@ namespace WindowsFormsApp1
 {
     public partial class FrmConnexion : Form
     {
+        public static Utilisateur user;
         public FrmConnexion()
         {
             InitializeComponent();
@@ -69,30 +70,32 @@ namespace WindowsFormsApp1
             {
                 if (SaltHash.VerifyPassword(motdepasse, utilisateur.MotDePasse))
                 {
+                    user = utilisateur;
                     if (utilisateur.Role.Equals("ADMIN"))
                     {
                         this.Hide();
                         frmDashAdmin frm = new frmDashAdmin();
                         frm.Show();
+                        return;
                     }
-                    if (utilisateur.PremiereConnexion == 0)
-                    {
-
-                    }
+                    //if (utilisateur.PremiereConnexion == 0)
+                    //{
+                    //    return;
+                    //}
                     else
                     {
-                        if (utilisateur.Role.Equals("SECRETAIRE"))
-                        {
-                            this.Hide();
-                            frmDashSecretaire frm = new frmDashSecretaire();
-                            frm.Show();
-                        }
-                        else
-                        {
-                            this.Hide();
-                            frmDashMed frm = new frmDashMed();
-                            frm.Show();
-                        }
+                        //if (utilisateur.Role.Equals("SECRETAIRE"))
+                        //{
+                        //    this.Hide();
+                        //    frmDashSecretaire frm = new frmDashSecretaire();
+                        //    frm.Show();
+                        //}
+                        //else
+                        //{
+                        //    this.Hide();
+                        //    frmDashMed frm = new frmDashMed();
+                        //    frm.Show();
+                        //}
                     }
                 }
             }
