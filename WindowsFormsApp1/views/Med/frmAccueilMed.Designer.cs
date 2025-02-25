@@ -116,6 +116,7 @@
             this.btnVoirRdv.TabIndex = 7;
             this.btnVoirRdv.Text = "&Voir mes rendez-vous";
             this.btnVoirRdv.UseVisualStyleBackColor = true;
+            this.btnVoirRdv.Click += new System.EventHandler(this.btnVoirRdv_Click);
             // 
             // btnAjouterAgenda
             // 

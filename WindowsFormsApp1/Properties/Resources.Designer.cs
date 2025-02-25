@@ -163,6 +163,16 @@ namespace WindowsFormsApp1.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap lgb {
+            get {
+                object obj = ResourceManager.GetObject("lgb", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap lgcr {
             get {
                 object obj = ResourceManager.GetObject("lgcr", resourceCulture);
@@ -206,6 +216,16 @@ namespace WindowsFormsApp1.Properties {
         internal static System.Drawing.Bitmap question {
             get {
                 object obj = ResourceManager.GetObject("question", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap rdv {
+            get {
+                object obj = ResourceManager.GetObject("rdv", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
