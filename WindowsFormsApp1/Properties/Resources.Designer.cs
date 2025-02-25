@@ -213,6 +213,16 @@ namespace WindowsFormsApp1.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap national_cancer_institute_NFvdKIhxYlU_unsplash {
+            get {
+                object obj = ResourceManager.GetObject("national-cancer-institute-NFvdKIhxYlU-unsplash", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap poubelle_de_recyclage {
             get {
                 object obj = ResourceManager.GetObject("poubelle-de-recyclage", resourceCulture);

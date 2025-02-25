@@ -41,5 +41,11 @@ namespace WindowsFormsApp1.views.Med
         {
             CustomNavigatorMdi.push(this, btnListerAgenda, new frmAccueilMed());
         }
+
+        private void btnRdvMedecin_Click(object sender, EventArgs e)
+        {
+            CustomNavigatorMdi.push(this, btnListerAgenda, new frmRdvMed()); 
+            
+        }
     }
 }

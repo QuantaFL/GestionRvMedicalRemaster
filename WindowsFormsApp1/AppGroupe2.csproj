@@ -445,6 +445,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ILLink\ILLink.Descriptors.LibraryBuild.xml" />
+    <None Include="Resources\national-cancer-institute-NFvdKIhxYlU-unsplash.jpg" />
     <None Include="Resources\rdv1.jpg" />
     <None Include="Resources\information-button.png" />
     <None Include="Resources\lgb.jpg" />
