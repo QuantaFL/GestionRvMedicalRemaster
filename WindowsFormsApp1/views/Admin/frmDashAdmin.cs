@@ -17,6 +17,7 @@ namespace WindowsFormsApp1.views.Admin
         public frmDashAdmin()
         {
             InitializeComponent();
+            lblNomUtilisateur.Text = FrmConnexion.user.NomPrenom;
         }
         private void fermer()
         {

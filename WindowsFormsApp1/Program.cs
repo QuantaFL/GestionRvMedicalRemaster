@@ -41,6 +41,7 @@ namespace WindowsFormsApp1
             //Application.Run(new frmDashAdmin());
             //Application.Run(new frmExecutionReussie("good Morning"));
             Application.Run(new frmDashSecretaire());
+           // Application.Run(new frmRdvMed());
 
             // vider linstance seri/og
             // Log.CloseAndFlush();

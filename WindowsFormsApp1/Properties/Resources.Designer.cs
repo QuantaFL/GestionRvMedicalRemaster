@@ -113,6 +113,16 @@ namespace WindowsFormsApp1.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap calendar_day1 {
+            get {
+                object obj = ResourceManager.GetObject("calendar-day1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap calendrier {
             get {
                 object obj = ResourceManager.GetObject("calendrier", resourceCulture);
@@ -146,6 +156,16 @@ namespace WindowsFormsApp1.Properties {
         internal static System.Drawing.Bitmap iconeLogo {
             get {
                 object obj = ResourceManager.GetObject("iconeLogo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap lgb {
+            get {
+                object obj = ResourceManager.GetObject("lgb", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -196,6 +216,16 @@ namespace WindowsFormsApp1.Properties {
         internal static System.Drawing.Bitmap question {
             get {
                 object obj = ResourceManager.GetObject("question", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap rdv {
+            get {
+                object obj = ResourceManager.GetObject("rdv", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -276,6 +306,16 @@ namespace WindowsFormsApp1.Properties {
         internal static System.Drawing.Bitmap users_medical__1_1 {
             get {
                 object obj = ResourceManager.GetObject("users-medical (1)1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap users_medical__1_2 {
+            get {
+                object obj = ResourceManager.GetObject("users-medical (1)2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

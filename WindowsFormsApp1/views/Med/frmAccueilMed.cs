@@ -38,6 +38,11 @@ namespace WindowsFormsApp1.views.Med
             dgAgendaMedecin.DataSource = medecin.agenda.ToList();
 
         }
+
+        private void btnVoirRdv_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 
    

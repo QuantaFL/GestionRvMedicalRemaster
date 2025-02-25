@@ -20,7 +20,22 @@ namespace WindowsFormsApp1.views.Secret
         public frmAcceuilSecret()
         {
             InitializeComponent();
+            AfficheStats();
+            txtEmail.Focus();
         }
+
+        private void AfficheStats()
+        {
+            var agendaList = bd.Agenda.ToList();
+            var rendezvous = bd.RendezVous.ToList();
+            lblNbRv.Text = rendezvous.Where(r => r.DateRv.Contains(DateTime.Now.Date.ToString())).ToList().Count().ToString();
+            //FrmConnexion.user
+            lblNbAgenda.Text = agendaList.Where(a => a.DataPlanifier.Value.Date == DateTime.Now.Date).ToList().Count.ToString();
+            //lblNbRv.Text = bd.RendezVous.Where(r => DateTime.Now.ToString().Contains(DateTime.Parse(r.DateRv).ToString())).ToList().Count.ToString();
+            lblNbPatient.Text = bd.Patients.ToList().Count.ToString();
+        }
+
+        bdRdvMedicalContext bd = new bdRdvMedicalContext();
 
         private void btnRechercherPatient_Click(object sender, EventArgs e)
         {
@@ -145,6 +160,38 @@ namespace WindowsFormsApp1.views.Secret
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void btnAjouterAgenda_Click(object sender, EventArgs e)
+        {
+            frmCreerPatient frmCreerPatient = new frmCreerPatient();
+            frmCreerPatient.Show(); 
+        }
+
+        private void btnVoirRdv_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnRechercherPatient_KeyDown(object sender, KeyEventArgs e)
+        {
+
+        }
+
+        private void txtTelephone_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnRechercherPatient.PerformClick();
+            }
+        }
+
+        private void txtEmail_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnRechercherPatient.PerformClick();
+            }
         }
     }
 }

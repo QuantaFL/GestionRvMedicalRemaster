@@ -13,6 +13,7 @@ using System.Windows.Forms;
 using Serilog;
 using WindowsFormsApp1.Models;
 using WindowsFormsApp1.views.Secret;
+using WindowsFormsApp1.config;
 
 namespace WindowsFormsApp1.views.Admin
 {
@@ -191,7 +192,8 @@ namespace WindowsFormsApp1.views.Admin
                 secretaire.Status = true;
                 secretaire.IdRole = IdRole;
                 secretaire.Identifiant = identfiantTmp;
-                secretaire.MotDePasse = mdpTmp;
+                var HashedPassword = SaltHash.HashPassword(mdpTmp);
+                secretaire.MotDePasse = HashedPassword;
                 secretaire.PremiereConnexion = 0;
 
                 secretaire.Matricule = generateMatricule();

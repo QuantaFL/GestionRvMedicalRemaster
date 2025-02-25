@@ -4,6 +4,7 @@
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
+    using WindowsFormsApp1.config;
     using WindowsFormsApp1.Models;
 
     internal sealed class Configuration : DbMigrationsConfiguration<WindowsFormsApp1.Models.bdRdvMedicalContext>
@@ -18,6 +19,7 @@
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method
             //  to avoid creating duplicate seed data.
+            
             context.Role.AddOrUpdate(
                 r => r.CodeRole,
                 new Role { CodeRole = "ADM", LibelleRole = "ADMIN" },
@@ -25,6 +27,21 @@
                 new Role { CodeRole = "MED", LibelleRole = "MEDECIN" }
             );
             context.SaveChanges();
+            context.Admin.AddOrUpdate(
+                a => a.IdP,
+                new Admin{
+                    DateNaissance = DateTime.Now,
+                    Identifiant = "admin",
+                    Email = "admin@gmail.com",
+                    NomPrenom = "Rama Fall",
+                    IdRole = 1,
+                    MotDePasse = SaltHash.HashPassword("passer"),
+                    PremiereConnexion = 1,
+                    Addresse = "medina",
+                    Status = true,
+                    Tel = "7898797"
+                }
+                );
             context.GroupeSanguins.AddOrUpdate(
                 g => g.CodeGroupeSanguin,
                 new GroupeSanguin { CodeGroupeSanguin = "A+" },
@@ -42,12 +59,11 @@
                 new Secretaire
                 {
                     DateNaissance = DateTime.Now,
-                    Identifiant
-                    = "secret",
+                    Identifiant = "secret",
                     Email = "secretaire@gmail.com",
                     NomPrenom = "Rama Fall",
                     IdRole = 3,
-                    MotDePasse = "passer",
+                    MotDePasse = SaltHash.HashPassword("passer"),
                     TelephoneFixe = "7777777",
                     PremiereConnexion = 1,
                     Addresse = "medina",
@@ -82,7 +98,7 @@
                 new Patient
                 {
                     DateNaissance = DateTime.Now,
-                    Email = "patien@gmail.com",
+                    Email = "p@gmail.com",
                     NomPrenom = "Patient Fall",
                     Addresse = "medina",
                     Tel = "7898797",
@@ -108,10 +124,10 @@
                     DateNaissance = DateTime.Now,
                     Identifiant
                     = "medecin",
-                    Email = "medecin@gmail.com",
+                    Email = "me@gmail.com",
                     NomPrenom = "Medecin Fall",
                     IdRole = 2,
-                    MotDePasse = "passer",
+                    MotDePasse = SaltHash.HashPassword("passer"),
                     PremiereConnexion = 1,
                     Addresse = "medina",
                     Status = true,
