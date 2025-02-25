@@ -33,19 +33,19 @@
             this.btnNon = new System.Windows.Forms.Button();
             this.btnOui = new System.Windows.Forms.Button();
             this.lblMessage = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lblTitre = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(254)))), ((int)(((byte)(254)))));
+            this.panel1.BackColor = System.Drawing.SystemColors.Control;
             this.panel1.Controls.Add(this.btnNon);
             this.panel1.Controls.Add(this.btnOui);
             this.panel1.Controls.Add(this.lblMessage);
@@ -58,7 +58,7 @@
             // 
             // btnNon
             // 
-            this.btnNon.Location = new System.Drawing.Point(252, 56);
+            this.btnNon.Location = new System.Drawing.Point(316, 68);
             this.btnNon.Name = "btnNon";
             this.btnNon.Size = new System.Drawing.Size(75, 23);
             this.btnNon.TabIndex = 5;
@@ -68,7 +68,7 @@
             // 
             // btnOui
             // 
-            this.btnOui.Location = new System.Drawing.Point(134, 56);
+            this.btnOui.Location = new System.Drawing.Point(198, 68);
             this.btnOui.Name = "btnOui";
             this.btnOui.Size = new System.Drawing.Size(75, 23);
             this.btnOui.TabIndex = 4;
@@ -86,16 +86,6 @@
             this.lblMessage.Size = new System.Drawing.Size(144, 20);
             this.lblMessage.TabIndex = 3;
             this.lblMessage.Text = "Valider ou annuler";
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = global::WindowsFormsApp1.Properties.Resources.question;
-            this.pictureBox2.Location = new System.Drawing.Point(12, 5);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(111, 97);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 0;
-            this.pictureBox2.TabStop = false;
             // 
             // panel2
             // 
@@ -131,6 +121,16 @@
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::WindowsFormsApp1.Properties.Resources.question;
+            this.pictureBox2.Location = new System.Drawing.Point(12, 5);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(111, 97);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 0;
+            this.pictureBox2.TabStop = false;
+            // 
             // frmMessage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -146,10 +146,10 @@
             this.Load += new System.EventHandler(this.frmMessage_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }
