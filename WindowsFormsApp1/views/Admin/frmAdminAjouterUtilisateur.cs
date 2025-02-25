@@ -16,6 +16,7 @@ using Serilog;
 using WindowsFormsApp1.Models;
 using Log = Serilog.Log;
 using Elasticsearch.Net;
+using WindowsFormsApp1.config;
 
 namespace WindowsFormsApp1.views.Admin
 {
@@ -249,7 +250,8 @@ namespace WindowsFormsApp1.views.Admin
                 medecin.Tel = txtNumeroTelephone.Text;
                 medecin.DateNaissance = txtDateNaissance.Value;
                 medecin.Identifiant = identfiantTmp;
-                medecin.MotDePasse = mdpTmp;
+                var hashedPassword = SaltHash.HashPassword(mdpTmp);
+                medecin.MotDePasse = hashedPassword;
                 medecin.Status = true;
                 medecin.IdRole = IdRole;
                 medecin.PremiereConnexion = 0;

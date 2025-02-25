@@ -41,7 +41,7 @@ namespace WindowsFormsApp1.views.Secret
             cbbCreneaux.ValueMember = "Value";
             cbbSoins.SelectedIndex = -1;
             cbbMoyenPaiement.SelectedIndex = 0;
-            cbbCreneaux.SelectedIndex = 0;
+            cbbCreneaux.SelectedIndex = -1;
         }
 
         private async void btnValider_Click(object sender, EventArgs e)

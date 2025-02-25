@@ -7,6 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp1.config;
+using WindowsFormsApp1.Models;
+using WindowsFormsApp1.views.Admin;
+using WindowsFormsApp1.views.Med;
+using WindowsFormsApp1.views.Secret;
 
 namespace WindowsFormsApp1
 {
@@ -16,6 +21,7 @@ namespace WindowsFormsApp1
         {
             InitializeComponent();
         }
+        bdRdvMedicalContext db = new bdRdvMedicalContext();
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -24,6 +30,7 @@ namespace WindowsFormsApp1
 
         private void btnSeConnecter_Click(object sender, EventArgs e)
         {
+
            
         }
 
@@ -51,6 +58,44 @@ namespace WindowsFormsApp1
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnConnexion_Click(object sender, EventArgs e)
+        {
+            var identifiant = txtIdentifiant.Text;
+            var motdepasse =  txtMotDePasse.Text;
+            var utilisateur = db.Utilisateurs.Where(a => a.Identifiant.Equals(identifiant)).FirstOrDefault();
+            if (utilisateur != null)
+            {
+                if (SaltHash.VerifyPassword(motdepasse, utilisateur.MotDePasse))
+                {
+                    if (utilisateur.Role.Equals("ADMIN"))
+                    {
+                        this.Hide();
+                        frmDashAdmin frm = new frmDashAdmin();
+                        frm.Show();
+                    }
+                    if (utilisateur.PremiereConnexion == 0)
+                    {
+
+                    }
+                    else
+                    {
+                        if (utilisateur.Role.Equals("SECRETAIRE"))
+                        {
+                            this.Hide();
+                            frmDashSecretaire frm = new frmDashSecretaire();
+                            frm.Show();
+                        }
+                        else
+                        {
+                            this.Hide();
+                            frmDashMed frm = new frmDashMed();
+                            frm.Show();
+                        }
+                    }
+                }
+            }
         }
     }
 }
