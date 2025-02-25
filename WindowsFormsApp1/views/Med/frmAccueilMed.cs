@@ -32,7 +32,7 @@ namespace WindowsFormsApp1.views.Med
 
         {
             var medecin = bd.Personnes
-                       .Where(p => p.IdP == 1)
+                       .Where(p => p.IdP == FrmConnexion.user.IdP)
                        .OfType<Medecin>()
                        .FirstOrDefault();
             dgAgendaMedecin.DataSource = medecin.agenda.ToList();
