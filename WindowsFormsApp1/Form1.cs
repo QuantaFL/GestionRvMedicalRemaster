@@ -71,7 +71,9 @@ namespace WindowsFormsApp1
                 if (SaltHash.VerifyPassword(motdepasse, utilisateur.MotDePasse))
                 {
                     user = utilisateur;
-                    if (utilisateur.Role.Equals("ADMIN"))
+                    var Role = db.Role.Where(r => r.IdRole.Equals(utilisateur.IdRole)).FirstOrDefault();
+
+                    if (Role.LibelleRole.Equals("ADMIN"))
                     {
                         this.Hide();
                         frmDashAdmin frm = new frmDashAdmin();
@@ -84,18 +86,18 @@ namespace WindowsFormsApp1
                     //}
                     else
                     {
-                        //if (utilisateur.Role.Equals("SECRETAIRE"))
-                        //{
-                        //    this.Hide();
-                        //    frmDashSecretaire frm = new frmDashSecretaire();
-                        //    frm.Show();
-                        //}
-                        //else
-                        //{
-                        //    this.Hide();
-                        //    frmDashMed frm = new frmDashMed();
-                        //    frm.Show();
-                        //}
+                        if (Role.LibelleRole.Equals("SECRETAIRE"))
+                        {
+                            this.Hide();
+                            frmDashSecretaire frm = new frmDashSecretaire();
+                            frm.Show();
+                        }
+                        else
+                        {
+                            this.Hide();
+                            frmDashMed frm = new frmDashMed();
+                            frm.Show();
+                        }
                     }
                 }
             }
