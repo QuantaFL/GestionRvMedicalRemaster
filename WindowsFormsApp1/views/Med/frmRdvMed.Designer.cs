@@ -42,7 +42,7 @@
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(214)))), ((int)(((byte)(240)))));
             this.panel1.Controls.Add(this.label1);
             this.panel1.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.panel1.Location = new System.Drawing.Point(23, 68);
+            this.panel1.Location = new System.Drawing.Point(23, 60);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1879, 83);
             this.panel1.TabIndex = 0;
@@ -63,11 +63,11 @@
             this.dgRdvMedecin.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(214)))), ((int)(((byte)(240)))));
             this.dgRdvMedecin.CausesValidation = false;
             this.dgRdvMedecin.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgRdvMedecin.Location = new System.Drawing.Point(587, 149);
+            this.dgRdvMedecin.Location = new System.Drawing.Point(596, 149);
             this.dgRdvMedecin.Name = "dgRdvMedecin";
             this.dgRdvMedecin.RowHeadersWidth = 62;
             this.dgRdvMedecin.RowTemplate.Height = 28;
-            this.dgRdvMedecin.Size = new System.Drawing.Size(1336, 955);
+            this.dgRdvMedecin.Size = new System.Drawing.Size(1327, 955);
             this.dgRdvMedecin.TabIndex = 1;
             // 
             // pictureBox2

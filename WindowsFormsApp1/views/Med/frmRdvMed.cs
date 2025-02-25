@@ -33,7 +33,10 @@ namespace WindowsFormsApp1.views.Med
            Medecin currentMedecin = (Medecin)FrmConnexion.user;
                 dgRdvMedecin.DataSource = bd.RendezVous.Where(rdv => rdv.IdMedecin == currentMedecin.IdP).Select(rdv => new
                 {
-                    Heure = rdv.HeureRv,
+                   Heure = rdv.HeureRv,
+                   DateRv = rdv.DateRv,
+                   Patient=rdv.Patient,
+                   Soin = rdv.Soin,
 
                 }).ToList();
 
