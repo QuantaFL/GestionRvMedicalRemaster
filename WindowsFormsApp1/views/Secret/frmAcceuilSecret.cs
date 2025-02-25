@@ -131,5 +131,16 @@ namespace WindowsFormsApp1.views.Secret
         {
 
         }
+
+        private void btnAjouterAgenda_Click(object sender, EventArgs e)
+        {
+            frmCreerPatient frmCreerPatient = new frmCreerPatient();
+            frmCreerPatient.Show(); 
+        }
+
+        private void btnVoirRdv_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

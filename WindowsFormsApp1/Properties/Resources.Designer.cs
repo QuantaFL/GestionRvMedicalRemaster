@@ -113,6 +113,16 @@ namespace WindowsFormsApp1.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap calendar_day1 {
+            get {
+                object obj = ResourceManager.GetObject("calendar-day1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap calendrier {
             get {
                 object obj = ResourceManager.GetObject("calendrier", resourceCulture);
@@ -276,6 +286,16 @@ namespace WindowsFormsApp1.Properties {
         internal static System.Drawing.Bitmap users_medical__1_1 {
             get {
                 object obj = ResourceManager.GetObject("users-medical (1)1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap users_medical__1_2 {
+            get {
+                object obj = ResourceManager.GetObject("users-medical (1)2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
