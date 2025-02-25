@@ -48,14 +48,14 @@ namespace WindowsFormsApp1.views.Med
         private void btnListerAgenda_Click(object sender, EventArgs e)
         {
             fermer();
-            frmAcceuilSecret frmAcceuilSecret = new frmAcceuilSecret();
-            frmAcceuilSecret.MdiParent = this;
-            frmAcceuilSecret.Show();
-            frmAcceuilSecret.WindowState = FormWindowState.Maximized;
-            //frmAccueilMed  frmAccueilMed = new frmAccueilMed();
-            //frmAccueilMed.MdiParent = this;
-            //frmAccueilMed.Show();
-            //frmAccueilMed.WindowState = FormWindowState.Maximized;
+            //frmAcceuilMed frmAcceuilMed = new frmAcceuilMed();
+            //frmAcceuilMed.MdiParent = this;
+            //frmAcceuilSecret.Show();
+            //frmAcceuilSecret.WindowState = FormWindowState.Maximized;
+            frmAccueilMed frmAccueilMed = new frmAccueilMed();
+            frmAccueilMed.MdiParent = this;
+            frmAccueilMed.Show();
+            frmAccueilMed.WindowState = FormWindowState.Maximized;
         }
     }
 }
