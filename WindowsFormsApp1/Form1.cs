@@ -101,6 +101,10 @@ namespace WindowsFormsApp1
                         }
                     }
                 }
+                else
+                {
+                    new frmEchecExecution("Utilisateur ou mot de passe incorrect");
+                }
             }
             else { 
                 frmEchecExecution frmEchecExecution = new frmEchecExecution("cet identifiant n'exite pas");
