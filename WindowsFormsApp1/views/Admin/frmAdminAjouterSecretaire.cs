@@ -14,6 +14,7 @@ using Serilog;
 using WindowsFormsApp1.Models;
 using WindowsFormsApp1.views.Secret;
 using WindowsFormsApp1.config;
+using WindowsFormsApp1.CustomControls;
 
 namespace WindowsFormsApp1.views.Admin
 {
@@ -24,6 +25,7 @@ namespace WindowsFormsApp1.views.Admin
             InitializeComponent();
         }
         bdRdvMedicalContext db = new bdRdvMedicalContext();
+        string message;
         private void frmAdminAjouterSecretaire_Load(object sender, EventArgs e)
         {
             ResetForm();
@@ -64,8 +66,7 @@ namespace WindowsFormsApp1.views.Admin
             }
             catch (PingException pe)
             {
-
-                MessageBox.Show("votre appreil ne parvient pas a se connecter a internet veuillez vérifier votre connexion", "connexion internet lente ou inexistante", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Log.Fatal(pe.Message);
             }
             return is_pinged;
         }
@@ -115,8 +116,9 @@ namespace WindowsFormsApp1.views.Admin
             catch (WebException ex)
             {
                 Log.Error(ex.ToString());
+                frmEchecExecution frmEchecExecution = new frmEchecExecution("erreur lors de l'envoie du mail");  
+                frmEchecExecution.ShowDialog();
 
-                MessageBox.Show(ex.Message);
             }
         }
         /// <summary>
@@ -131,6 +133,7 @@ namespace WindowsFormsApp1.views.Admin
             textMatricule.Text = generateMatricule();
             txtDateNaissance.Value = DateTime.Now;
             txtAdresse.Text = string.Empty;
+            SetDatePickerLimits();
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
@@ -155,22 +158,48 @@ namespace WindowsFormsApp1.views.Admin
             return matricule = "HL-DKR-" + DateTime.Now.Year + "-" + nbrSecretaire;
 
         }
+        private void SetDatePickerLimits()
+        {
+            try
+            {
+                var minDate = DateTime.Now.AddYears(-100);
+                var maxDate = DateTime.Now;
+
+                txtDateNaissance.MinDate = minDate;
+                txtDateNaissance.MaxDate = maxDate;
+
+                Log.Information("Limites de date définies: MinDate={MinDate}, MaxDate={MaxDate}", minDate, maxDate);
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, "Erreur lors de la configuration des limites de date.");
+            }
+        }
 
         private void btnValiderAjoutUtilisateur_Click(object sender, EventArgs e)
         {
             if (chechkInput())
             {
                 Log.Information("veuillez remplir tous les champs");
+                message = "veuillez remplir tous les champs";
+                frmInformation frmInformationMessage = new frmInformation(message);
+                frmInformationMessage.ShowDialog();
                 return;
             }
             if (AgeUtilisateur() == 0)
             {
                 Log.Information("une secretaire  ne peut avoir moins de 20 ans");
+                message = "une secretaire ne peut avoir moins de 20 ans";
+                frmInformation frmInformationMessage = new frmInformation(message);
+                frmInformationMessage.ShowDialog();
                 return;
             }
             if (!ping_google())
             {
                 Log.Fatal("pas de connexion ");
+                message = "Votre appareil doit etre connecté a internet";
+                frmEchecExecution frmEchecExecution = new frmEchecExecution(message);
+                frmEchecExecution.ShowDialog();
                 return;
             }
             var role = db.Role.Where(r => r.CodeRole == "SEC").FirstOrDefault();
@@ -206,6 +235,8 @@ namespace WindowsFormsApp1.views.Admin
 
                 sendMail(txtEmail.Text, mdpTmp, identfiantTmp);
                 Log.Information("envoie du mail à la secretaire");
+                frmExecutionReussie frmExecutionReussie = new frmExecutionReussie("Secretaire Ajoutée");
+                frmExecutionReussie.ShowDialog();
                 ResetForm();
             }
             catch (Exception ex) {

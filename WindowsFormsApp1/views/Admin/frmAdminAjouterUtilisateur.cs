@@ -17,6 +17,8 @@ using WindowsFormsApp1.Models;
 using Log = Serilog.Log;
 using Elasticsearch.Net;
 using WindowsFormsApp1.config;
+using System.Web.Services.Description;
+using WindowsFormsApp1.CustomControls;
 
 namespace WindowsFormsApp1.views.Admin
 {
@@ -29,7 +31,8 @@ namespace WindowsFormsApp1.views.Admin
 
 
         bdRdvMedicalContext db = new bdRdvMedicalContext();
-       // Log.Information("Lancement de lapplication...");
+        // Log.Information("Lancement de lapplication...");
+       
       
 
 
@@ -43,6 +46,7 @@ namespace WindowsFormsApp1.views.Admin
         {
             this.Close();
         }
+        string message;
 
       
         /// <summary>
@@ -73,13 +77,10 @@ namespace WindowsFormsApp1.views.Admin
         }
         public void  ResetForm()
         {
-           // cbbRoleUtilisateur.ValueMember = "Value";
-           // cbbRoleUtilisateur.DisplayMember = "Text";
-          //  cbbRoleUtilisateur.DataSource = loadRoleccb();
+           
             cbbSpecialite.ValueMember = "Value";
             cbbSpecialite.DisplayMember = "Text";
             cbbSpecialite.DataSource = loadSpecialiteccb();
-            //cbbRoleUtilisateur.Focus();
             txtAdresse.Focus();
             txtAdresse.Text = string.Empty;
             txtDateNaissance.Value = DateTime.Now;
@@ -87,38 +88,9 @@ namespace WindowsFormsApp1.views.Admin
             txtNumeroOrdre.Text  = string.Empty ;
             txtNumeroTelephone.Text = string.Empty ;
             txtNomPrenom.Text = string.Empty ;
-            /*
-
-                  txtNumeroOrdre.Enabled = false;
-             txtNumeroOrdre.Visible = false;
-             cbbSpecialite.Enabled = false;
-             lblNumeroOrdre.Visible = false;
-             cbbSpecialite.Visible = false;
-             lblSpecialite.Visible = false;
-             */
+            SetDatePickerLimits();
+            
         }
-        /*
-         
-                 public List<SelectListViewModel> loadRoleccb()
-        {
-            var s = db.Role.Where(a => a.CodeRole!="ADM").ToList();
-            List<SelectListViewModel> liste = new List<SelectListViewModel>();
-            SelectListViewModel b = new SelectListViewModel();
-            b.Text = "Selectionner une valeur";
-            b.Value = "";
-            liste.Add(b);
-            foreach (var item in s)
-            {
-                SelectListViewModel a = new SelectListViewModel();
-                a.Text = item.LibelleRole;
-                a.Value = item.IdRole.ToString();
-                liste.Add(a);
-
-            }
-            return liste;
-        }
-
-         */
         public List<SelectListViewModel> loadSpecialiteccb()
         {
             var s = db.Specialite.ToList();
@@ -188,8 +160,8 @@ namespace WindowsFormsApp1.views.Admin
             catch (WebException ex)
             {
                 Log.Error(ex.ToString());
-
-                MessageBox.Show(ex.Message);
+                frmEchecExecution frmEchecExecution = new frmEchecExecution("une erreur pendant l'envoie du mail");
+                frmEchecExecution.ShowDialog();
             }
         }
         /// <summary>
@@ -212,27 +184,50 @@ namespace WindowsFormsApp1.views.Admin
             }
             catch (PingException pe)
             {
-
-                MessageBox.Show("votre appreil ne parvient pas a se connecter a internet veuillez vérifier votre connexion", "connexion internet lente ou inexistante", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Log.Fatal(pe.ToString());
             }
             return is_pinged;
         }
+        private void SetDatePickerLimits()
+        {
+            try
+            {
+                var minDate = DateTime.Now.AddYears(-100);
+                var maxDate = DateTime.Now;
 
+                txtDateNaissance.MinDate = minDate;
+                txtDateNaissance.MaxDate = maxDate;
+
+                Log.Information("Limites de date définies: MinDate={MinDate}, MaxDate={MaxDate}", minDate, maxDate);
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, "Erreur lors de la configuration des limites de date.");
+            }
+        }
         private void btnValiderAjoutUtilisateur_Click_1(object sender, EventArgs e)
         {
             if (chechkInput())
             {
                 Log.Information("veuillez remplir tous les champs");
+                message = "veuillez remplir tous les champs";
+                frmInformation frmInformationMessage = new frmInformation(message);
+                frmInformationMessage.ShowDialog();
                 return;
             }
             if (AgeUtilisateur() ==0)
             {
                 Log.Information("un medecin ne peut avoir moins de 20 ans");
+                message = "une medecin ne peut avoir moins de 20 ans";
+                frmInformation frmInformationMessage = new frmInformation(message);
                 return;
             }
             if (!ping_google())
             {
                 Log.Fatal("pas de connexion ");
+                message = "Votre appareil doit etre connecté a internet";
+                frmEchecExecution frmEchecExecution = new frmEchecExecution(message);
+                frmEchecExecution.ShowDialog();
                 return;
             }
                 var role  = db.Role.Where(r=> r.CodeRole=="MED").FirstOrDefault();

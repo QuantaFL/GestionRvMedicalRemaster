@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Serilog;
+using WindowsFormsApp1.CustomControls;
 using WindowsFormsApp1.Models;
 using WindowsFormsApp1.views.Admin;
 
@@ -24,7 +25,7 @@ namespace WindowsFormsApp1.views
         private void btnAjouterUtilisateur_Click(object sender, EventArgs e)
         {
             frmAdminAjouterUtilisateur ajouterUtilisateur = new frmAdminAjouterUtilisateur();
-            ajouterUtilisateur.Show();
+            ajouterUtilisateur.ShowDialog();
         }
 
         private void frmAccueilAdmin_Load(object sender, EventArgs e)
@@ -45,14 +46,17 @@ namespace WindowsFormsApp1.views
         private void btnAjouterSecretaire_Click_1(object sender, EventArgs e)
         {
             frmAdminAjouterSecretaire frmAdminAjouterSecretaire = new frmAdminAjouterSecretaire();
-            frmAdminAjouterSecretaire.Show();
+            frmAdminAjouterSecretaire.ShowDialog();
         }
         
         private void btnRechercherMedecin_Click(object sender, EventArgs e)
         {
+            frmInformation frmInformation = new frmInformation();
+            string message;
             if (string.IsNullOrEmpty(txtRechercherMedecin.Text))
             {
                 Log.Information("valeur saisie invalide");
+
             }
             else
             {
@@ -65,11 +69,6 @@ namespace WindowsFormsApp1.views
                         Log.Information("aucun medecin n'a ce numero d'ordre");
                         return;
                     }
-
-
-
-
-
                 }
                 catch (Exception ex)
                 {
