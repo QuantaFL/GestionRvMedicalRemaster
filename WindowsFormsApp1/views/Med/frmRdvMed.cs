@@ -31,7 +31,10 @@ namespace WindowsFormsApp1.views.Med
         {
             
            Medecin currentMedecin = (Medecin)FrmConnexion.user;
-                dgRdvMedecin.DataSource = bd.RendezVous.Where(rdv => rdv.IdMedecin == currentMedecin.IdP).Select(rdv => new
+            var date = DateTime.Now.Date.ToString();
+            var rdvs = bd.RendezVous.Where(r=> r.IdMedecin == currentMedecin.IdP
+           ).ToList();
+                dgRdvMedecin.DataSource = rdvs.Where(rv=>DateTime.Parse(rv.DateRv).Date.ToString()==date).Select(rdv => new
                 {
                    Heure = rdv.HeureRv,
                    DateRv = rdv.DateRv,
@@ -44,6 +47,11 @@ namespace WindowsFormsApp1.views.Med
                 
            
          
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
