@@ -58,12 +58,11 @@
                 new Secretaire
                 {
                     DateNaissance = DateTime.Now,
-                    Identifiant
-                    = "secret",
+                    Identifiant = "secret",
                     Email = "secretaire@gmail.com",
                     NomPrenom = "Rama Fall",
                     IdRole = 3,
-                    MotDePasse = "passer",
+                    MotDePasse = SaltHash.HashPassword("passer"),
                     TelephoneFixe = "7777777",
                     PremiereConnexion = 1,
                     Addresse = "medina",
