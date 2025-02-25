@@ -70,7 +70,7 @@
             this.panel1.Controls.Add(this.pictureBox2);
             this.panel1.Location = new System.Drawing.Point(0, 46);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(497, 111);
+            this.panel1.Size = new System.Drawing.Size(497, 138);
             this.panel1.TabIndex = 4;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
@@ -81,7 +81,7 @@
             this.btnOui.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnOui.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnOui.ForeColor = System.Drawing.Color.White;
-            this.btnOui.Location = new System.Drawing.Point(186, 65);
+            this.btnOui.Location = new System.Drawing.Point(223, 96);
             this.btnOui.Name = "btnOui";
             this.btnOui.Size = new System.Drawing.Size(97, 32);
             this.btnOui.TabIndex = 4;
@@ -103,7 +103,7 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = global::WindowsFormsApp1.Properties.Resources.annuler;
-            this.pictureBox2.Location = new System.Drawing.Point(12, 5);
+            this.pictureBox2.Location = new System.Drawing.Point(12, 31);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(111, 97);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -114,7 +114,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(497, 159);
+            this.ClientSize = new System.Drawing.Size(497, 186);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;

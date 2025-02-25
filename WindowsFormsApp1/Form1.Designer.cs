@@ -77,6 +77,7 @@
             this.btnConnexion.Text = "&Se Connecter";
             this.btnConnexion.UseVisualStyleBackColor = false;
             this.btnConnexion.Click += new System.EventHandler(this.btnConnexion_Click);
+            this.btnConnexion.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnConnexion_KeyDown);
             // 
             // label2
             // 
@@ -110,6 +111,7 @@
             this.txtMotDePasse.TabIndex = 4;
             this.txtMotDePasse.UseSystemPasswordChar = true;
             this.txtMotDePasse.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            this.txtMotDePasse.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtMotDePasse_KeyDown);
             // 
             // pictureBox4
             // 

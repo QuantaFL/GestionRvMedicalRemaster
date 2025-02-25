@@ -111,6 +111,16 @@ namespace WindowsFormsApp1
 
         private void FrmConnexion_KeyDown(object sender, KeyEventArgs e)
         {
+            
+        }
+
+        private void btnConnexion_KeyDown(object sender, KeyEventArgs e)
+        {
+
+        }
+
+        private void txtMotDePasse_KeyDown(object sender, KeyEventArgs e)
+        {
             if (e.KeyCode == Keys.Enter)
             {
                 btnConnexion.PerformClick();

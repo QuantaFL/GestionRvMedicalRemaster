@@ -186,6 +186,15 @@ namespace WindowsFormsApp1.views.Admin
                 frmInformationMessage.ShowDialog();
                 return;
             }
+            var sec = db.Secretaires.Where(s=> s.TelephoneFixe == txtTelephoneFixe.Text
+            || s.Email == txtEmail.Text || s.Tel == txtNumeroTelephone.Text
+            ).FirstOrDefault();
+            if (sec != null)
+            {
+                frmEchecExecution frmEchecExecution = new frmEchecExecution("le telephone fixe\n le numero \n ou l'email sont déjà utiliser");
+                frmEchecExecution.ShowDialog();
+                return;
+            }
             if (AgeUtilisateur() == 0)
             {
                 Log.Information("une secretaire  ne peut avoir moins de 20 ans");

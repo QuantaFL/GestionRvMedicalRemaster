@@ -219,18 +219,21 @@ namespace WindowsFormsApp1.views.Admin
                 frmInformationMessage.ShowDialog();
                 return;
             }
-            var med = db.Medecins.Where(m => m.NumeroOrdre == txtNumeroOrdre.Text).FirstOrDefault();
+            var med = db.Medecins.Where(m => m.NumeroOrdre == txtNumeroOrdre.Text
+            || m.Email == txtEmail.Text || m.Tel == txtNumeroTelephone.Text
+            ).FirstOrDefault();
             if (med != null)
             {
-                frmEchecExecution frmEchecExecution = new frmEchecExecution("un medecin à déjà numero d'ordre");
+                frmEchecExecution frmEchecExecution = new frmEchecExecution("le numero d'ordre\n le numero \n ou l'email sont déjà utiliser");
                 frmEchecExecution.ShowDialog();
                 return;
             }
             if (AgeUtilisateur() ==0)
             {
                 Log.Information("un medecin ne peut avoir moins de 20 ans");
-                message = "une medecin ne peut avoir moins de 20 ans";
+                message = "une medecin ne peut avoir moins\n de 20 ans";
                 frmInformation frmInformationMessage = new frmInformation(message);
+                frmInformationMessage.ShowDialog();
                 return;
             }
             if (!ping_google())
