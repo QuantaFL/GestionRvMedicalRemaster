@@ -30,17 +30,17 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAccueilAdmin));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnRechercherSecretaire = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtRerchercherSecretaire = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnAjouterSecretaire = new System.Windows.Forms.Button();
             this.btnCorbeille = new System.Windows.Forms.Button();
             this.txtRechercherMedecin = new System.Windows.Forms.TextBox();
             this.btnBloquerUtilisateur = new System.Windows.Forms.Button();
             this.btnRechercherMedecin = new System.Windows.Forms.Button();
             this.btnAjouterUtilisateur = new System.Windows.Forms.Button();
             this.dgUtilisateur = new System.Windows.Forms.DataGridView();
-            this.btnAjouterSecretaire = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtRerchercherSecretaire = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.btnRechercherSecretaire = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgUtilisateur)).BeginInit();
             this.SuspendLayout();
@@ -64,6 +64,63 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1918, 1078);
             this.panel1.TabIndex = 0;
+            // 
+            // btnRechercherSecretaire
+            // 
+            this.btnRechercherSecretaire.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRechercherSecretaire.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnRechercherSecretaire.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRechercherSecretaire.ForeColor = System.Drawing.Color.White;
+            this.btnRechercherSecretaire.Location = new System.Drawing.Point(1132, 81);
+            this.btnRechercherSecretaire.Name = "btnRechercherSecretaire";
+            this.btnRechercherSecretaire.Size = new System.Drawing.Size(263, 32);
+            this.btnRechercherSecretaire.TabIndex = 10;
+            this.btnRechercherSecretaire.Text = "Rechercher une s&ecretaire";
+            this.btnRechercherSecretaire.UseVisualStyleBackColor = true;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(852, 68);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(68, 18);
+            this.label2.TabIndex = 9;
+            this.label2.Text = "Matricule";
+            // 
+            // txtRerchercherSecretaire
+            // 
+            this.txtRerchercherSecretaire.Location = new System.Drawing.Point(855, 87);
+            this.txtRerchercherSecretaire.Name = "txtRerchercherSecretaire";
+            this.txtRerchercherSecretaire.Size = new System.Drawing.Size(257, 22);
+            this.txtRerchercherSecretaire.TabIndex = 8;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(852, 20);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(104, 18);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "Numero Ordre";
+            // 
+            // btnAjouterSecretaire
+            // 
+            this.btnAjouterSecretaire.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAjouterSecretaire.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(169)))), ((int)(((byte)(155)))));
+            this.btnAjouterSecretaire.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnAjouterSecretaire.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAjouterSecretaire.ForeColor = System.Drawing.Color.White;
+            this.btnAjouterSecretaire.Location = new System.Drawing.Point(263, 66);
+            this.btnAjouterSecretaire.Name = "btnAjouterSecretaire";
+            this.btnAjouterSecretaire.Size = new System.Drawing.Size(226, 43);
+            this.btnAjouterSecretaire.TabIndex = 6;
+            this.btnAjouterSecretaire.Text = "Ajouter une &secretaire";
+            this.btnAjouterSecretaire.UseVisualStyleBackColor = true;
+            this.btnAjouterSecretaire.Click += new System.EventHandler(this.btnAjouterSecretaire_Click_1);
             // 
             // btnCorbeille
             // 
@@ -108,7 +165,7 @@
             this.btnRechercherMedecin.ForeColor = System.Drawing.Color.White;
             this.btnRechercherMedecin.Location = new System.Drawing.Point(1132, 38);
             this.btnRechercherMedecin.Name = "btnRechercherMedecin";
-            this.btnRechercherMedecin.Size = new System.Drawing.Size(211, 32);
+            this.btnRechercherMedecin.Size = new System.Drawing.Size(263, 32);
             this.btnRechercherMedecin.TabIndex = 2;
             this.btnRechercherMedecin.Text = "&Rechercher un medecin";
             this.btnRechercherMedecin.UseVisualStyleBackColor = true;
@@ -144,63 +201,6 @@
             this.dgUtilisateur.RowTemplate.Height = 24;
             this.dgUtilisateur.Size = new System.Drawing.Size(1858, 930);
             this.dgUtilisateur.TabIndex = 0;
-            // 
-            // btnAjouterSecretaire
-            // 
-            this.btnAjouterSecretaire.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAjouterSecretaire.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(169)))), ((int)(((byte)(155)))));
-            this.btnAjouterSecretaire.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnAjouterSecretaire.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAjouterSecretaire.ForeColor = System.Drawing.Color.White;
-            this.btnAjouterSecretaire.Location = new System.Drawing.Point(263, 66);
-            this.btnAjouterSecretaire.Name = "btnAjouterSecretaire";
-            this.btnAjouterSecretaire.Size = new System.Drawing.Size(226, 43);
-            this.btnAjouterSecretaire.TabIndex = 6;
-            this.btnAjouterSecretaire.Text = "Ajouter une &secretaire";
-            this.btnAjouterSecretaire.UseVisualStyleBackColor = true;
-            this.btnAjouterSecretaire.Click += new System.EventHandler(this.btnAjouterSecretaire_Click_1);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(852, 20);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(104, 18);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "Numero Ordre";
-            // 
-            // txtRerchercherSecretaire
-            // 
-            this.txtRerchercherSecretaire.Location = new System.Drawing.Point(855, 87);
-            this.txtRerchercherSecretaire.Name = "txtRerchercherSecretaire";
-            this.txtRerchercherSecretaire.Size = new System.Drawing.Size(257, 22);
-            this.txtRerchercherSecretaire.TabIndex = 8;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(852, 68);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(68, 18);
-            this.label2.TabIndex = 9;
-            this.label2.Text = "Matricule";
-            // 
-            // btnRechercherSecretaire
-            // 
-            this.btnRechercherSecretaire.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnRechercherSecretaire.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnRechercherSecretaire.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRechercherSecretaire.ForeColor = System.Drawing.Color.White;
-            this.btnRechercherSecretaire.Location = new System.Drawing.Point(1132, 81);
-            this.btnRechercherSecretaire.Name = "btnRechercherSecretaire";
-            this.btnRechercherSecretaire.Size = new System.Drawing.Size(211, 32);
-            this.btnRechercherSecretaire.TabIndex = 10;
-            this.btnRechercherSecretaire.Text = "&Rechercher une secretaire";
-            this.btnRechercherSecretaire.UseVisualStyleBackColor = true;
             // 
             // frmAccueilAdmin
             // 

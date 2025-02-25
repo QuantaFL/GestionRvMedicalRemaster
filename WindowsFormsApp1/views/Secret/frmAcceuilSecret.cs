@@ -7,8 +7,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.VisualBasic.Logging;
+using Serilog;
 using WindowsFormsApp1.Models;
 using WindowsFormsApp1.views.Admin;
+using Serilog;
+using WindowsFormsApp1.CustomControls;
 
 namespace WindowsFormsApp1.views.Secret
 {
@@ -70,58 +74,45 @@ namespace WindowsFormsApp1.views.Secret
                 }
                 else
                 {
-                    MessageBox.Show("Veuillez svp remplir un champ");
+                    frmInformation frmInformation = new frmInformation("Veuillez svp remplir un champ");
+                    frmInformation.ShowDialog();
                 }
             }
         }
 
         private static void ShowPatientTrouvePrompt(Patient patient)
         {
-            frmMessage frmMessage = new frmMessage();
-            var result = MessageBox.Show(
-                "Patient : " + patient.NomPrenom,
-                "Voulez vous prend un rv pour cette personne ?",
-                MessageBoxButtons.OKCancel,
-                MessageBoxIcon.Information
-            );
-
-            if (result == DialogResult.OK)
+          
+            frmMessage frmMessage = new frmMessage("Voulez-vous prendre rendez-vous","patient trouvé");
+            frmMessage.ShowDialog();
+                        
+           
+            if(frmMessage.CustomDialogResult == DialogResult.Yes)
             {
+                //ICIIIII
+                Serilog.Log.Information("redirection vers l'ajout d'un patient");
                 frmRdv frmRdv = new frmRdv(patient);
-                frmDashSecretaire parentForm = Application.OpenForms["frmDashSecretaire"] as frmDashSecretaire;
-                parentForm.fermer();
-                frmRdv.MdiParent = parentForm;
-                frmRdv.WindowState = FormWindowState.Maximized;
                 frmRdv.Show();
-                //fermer();
-                //frmAcceuilSecret frmAcceuilSecret = new frmAcceuilSecret();
-                //frmAcceuilSecret.MdiParent = this;
-                //frmAcceuilSecret.Show();
-                //frmAcceuilSecret.WindowState = FormWindowState.Maximized;
+
             }
-            else if (result == DialogResult.Cancel)
-            {
-                //TODO
-            }
+
         }
 
         private static void ShowNoPatientPrompt()
         {
-            var result = MessageBox.Show(
-                "Le Patient N'existe pas dans la base ",
-                "Voulez vous l'ajouter ?",
-                MessageBoxButtons.OKCancel,
-                MessageBoxIcon.Information
-            );
+           
+            frmMessage frmMessage = new frmMessage("Voulez vous l'ajouter ?", "Le Patient N'existe pas");
+            frmMessage.ShowDialog();
 
-            if (result == DialogResult.OK)
+            if (frmMessage.CustomDialogResult == DialogResult.Yes)
             {
-
+                Serilog.Log.Information("Redirection vers le formulaire d'ajout patient");
+                frmCreerPatient frmCreerPatient = new frmCreerPatient();
+                frmCreerPatient.ShowDialog();
+                return;
             }
-            else if (result == DialogResult.Cancel)
-            {
-                //TODO
-            }
+            
+           
         }
 
 

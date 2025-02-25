@@ -54,10 +54,11 @@ namespace WindowsFormsApp1.views.Admin
 
         private void btnCorbeille_Click(object sender, EventArgs e)
         {
-            Log.Information("hello");
+            /*
+                    Log.Information("hello");
             frmMessage frmMessage = new frmMessage("Tentative de suppression");
             frmMessage.Show();
-            if (frmMessage.CustomDialogResult == DialogResult.No) {
+            if (frmMessage.CustomDialogResult == 0) {
                 Log.Information("NON");
 
             }
@@ -65,6 +66,8 @@ namespace WindowsFormsApp1.views.Admin
             {
                 Log.Information("OUI2");
             }
+             
+             */
         }
     }
 }

@@ -15,22 +15,32 @@ namespace WindowsFormsApp1.views.Admin
         public frmMessage()
         {
             InitializeComponent();
+           /// resetValue();
         }
         public frmMessage(string Message)
         {
             InitializeComponent();
             lblMessage.Text = Message;
+           // resetValue();
+        }
+        public frmMessage(string Message,string titre)
+        {
+            InitializeComponent();
+            lblMessage.Text = Message;
+            lblTitre.Text = titre;
+            // resetValue();
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
+        public void pictureBox1_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        public DialogResult CustomDialogResult { get; private set; }
+         public DialogResult CustomDialogResult { get; set; }
+      //  public int CustomDialogResult;
 
 
-        private   void frmMessage_Load(object sender, EventArgs e)
+        public   void frmMessage_Load(object sender, EventArgs e)
         {
             
 
@@ -38,20 +48,38 @@ namespace WindowsFormsApp1.views.Admin
         }
         public void resetValue()
         {
-            CustomDialogResult = DialogResult.OK;
+           // CustomDialogResult = -1;
         }
 
-        private void btnOui_Click(object sender, EventArgs e)
+        
+       
+        public int oui()
         {
-            resetValue();
-            CustomDialogResult = DialogResult.Yes;
-            
+            return 1;
+        }
+
+        public int non()
+        {
+            return 0;
+        }
+       
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void btnOui_Click_1(object sender, EventArgs e)
+        {
+            CustomDialogResult = DialogResult.Yes; 
+            this.DialogResult = DialogResult.Yes;  
+            this.Close();
         }
 
         private void btnNon_Click(object sender, EventArgs e)
         {
-            resetValue();
-            CustomDialogResult = DialogResult.No;
+            CustomDialogResult = DialogResult.No;  
+            this.DialogResult = DialogResult.No;   
             this.Close();
         }
     }

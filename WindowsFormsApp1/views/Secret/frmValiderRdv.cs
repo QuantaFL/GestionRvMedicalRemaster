@@ -208,5 +208,10 @@ namespace WindowsFormsApp1.views.Secret
                 txtCout.Text = soin.CoutSoin.ToString();
             }
         }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
