@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApp1.config;
+using WindowsFormsApp1.CustomControls;
 using WindowsFormsApp1.Models;
 using WindowsFormsApp1.views.Admin;
 using WindowsFormsApp1.views.Med;
@@ -100,6 +101,19 @@ namespace WindowsFormsApp1
                         }
                     }
                 }
+            }
+            else { 
+                frmEchecExecution frmEchecExecution = new frmEchecExecution("cet identifiant n'exite pas");
+                frmEchecExecution.ShowDialog();
+            
+            }
+        }
+
+        private void FrmConnexion_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnConnexion.PerformClick();
             }
         }
     }

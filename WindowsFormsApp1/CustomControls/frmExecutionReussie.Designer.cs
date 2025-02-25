@@ -47,14 +47,14 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(410, 44);
+            this.panel2.Size = new System.Drawing.Size(505, 44);
             this.panel2.TabIndex = 2;
             // 
             // pictureBox1
             // 
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Right;
             this.pictureBox1.Image = global::WindowsFormsApp1.Properties.Resources.fermer;
-            this.pictureBox1.Location = new System.Drawing.Point(319, 0);
+            this.pictureBox1.Location = new System.Drawing.Point(414, 0);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(91, 44);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -70,7 +70,7 @@
             this.panel1.Controls.Add(this.pictureBox2);
             this.panel1.Location = new System.Drawing.Point(0, 44);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(410, 113);
+            this.panel1.Size = new System.Drawing.Size(505, 113);
             this.panel1.TabIndex = 3;
             // 
             // btnOui
@@ -79,7 +79,7 @@
             this.btnOui.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnOui.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnOui.ForeColor = System.Drawing.Color.White;
-            this.btnOui.Location = new System.Drawing.Point(192, 65);
+            this.btnOui.Location = new System.Drawing.Point(216, 65);
             this.btnOui.Name = "btnOui";
             this.btnOui.Size = new System.Drawing.Size(95, 32);
             this.btnOui.TabIndex = 4;
@@ -92,7 +92,7 @@
             this.lblMessageSucces.AutoSize = true;
             this.lblMessageSucces.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMessageSucces.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(114)))), ((int)(((byte)(144)))));
-            this.lblMessageSucces.Location = new System.Drawing.Point(150, 5);
+            this.lblMessageSucces.Location = new System.Drawing.Point(174, 5);
             this.lblMessageSucces.Name = "lblMessageSucces";
             this.lblMessageSucces.Size = new System.Drawing.Size(170, 25);
             this.lblMessageSucces.TabIndex = 3;
@@ -112,7 +112,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(410, 159);
+            this.ClientSize = new System.Drawing.Size(505, 159);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
