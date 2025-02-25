@@ -35,7 +35,9 @@ namespace WindowsFormsApp1.views
         }
         public void loadData()
         {
-          dgUtilisateur.DataSource = db.Utilisateurs.ToList();
+          dgUtilisateur.DataSource = db.Utilisateurs.Select(users => new { users.NomPrenom, users.DateNaissance, users.Addresse,users.Email,users.Role.LibelleRole}  ).
+                Where(users => users.LibelleRole != "ADMIN")
+                .ToList();
         }
 
         private void btnAjouterSecretaire_Click(object sender, EventArgs e)
