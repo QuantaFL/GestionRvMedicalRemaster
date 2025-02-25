@@ -40,15 +40,15 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.lblNbRv = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.label5 = new System.Windows.Forms.Label();
+            this.lblNbPatient = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel5 = new System.Windows.Forms.Panel();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.label7 = new System.Windows.Forms.Label();
+            this.lblNbAgenda = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
@@ -183,14 +183,14 @@
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Location = new System.Drawing.Point(0, 200);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1502, 757);
+            this.panel2.Size = new System.Drawing.Size(1502, 895);
             this.panel2.TabIndex = 16;
             // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(114)))), ((int)(((byte)(144)))));
             this.panel3.Controls.Add(this.pictureBox1);
-            this.panel3.Controls.Add(this.label4);
+            this.panel3.Controls.Add(this.lblNbRv);
             this.panel3.Controls.Add(this.label3);
             this.panel3.Location = new System.Drawing.Point(7, 25);
             this.panel3.Name = "panel3";
@@ -208,38 +208,38 @@
             this.label3.TabIndex = 0;
             this.label3.Text = "RENDEZ VOUS ";
             // 
-            // label4
+            // lblNbRv
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label4.Location = new System.Drawing.Point(70, 53);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(41, 30);
-            this.label4.TabIndex = 1;
-            this.label4.Text = "30";
+            this.lblNbRv.AutoSize = true;
+            this.lblNbRv.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNbRv.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lblNbRv.Location = new System.Drawing.Point(70, 53);
+            this.lblNbRv.Name = "lblNbRv";
+            this.lblNbRv.Size = new System.Drawing.Size(41, 30);
+            this.lblNbRv.TabIndex = 1;
+            this.lblNbRv.Text = "30";
             // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(114)))), ((int)(((byte)(144)))));
             this.panel4.Controls.Add(this.pictureBox2);
-            this.panel4.Controls.Add(this.label5);
+            this.panel4.Controls.Add(this.lblNbPatient);
             this.panel4.Controls.Add(this.label6);
             this.panel4.Location = new System.Drawing.Point(484, 25);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(329, 123);
             this.panel4.TabIndex = 1;
             // 
-            // label5
+            // lblNbPatient
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label5.Location = new System.Drawing.Point(70, 53);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(41, 30);
-            this.label5.TabIndex = 1;
-            this.label5.Text = "30";
+            this.lblNbPatient.AutoSize = true;
+            this.lblNbPatient.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNbPatient.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lblNbPatient.Location = new System.Drawing.Point(70, 53);
+            this.lblNbPatient.Name = "lblNbPatient";
+            this.lblNbPatient.Size = new System.Drawing.Size(41, 30);
+            this.lblNbPatient.TabIndex = 1;
+            this.lblNbPatient.Text = "30";
             // 
             // label6
             // 
@@ -277,7 +277,7 @@
             this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(114)))), ((int)(((byte)(144)))));
             this.panel5.Controls.Add(this.label9);
             this.panel5.Controls.Add(this.pictureBox3);
-            this.panel5.Controls.Add(this.label7);
+            this.panel5.Controls.Add(this.lblNbAgenda);
             this.panel5.Controls.Add(this.label8);
             this.panel5.Location = new System.Drawing.Point(965, 25);
             this.panel5.Name = "panel5";
@@ -294,16 +294,16 @@
             this.pictureBox3.TabIndex = 2;
             this.pictureBox3.TabStop = false;
             // 
-            // label7
+            // lblNbAgenda
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label7.Location = new System.Drawing.Point(70, 53);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(41, 30);
-            this.label7.TabIndex = 1;
-            this.label7.Text = "30";
+            this.lblNbAgenda.AutoSize = true;
+            this.lblNbAgenda.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNbAgenda.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lblNbAgenda.Location = new System.Drawing.Point(70, 53);
+            this.lblNbAgenda.Name = "lblNbAgenda";
+            this.lblNbAgenda.Size = new System.Drawing.Size(41, 30);
+            this.lblNbAgenda.TabIndex = 1;
+            this.lblNbAgenda.Text = "30";
             // 
             // label8
             // 
@@ -368,15 +368,15 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lblNbRv;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lblNbPatient;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label lblNbAgenda;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
     }
