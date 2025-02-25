@@ -219,6 +219,13 @@ namespace WindowsFormsApp1.views.Admin
                 frmInformationMessage.ShowDialog();
                 return;
             }
+            var med = db.Medecins.Where(m => m.NumeroOrdre == txtNumeroOrdre.Text).FirstOrDefault();
+            if (med != null)
+            {
+                frmEchecExecution frmEchecExecution = new frmEchecExecution("un medecin à déjà numero d'ordre");
+                frmEchecExecution.ShowDialog();
+                return;
+            }
             if (AgeUtilisateur() ==0)
             {
                 Log.Information("un medecin ne peut avoir moins de 20 ans");
@@ -234,6 +241,8 @@ namespace WindowsFormsApp1.views.Admin
                 frmEchecExecution.ShowDialog();
                 return;
             }
+         
+    
                 var role  = db.Role.Where(r=> r.CodeRole=="MED").FirstOrDefault();
                 int IdRole = role.IdRole;
                 int IdSpecialite = int.Parse(cbbSpecialite.SelectedValue.ToString());
