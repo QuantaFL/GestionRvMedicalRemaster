@@ -42,11 +42,6 @@ namespace WindowsFormsApp1.views.Med
                    Soin = rdv.Soin.NomSoin,
 
                 }).ToList();
-
-
-                
-           
-         
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
