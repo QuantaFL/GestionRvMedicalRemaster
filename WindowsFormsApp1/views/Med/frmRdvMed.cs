@@ -35,8 +35,8 @@ namespace WindowsFormsApp1.views.Med
                 {
                    Heure = rdv.HeureRv,
                    DateRv = rdv.DateRv,
-                   Patient=rdv.Patient,
-                   Soin = rdv.Soin,
+                   Patient=rdv.Patient.NomPrenom,
+                   Soin = rdv.Soin.NomSoin,
 
                 }).ToList();
 
