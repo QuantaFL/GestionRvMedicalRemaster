@@ -40,7 +40,7 @@ namespace WindowsFormsApp1
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new frmDashAdmin());
             //Application.Run(new frmExecutionReussie("good Morning"));
-            Application.Run(new frmCreerPatient());
+            Application.Run(new frmDashSecretaire());
 
             // vider linstance seri/og
             // Log.CloseAndFlush();

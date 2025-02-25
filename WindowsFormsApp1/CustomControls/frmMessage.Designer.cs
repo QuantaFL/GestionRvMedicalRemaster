@@ -33,13 +33,14 @@
             this.btnNon = new System.Windows.Forms.Button();
             this.btnOui = new System.Windows.Forms.Button();
             this.lblMessage = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.lblTitre = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -53,10 +54,11 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(410, 107);
             this.panel1.TabIndex = 0;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // btnNon
             // 
-            this.btnNon.Location = new System.Drawing.Point(266, 59);
+            this.btnNon.Location = new System.Drawing.Point(252, 56);
             this.btnNon.Name = "btnNon";
             this.btnNon.Size = new System.Drawing.Size(75, 23);
             this.btnNon.TabIndex = 5;
@@ -66,28 +68,39 @@
             // 
             // btnOui
             // 
-            this.btnOui.Location = new System.Drawing.Point(156, 59);
+            this.btnOui.Location = new System.Drawing.Point(134, 56);
             this.btnOui.Name = "btnOui";
             this.btnOui.Size = new System.Drawing.Size(75, 23);
             this.btnOui.TabIndex = 4;
             this.btnOui.Text = "Oui";
             this.btnOui.UseVisualStyleBackColor = true;
-            this.btnOui.Click += new System.EventHandler(this.btnOui_Click);
+            this.btnOui.Click += new System.EventHandler(this.btnOui_Click_1);
             // 
             // lblMessage
             // 
             this.lblMessage.AutoSize = true;
-            this.lblMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMessage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(114)))), ((int)(((byte)(144)))));
-            this.lblMessage.Location = new System.Drawing.Point(129, 5);
+            this.lblMessage.Location = new System.Drawing.Point(129, 22);
             this.lblMessage.Name = "lblMessage";
-            this.lblMessage.Size = new System.Drawing.Size(170, 25);
+            this.lblMessage.Size = new System.Drawing.Size(144, 20);
             this.lblMessage.TabIndex = 3;
             this.lblMessage.Text = "Valider ou annuler";
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::WindowsFormsApp1.Properties.Resources.question;
+            this.pictureBox2.Location = new System.Drawing.Point(12, 5);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(111, 97);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 0;
+            this.pictureBox2.TabStop = false;
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(114)))), ((int)(((byte)(144)))));
+            this.panel2.Controls.Add(this.lblTitre);
             this.panel2.Controls.Add(this.pictureBox1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
@@ -107,15 +120,16 @@
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
-            // pictureBox2
+            // lblTitre
             // 
-            this.pictureBox2.Image = global::WindowsFormsApp1.Properties.Resources.question;
-            this.pictureBox2.Location = new System.Drawing.Point(12, 5);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(111, 97);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 0;
-            this.pictureBox2.TabStop = false;
+            this.lblTitre.AutoSize = true;
+            this.lblTitre.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitre.ForeColor = System.Drawing.Color.White;
+            this.lblTitre.Location = new System.Drawing.Point(3, 9);
+            this.lblTitre.Name = "lblTitre";
+            this.lblTitre.Size = new System.Drawing.Size(146, 20);
+            this.lblTitre.TabIndex = 2;
+            this.lblTitre.Text = "Liste des agendas";
             // 
             // frmMessage
             // 
@@ -132,9 +146,10 @@
             this.Load += new System.EventHandler(this.frmMessage_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -146,7 +161,8 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label lblMessage;
-        private System.Windows.Forms.Button btnOui;
         private System.Windows.Forms.Button btnNon;
+        private System.Windows.Forms.Button btnOui;
+        private System.Windows.Forms.Label lblTitre;
     }
 }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Windows.Forms;
 using WindowsFormsApp1.Models;
 using Serilog;
+using System.Drawing;
 
 namespace WindowsFormsApp1.views.Secret
 {
@@ -147,7 +148,7 @@ namespace WindowsFormsApp1.views.Secret
             {
                 //agenda = (Agenda)dgAgendaMedecin.CurrentRow.Cells[0].Value;
                 var idAgenda = int.Parse(dgAgendaMedecin.CurrentRow.Cells[0].Value.ToString());
-                MessageBox.Show(idAgenda.ToString());
+             //MessageBox.Show(idAgenda.ToString());
                 agenda = bd.Agenda
                     .Where(a => a.IdAgenda == idAgenda)
                     .FirstOrDefault();
@@ -155,14 +156,15 @@ namespace WindowsFormsApp1.views.Secret
 
                 frmValiderRdv frmValiderRdv = new frmValiderRdv(patient, agenda);
 
-                frmDashSecretaire parentForm = Application.OpenForms["frmDashSecretaire"] as frmDashSecretaire;
-                parentForm.fermer();
+               // frmDashSecretaire parentForm = Application.OpenForms["frmDashSecretaire"] as frmDashSecretaire;
+               // parentForm.fermer();
 
-                frmValiderRdv.MdiParent = parentForm;
-                frmValiderRdv.WindowState = FormWindowState.Maximized;
+               // frmValiderRdv.MdiParent = parentForm;
+               // frmValiderRdv.WindowState = FormWindowState.Maximized;
                 frmValiderRdv.Show();
 
                 Log.Information("Navigation vers le formulaire de validation de RDV.");
+                this.Close();
             }
             else
             {
@@ -179,6 +181,27 @@ namespace WindowsFormsApp1.views.Secret
         private void txtDateChercher_ValueChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void pnlControl_MouseMove(object sender, MouseEventArgs e)
+        {
+           // pnlControl.BackColor = System.Drawing.Color.FromArgb(255, 111, 97);
+        }
+
+        private void pnlControl_MouseLeave(object sender, EventArgs e)
+        {
+           // pnlControl.BackColor = System.Drawing.Color.FromArgb(75, 108, 140);
+
+        }
+
+        private void pnlControl_Paint(object sender, PaintEventArgs e)
+        {
+            //this.Close();
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
