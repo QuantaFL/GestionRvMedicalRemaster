@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Serilog;
+using WindowsFormsApp1.CustomControls;
 using WindowsFormsApp1.Models;
 
 namespace WindowsFormsApp1.views.Secret
@@ -50,7 +51,7 @@ namespace WindowsFormsApp1.views.Secret
             {
                 if (cbbCreneaux.SelectedValue == null || cbbSoins.SelectedValue == null)
                 {
-                    MessageBox.Show("Selectionner un créneau et un soin.");
+                    new frmExecutionReussie("Selectionner un créneau et un soin.");
                     return;
                 }
 
@@ -77,12 +78,12 @@ namespace WindowsFormsApp1.views.Secret
                 cbbCreneaux.DataSource = await LoadCreneauxAsync(agenda);
                 ResetForm();
 
-                MessageBox.Show("Rdv valide avec succes.");
+               new frmExecutionReussie("Rdv valide avec succes.");
             }
             catch (Exception ex)
             {
                 Log.Error(ex, "Erreur lors de validation du rdv.");
-                MessageBox.Show("Erreur validation: " + ex.Message);
+                new frmEchecExecution("Erreur validation: " + ex.Message);
             }
         }
 
@@ -115,7 +116,7 @@ namespace WindowsFormsApp1.views.Secret
             catch (Exception ex)
             {
                 Log.Error(ex, "Erreur lors du chargement des paiements.");
-                MessageBox.Show("Erreur paiement.");
+                new frmEchecExecution("Erreur paiement.");
                 return new List<SelectListViewModel>();
             }
         }
@@ -142,7 +143,7 @@ namespace WindowsFormsApp1.views.Secret
             catch (Exception ex)
             {
                 Log.Error(ex, "Erreur lors du chargement des soins.");
-                MessageBox.Show("Erreur soins.");
+                new frmEchecExecution("Erreur soins.");
                 return new List<SelectListViewModel>();
             }
         }
@@ -192,7 +193,7 @@ namespace WindowsFormsApp1.views.Secret
             catch (Exception ex)
             {
                 Log.Error(ex, "Erreur lors du chargement des créneaux.");
-                MessageBox.Show("Erreur créneaux: " + ex.Message);
+                new frmEchecExecution("Erreur créneaux: " + ex.Message);
                 return new List<SelectListViewModel>();
             }
         }
