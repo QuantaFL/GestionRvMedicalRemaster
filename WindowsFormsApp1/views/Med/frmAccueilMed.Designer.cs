@@ -30,12 +30,12 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.dgAgendaMedecin = new System.Windows.Forms.DataGridView();
             this.txtDateChercher = new System.Windows.Forms.DateTimePicker();
             this.btnRechercherAgenda = new System.Windows.Forms.Button();
             this.btnModifierAgenda = new System.Windows.Forms.Button();
             this.btnVoirRdv = new System.Windows.Forms.Button();
             this.btnAjouterAgenda = new System.Windows.Forms.Button();
+            this.dgAgendaMedecin = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgAgendaMedecin)).BeginInit();
@@ -61,32 +61,12 @@
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.pictureBox1.Image = global::WindowsFormsApp1.Properties.Resources.rdv1;
-<<<<<<< Updated upstream
             this.pictureBox1.Location = new System.Drawing.Point(607, 143);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(879, 963);
-=======
-            this.pictureBox1.Location = new System.Drawing.Point(405, 93);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(586, 626);
->>>>>>> Stashed changes
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 13;
             this.pictureBox1.TabStop = false;
-            // 
-            // dgAgendaMedecin
-            // 
-            this.dgAgendaMedecin.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(220)))), ((int)(((byte)(234)))));
-            this.dgAgendaMedecin.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgAgendaMedecin.Location = new System.Drawing.Point(0, 93);
-            this.dgAgendaMedecin.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.dgAgendaMedecin.Name = "dgAgendaMedecin";
-            this.dgAgendaMedecin.RowHeadersWidth = 51;
-            this.dgAgendaMedecin.RowTemplate.Height = 24;
-            this.dgAgendaMedecin.Size = new System.Drawing.Size(407, 626);
-            this.dgAgendaMedecin.TabIndex = 11;
-            this.dgAgendaMedecin.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgAgendaMedecin_CellContentClick);
             // 
             // txtDateChercher
             // 
@@ -110,6 +90,7 @@
             this.btnRechercherAgenda.TabIndex = 9;
             this.btnRechercherAgenda.Text = "&Rechercher un agenda";
             this.btnRechercherAgenda.UseVisualStyleBackColor = true;
+            this.btnRechercherAgenda.Click += new System.EventHandler(this.btnRechercherAgenda_Click);
             // 
             // btnModifierAgenda
             // 
@@ -155,6 +136,19 @@
             this.btnAjouterAgenda.Text = "Ajouter un Ag&enda";
             this.btnAjouterAgenda.UseVisualStyleBackColor = true;
             this.btnAjouterAgenda.Click += new System.EventHandler(this.btnAjouterAgenda_Click);
+            // 
+            // dgAgendaMedecin
+            // 
+            this.dgAgendaMedecin.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(220)))), ((int)(((byte)(234)))));
+            this.dgAgendaMedecin.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgAgendaMedecin.Location = new System.Drawing.Point(0, 93);
+            this.dgAgendaMedecin.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.dgAgendaMedecin.Name = "dgAgendaMedecin";
+            this.dgAgendaMedecin.RowHeadersWidth = 51;
+            this.dgAgendaMedecin.RowTemplate.Height = 24;
+            this.dgAgendaMedecin.Size = new System.Drawing.Size(407, 626);
+            this.dgAgendaMedecin.TabIndex = 11;
+            this.dgAgendaMedecin.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgAgendaMedecin_CellContentClick);
             // 
             // frmAccueilMed
             // 
