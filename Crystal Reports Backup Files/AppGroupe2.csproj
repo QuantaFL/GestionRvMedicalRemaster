@@ -161,6 +161,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="config\CustomNavigatorMdi.cs" />
     <Compile Include="config\SaltHash.cs" />
     <Compile Include="config\WhatsappSink.cs" />
     <Compile Include="CustomControls\frmEchecExecution.cs">
@@ -444,6 +445,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ILLink\ILLink.Descriptors.LibraryBuild.xml" />
+    <None Include="Resources\rdv1.jpg" />
     <None Include="Resources\information-button.png" />
     <None Include="Resources\lgb.jpg" />
     <None Include="Resources\rdv.jpg" />

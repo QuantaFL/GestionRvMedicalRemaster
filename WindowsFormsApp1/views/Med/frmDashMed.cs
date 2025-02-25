@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.VisualBasic;
 using Microsoft.VisualBasic.Devices;
+using WindowsFormsApp1.config;
 using WindowsFormsApp1.views.Secret;
 
 namespace WindowsFormsApp1.views.Med
@@ -20,15 +21,6 @@ namespace WindowsFormsApp1.views.Med
         {
             InitializeComponent();
         }
-        private void fermer()
-        {
-            Form[] charr = this.MdiChildren;
-            foreach (Form f in charr)
-            {
-                f.Close();
-            }
-        }
-
 
         private void frmDashMed_Load(object sender, EventArgs e)
         {
@@ -47,15 +39,7 @@ namespace WindowsFormsApp1.views.Med
 
         private void btnListerAgenda_Click(object sender, EventArgs e)
         {
-            fermer();
-            //frmAcceuilMed frmAcceuilMed = new frmAcceuilMed();
-            //frmAcceuilMed.MdiParent = this;
-            //frmAcceuilSecret.Show();
-            //frmAcceuilSecret.WindowState = FormWindowState.Maximized;
-            frmAccueilMed frmAccueilMed = new frmAccueilMed();
-            frmAccueilMed.MdiParent = this;
-            frmAccueilMed.Show();
-            frmAccueilMed.WindowState = FormWindowState.Maximized;
+            CustomNavigatorMdi.push(this, btnListerAgenda, new frmAccueilMed());
         }
     }
 }
