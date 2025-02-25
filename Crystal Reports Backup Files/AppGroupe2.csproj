@@ -175,6 +175,12 @@
     <Compile Include="CustomControls\frmExecutionReussie.Designer.cs">
       <DependentUpon>frmExecutionReussie.cs</DependentUpon>
     </Compile>
+    <Compile Include="CustomControls\frmInformation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomControls\frmInformation.Designer.cs">
+      <DependentUpon>frmInformation.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -243,6 +249,12 @@
     <Compile Include="views\Med\frmDashMed.Designer.cs">
       <DependentUpon>frmDashMed.cs</DependentUpon>
     </Compile>
+    <Compile Include="views\Med\frmRdvMed.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\Med\frmRdvMed.Designer.cs">
+      <DependentUpon>frmRdvMed.cs</DependentUpon>
+    </Compile>
     <Compile Include="views\Secret\frmAcceuilSecret.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -291,6 +303,9 @@
     <EmbeddedResource Include="CustomControls\frmExecutionReussie.resx">
       <DependentUpon>frmExecutionReussie.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CustomControls\frmInformation.resx">
+      <DependentUpon>frmInformation.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -331,6 +346,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="views\Med\frmMedAgenda.resx">
       <DependentUpon>frmMedAgenda.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="views\Med\frmRdvMed.resx">
+      <DependentUpon>frmRdvMed.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="views\Secret\frmAcceuilSecret.resx">
       <DependentUpon>frmAcceuilSecret.cs</DependentUpon>
@@ -426,6 +444,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ILLink\ILLink.Descriptors.LibraryBuild.xml" />
+    <None Include="Resources\information-button.png" />
+    <None Include="Resources\lgb.jpg" />
+    <None Include="Resources\rdv.jpg" />
     <None Include="Resources\users-medical %281%293.png" />
     <None Include="Resources\calendar-day11.png" />
   </ItemGroup>

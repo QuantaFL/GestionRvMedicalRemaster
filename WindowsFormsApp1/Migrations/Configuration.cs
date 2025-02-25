@@ -62,7 +62,7 @@
                     Identifiant = "secret",
                     Email = "secretaire@gmail.com",
                     NomPrenom = "Rama Fall",
-                    IdRole = 3,
+                    IdRole = 2,
                     MotDePasse = SaltHash.HashPassword("passer"),
                     TelephoneFixe = "7777777",
                     PremiereConnexion = 1,
@@ -142,7 +142,7 @@
               ag => ag.IdAgenda,
               new Agenda
               {
-                  IdMedecin = 3,
+                  IdMedecin = 4,
                   Lieu = "Health Care",
                   HeureDebut = "08:00",
                   HeureFin = "16:00",
@@ -153,7 +153,7 @@
               },
               new Agenda
               {
-                  IdMedecin = 3,
+                  IdMedecin = 4,
                   Lieu = "Health Care",
                   HeureDebut = "08:00",
                   HeureFin = "16:00",
