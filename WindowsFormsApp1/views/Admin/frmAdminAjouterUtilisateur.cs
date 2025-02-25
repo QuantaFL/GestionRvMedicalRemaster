@@ -40,6 +40,7 @@ namespace WindowsFormsApp1.views.Admin
         public frmAdminAjouterUtilisateur()
         {
             InitializeComponent();
+            ResetForm();
         }
 
         private void btnFermer_Click(object sender, EventArgs e)
@@ -83,7 +84,7 @@ namespace WindowsFormsApp1.views.Admin
             cbbSpecialite.DataSource = loadSpecialiteccb();
             txtAdresse.Focus();
             txtAdresse.Text = string.Empty;
-            txtDateNaissance.Value = DateTime.Now;
+           // txtDateNaissance.Value = DateTime.Now;
             txtEmail.Text = string.Empty;
             txtNumeroOrdre.Text  = string.Empty ;
             txtNumeroTelephone.Text = string.Empty ;
@@ -188,23 +189,26 @@ namespace WindowsFormsApp1.views.Admin
             }
             return is_pinged;
         }
-        private void SetDatePickerLimits()
-        {
-            try
-            {
-                var minDate = DateTime.Now.AddYears(-100);
-                var maxDate = DateTime.Now;
+  
+          private void SetDatePickerLimits()
+         {
+             try
+             {
+                 var minDate = DateTime.Now.AddYears(-100);
+                 var maxDate = DateTime.Now;
 
-                txtDateNaissance.MinDate = minDate;
-                txtDateNaissance.MaxDate = maxDate;
+                 txtDateNaissance.MinDate = minDate;
+                 txtDateNaissance.MaxDate = maxDate;
 
-                Log.Information("Limites de date définies: MinDate={MinDate}, MaxDate={MaxDate}", minDate, maxDate);
-            }
-            catch (Exception ex)
-            {
-                Log.Error(ex, "Erreur lors de la configuration des limites de date.");
-            }
-        }
+                 Log.Information("Limites de date définies: MinDate={MinDate}, MaxDate={MaxDate}", minDate, maxDate);
+             }
+             catch (Exception ex)
+             {
+                 Log.Error(ex, "Erreur lors de la configuration des limites de date.");
+             }
+         }
+
+         
         private void btnValiderAjoutUtilisateur_Click_1(object sender, EventArgs e)
         {
             if (chechkInput())
@@ -258,8 +262,10 @@ namespace WindowsFormsApp1.views.Admin
                     Log.Information("medecin ajouter");
                     sendMail(txtEmail.Text, mdpTmp, identfiantTmp);
                     Log.Information($" mail envoyer à {txtEmail.Text}");
+                    frmExecutionReussie frmExecutionReussie = new frmExecutionReussie("Medecin ajouter avec succes");
+                    frmExecutionReussie.ShowDialog();
                     ResetForm();
-
+                    
                 }
                 catch (Exception ex) { 
                 Log.Error(ex.Message);

@@ -77,6 +77,7 @@
             this.btnRechercherSecretaire.TabIndex = 10;
             this.btnRechercherSecretaire.Text = "Rechercher une s&ecretaire";
             this.btnRechercherSecretaire.UseVisualStyleBackColor = true;
+            this.btnRechercherSecretaire.Click += new System.EventHandler(this.btnRechercherSecretaire_Click);
             // 
             // label2
             // 
