@@ -40,9 +40,9 @@ namespace WindowsFormsApp1.views.Secret
             cbbMoyenPaiement.ValueMember = "Value";
             cbbCreneaux.DisplayMember = "Text";
             cbbCreneaux.ValueMember = "Value";
-            cbbSoins.SelectedIndex = -1;
+            cbbSoins.SelectedIndex = 0;
             cbbMoyenPaiement.SelectedIndex = 0;
-            cbbCreneaux.SelectedIndex = -1;
+            cbbCreneaux.SelectedIndex = 0;
         }
 
         private async void btnValider_Click(object sender, EventArgs e)
@@ -51,7 +51,7 @@ namespace WindowsFormsApp1.views.Secret
             {
                 if (cbbCreneaux.SelectedValue == null || cbbSoins.SelectedValue == null)
                 {
-                    new frmExecutionReussie("Selectionner un créneau et un soin.");
+                    new frmExecutionReussie("Selectionner un créneau et un soin.").ShowDialog();
                     return;
                 }
 
@@ -78,7 +78,7 @@ namespace WindowsFormsApp1.views.Secret
                 cbbCreneaux.DataSource = await LoadCreneauxAsync(agenda);
                 ResetForm();
 
-               new frmExecutionReussie("Rdv valide avec succes.");
+               new frmExecutionReussie("Rdv valide avec succes.").ShowDialog();
             }
             catch (Exception ex)
             {
@@ -186,14 +186,22 @@ namespace WindowsFormsApp1.views.Secret
 
                     startTime = endSlot;
                 }
-
+                if (creneauxList.Count == 0)
+                {
+                    agenda.Statut = "non dispo";
+                    _bd.Entry(agenda).State = EntityState.Modified;
+                    await _bd.SaveChangesAsync();
+                    new frmInformation("L'agenda nest plus disponible: nombre de creneaux remplis").ShowDialog();
+                    Log.Information("Aucun créneau disponible, statut de l'agenda mis à jour à false.");
+                    this.Close();
+                }
                 Log.Information("Creneaux charges: {NombreCreneaux}", creneauxList.Count);
                 return creneauxList;
             }
             catch (Exception ex)
             {
                 Log.Error(ex, "Erreur lors du chargement des créneaux.");
-                new frmEchecExecution("Erreur créneaux: " + ex.Message);
+                new frmEchecExecution("Erreur créneaux: " + ex.Message).ShowDialog();
                 return new List<SelectListViewModel>();
             }
         }
