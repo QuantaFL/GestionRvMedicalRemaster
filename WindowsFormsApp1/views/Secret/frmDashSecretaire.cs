@@ -59,7 +59,7 @@ namespace WindowsFormsApp1.views.Secret
 
         private void btnPatient_Click(object sender, EventArgs e)
         {
-
+            CustomNavigatorMdi.push(this, btnListeUtilisateur, new frmListerPatient());
         }
 
         private void btnListeUtilisateur_Click(object sender, EventArgs e)
@@ -70,6 +70,11 @@ namespace WindowsFormsApp1.views.Secret
         private void btnDeconnexion_Click(object sender, EventArgs e)
         {
             frmConnexionInstance.Show();
+        }
+
+        private void btnCorbeille_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
