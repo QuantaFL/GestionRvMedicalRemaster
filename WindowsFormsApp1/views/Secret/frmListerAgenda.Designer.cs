@@ -31,6 +31,7 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.dgAgendas = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnRetour = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgAgendas)).BeginInit();
             this.SuspendLayout();
@@ -68,6 +69,22 @@
             this.label1.TabIndex = 5;
             this.label1.Text = "LISTE DES AGENDAS DISPONIBLES";
             // 
+            // btnRetour
+            // 
+            this.btnRetour.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRetour.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(169)))), ((int)(((byte)(155)))));
+            this.btnRetour.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnRetour.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRetour.ForeColor = System.Drawing.Color.White;
+            this.btnRetour.Location = new System.Drawing.Point(12, 49);
+            this.btnRetour.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.btnRetour.Name = "btnRetour";
+            this.btnRetour.Size = new System.Drawing.Size(220, 40);
+            this.btnRetour.TabIndex = 22;
+            this.btnRetour.Text = "R&etour";
+            this.btnRetour.UseVisualStyleBackColor = true;
+            this.btnRetour.Click += new System.EventHandler(this.btnRetour_Click);
+            // 
             // frmListerAgenda
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -75,6 +92,7 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(114)))), ((int)(((byte)(144)))));
             this.ClientSize = new System.Drawing.Size(1374, 737);
             this.ControlBox = false;
+            this.Controls.Add(this.btnRetour);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.dgAgendas);
@@ -95,5 +113,6 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.DataGridView dgAgendas;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnRetour;
     }
 }
