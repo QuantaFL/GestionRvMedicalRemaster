@@ -16,10 +16,12 @@ namespace WindowsFormsApp1.views.Med
 {
     public partial class frmDashMed : Form
     {
-       
-        public frmDashMed()
+        FrmConnexion frmConnexionInstance;
+
+        public frmDashMed(FrmConnexion f)
         {
             InitializeComponent();
+            frmConnexionInstance = f;
         }
 
         private void frmDashMed_Load(object sender, EventArgs e)
@@ -46,6 +48,12 @@ namespace WindowsFormsApp1.views.Med
         {
             CustomNavigatorMdi.push(this, btnListerAgenda, new frmRdvMed()); 
             
+        }
+
+        private void btnDeconnexion_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            frmConnexionInstance.Show();
         }
     }
 }

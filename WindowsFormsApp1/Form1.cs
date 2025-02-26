@@ -107,14 +107,14 @@ namespace WindowsFormsApp1
                         if (role.LibelleRole.Equals("SECRETAIRE"))
                         {
                             this.Hide();
-                            frmDashSecretaire frm = new frmDashSecretaire();
+                            frmDashSecretaire frm = new frmDashSecretaire(this);
                             frm.Show();
                             return;
                         }
                         if (role.LibelleRole.Equals("MEDECIN"))
                         {
                             this.Hide();
-                            frmDashMed frm = new frmDashMed();
+                            frmDashMed frm = new frmDashMed(this);
                             frm.Show();
                             return;
                         }
