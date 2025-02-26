@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.dgRdv = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgRdv)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -47,29 +47,29 @@
             this.label1.TabIndex = 6;
             this.label1.Text = "LISTE DES RENDEZ-VOUS";
             // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = global::WindowsFormsApp1.Properties.Resources.rdv;
-            this.pictureBox2.Location = new System.Drawing.Point(476, 77);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(915, 403);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 8;
-            this.pictureBox2.TabStop = false;
-            // 
             // dgRdv
             // 
             this.dgRdv.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(220)))), ((int)(((byte)(234)))));
             this.dgRdv.CausesValidation = false;
             this.dgRdv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgRdv.Location = new System.Drawing.Point(1, 77);
-            this.dgRdv.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgRdv.Margin = new System.Windows.Forms.Padding(2);
             this.dgRdv.Name = "dgRdv";
             this.dgRdv.RowHeadersWidth = 62;
             this.dgRdv.RowTemplate.Height = 28;
             this.dgRdv.Size = new System.Drawing.Size(475, 430);
             this.dgRdv.TabIndex = 7;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::WindowsFormsApp1.Properties.Resources.rdv;
+            this.pictureBox2.Location = new System.Drawing.Point(476, 77);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(915, 403);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 8;
+            this.pictureBox2.TabStop = false;
             // 
             // frmListerRdv
             // 
@@ -81,11 +81,11 @@
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.dgRdv);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "frmListerRdv";
             this.Load += new System.EventHandler(this.frmListerRdv_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgRdv)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -94,7 +94,7 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.DataGridView dgRdv;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }
