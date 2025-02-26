@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Serilog;
+using WindowsFormsApp1.config;
 using WindowsFormsApp1.CustomControls;
 using WindowsFormsApp1.Models;
 using WindowsFormsApp1.report;
@@ -25,8 +26,12 @@ namespace WindowsFormsApp1.utils
         public frmRptPrintRecuRdv(int idRdv)
         {
             InitializeComponent();
+            idRv = idRdv;
             this.idRv = idRdv;
             rptTicketRv rptTicketRv = new rptTicketRv();
+            rptTicketRv.SetDataSource(GetTableTcket(idRv));
+            crystalReportViewer1.ReportSource = rptTicketRv;
+            crystalReportViewer1.Refresh();
 
         }
         bdRdvMedicalContext db = new bdRdvMedicalContext();
@@ -47,15 +52,19 @@ namespace WindowsFormsApp1.utils
             }
 
             var rdv = db.RendezVous.Where(a => a.IdRendezVous == IdRv).FirstOrDefault();
-            if (ping_google())
+            var CodeQr = GenerateQR.GenerateQRCode(rdv.CodeRdv);
+            /*
+                if (ping_google())
             {
-                MessageBox.Show("helloGG");
+               //MessageBox.Show("helloGG");
                 //sendMail();
 
             }
+             
+             */
             if (rdv != null)
             {
-                dt.Rows.Add(rdv.Patient.NomPrenom, rdv.Medecin.NomPrenom, rdv.DateRv, rdv.HeureRv, new byte[0]);
+                dt.Rows.Add(rdv.Patient.NomPrenom, rdv.Medecin.NomPrenom, rdv.DateRv, rdv.HeureRv, CodeQr);
 
             }
             else

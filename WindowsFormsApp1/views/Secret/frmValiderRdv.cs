@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using Serilog;
 using WindowsFormsApp1.CustomControls;
 using WindowsFormsApp1.Models;
+using WindowsFormsApp1.utils;
 
 namespace WindowsFormsApp1.views.Secret
 {
@@ -58,7 +59,7 @@ namespace WindowsFormsApp1.views.Secret
                 var creneau = cbbCreneaux.SelectedValue.ToString();
                 var soinId = cbbSoins.SelectedValue.ToString();
                 var patientId = patient.IdP;
-
+                string codeRdv = generateCodeRdv();
                 string dateRv = agenda.DataPlanifier.Value.ToString("yyyy-MM-dd") + " " + creneau;
                 var rdv = new RendezVous
                 {
@@ -67,7 +68,8 @@ namespace WindowsFormsApp1.views.Secret
                     IdSoin = int.Parse(soinId),
                     IdPatient = patientId,
                     IdMedecin = agenda.IdMedecin,
-                    IdAgenda = agenda.IdAgenda
+                    IdAgenda = agenda.IdAgenda,
+                    CodeRdv = codeRdv,
                 };
 
                 _bd.RendezVous.Add(rdv);
@@ -79,6 +81,21 @@ namespace WindowsFormsApp1.views.Secret
                 ResetForm();
 
                new frmExecutionReussie("Rdv valide avec succes.").ShowDialog();
+
+                try {
+                    var lastRdv = _bd.RendezVous.Where(r => r.CodeRdv == codeRdv).FirstOrDefault();
+                    if (lastRdv != null) { 
+                        frmRptPrintRecuRdv frmRptPrintRecuRdv = new frmRptPrintRecuRdv(lastRdv.IdRendezVous);
+                        frmRptPrintRecuRdv.Show();
+                        var frmRdv = Application.OpenForms["frmValiderRdv"] as frmValiderRdv;
+                        frmRdv.Close();
+                    }
+                }
+                catch (Exception ex) { 
+                Log.Error($"{ex.Message} erreur lors de la reucperation du rdv par son code ");
+                
+                }
+                
             }
             catch (Exception ex)
             {
@@ -216,6 +233,22 @@ namespace WindowsFormsApp1.views.Secret
             {
                 txtCout.Text = soin.CoutSoin.ToString();
             }
+        }
+
+        private string generateCodeRdv()
+        {
+            string codeRdv ;
+            var nbrRdv = _bd.RendezVous.Count();
+            if (nbrRdv == 0)
+            {
+                nbrRdv = 1;
+            }
+            else
+            {
+                nbrRdv++;
+            }
+            return codeRdv = "HL-DKR-" + DateTime.Now.Year + "-" + nbrRdv+"-"+"Rdv";
+
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)

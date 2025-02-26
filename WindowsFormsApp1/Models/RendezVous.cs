@@ -30,5 +30,6 @@ namespace WindowsFormsApp1.Models
         public int? IdAgenda { get; set; }
         [ForeignKey("IdAgenda")]
         public virtual Agenda Agenda { get; set; }
+        public string CodeRdv { get; set; }
     }
 }

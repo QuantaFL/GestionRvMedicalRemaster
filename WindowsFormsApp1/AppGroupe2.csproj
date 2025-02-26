@@ -168,11 +168,18 @@
     <Reference Include="ZstdSharp, Version=0.8.4.0, Culture=neutral, PublicKeyToken=8d151af33a4ad5cf, processorArchitecture=MSIL">
       <HintPath>..\packages\ZstdSharp.Port.0.8.4\lib\net462\ZstdSharp.dll</HintPath>
     </Reference>
+    <Reference Include="zxing, Version=0.16.10.0, Culture=neutral, PublicKeyToken=4e88037ac681fe60, processorArchitecture=MSIL">
+      <HintPath>..\packages\ZXing.Net.0.16.10\lib\net48\zxing.dll</HintPath>
+    </Reference>
+    <Reference Include="zxing.presentation, Version=0.16.10.0, Culture=neutral, PublicKeyToken=4e88037ac681fe60, processorArchitecture=MSIL">
+      <HintPath>..\packages\ZXing.Net.0.16.10\lib\net48\zxing.presentation.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="config\CustomNavigatorMdi.cs" />
     <Compile Include="config\FactorySeed.cs" />
     <Compile Include="config\fakerUtils.cs" />
+    <Compile Include="config\GenerateQR.cs" />
     <Compile Include="config\SaltHash.cs" />
     <Compile Include="config\ThemeModeUtils.cs" />
     <Compile Include="config\WhatsappSink.cs" />
@@ -235,6 +242,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>rptTicketRv.rpt</DependentUpon>
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="utils\frmRptPrintRecuRdv.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="utils\frmRptPrintRecuRdv.Designer.cs">
+      <DependentUpon>frmRptPrintRecuRdv.cs</DependentUpon>
     </Compile>
     <Compile Include="views\Admin\frmAccueilAdmin.cs">
       <SubType>Form</SubType>
@@ -348,6 +361,9 @@
     <EmbeddedResource Include="report\rptTicketRv.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptTicketRv.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="utils\frmRptPrintRecuRdv.resx">
+      <DependentUpon>frmRptPrintRecuRdv.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="views\Admin\frmAccueilAdmin.resx">
       <DependentUpon>frmAccueilAdmin.cs</DependentUpon>
