@@ -25,8 +25,12 @@ namespace WindowsFormsApp1.utils
         public frmRptPrintRecuRdv(int idRdv)
         {
             InitializeComponent();
+            idRv = idRdv;
             this.idRv = idRdv;
             rptTicketRv rptTicketRv = new rptTicketRv();
+            rptTicketRv.SetDataSource(GetTableTcket(idRv));
+            crystalReportViewer1.ReportSource = rptTicketRv;
+            crystalReportViewer1.Refresh();
 
         }
         bdRdvMedicalContext db = new bdRdvMedicalContext();

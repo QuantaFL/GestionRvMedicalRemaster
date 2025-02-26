@@ -232,6 +232,12 @@
       <DependentUpon>rptTicketRv.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="utils\frmRptPrintRecuRdv.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="utils\frmRptPrintRecuRdv.Designer.cs">
+      <DependentUpon>frmRptPrintRecuRdv.cs</DependentUpon>
+    </Compile>
     <Compile Include="views\Admin\frmAccueilAdmin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -344,6 +350,9 @@
     <EmbeddedResource Include="report\rptTicketRv.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rptTicketRv.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="utils\frmRptPrintRecuRdv.resx">
+      <DependentUpon>frmRptPrintRecuRdv.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="views\Admin\frmAccueilAdmin.resx">
       <DependentUpon>frmAccueilAdmin.cs</DependentUpon>
