@@ -41,7 +41,6 @@
             this.btnRechercherMedecin = new System.Windows.Forms.Button();
             this.btnAjouterUtilisateur = new System.Windows.Forms.Button();
             this.dgUtilisateur = new System.Windows.Forms.DataGridView();
-//            this.ctrlBox1 = new WindowsFormsApp1.CustomControls.CtrlBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgUtilisateur)).BeginInit();
             this.SuspendLayout();
@@ -49,7 +48,6 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(114)))), ((int)(((byte)(144)))));
-           // this.panel1.Controls.Add(this.ctrlBox1);
             this.panel1.Controls.Add(this.btnRechercherSecretaire);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.txtRerchercherSecretaire);
@@ -206,14 +204,6 @@
             this.dgUtilisateur.Size = new System.Drawing.Size(1858, 2000);
             this.dgUtilisateur.TabIndex = 0;
             // 
-            // ctrlBox1
-            // 
-          //  this.ctrlBox1.Location = new System.Drawing.Point(1528, 0);
-          //  this.ctrlBox1.Name = "ctrlBox1";
-          //  this.ctrlBox1.Size = new System.Drawing.Size(94, 45);
-          //  this.ctrlBox1.TabIndex = 11;
-          //  this.ctrlBox1.Load += new System.EventHandler(this.ctrlBox1_Load);
-            // 
             // frmAccueilAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -225,7 +215,6 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmAccueilAdmin";
             this.ShowIcon = false;
-            this.Text = "Acceuil";
             this.Load += new System.EventHandler(this.frmAccueilAdmin_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
