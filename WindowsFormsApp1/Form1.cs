@@ -20,9 +20,29 @@ namespace WindowsFormsApp1
     public partial class FrmConnexion : Form
     {
         public static Utilisateur user;
+        private CustomControlBox customControlBox;
         public FrmConnexion()
         {
+            customControlBox = new CustomControlBox();
+            customControlBox.Dock = DockStyle.Top;
+            customControlBox.MinimizeClick += CustomControlBox_MinimizeClick;
+            customControlBox.CloseClick += CustomControlBox_CloseClick;
+            Controls.Add(customControlBox);
+
+            // Custom Form properties
+            FormBorderStyle = FormBorderStyle.None;
+            StartPosition = FormStartPosition.CenterScreen;
             InitializeComponent();
+        }
+
+        private void CustomControlBox_MinimizeClick(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void CustomControlBox_CloseClick(object sender, EventArgs e)
+        {
+            this.Close();
         }
         bdRdvMedicalContext db = new bdRdvMedicalContext();
 

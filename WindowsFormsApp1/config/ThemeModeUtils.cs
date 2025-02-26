@@ -20,6 +20,16 @@ namespace WindowsFormsApp1.config
             }
         }
 
+        public static void RevertToLightMode(Form form)
+        {
+            RevertToLightModeForControl(form);
+
+            foreach (Form child in form.MdiChildren)
+            {
+                RevertToLightModeForControl(child);
+            }
+        }
+
         private static void ApplyDarkModeToControl(Control control)
         {
             control.BackColor = Color.FromArgb(30, 30, 30);
@@ -31,5 +41,15 @@ namespace WindowsFormsApp1.config
             }
         }
 
+        private static void RevertToLightModeForControl(Control control)
+        {
+            control.BackColor = Color.FromArgb(65, 114, 144);
+            control.ForeColor = Color.White;
+
+            foreach (Control child in control.Controls)
+            {
+                RevertToLightModeForControl(child);
+            }
+        }
     }
 }

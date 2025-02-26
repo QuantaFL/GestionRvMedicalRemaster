@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApp1.config;
+using WindowsFormsApp1.CustomControls;
 
 namespace WindowsFormsApp1.views.Secret
 {
@@ -19,6 +20,7 @@ namespace WindowsFormsApp1.views.Secret
         {
             InitializeComponent();
             frmConnexionInstance = f;
+
 
         }
         public void fermer()

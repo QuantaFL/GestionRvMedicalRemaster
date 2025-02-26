@@ -176,6 +176,9 @@
     <Compile Include="config\SaltHash.cs" />
     <Compile Include="config\ThemeModeUtils.cs" />
     <Compile Include="config\WhatsappSink.cs" />
+    <Compile Include="CustomControls\CustomControlBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="CustomControls\CustomLoading.cs" />
     <Compile Include="CustomControls\frmEchecExecution.cs">
       <SubType>Form</SubType>

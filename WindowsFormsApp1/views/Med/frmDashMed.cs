@@ -17,11 +17,26 @@ namespace WindowsFormsApp1.views.Med
     public partial class frmDashMed : Form
     {
         FrmConnexion frmConnexionInstance;
+        private CustomControlBox customControlBox;
 
         public frmDashMed(FrmConnexion f)
         {
+            customControlBox = new CustomControlBox();
+            customControlBox.Dock = DockStyle.Top;
+            customControlBox.MinimizeClick += CustomControlBox_MinimizeClick;
+            customControlBox.CloseClick += CustomControlBox_CloseClick;
+            Controls.Add(customControlBox);
             InitializeComponent();
             frmConnexionInstance = f;
+        }
+        private void CustomControlBox_MinimizeClick(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void CustomControlBox_CloseClick(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
         private void frmDashMed_Load(object sender, EventArgs e)
