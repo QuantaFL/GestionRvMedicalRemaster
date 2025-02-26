@@ -80,9 +80,9 @@
             this.panel4.Controls.Add(this.panel1);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel4.Location = new System.Drawing.Point(0, 0);
-            this.panel4.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.panel4.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(273, 487);
+            this.panel4.Size = new System.Drawing.Size(364, 599);
             this.panel4.TabIndex = 7;
             // 
             // btnDeconnexion
@@ -91,10 +91,10 @@
             this.btnDeconnexion.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnDeconnexion.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDeconnexion.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnDeconnexion.Location = new System.Drawing.Point(53, 388);
-            this.btnDeconnexion.Margin = new System.Windows.Forms.Padding(2);
+            this.btnDeconnexion.Location = new System.Drawing.Point(71, 478);
+            this.btnDeconnexion.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnDeconnexion.Name = "btnDeconnexion";
-            this.btnDeconnexion.Size = new System.Drawing.Size(214, 39);
+            this.btnDeconnexion.Size = new System.Drawing.Size(285, 48);
             this.btnDeconnexion.TabIndex = 15;
             this.btnDeconnexion.Text = "&Deconnexion";
             this.btnDeconnexion.UseVisualStyleBackColor = false;
@@ -103,10 +103,10 @@
             // pictureBox4
             // 
             this.pictureBox4.Image = global::WindowsFormsApp1.Properties.Resources.user_doctor;
-            this.pictureBox4.Location = new System.Drawing.Point(0, 388);
-            this.pictureBox4.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox4.Location = new System.Drawing.Point(0, 478);
+            this.pictureBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(47, 39);
+            this.pictureBox4.Size = new System.Drawing.Size(63, 48);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox4.TabIndex = 14;
             this.pictureBox4.TabStop = false;
@@ -116,10 +116,9 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label5.Location = new System.Drawing.Point(127, 66);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label5.Location = new System.Drawing.Point(169, 81);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(44, 20);
+            this.label5.Size = new System.Drawing.Size(57, 25);
             this.label5.TabIndex = 13;
             this.label5.Text = "Ouly";
             // 
@@ -128,20 +127,19 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label6.Location = new System.Drawing.Point(2, 64);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Location = new System.Drawing.Point(3, 79);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(111, 24);
+            this.label6.Size = new System.Drawing.Size(139, 29);
             this.label6.TabIndex = 12;
             this.label6.Text = "Bienvenue :";
             // 
             // pictureBox3
             // 
             this.pictureBox3.Image = global::WindowsFormsApp1.Properties.Resources.calendrier;
-            this.pictureBox3.Location = new System.Drawing.Point(2, 326);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.pictureBox3.Location = new System.Drawing.Point(3, 401);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(47, 39);
+            this.pictureBox3.Size = new System.Drawing.Size(63, 48);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox3.TabIndex = 10;
             this.pictureBox3.TabStop = false;
@@ -151,10 +149,10 @@
             this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button1.Location = new System.Drawing.Point(53, 326);
-            this.button1.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.button1.Location = new System.Drawing.Point(71, 401);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(217, 39);
+            this.button1.Size = new System.Drawing.Size(289, 48);
             this.button1.TabIndex = 9;
             this.button1.Text = "&Creer un agenda";
             this.button1.UseVisualStyleBackColor = false;
@@ -162,10 +160,10 @@
             // pictureBox5
             // 
             this.pictureBox5.Image = global::WindowsFormsApp1.Properties.Resources.settings;
-            this.pictureBox5.Location = new System.Drawing.Point(2, 257);
-            this.pictureBox5.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.pictureBox5.Location = new System.Drawing.Point(3, 316);
+            this.pictureBox5.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(54, 39);
+            this.pictureBox5.Size = new System.Drawing.Size(72, 48);
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox5.TabIndex = 8;
             this.pictureBox5.TabStop = false;
@@ -173,10 +171,10 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = global::WindowsFormsApp1.Properties.Resources.rendez_vous_medical__1_;
-            this.pictureBox2.Location = new System.Drawing.Point(2, 125);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.pictureBox2.Location = new System.Drawing.Point(3, 154);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(47, 39);
+            this.pictureBox2.Size = new System.Drawing.Size(63, 48);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 7;
             this.pictureBox2.TabStop = false;
@@ -184,10 +182,10 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::WindowsFormsApp1.Properties.Resources.rendez_vous_medical;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 189);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.pictureBox1.Location = new System.Drawing.Point(0, 233);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(56, 39);
+            this.pictureBox1.Size = new System.Drawing.Size(75, 48);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 6;
             this.pictureBox1.TabStop = false;
@@ -197,10 +195,10 @@
             this.btnParametre.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnParametre.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnParametre.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnParametre.Location = new System.Drawing.Point(55, 257);
-            this.btnParametre.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnParametre.Location = new System.Drawing.Point(73, 316);
+            this.btnParametre.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnParametre.Name = "btnParametre";
-            this.btnParametre.Size = new System.Drawing.Size(215, 38);
+            this.btnParametre.Size = new System.Drawing.Size(287, 47);
             this.btnParametre.TabIndex = 7;
             this.btnParametre.Text = "Parametres";
             this.btnParametre.UseVisualStyleBackColor = false;
@@ -211,10 +209,10 @@
             this.btnListerAgenda.FlatAppearance.BorderSize = 0;
             this.btnListerAgenda.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnListerAgenda.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnListerAgenda.Location = new System.Drawing.Point(53, 125);
-            this.btnListerAgenda.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnListerAgenda.Location = new System.Drawing.Point(71, 154);
+            this.btnListerAgenda.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnListerAgenda.Name = "btnListerAgenda";
-            this.btnListerAgenda.Size = new System.Drawing.Size(217, 39);
+            this.btnListerAgenda.Size = new System.Drawing.Size(289, 48);
             this.btnListerAgenda.TabIndex = 5;
             this.btnListerAgenda.Text = "Mes &Agenda";
             this.btnListerAgenda.UseVisualStyleBackColor = false;
@@ -225,10 +223,10 @@
             this.btnRdvMedecin.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnRdvMedecin.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRdvMedecin.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnRdvMedecin.Location = new System.Drawing.Point(55, 190);
-            this.btnRdvMedecin.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnRdvMedecin.Location = new System.Drawing.Point(73, 234);
+            this.btnRdvMedecin.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnRdvMedecin.Name = "btnRdvMedecin";
-            this.btnRdvMedecin.Size = new System.Drawing.Size(215, 38);
+            this.btnRdvMedecin.Size = new System.Drawing.Size(287, 47);
             this.btnRdvMedecin.TabIndex = 4;
             this.btnRdvMedecin.Text = "Mes &Rendez-Vous";
             this.btnRdvMedecin.UseVisualStyleBackColor = false;
@@ -240,9 +238,9 @@
             this.panel1.Controls.Add(this.pictureBox6);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.panel1.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(271, 58);
+            this.panel1.Size = new System.Drawing.Size(361, 71);
             this.panel1.TabIndex = 0;
             // 
             // panel2
@@ -251,10 +249,10 @@
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.pictureBox7);
             this.panel2.Controls.Add(this.label4);
-            this.panel2.Location = new System.Drawing.Point(-3, -42);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.panel2.Location = new System.Drawing.Point(-4, -52);
+            this.panel2.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(277, 142);
+            this.panel2.Size = new System.Drawing.Size(369, 175);
             this.panel2.TabIndex = 9;
             // 
             // label3
@@ -262,10 +260,9 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label3.Location = new System.Drawing.Point(127, 107);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Location = new System.Drawing.Point(169, 132);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(44, 20);
+            this.label3.Size = new System.Drawing.Size(57, 25);
             this.label3.TabIndex = 11;
             this.label3.Text = "Ouly";
             // 
@@ -274,20 +271,19 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label2.Location = new System.Drawing.Point(2, 105);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Location = new System.Drawing.Point(3, 129);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(111, 24);
+            this.label2.Size = new System.Drawing.Size(139, 29);
             this.label2.TabIndex = 10;
             this.label2.Text = "Bienvenue :";
             // 
             // pictureBox7
             // 
             this.pictureBox7.Image = global::WindowsFormsApp1.Properties.Resources.lgcr;
-            this.pictureBox7.Location = new System.Drawing.Point(-1, 34);
-            this.pictureBox7.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.pictureBox7.Location = new System.Drawing.Point(-1, 42);
+            this.pictureBox7.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.pictureBox7.Name = "pictureBox7";
-            this.pictureBox7.Size = new System.Drawing.Size(67, 49);
+            this.pictureBox7.Size = new System.Drawing.Size(89, 60);
             this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox7.TabIndex = 9;
             this.pictureBox7.TabStop = false;
@@ -297,20 +293,19 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label4.Location = new System.Drawing.Point(85, 49);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Location = new System.Drawing.Point(113, 60);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(187, 37);
+            this.label4.Size = new System.Drawing.Size(232, 46);
             this.label4.TabIndex = 6;
             this.label4.Text = "Health Care";
             // 
             // pictureBox6
             // 
             this.pictureBox6.Image = global::WindowsFormsApp1.Properties.Resources.burger_menu;
-            this.pictureBox6.Location = new System.Drawing.Point(2, 6);
-            this.pictureBox6.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.pictureBox6.Location = new System.Drawing.Point(3, 7);
+            this.pictureBox6.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(56, 39);
+            this.pictureBox6.Size = new System.Drawing.Size(75, 48);
             this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox6.TabIndex = 8;
             this.pictureBox6.TabStop = false;
@@ -320,25 +315,24 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label1.Location = new System.Drawing.Point(69, 6);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(92, 7);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(81, 31);
+            this.label1.Size = new System.Drawing.Size(102, 39);
             this.label1.TabIndex = 6;
             this.label1.Text = "Menu";
             // 
             // frmDashMed
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(913, 487);
+            this.ClientSize = new System.Drawing.Size(1217, 599);
             this.ControlBox = false;
             this.Controls.Add(this.panel4);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
-            this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "frmDashMed";
             this.Load += new System.EventHandler(this.frmDashMed_Load);
             this.panel4.ResumeLayout(false);

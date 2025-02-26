@@ -69,5 +69,10 @@ namespace WindowsFormsApp1.views.Admin
              
              */
         }
+
+        private void btnTest_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
