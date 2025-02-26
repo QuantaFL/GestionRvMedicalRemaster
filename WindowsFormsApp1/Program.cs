@@ -12,40 +12,44 @@ namespace WindowsFormsApp1
 {
     internal static class Program
     {
+        static Program()
+        {
+            string elasticSearchUrl = "http://localhost:9200";
+
+            // Init logs for Serilog
+            Log.Logger = new LoggerConfiguration()
+                .WriteTo.Console()
+                .WriteTo.Sink(new WhatsAppSink())
+                .WriteTo.File(@"C:/Logs/app.log", rollingInterval: RollingInterval.Day)
+                // You can also uncomment Elasticsearch integration here if needed
+                // .WriteTo.Elasticsearch(new ElasticsearchSinkOptions(new Uri(elasticSearchUrl))
+                // {
+                //     AutoRegisterTemplate = true,
+                //     IndexFormat = "log-{0:yyyy.MM.dd}",
+                // })
+                .CreateLogger();
+                Log.Information("Lancement de lapplication...");
+        }
         /// <summary>
         /// Point d'entrée principal de l'application.
         /// </summary>
         [STAThread]
         static void Main()
         {
-       
-
-            string elasticSearchUrl = "http://localhost:9200";
-            // init des logs seri/ogs
-            Log.Logger = new LoggerConfiguration()
-                .WriteTo.Console()
-                .WriteTo.Sink(new WhatsAppSink())
-                .WriteTo.File(@"C:/Logs/app.log", rollingInterval: RollingInterval.Day)
-                  //.WriteTo.Elasticsearch(new ElasticsearchSinkOptions(new Uri(elasticSearchUrl))
-                //  {
-
-                //     AutoRegisterTemplate = true,
-                //    IndexFormat = "log-{0:yyyy.MM.dd}", 
-                //  })
-                .CreateLogger();
-            Log.Fatal("TEST 123");
-            Log.Error("TEST 123");
-            Log.Information("Lancement de lapplication...");
-
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new frmDashAdmin());
-            //Application.Run(new frmExecutionReussie("good Morning"));
-            Application.Run(new FrmConnexion());
-           // Application.Run(new frmRdvMed());
-
-            // vider linstance seri/og
-            // Log.CloseAndFlush();
+            try
+            {
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
+                Application.Run(new FrmConnexion());
+            }
+            catch
+            {
+                Log.Fatal("Erreur lors du lancement de l'application");
+            }
+            finally
+            {
+                Log.CloseAndFlush();
+            }
         }
     }
 }
