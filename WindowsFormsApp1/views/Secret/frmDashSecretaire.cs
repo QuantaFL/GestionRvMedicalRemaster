@@ -16,21 +16,30 @@ namespace WindowsFormsApp1.views.Secret
     public partial class frmDashSecretaire : Form
     {
         FrmConnexion frmConnexionInstance;
+        private CustomControlBox customControlBox;
         public frmDashSecretaire(FrmConnexion f)
         {
+            customControlBox = new CustomControlBox();
+            customControlBox.Dock = DockStyle.Top;
+            customControlBox.MinimizeClick += CustomControlBox_MinimizeClick;
+            customControlBox.CloseClick += CustomControlBox_CloseClick;
+            Controls.Add(customControlBox);
             InitializeComponent();
             frmConnexionInstance = f;
 
 
         }
-        public void fermer()
+
+        private void CustomControlBox_MinimizeClick(object sender, EventArgs e)
         {
-            Form[] charr = this.MdiChildren;
-            foreach (Form f in charr)
-            {
-                f.Close();
-            }
+            this.WindowState = FormWindowState.Minimized;
         }
+
+        private void CustomControlBox_CloseClick(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
         private void frmDashSecretaire_Load(object sender, EventArgs e)
         {
             foreach (Control control in this.Controls)
