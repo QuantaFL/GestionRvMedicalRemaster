@@ -183,5 +183,10 @@ namespace WindowsFormsApp1
                 btnConnexion.PerformClick();
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
