@@ -27,7 +27,7 @@ public class CustomControlBox : UserControl
 
     public CustomControlBox()
     {
-        this.Height = 144;
+        this.Height = 24;
         this.Dock = DockStyle.Top;
         this.BackColor = backgroundColor;
 
