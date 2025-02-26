@@ -29,7 +29,6 @@ namespace WindowsFormsApp1
             customControlBox.CloseClick += CustomControlBox_CloseClick;
             Controls.Add(customControlBox);
 
-            // Custom Form properties
             FormBorderStyle = FormBorderStyle.None;
             StartPosition = FormStartPosition.CenterScreen;
             InitializeComponent();
