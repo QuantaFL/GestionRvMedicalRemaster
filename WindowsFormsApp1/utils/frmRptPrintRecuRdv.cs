@@ -53,12 +53,15 @@ namespace WindowsFormsApp1.utils
 
             var rdv = db.RendezVous.Where(a => a.IdRendezVous == IdRv).FirstOrDefault();
             var CodeQr = GenerateQR.GenerateQRCode(rdv.CodeRdv);
-            if (ping_google())
+            /*
+                if (ping_google())
             {
-                MessageBox.Show("helloGG");
+               //MessageBox.Show("helloGG");
                 //sendMail();
 
             }
+             
+             */
             if (rdv != null)
             {
                 dt.Rows.Add(rdv.Patient.NomPrenom, rdv.Medecin.NomPrenom, rdv.DateRv, rdv.HeureRv, CodeQr);
