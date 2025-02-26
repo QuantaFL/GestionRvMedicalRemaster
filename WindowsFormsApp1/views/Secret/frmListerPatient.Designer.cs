@@ -49,7 +49,7 @@
             this.groupBox1.Controls.Add(this.txtEmail);
             this.groupBox1.Controls.Add(this.txtTelephone);
             this.groupBox1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.groupBox1.Location = new System.Drawing.Point(22, 26);
+            this.groupBox1.Location = new System.Drawing.Point(21, 16);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 1, 3, 1);
@@ -99,7 +99,7 @@
             this.btnRechercherPatient.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnRechercherPatient.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRechercherPatient.ForeColor = System.Drawing.Color.White;
-            this.btnRechercherPatient.Location = new System.Drawing.Point(1051, 41);
+            this.btnRechercherPatient.Location = new System.Drawing.Point(1050, 31);
             this.btnRechercherPatient.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.btnRechercherPatient.Name = "btnRechercherPatient";
             this.btnRechercherPatient.Size = new System.Drawing.Size(220, 40);
@@ -112,7 +112,7 @@
             this.dgPatients.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(220)))), ((int)(((byte)(234)))));
             this.dgPatients.CausesValidation = false;
             this.dgPatients.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgPatients.Location = new System.Drawing.Point(-8, 198);
+            this.dgPatients.Location = new System.Drawing.Point(-9, 188);
             this.dgPatients.Name = "dgPatients";
             this.dgPatients.RowHeadersWidth = 62;
             this.dgPatients.RowTemplate.Height = 28;
@@ -126,7 +126,7 @@
             this.btnRetour.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnRetour.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRetour.ForeColor = System.Drawing.Color.White;
-            this.btnRetour.Location = new System.Drawing.Point(1051, 109);
+            this.btnRetour.Location = new System.Drawing.Point(1050, 99);
             this.btnRetour.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.btnRetour.Name = "btnRetour";
             this.btnRetour.Size = new System.Drawing.Size(220, 40);
@@ -138,9 +138,9 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = global::WindowsFormsApp1.Properties.Resources.rdv;
-            this.pictureBox2.Location = new System.Drawing.Point(687, 198);
+            this.pictureBox2.Location = new System.Drawing.Point(627, 188);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(681, 785);
+            this.pictureBox2.Size = new System.Drawing.Size(1739, 1296);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 20;
             this.pictureBox2.TabStop = false;
@@ -152,12 +152,13 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(114)))), ((int)(((byte)(144)))));
             this.ClientSize = new System.Drawing.Size(1364, 771);
             this.ControlBox = false;
+            this.Controls.Add(this.dgPatients);
             this.Controls.Add(this.btnRetour);
             this.Controls.Add(this.pictureBox2);
-            this.Controls.Add(this.dgPatients);
             this.Controls.Add(this.btnRechercherPatient);
             this.Controls.Add(this.groupBox1);
             this.Name = "frmListerPatient";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgPatients)).EndInit();

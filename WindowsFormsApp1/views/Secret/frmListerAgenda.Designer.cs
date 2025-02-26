@@ -80,6 +80,7 @@
             this.Controls.Add(this.dgAgendas);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmListerAgenda";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmListerAgenda";
             this.Load += new System.EventHandler(this.frmListerAgenda_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();

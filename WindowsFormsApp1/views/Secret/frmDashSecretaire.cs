@@ -68,12 +68,16 @@ namespace WindowsFormsApp1.views.Secret
 
         private void btnPatient_Click(object sender, EventArgs e)
         {
-            CustomNavigatorMdi.push(this, btnListeUtilisateur, new frmListerPatient());
+            frmListerPatient frmListerPatient = new frmListerPatient();
+            frmListerPatient.ShowDialog();
+          //  CustomNavigatorMdi.push(this, btnListeUtilisateur, new frmListerPatient());
         }
 
         private void btnListeUtilisateur_Click(object sender, EventArgs e)
         {
-            CustomNavigatorMdi.push(this, btnListeUtilisateur, new frmAcceuilSecret());
+            frmAcceuilSecret frmAcceuilSecret = new frmAcceuilSecret();
+            frmAcceuilSecret.ShowDialog();
+            //CustomNavigatorMdi.push(this, btnListeUtilisateur, new frmAcceuilSecret());
         }
 
         private void btnDeconnexion_Click(object sender, EventArgs e)
@@ -84,12 +88,16 @@ namespace WindowsFormsApp1.views.Secret
 
         private void btnCorbeille_Click(object sender, EventArgs e)
         {
-            CustomNavigatorMdi.push(this, btnListeUtilisateur, new frmListerAgenda());
+            frmListerAgenda frmListerAgenda = new frmListerAgenda();
+            frmListerAgenda.ShowDialog();
+           // CustomNavigatorMdi.push(this, btnListeUtilisateur, new frmListerAgenda());
         }
 
         private void btnParametre_Click(object sender, EventArgs e)
         {
-            CustomNavigatorMdi.push(this, btnListeUtilisateur, new frmListerRdv());
+            frmListerRdv frmListerRdv = new frmListerRdv();
+            frmListerRdv.ShowDialog();
+            //CustomNavigatorMdi.push(this, btnListeUtilisateur, new frmListerRdv());
         }
     }
 }
