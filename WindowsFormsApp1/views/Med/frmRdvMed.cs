@@ -48,5 +48,10 @@ namespace WindowsFormsApp1.views.Med
         {
 
         }
+
+        private void dgRdvMedecin_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

@@ -324,6 +324,12 @@
     <Compile Include="views\Secret\frmDashSecretaire.Designer.cs">
       <DependentUpon>frmDashSecretaire.cs</DependentUpon>
     </Compile>
+    <Compile Include="views\Secret\frmListerAgenda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\Secret\frmListerAgenda.Designer.cs">
+      <DependentUpon>frmListerAgenda.cs</DependentUpon>
+    </Compile>
     <Compile Include="views\Secret\frmListerPatient.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -409,6 +415,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="views\Secret\frmDashSecretaire.resx">
       <DependentUpon>frmDashSecretaire.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="views\Secret\frmListerAgenda.resx">
+      <DependentUpon>frmListerAgenda.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="views\Secret\frmListerPatient.resx">
       <DependentUpon>frmListerPatient.cs</DependentUpon>

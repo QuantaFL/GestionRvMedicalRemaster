@@ -35,8 +35,8 @@
             this.txtTelephone = new System.Windows.Forms.TextBox();
             this.btnRechercherPatient = new System.Windows.Forms.Button();
             this.dgPatients = new System.Windows.Forms.DataGridView();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.btnRetour = new System.Windows.Forms.Button();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgPatients)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -119,16 +119,6 @@
             this.dgPatients.Size = new System.Drawing.Size(698, 955);
             this.dgPatients.TabIndex = 19;
             // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = global::WindowsFormsApp1.Properties.Resources.rdv;
-            this.pictureBox2.Location = new System.Drawing.Point(686, 198);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(682, 785);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 20;
-            this.pictureBox2.TabStop = false;
-            // 
             // btnRetour
             // 
             this.btnRetour.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -144,6 +134,16 @@
             this.btnRetour.Text = "R&etour";
             this.btnRetour.UseVisualStyleBackColor = true;
             this.btnRetour.Click += new System.EventHandler(this.btnRetour_Click);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::WindowsFormsApp1.Properties.Resources.rdv;
+            this.pictureBox2.Location = new System.Drawing.Point(686, 198);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(682, 785);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 20;
+            this.pictureBox2.TabStop = false;
             // 
             // frmListerPatient
             // 

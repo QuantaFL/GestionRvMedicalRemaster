@@ -74,7 +74,7 @@ namespace WindowsFormsApp1.views.Secret
 
         private void btnCorbeille_Click(object sender, EventArgs e)
         {
-
+            CustomNavigatorMdi.push(this, btnListeUtilisateur, new frmListerAgenda());
         }
     }
 }
