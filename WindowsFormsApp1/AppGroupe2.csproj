@@ -172,6 +172,7 @@
   <ItemGroup>
     <Compile Include="config\CustomNavigatorMdi.cs" />
     <Compile Include="config\FactorySeed.cs" />
+    <Compile Include="config\fakerUtils.cs" />
     <Compile Include="config\SaltHash.cs" />
     <Compile Include="config\ThemeModeUtils.cs" />
     <Compile Include="config\WhatsappSink.cs" />

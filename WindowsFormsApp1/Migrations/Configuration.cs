@@ -77,18 +77,20 @@
                 context.SaveChanges();
 
                 context.Specialite.AddOrUpdate(
-                  sp => sp.Id,
-                  new Specialite
-                  {
-                      CodeSpecialte = "CAR",
-                      NomSpecialte = "CARDIOLOGIE"
-                  },
-                   new Specialite
-                   {
-                       CodeSpecialte = "CHIR",
-                       NomSpecialte = "CHIRURGIE"
-                   }
+                    sp => sp.Id,
+                    new Specialite { CodeSpecialte = "GEN", NomSpecialte = "GENERALISTE" },
+                    new Specialite { CodeSpecialte = "CAR", NomSpecialte = "CARDIOLOGIE" },
+                    new Specialite { CodeSpecialte = "DER", NomSpecialte = "DERMATOLOGIE" },
+                    new Specialite { CodeSpecialte = "GYN", NomSpecialte = "GYNECOLOGIE" },
+                    new Specialite { CodeSpecialte = "PED", NomSpecialte = "PÉDIATRIE" },
+                    new Specialite { CodeSpecialte = "NEU", NomSpecialte = "NEUROLOGIE" },
+                    new Specialite { CodeSpecialte = "ORTHO", NomSpecialte = "ORTHOPÉDIE" },
+                    new Specialite { CodeSpecialte = "OPH", NomSpecialte = "OPHTALMOLOGIE" },
+                    new Specialite { CodeSpecialte = "RAD", NomSpecialte = "RADIOLOGIE" },
+                    new Specialite { CodeSpecialte = "PSY", NomSpecialte = "PSYCHIATRIE" },
+                    new Specialite { CodeSpecialte = "CHIR", NomSpecialte = "CHIRURGIE" }
                 );
+
                 context.MoyenDePaiements.AddOrUpdate(
                     mp => mp.IdMoy,
                     new MoyenDePaiement { CodeMoyenPaiement = "WAV", LibelleMoyenPaiement = "WAVE" },
@@ -150,7 +152,7 @@
                       Creneau = 60,
                       Titre = "Test",
                       DataPlanifier = DateTime.Now,
-                      Statut = "ACTIVE"
+                      Statut = "dispo"
                   },
                   new Agenda
                   {
@@ -161,11 +163,12 @@
                       Creneau = 35,
                       Titre = "Test1",
                       DataPlanifier = DateTime.Now.AddDays(1),
-                      Statut = "ACTIVE"
+                      Statut = "dispo"
                   }
 
               );
                 context.SaveChanges();
+                FactorySeed.MedecinSeeder( context );
             }
 
             //var secretaires = FactorySeed.GetSecretaires(5); 

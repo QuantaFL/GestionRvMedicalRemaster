@@ -2,6 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Migrations;
+using System.Runtime.Remoting.Contexts;
 using WindowsFormsApp1.config;
 using WindowsFormsApp1.Models;
 
@@ -166,8 +168,89 @@ public static class FactorySeed
             }
         }
 
-        // Save generated agendas to the database
         context.Agenda.AddRange(agendas);
+        context.SaveChanges();
+
+    }
+    public static void MedecinSeeder(bdRdvMedicalContext context)
+    {
+        Random rand = new Random();
+        var africanNames = new[]
+        {
+            new { FirstName = "Mamadou", LastName = "Diop" },
+            new { FirstName = "Fatoumata", LastName = "Diarra" },
+            new { FirstName = "Amadou", LastName = "Sow" },
+            new { FirstName = "Aissatou", LastName = "Ba" },
+            new { FirstName = "Mouhamed", LastName = "Ndour" },
+            new { FirstName = "Mariama", LastName = "Toure" },
+            new { FirstName = "Ibrahime", LastName = "Fall" },
+            new { FirstName = "Sokhna", LastName = "Sy" },
+            new { FirstName = "Cheikh", LastName = "Ndiaye" },
+            new { FirstName = "Ndeye", LastName = "Gueye" },
+            new { FirstName = "Omar", LastName = "Fall" },
+            new { FirstName = "Maimouna", LastName = "Thiam" },
+            new { FirstName = "Tijani", LastName = "Kane" },
+            new { FirstName = "Kadidia", LastName = "Faye" },
+            new { FirstName = "Boubacar", LastName = "Diagne" },
+            new { FirstName = "Khadija", LastName = "Mbaye" },
+            new { FirstName = "Seydou", LastName = "Seck" },
+            new { FirstName = "Khady", LastName = "Sarr" },
+            new { FirstName = "Alioune", LastName = "Mbacke" }
+        };
+
+        for (int i = 5; i <= 24; i++)
+        {
+            var name = africanNames[rand.Next(0, africanNames.Length)];
+            var phone = $"78{rand.Next(1000000, 9999999)}";
+            var email = $"{name.FirstName.ToLower()}.{name.LastName.ToLower()}@gmail.com";
+
+            context.Medecins.AddOrUpdate(
+                m => m.IdP,
+                new Medecin
+                {
+                    DateNaissance = DateTime.Now.AddYears(-rand.Next(30, 60)),
+                    Identifiant = $"medecin{i}",
+                    Email = email,
+                    NomPrenom = $"{name.FirstName} {name.LastName}",
+                    IdRole = 3,
+                    MotDePasse = SaltHash.HashPassword("passer"),
+                    PremiereConnexion = 1,
+                    Addresse = $"Address {i}",
+                    Status = true,
+                    Tel = phone,
+                    IdSpecialite = rand.Next(1, 11),
+                    NumeroOrdre = $"{rand.Next(100, 999)}",
+                }
+            );
+        }
+
+        context.SaveChanges();
+
+        for (int medecinId = 4; medecinId <= 24; medecinId++)
+        {
+            for (int agendaCount = 0; agendaCount < 15; agendaCount++)
+            {
+                var startHour = rand.Next(7, 12);
+                var startMinute = rand.Next(0, 60);
+                var endHour = startHour + rand.Next(5, 14);
+
+                context.Agenda.AddOrUpdate(
+                    ag => ag.IdAgenda,
+                    new Agenda
+                    {
+                        IdMedecin = medecinId,
+                        Lieu = $"Health Care {medecinId}",
+                        HeureDebut = $"{startHour:D2}:{startMinute:D2}",
+                        HeureFin = $"{endHour:D2}:{rand.Next(0, 60):D2}",
+                        Creneau = rand.Next(20, 60),
+                        Titre = $"Agenda {agendaCount + 1} for Medecin {medecinId}",
+                        DataPlanifier = DateTime.Now.AddDays(rand.Next(1, 30)),
+                        Statut = "dispo"
+                    }
+                );
+            }
+        }
+
         context.SaveChanges();
     }
 
