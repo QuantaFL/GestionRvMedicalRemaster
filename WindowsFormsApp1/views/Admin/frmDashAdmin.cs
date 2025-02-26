@@ -14,10 +14,25 @@ namespace WindowsFormsApp1.views.Admin
 {
     public partial class frmDashAdmin : Form
     {
+        private CustomControlBox customControlBox;
         public frmDashAdmin()
         {
             InitializeComponent();
             lblNomUtilisateur.Text = FrmConnexion.user.NomPrenom;
+            customControlBox = new CustomControlBox();
+            customControlBox.Dock = DockStyle.Top;
+            customControlBox.MinimizeClick += CustomControlBox_MinimizeClick;
+            customControlBox.CloseClick += CustomControlBox_CloseClick;
+            Controls.Add(customControlBox);
+        }
+        private void CustomControlBox_MinimizeClick(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void CustomControlBox_CloseClick(object sender, EventArgs e)
+        {
+            this.Close();
         }
         private void fermer()
         {
@@ -68,6 +83,11 @@ namespace WindowsFormsApp1.views.Admin
             }
              
              */
+        }
+
+        private void btnTest_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

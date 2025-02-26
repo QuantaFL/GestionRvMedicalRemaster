@@ -58,10 +58,10 @@
             this.panel1.Controls.Add(this.txtIdentifiant);
             this.panel1.Controls.Add(this.pictureBox3);
             this.panel1.Controls.Add(this.pictureBox2);
-            this.panel1.Location = new System.Drawing.Point(423, -1);
+            this.panel1.Location = new System.Drawing.Point(376, -1);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(684, 565);
+            this.panel1.Size = new System.Drawing.Size(608, 452);
             this.panel1.TabIndex = 1;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
@@ -70,10 +70,10 @@
             this.btnConnexion.BackColor = System.Drawing.Color.White;
             this.btnConnexion.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnConnexion.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnConnexion.Location = new System.Drawing.Point(278, 409);
+            this.btnConnexion.Location = new System.Drawing.Point(247, 327);
             this.btnConnexion.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnConnexion.Name = "btnConnexion";
-            this.btnConnexion.Size = new System.Drawing.Size(154, 52);
+            this.btnConnexion.Size = new System.Drawing.Size(137, 42);
             this.btnConnexion.TabIndex = 7;
             this.btnConnexion.Text = "&Se Connecter";
             this.btnConnexion.UseVisualStyleBackColor = false;
@@ -85,9 +85,9 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label2.Location = new System.Drawing.Point(114, 308);
+            this.label2.Location = new System.Drawing.Point(101, 246);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(186, 32);
+            this.label2.Size = new System.Drawing.Size(160, 29);
             this.label2.TabIndex = 6;
             this.label2.Text = "Mot de Passe";
             // 
@@ -96,19 +96,19 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label1.Location = new System.Drawing.Point(114, 175);
+            this.label1.Location = new System.Drawing.Point(101, 140);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(139, 32);
+            this.label1.Size = new System.Drawing.Size(116, 29);
             this.label1.TabIndex = 5;
             this.label1.Text = "Identifiant";
             this.label1.Click += new System.EventHandler(this.label1_Click_1);
             // 
             // txtMotDePasse
             // 
-            this.txtMotDePasse.Location = new System.Drawing.Point(120, 351);
+            this.txtMotDePasse.Location = new System.Drawing.Point(107, 281);
             this.txtMotDePasse.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtMotDePasse.Name = "txtMotDePasse";
-            this.txtMotDePasse.Size = new System.Drawing.Size(421, 26);
+            this.txtMotDePasse.Size = new System.Drawing.Size(375, 22);
             this.txtMotDePasse.TabIndex = 4;
             this.txtMotDePasse.UseSystemPasswordChar = true;
             this.txtMotDePasse.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
@@ -117,29 +117,29 @@
             // pictureBox4
             // 
             this.pictureBox4.Image = global::WindowsFormsApp1.Properties.Resources._lock;
-            this.pictureBox4.Location = new System.Drawing.Point(521, 341);
+            this.pictureBox4.Location = new System.Drawing.Point(463, 273);
             this.pictureBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(86, 45);
+            this.pictureBox4.Size = new System.Drawing.Size(76, 36);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox4.TabIndex = 3;
             this.pictureBox4.TabStop = false;
             // 
             // txtIdentifiant
             // 
-            this.txtIdentifiant.Location = new System.Drawing.Point(120, 221);
+            this.txtIdentifiant.Location = new System.Drawing.Point(107, 177);
             this.txtIdentifiant.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtIdentifiant.Name = "txtIdentifiant";
-            this.txtIdentifiant.Size = new System.Drawing.Size(421, 26);
+            this.txtIdentifiant.Size = new System.Drawing.Size(375, 22);
             this.txtIdentifiant.TabIndex = 2;
             // 
             // pictureBox3
             // 
             this.pictureBox3.Image = global::WindowsFormsApp1.Properties.Resources.user;
-            this.pictureBox3.Location = new System.Drawing.Point(521, 212);
+            this.pictureBox3.Location = new System.Drawing.Point(463, 170);
             this.pictureBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(76, 46);
+            this.pictureBox3.Size = new System.Drawing.Size(68, 37);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox3.TabIndex = 1;
             this.pictureBox3.TabStop = false;
@@ -150,7 +150,7 @@
             this.pictureBox2.Location = new System.Drawing.Point(4, 1);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(677, 149);
+            this.pictureBox2.Size = new System.Drawing.Size(602, 119);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 0;
             this.pictureBox2.TabStop = false;
@@ -159,9 +159,9 @@
             // 
             this.pictureBox1.Image = global::WindowsFormsApp1.Properties.Resources.lgcr;
             this.pictureBox1.Location = new System.Drawing.Point(1, -1);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 9);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 7);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(428, 565);
+            this.pictureBox1.Size = new System.Drawing.Size(380, 452);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -175,15 +175,15 @@
             // 
             // FrmConnexion
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1106, 561);
+            this.ClientSize = new System.Drawing.Size(983, 449);
             this.ControlBox = false;
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "FrmConnexion";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Connexion";
