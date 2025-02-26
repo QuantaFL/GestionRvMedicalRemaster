@@ -81,6 +81,7 @@ namespace WindowsFormsApp1.views.Med
                         var agenda = new Agenda()
                         {
                             Titre = txtTitreAgenda.Text,
+                            Statut = "dispo",
                             Lieu = txtLieu.Text,
                             Creneau = creneau,
                             HeureDebut = txtHeureDebut.Text,
