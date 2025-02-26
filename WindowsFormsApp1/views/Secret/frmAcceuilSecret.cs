@@ -169,5 +169,10 @@ namespace WindowsFormsApp1.views.Secret
                 btnRechercherPatient.PerformClick();
             }
         }
+
+        private void btnRetour_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

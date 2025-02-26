@@ -34,9 +34,14 @@ namespace WindowsFormsApp1.views.Secret
                 MedecinNomPrenom = rdv.Medecin.NomPrenom,
                 rdv.Soin.NomSoin,
                 rdv.DateRv,
-                rdv.Patient,
+                
 
             }).ToList();
+        }
+
+        private void btnRetour_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
