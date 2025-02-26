@@ -63,39 +63,54 @@ namespace WindowsFormsApp1
 
         }
 
+        public void resetText()
+        {
+            txtMotDePasse.Text = String.Empty;
+        }
+
         private void btnConnexion_Click(object sender, EventArgs e)
         {
             var identifiant = txtIdentifiant.Text;
             var motdepasse = txtMotDePasse.Text;
+            if(identifiant == ""|| motdepasse == "")
+            {
+                new frmInformation("veuillez svp renseigner les deux champs").ShowDialog();
+                return;
+            }
             var utilisateur = db.Utilisateurs.Where(a => a.Identifiant.Equals(identifiant)).FirstOrDefault();
 
             if (utilisateur != null)
             {
                 if (SaltHash.VerifyPassword(motdepasse, utilisateur.MotDePasse))
                 {
+                    if (utilisateur.Status == false)
+                    {
+                        new frmEchecExecution("Votre compte est bloquer veuillez svp contacter votre administrateur").ShowDialog();
+                        resetText();
+                        return;
+                    }
                     user = utilisateur;
                     var role = db.Role.Where(r => r.IdRole.Equals(utilisateur.IdRole)).FirstOrDefault();
 
 
-                    if (utilisateur.PremiereConnexion == 0)
-                    {
-                        MessageBox.Show("Bienvenue, veuillez changer vos informations de connexion.");
-                        this.Hide();
-                        frmChangerIdentifiants frmChanger = new frmChangerIdentifiants();
-                        frmChanger.ShowDialog();
-
-
-                        string nouvelIdentifiant = frmChanger.NouvelIdentifiant;
-                        string nouveauMotDePasse = frmChanger.NouveauMotDePasse;
-                        if (!string.IsNullOrEmpty(nouvelIdentifiant) && !string.IsNullOrEmpty(nouveauMotDePasse))
+                        if (utilisateur.PremiereConnexion == 0)
                         {
-                            utilisateur.Identifiant = nouvelIdentifiant;
-                            utilisateur.MotDePasse = SaltHash.HashPassword(nouveauMotDePasse);
-                            utilisateur.PremiereConnexion = 1;
-                            db.Utilisateurs.AddOrUpdate(utilisateur);
-                            db.SaveChanges();
+                            MessageBox.Show("Bienvenue, veuillez changer vos informations de connexion.");
+                            this.Hide();
+                            frmChangerIdentifiants frmChanger = new frmChangerIdentifiants();
+                            frmChanger.ShowDialog();
+                            string nouvelIdentifiant = frmChanger.NouvelIdentifiant;
+                            string nouveauMotDePasse = frmChanger.NouveauMotDePasse;
+                             if (!string.IsNullOrEmpty(nouvelIdentifiant) && !string.IsNullOrEmpty(nouveauMotDePasse))
+                            {
+                                utilisateur.Identifiant = nouvelIdentifiant;
+                                utilisateur.MotDePasse = SaltHash.HashPassword(nouveauMotDePasse);
+                                utilisateur.PremiereConnexion = 1;
+                                db.Utilisateurs.AddOrUpdate(utilisateur);
+                                db.SaveChanges();
+                            }
                         }
-                    }
+                        resetText();
 
                         if (role.LibelleRole.Equals("ADMIN"))
                         {
@@ -123,13 +138,11 @@ namespace WindowsFormsApp1
                 
                 else
                 {
-                    new frmEchecExecution("Utilisateur ou mot de passe incorrect");
+                    new frmEchecExecution("Utilisateur ou mot de passe incorrect").ShowDialog();
                 }
             }
             else
-            {
-                frmEchecExecution frmEchecExecution = new frmEchecExecution("Cet identifiant n'existe pas");
-                frmEchecExecution.ShowDialog();
+            {new frmEchecExecution("Cet identifiant n'existe pas").ShowDialog();
             }
         }
 
