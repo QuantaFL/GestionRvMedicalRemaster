@@ -30,12 +30,13 @@ namespace WindowsFormsApp1.views.Secret
         {
             dgRdv.DataSource = bd.RendezVous.Select(rdv => new
             {
-                rdv.Medecin.NomPrenom,
+                PatientNomPrenom = rdv.Patient.NomPrenom,
+                MedecinNomPrenom = rdv.Medecin.NomPrenom,
                 rdv.Soin.NomSoin,
                 rdv.DateRv,
                 rdv.Patient,
-              
-            }).ToList(); 
+
+            }).ToList();
         }
     }
 }
