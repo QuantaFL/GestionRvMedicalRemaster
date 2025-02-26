@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Serilog;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,6 +9,7 @@ using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp1.CustomControls;
 using WindowsFormsApp1.Models;
 
 namespace WindowsFormsApp1.views.Med
@@ -52,6 +54,31 @@ namespace WindowsFormsApp1.views.Med
         private void dgAgendaMedecin_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void btnRechercherAgenda_Click(object sender, EventArgs e)
+        {
+            Log.Information("clique sur le button rechercher agenda medecin");
+            LoadAgenda(txtDateChercher.Value);
+        }
+        public void LoadAgenda(DateTime val)
+        {
+            try
+            {
+                Medecin m = bd.Medecins.Where(a => a.IdP == FrmConnexion.user.IdP).FirstOrDefault();
+
+                    var agendas =m.agenda
+                        .ToList();
+                var agenda = agendas.Where(a => a.DataPlanifier.Value.Date == val.Date.Date).ToList();
+                   
+
+                dgAgendaMedecin.DataSource = agenda;
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, "Erreur lors du chargement des agendas pour le medecin {s}", FrmConnexion.user.NomPrenom);
+                new frmEchecExecution("Erreur lors du chargement des agendas.");
+            }
         }
     }
 
