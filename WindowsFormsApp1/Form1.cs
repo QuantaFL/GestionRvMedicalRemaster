@@ -23,11 +23,11 @@ namespace WindowsFormsApp1
         private CustomControlBox customControlBox;
         public FrmConnexion()
         {
-            customControlBox = new CustomControlBox();
-            customControlBox.Dock = DockStyle.Top;
-            customControlBox.MinimizeClick += CustomControlBox_MinimizeClick;
-            customControlBox.CloseClick += CustomControlBox_CloseClick;
-            Controls.Add(customControlBox);
+            //customControlBox = new CustomControlBox();
+            //customControlBox.Dock = DockStyle.Top;
+            //customControlBox.MinimizeClick += CustomControlBox_MinimizeClick;
+            //customControlBox.CloseClick += CustomControlBox_CloseClick;
+            //Controls.Add(customControlBox);
 
             FormBorderStyle = FormBorderStyle.None;
             StartPosition = FormStartPosition.CenterScreen;
