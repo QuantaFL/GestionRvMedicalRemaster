@@ -26,7 +26,8 @@ namespace WindowsFormsApp1.views.Med
 
         private void btnAjouterAgenda_Click(object sender, EventArgs e)
         {
-            //TODO : Partir sur Agenda avec l'id du Medecin 
+            //TODO : Partir sur Agenda avec l'id du Medecin
+            //Pas besoin
             frmMedAgenda frmMedAgenda = new frmMedAgenda();
             frmMedAgenda.ShowDialog();
         }
@@ -77,7 +78,7 @@ namespace WindowsFormsApp1.views.Med
             catch (Exception ex)
             {
                 Log.Error(ex, "Erreur lors du chargement des agendas pour le medecin {s}", FrmConnexion.user.NomPrenom);
-                new frmEchecExecution("Erreur lors du chargement des agendas.");
+                new frmEchecExecution("Erreur lors du chargement des agendas.").ShowDialog();
             }
         }
     }

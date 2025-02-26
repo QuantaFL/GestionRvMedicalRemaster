@@ -101,8 +101,7 @@ namespace WindowsFormsApp1.views.Secret
         private static void ShowNoPatientPrompt()
         {
            
-            frmMessage frmMessage = new frmMessage("Voulez vous l'ajouter ?", "Le Patient N'existe pas");
-            frmMessage.ShowDialog();
+            frmMessage frmMessage = new frmMessage("Voulez vous l'ajouter ?", "Le Patient N'existe pas")].ShowDialog();
 
             if (frmMessage.CustomDialogResult == DialogResult.Yes)
             {

@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Transactions;
 using System.Windows.Forms;
 using Serilog;
+using WindowsFormsApp1.CustomControls;
 using WindowsFormsApp1.Models;
 using static System.Net.Mime.MediaTypeNames;
 
@@ -50,7 +51,7 @@ namespace WindowsFormsApp1.views.Med
 
                     if (medecin == null)
                     {
-                        MessageBox.Show("Medecin introuvable.");
+                        new frmInformation("Medecin introuvable.").ShowDialog();
                         Log.Warning("Medecin introuvable avec l'ID specifie.");
                         return;
                     }
@@ -61,14 +62,14 @@ namespace WindowsFormsApp1.views.Med
                         string.IsNullOrEmpty(txtCrenneau.Text) || string.IsNullOrEmpty(txtHeureDebut.Text) ||
                         string.IsNullOrEmpty(txtHeureFin.Text))
                     {
-                        MessageBox.Show("Tous les champs doivent etre remplis.");
+                        new frmInformation("Tous les champs doivent etre remplis.").ShowDialog();
                         Log.Warning("Des champs obligatoires sont vides.");
                         return;
                     }
 
                     if (!int.TryParse(txtCrenneau.Text, out int creneau) || creneau <= 0)
                     {
-                        MessageBox.Show("Veuillez entrer un creneau valide.");
+                        new frmInformation("Veuillez entrer un creneau valide.").ShowDialog();
                         Log.Warning("Creneau invalide ou non numérique.");
                         return;
                     }
@@ -96,7 +97,7 @@ namespace WindowsFormsApp1.views.Med
 
                         resetForm();
 
-                        MessageBox.Show("L'ajout a ete effectue avec succes !");
+                        new frmInformation("L'ajout a ete effectue avec succes !");
                         Log.Information("Agenda ajouter avec succes.");
                     }
                     catch (Exception ex)
@@ -108,7 +109,7 @@ namespace WindowsFormsApp1.views.Med
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Erreur durant la creation");
+                new frmInformation("Erreur durant la creation").ShowDialog();
                 Log.Fatal($"Erreur generale lors de la tentative de creation: {ex.Message} {ex.InnerException}");
             }
         }
