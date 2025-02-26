@@ -53,7 +53,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmRptPrintRecuRdv";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmRptPrintRecuRdv";
+            this.Text = "ImpressionRecu";
             this.Load += new System.EventHandler(this.frmRptPrintRecuRdv_Load);
             this.ResumeLayout(false);
 

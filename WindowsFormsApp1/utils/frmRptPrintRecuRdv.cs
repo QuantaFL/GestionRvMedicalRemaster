@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Serilog;
+using WindowsFormsApp1.config;
 using WindowsFormsApp1.CustomControls;
 using WindowsFormsApp1.Models;
 using WindowsFormsApp1.report;
@@ -51,6 +52,7 @@ namespace WindowsFormsApp1.utils
             }
 
             var rdv = db.RendezVous.Where(a => a.IdRendezVous == IdRv).FirstOrDefault();
+            var CodeQr = GenerateQR.GenerateQRCode(rdv.CodeRdv);
             if (ping_google())
             {
                 MessageBox.Show("helloGG");
@@ -59,7 +61,7 @@ namespace WindowsFormsApp1.utils
             }
             if (rdv != null)
             {
-                dt.Rows.Add(rdv.Patient.NomPrenom, rdv.Medecin.NomPrenom, rdv.DateRv, rdv.HeureRv, new byte[0]);
+                dt.Rows.Add(rdv.Patient.NomPrenom, rdv.Medecin.NomPrenom, rdv.DateRv, rdv.HeureRv, CodeQr);
 
             }
             else

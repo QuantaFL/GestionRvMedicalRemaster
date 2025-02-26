@@ -86,7 +86,9 @@ namespace WindowsFormsApp1.views.Secret
                     var lastRdv = _bd.RendezVous.Where(r => r.CodeRdv == codeRdv).FirstOrDefault();
                     if (lastRdv != null) { 
                         frmRptPrintRecuRdv frmRptPrintRecuRdv = new frmRptPrintRecuRdv(lastRdv.IdRendezVous);
-                        frmRptPrintRecuRdv.ShowDialog();
+                        frmRptPrintRecuRdv.Show();
+                       // var frmRdv = Application.OpenForms["frmValiderRdv"] as frmValiderRdv;
+                       // frmRdv.Close();
                     }
                 }
                 catch (Exception ex) { 
