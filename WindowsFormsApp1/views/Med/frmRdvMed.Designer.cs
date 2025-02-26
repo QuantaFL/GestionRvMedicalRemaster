@@ -70,7 +70,6 @@
             this.dgRdvMedecin.RowTemplate.Height = 28;
             this.dgRdvMedecin.Size = new System.Drawing.Size(688, 955);
             this.dgRdvMedecin.TabIndex = 1;
-            this.dgRdvMedecin.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgRdvMedecin_CellContentClick);
             // 
             // pictureBox2
             // 

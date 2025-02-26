@@ -76,5 +76,10 @@ namespace WindowsFormsApp1.views.Secret
         {
             CustomNavigatorMdi.push(this, btnListeUtilisateur, new frmListerAgenda());
         }
+
+        private void btnParametre_Click(object sender, EventArgs e)
+        {
+            CustomNavigatorMdi.push(this, btnListeUtilisateur, new frmListerRdv());
+        }
     }
 }

@@ -132,7 +132,7 @@
             this.btnPatient.Name = "btnPatient";
             this.btnPatient.Size = new System.Drawing.Size(327, 60);
             this.btnPatient.TabIndex = 9;
-            this.btnPatient.Text = "&Patients";
+            this.btnPatient.Text = "&PATIENTS";
             this.btnPatient.UseVisualStyleBackColor = false;
             this.btnPatient.Click += new System.EventHandler(this.btnPatient_Click);
             // 
@@ -176,8 +176,9 @@
             this.btnParametre.Name = "btnParametre";
             this.btnParametre.Size = new System.Drawing.Size(322, 60);
             this.btnParametre.TabIndex = 7;
-            this.btnParametre.Text = "Parametres";
+            this.btnParametre.Text = "RENDEZ-VOUS";
             this.btnParametre.UseVisualStyleBackColor = false;
+            this.btnParametre.Click += new System.EventHandler(this.btnParametre_Click);
             // 
             // btnListeUtilisateur
             // 
@@ -188,7 +189,7 @@
             this.btnListeUtilisateur.Name = "btnListeUtilisateur";
             this.btnListeUtilisateur.Size = new System.Drawing.Size(327, 60);
             this.btnListeUtilisateur.TabIndex = 5;
-            this.btnListeUtilisateur.Text = "&Rendez Vous";
+            this.btnListeUtilisateur.Text = "&GERER RDV";
             this.btnListeUtilisateur.UseVisualStyleBackColor = false;
             this.btnListeUtilisateur.Click += new System.EventHandler(this.btnListeUtilisateur_Click);
             // 
@@ -201,7 +202,7 @@
             this.btnCorbeille.Name = "btnCorbeille";
             this.btnCorbeille.Size = new System.Drawing.Size(322, 60);
             this.btnCorbeille.TabIndex = 4;
-            this.btnCorbeille.Text = "&Agenda";
+            this.btnCorbeille.Text = "&AGENDA";
             this.btnCorbeille.UseVisualStyleBackColor = false;
             this.btnCorbeille.Click += new System.EventHandler(this.btnCorbeille_Click);
             // 
