@@ -25,9 +25,10 @@ namespace WindowsFormsApp1
             Log.Logger = new LoggerConfiguration()
                 .WriteTo.Console()
                 .WriteTo.Sink(new WhatsAppSink())
-                .WriteTo.File(@"C:/Users/UL16/OneDrive/Bureau/Logs/app.log", rollingInterval: RollingInterval.Day)
-                //  .WriteTo.Elasticsearch(new ElasticsearchSinkOptions(new Uri(elasticSearchUrl))
+                .WriteTo.File(@"C:/Logs/app.log", rollingInterval: RollingInterval.Day)
+                  //.WriteTo.Elasticsearch(new ElasticsearchSinkOptions(new Uri(elasticSearchUrl))
                 //  {
+
                 //     AutoRegisterTemplate = true,
                 //    IndexFormat = "log-{0:yyyy.MM.dd}", 
                 //  })

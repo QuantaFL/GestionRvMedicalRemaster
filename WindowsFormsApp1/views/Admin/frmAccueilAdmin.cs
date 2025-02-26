@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,8 +21,10 @@ namespace WindowsFormsApp1.views
         public frmAccueilAdmin()
         {
             InitializeComponent();
+            
         }
         bdRdvMedicalContext db = new bdRdvMedicalContext();
+        
 
         private void btnAjouterUtilisateur_Click(object sender, EventArgs e)
         {
@@ -35,7 +38,7 @@ namespace WindowsFormsApp1.views
         }
         public void loadData()
         {
-          dgUtilisateur.DataSource = db.Utilisateurs.Select(users => new { users.NomPrenom, users.DateNaissance, users.Addresse,users.Email,users.Role.LibelleRole}  ).
+          dgUtilisateur.DataSource = db.Utilisateurs.Select(users => new { users.NomPrenom, users.DateNaissance, users.Addresse,users.Email,users.Role.LibelleRole,users.Status,users.Tel}  ).
                 Where(users => users.LibelleRole != "ADMIN")
                 .ToList();
         }
@@ -242,6 +245,13 @@ namespace WindowsFormsApp1.views
 
             }
 
+        }
+
+        private void ctrlBox1_Load(object sender, EventArgs e)
+        {
+            frmAccueilAdmin frm = Application.OpenForms["frmAccueilAdmin"] as frmAccueilAdmin;
+           // this.ctrlBox1 = new CtrlBox(frm);
+           // this.ctrlBox1.closeForm();
         }
     }
 }

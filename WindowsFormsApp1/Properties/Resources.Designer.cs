@@ -153,6 +153,16 @@ namespace WindowsFormsApp1.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap fermer1 {
+            get {
+                object obj = ResourceManager.GetObject("fermer1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap iconeLogo {
             get {
                 object obj = ResourceManager.GetObject("iconeLogo", resourceCulture);
