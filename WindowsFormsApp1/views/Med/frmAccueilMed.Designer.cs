@@ -61,16 +61,9 @@
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.pictureBox1.Image = global::WindowsFormsApp1.Properties.Resources.rdv1;
-<<<<<<< Updated upstream
             this.pictureBox1.Location = new System.Drawing.Point(607, 143);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(879, 963);
-=======
-            this.pictureBox1.Location = new System.Drawing.Point(405, 93);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(586, 626);
->>>>>>> Stashed changes
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 13;
             this.pictureBox1.TabStop = false;

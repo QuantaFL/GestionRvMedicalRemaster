@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity.Migrations;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -65,53 +66,73 @@ namespace WindowsFormsApp1
         private void btnConnexion_Click(object sender, EventArgs e)
         {
             var identifiant = txtIdentifiant.Text;
-            var motdepasse =  txtMotDePasse.Text;
+            var motdepasse = txtMotDePasse.Text;
             var utilisateur = db.Utilisateurs.Where(a => a.Identifiant.Equals(identifiant)).FirstOrDefault();
+
             if (utilisateur != null)
             {
                 if (SaltHash.VerifyPassword(motdepasse, utilisateur.MotDePasse))
                 {
                     user = utilisateur;
-                    var Role = db.Role.Where(r => r.IdRole.Equals(utilisateur.IdRole)).FirstOrDefault();
+                    var role = db.Role.Where(r => r.IdRole.Equals(utilisateur.IdRole)).FirstOrDefault();
 
-                    if (Role.LibelleRole.Equals("ADMIN"))
+
+                    if (utilisateur.PremiereConnexion == 0)
                     {
+                        MessageBox.Show("Bienvenue, veuillez changer vos informations de connexion.");
                         this.Hide();
-                        frmDashAdmin frm = new frmDashAdmin();
-                        frm.Show();
-                        return;
+                        frmChangerIdentifiants frmChanger = new frmChangerIdentifiants();
+                        frmChanger.ShowDialog();
+
+
+                        string nouvelIdentifiant = frmChanger.NouvelIdentifiant;
+                        string nouveauMotDePasse = frmChanger.NouveauMotDePasse;
+                        if (!string.IsNullOrEmpty(nouvelIdentifiant) && !string.IsNullOrEmpty(nouveauMotDePasse))
+                        {
+                            utilisateur.Identifiant = nouvelIdentifiant;
+                            utilisateur.MotDePasse = SaltHash.HashPassword(nouveauMotDePasse);
+                            utilisateur.PremiereConnexion = 1;
+                            db.Utilisateurs.AddOrUpdate(utilisateur);
+                            db.SaveChanges();
+                        }
                     }
-                    //if (utilisateur.PremiereConnexion == 0)
-                    //{
-                    //    return;
-                    //}
-                    else
-                    {
-                        if (Role.LibelleRole.Equals("SECRETAIRE"))
+
+                        if (role.LibelleRole.Equals("ADMIN"))
+                        {
+                            this.Hide();
+                            frmDashAdmin frm = new frmDashAdmin();
+                            frm.Show();
+                            return;
+                        }
+                        if (role.LibelleRole.Equals("SECRETAIRE"))
                         {
                             this.Hide();
                             frmDashSecretaire frm = new frmDashSecretaire();
                             frm.Show();
+                            return;
                         }
-                        else
+                        if (role.LibelleRole.Equals("MEDECIN"))
                         {
                             this.Hide();
                             frmDashMed frm = new frmDashMed();
                             frm.Show();
+                            return;
                         }
                     }
-                }
+                   
+                
                 else
                 {
                     new frmEchecExecution("Utilisateur ou mot de passe incorrect");
                 }
             }
-            else { 
-                frmEchecExecution frmEchecExecution = new frmEchecExecution("cet identifiant n'exite pas");
+            else
+            {
+                frmEchecExecution frmEchecExecution = new frmEchecExecution("Cet identifiant n'existe pas");
                 frmEchecExecution.ShowDialog();
-            
             }
         }
+
 
         private void FrmConnexion_KeyDown(object sender, KeyEventArgs e)
         {
