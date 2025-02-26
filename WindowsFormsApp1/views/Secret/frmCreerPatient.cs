@@ -8,7 +8,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp1.CustomControls;
 using WindowsFormsApp1.Models;
+using WindowsFormsApp1.views.Admin;
 
 namespace WindowsFormsApp1.views.Secret
 {
@@ -41,8 +43,9 @@ namespace WindowsFormsApp1.views.Secret
             try
             {
                 bd.SaveChanges();
-                //TODO remplacer le message box par le message box cree par Rben
-                MessageBox.Show("success");
+                //TODO remplacer le message box par le message box cree par Rben//okay cest fait
+                new frmInformation("Enregistrement du document patient avec succes").ShowDialog();
+                
             }
             catch (DbEntityValidationException ex)
             {
@@ -61,14 +64,14 @@ namespace WindowsFormsApp1.views.Secret
           
             if (string.IsNullOrWhiteSpace(txtNomPrenom.Text))
             {
-                MessageBox.Show("Le nom et prénom sont obligatoires.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                new frmInformation("Le nom et prénom sont obligatoires.").ShowDialog();
                 return false;
             }
 
          
             if (string.IsNullOrWhiteSpace(txtNumeroTelephone.Text))
             {
-                MessageBox.Show("Le numéro de téléphone est obligatoire.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                new frmInformation("Le numéro de téléphone est obligatoire.").ShowDialog();
                 return false;
             }
 
@@ -76,21 +79,21 @@ namespace WindowsFormsApp1.views.Secret
             DateTime dateNaissance;
             if (!DateTime.TryParse(txtDateNaissance.Text, out dateNaissance))
             {
-                MessageBox.Show("La date de naissance est invalide.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                new frmInformation("La date de naissance est invalide.").ShowDialog();
                 return false;
             }
 
          
             if (string.IsNullOrWhiteSpace(txtEmail.Text))
             {
-                MessageBox.Show("L'email est obligatoire.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                new frmInformation("L'email est obligatoire.").ShowDialog();
                 return false;
             }
 
            
             if (string.IsNullOrWhiteSpace(txtAdresse.Text))
             {
-                MessageBox.Show("L'adresse est obligatoire.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                new frmInformation("L'adresse est obligatoire.").ShowDialog();
                 return false;
             }
 
@@ -98,14 +101,14 @@ namespace WindowsFormsApp1.views.Secret
             float taille;
             if (!float.TryParse(txtTaille.Text, out taille))
             {
-                MessageBox.Show("La taille doit être un nombre valide.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                new frmInformation("La taille doit être un nombre valide.").ShowDialog();
                 return false;
             }
 
          
             if (cbbGroupeSanguin.SelectedValue == null || string.IsNullOrWhiteSpace(cbbGroupeSanguin.SelectedValue.ToString()))
             {
-                MessageBox.Show("Veuillez sélectionner un groupe sanguin.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                new frmInformation("Veuillez sélectionner un groupe sanguin.").ShowDialog();
                 return false;
             }
 
@@ -113,7 +116,7 @@ namespace WindowsFormsApp1.views.Secret
             float poids;
             if (!float.TryParse(txtPoids.Text, out poids))
             {
-                MessageBox.Show("Le poids doit être un nombre valide.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                new frmInformation("Le poids doit être un nombre valide.").ShowDialog();
                 return false;
             }
 
