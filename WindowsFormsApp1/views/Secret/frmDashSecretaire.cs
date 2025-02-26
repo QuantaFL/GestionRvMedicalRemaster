@@ -69,6 +69,7 @@ namespace WindowsFormsApp1.views.Secret
 
         private void btnDeconnexion_Click(object sender, EventArgs e)
         {
+            this.Close();
             frmConnexionInstance.Show();
         }
 
