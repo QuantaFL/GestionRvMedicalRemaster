@@ -56,12 +56,16 @@ namespace WindowsFormsApp1.views.Med
 
         private void btnListerAgenda_Click(object sender, EventArgs e)
         {
-            CustomNavigatorMdi.push(this, btnListerAgenda, new frmAccueilMed());
+            //CustomNavigatorMdi.push(this, btnListerAgenda, new frmAccueilMed());
+            frmAccueilMed frmAccueilMed = new frmAccueilMed();
+            frmAccueilMed.Show();
         }
 
         private void btnRdvMedecin_Click(object sender, EventArgs e)
         {
-            CustomNavigatorMdi.push(this, btnListerAgenda, new frmRdvMed()); 
+           // CustomNavigatorMdi.push(this, btnListerAgenda, new frmRdvMed()); 
+            frmRdvMed frmRdvMed = new frmRdvMed();  
+            frmRdvMed.Show();
             
         }
 
@@ -69,6 +73,12 @@ namespace WindowsFormsApp1.views.Med
         {
             this.Close();
             frmConnexionInstance.Show();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            frmMedAgenda frmMedAgenda = new frmMedAgenda();
+            frmMedAgenda.Show();
         }
     }
 }
