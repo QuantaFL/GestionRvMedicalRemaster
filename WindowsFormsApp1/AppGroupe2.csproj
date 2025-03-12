@@ -516,6 +516,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ILLink\ILLink.Descriptors.LibraryBuild.xml" />
+    <None Include="Resources\a-login-page-icon-with-a-simple-silhouet_BD3Mb7RaTyuqbFn1U_Y06g_dtMZPIh7RICUEDZKsF9mJQ-removebg-preview %281%29.png" />
+    <None Include="Resources\a-login-page-icon-with-a-simple-silhouet_BD3Mb7RaTyuqbFn1U_Y06g_dtMZPIh7RICUEDZKsF9mJQ.jpeg" />
+    <None Include="Resources\a-simple-modern-and-professional-logo-fo_tet-Ct3zSsCK3CffVVOxvA_dCneTWBuQ520S-IZZZychw.jpeg" />
     <None Include="Resources\national-cancer-institute-NFvdKIhxYlU-unsplash.jpg" />
     <None Include="Resources\rdv1.jpg" />
     <None Include="Resources\information-button.png" />

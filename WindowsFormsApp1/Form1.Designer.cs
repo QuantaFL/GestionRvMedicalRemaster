@@ -30,17 +30,17 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmConnexion));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.btnConnexion = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txtMotDePasse = new System.Windows.Forms.TextBox();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.txtIdentifiant = new System.Windows.Forms.TextBox();
+            this.mySqlCommand1 = new MySql.Data.MySqlClient.MySqlCommand();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.mySqlCommand1 = new MySql.Data.MySqlClient.MySqlCommand();
-            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -66,6 +66,20 @@
             this.panel1.Size = new System.Drawing.Size(684, 565);
             this.panel1.TabIndex = 1;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.White;
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button1.Location = new System.Drawing.Point(146, 409);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(154, 52);
+            this.button1.TabIndex = 8;
+            this.button1.Text = "&Quitter";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // btnConnexion
             // 
@@ -116,6 +130,21 @@
             this.txtMotDePasse.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             this.txtMotDePasse.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtMotDePasse_KeyDown);
             // 
+            // txtIdentifiant
+            // 
+            this.txtIdentifiant.Location = new System.Drawing.Point(120, 221);
+            this.txtIdentifiant.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtIdentifiant.Name = "txtIdentifiant";
+            this.txtIdentifiant.Size = new System.Drawing.Size(421, 26);
+            this.txtIdentifiant.TabIndex = 2;
+            // 
+            // mySqlCommand1
+            // 
+            this.mySqlCommand1.CacheAge = 0;
+            this.mySqlCommand1.Connection = null;
+            this.mySqlCommand1.EnableCaching = false;
+            this.mySqlCommand1.Transaction = null;
+            // 
             // pictureBox4
             // 
             this.pictureBox4.Image = global::WindowsFormsApp1.Properties.Resources._lock;
@@ -126,14 +155,6 @@
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox4.TabIndex = 3;
             this.pictureBox4.TabStop = false;
-            // 
-            // txtIdentifiant
-            // 
-            this.txtIdentifiant.Location = new System.Drawing.Point(120, 221);
-            this.txtIdentifiant.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtIdentifiant.Name = "txtIdentifiant";
-            this.txtIdentifiant.Size = new System.Drawing.Size(421, 26);
-            this.txtIdentifiant.TabIndex = 2;
             // 
             // pictureBox3
             // 
@@ -148,8 +169,8 @@
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Image = global::WindowsFormsApp1.Properties.Resources.login__1_;
-            this.pictureBox2.Location = new System.Drawing.Point(4, 1);
+            this.pictureBox2.Image = global::WindowsFormsApp1.Properties.Resources.a_login_page_icon_with_a_simple_silhouet_BD3Mb7RaTyuqbFn1U_Y06g_dtMZPIh7RICUEDZKsF9mJQ_removebg_preview__1_;
+            this.pictureBox2.Location = new System.Drawing.Point(3, 2);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(677, 149);
@@ -159,7 +180,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::WindowsFormsApp1.Properties.Resources.lgcr;
+            this.pictureBox1.Image = global::WindowsFormsApp1.Properties.Resources.a_simple_modern_and_professional_logo_fo_tet_Ct3zSsCK3CffVVOxvA_dCneTWBuQ520S_IZZZychw;
             this.pictureBox1.Location = new System.Drawing.Point(1, -1);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 9);
             this.pictureBox1.Name = "pictureBox1";
@@ -167,27 +188,6 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
-            // 
-            // mySqlCommand1
-            // 
-            this.mySqlCommand1.CacheAge = 0;
-            this.mySqlCommand1.Connection = null;
-            this.mySqlCommand1.EnableCaching = false;
-            this.mySqlCommand1.Transaction = null;
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.White;
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button1.Location = new System.Drawing.Point(146, 409);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(154, 52);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "&Quitter";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // FrmConnexion
             // 

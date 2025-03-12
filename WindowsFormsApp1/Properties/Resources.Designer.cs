@@ -73,6 +73,39 @@ namespace WindowsFormsApp1.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap a_login_page_icon_with_a_simple_silhouet_BD3Mb7RaTyuqbFn1U_Y06g_dtMZPIh7RICUEDZKsF9mJQ {
+            get {
+                object obj = ResourceManager.GetObject("a-login-page-icon-with-a-simple-silhouet_BD3Mb7RaTyuqbFn1U_Y06g_dtMZPIh7RICUEDZKs" +
+                        "F9mJQ", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap a_login_page_icon_with_a_simple_silhouet_BD3Mb7RaTyuqbFn1U_Y06g_dtMZPIh7RICUEDZKsF9mJQ_removebg_preview__1_ {
+            get {
+                object obj = ResourceManager.GetObject("a-login-page-icon-with-a-simple-silhouet_BD3Mb7RaTyuqbFn1U_Y06g_dtMZPIh7RICUEDZKs" +
+                        "F9mJQ-removebg-preview (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap a_simple_modern_and_professional_logo_fo_tet_Ct3zSsCK3CffVVOxvA_dCneTWBuQ520S_IZZZychw {
+            get {
+                object obj = ResourceManager.GetObject("a-simple-modern-and-professional-logo-fo_tet-Ct3zSsCK3CffVVOxvA_dCneTWBuQ520S-IZZ" +
+                        "Zychw", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap annuler {
             get {
                 object obj = ResourceManager.GetObject("annuler", resourceCulture);

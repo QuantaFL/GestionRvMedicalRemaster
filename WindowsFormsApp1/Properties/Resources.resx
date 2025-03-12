@@ -121,8 +121,14 @@
   <data name="fermer" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\fermer.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="a-simple-modern-and-professional-logo-fo_tet-Ct3zSsCK3CffVVOxvA_dCneTWBuQ520S-IZZZychw" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\a-simple-modern-and-professional-logo-fo_tet-Ct3zSsCK3CffVVOxvA_dCneTWBuQ520S-IZZZychw.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="coches" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\coches.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fermer1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fermer.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="rdv1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\rdv1.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -141,6 +147,9 @@
   </data>
   <data name="burger-menu" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\burger-menu1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="a-login-page-icon-with-a-simple-silhouet_BD3Mb7RaTyuqbFn1U_Y06g_dtMZPIh7RICUEDZKsF9mJQ" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\a-login-page-icon-with-a-simple-silhouet_BD3Mb7RaTyuqbFn1U_Y06g_dtMZPIh7RICUEDZKsF9mJQ.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="booking (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\booking (1)2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -163,9 +172,6 @@
   <data name="rendez-vous-medical" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\rendez-vous-medical.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="national-cancer-institute-NFvdKIhxYlU-unsplash" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\national-cancer-institute-NFvdKIhxYlU-unsplash.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="poubelle-de-recyclage" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\poubelle-de-recyclage.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -175,8 +181,8 @@
   <data name="rdv" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\rdv.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="lock" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\lock.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="national-cancer-institute-NFvdKIhxYlU-unsplash" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\national-cancer-institute-NFvdKIhxYlU-unsplash.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="lgcr1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\lgcr.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -196,6 +202,9 @@
   <data name="calendar-day1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\calendar-day11.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="lock" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\lock.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="rendez-vous-medical (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\rendez-vous-medical (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -205,7 +214,7 @@
   <data name="lgb" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\lgb.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="fermer1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\fermer.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="a-login-page-icon-with-a-simple-silhouet_BD3Mb7RaTyuqbFn1U_Y06g_dtMZPIh7RICUEDZKsF9mJQ-removebg-preview (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\a-login-page-icon-with-a-simple-silhouet_BD3Mb7RaTyuqbFn1U_Y06g_dtMZPIh7RICUEDZKsF9mJQ-removebg-preview (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
