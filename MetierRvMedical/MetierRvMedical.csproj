@@ -140,6 +140,21 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Admin.cs" />
+    <Compile Include="Models\Agenda.cs" />
+    <Compile Include="Models\bdRdvMedicalContext.cs" />
+    <Compile Include="Models\GroupeSanguin.cs" />
+    <Compile Include="Models\Medecin.cs" />
+    <Compile Include="Models\MoyenDePaiement.cs" />
+    <Compile Include="Models\Patient.cs" />
+    <Compile Include="Models\Personne.cs" />
+    <Compile Include="Models\RendezVous.cs" />
+    <Compile Include="Models\Role.cs" />
+    <Compile Include="Models\Secretaire.cs" />
+    <Compile Include="Models\Soin.cs" />
+    <Compile Include="Models\Specialite.cs" />
+    <Compile Include="Models\Utilisateur.cs" />
     <Compile Include="Service1.svc.cs">
       <DependentUpon>Service1.svc</DependentUpon>
     </Compile>
