@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="MetierRvMedical.service.AuhtentificationService" CodeBehind="AuhtentificationService.svc.cs" %>
