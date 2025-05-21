@@ -10,10 +10,13 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApp1.config;
 using WindowsFormsApp1.CustomControls;
+using WindowsFormsApp1.MetierRvMedical;
 using WindowsFormsApp1.Models;
 using WindowsFormsApp1.views.Admin;
 using WindowsFormsApp1.views.Med;
 using WindowsFormsApp1.views.Secret;
+using Utilisateur = WindowsFormsApp1.Models.Utilisateur;
+using Serilog;
 
 namespace WindowsFormsApp1
 {
@@ -43,7 +46,9 @@ namespace WindowsFormsApp1
         {
             this.Close();
         }
-        bdRdvMedicalContext db = new bdRdvMedicalContext();
+        // bdRdvMedicalContext db = new bdRdvMedicalContext();
+         MetierRvMedical.AuthentificationClient  client = new MetierRvMedical.AuthentificationClient();
+      //  MetierAuthService.AuthentificationClient authentificationClient = new MetierAuthService.AuthentificationClient();
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -87,29 +92,32 @@ namespace WindowsFormsApp1
             txtMotDePasse.Text = String.Empty;
         }
 
-        private void btnConnexion_Click(object sender, EventArgs e)
+        private async void btnConnexion_Click(object sender, EventArgs e)
         {
-            var identifiant = txtIdentifiant.Text;
-            var motdepasse = txtMotDePasse.Text;
-            if(identifiant == ""|| motdepasse == "")
-            {
-                new frmInformation("veuillez svp renseigner les deux champs").ShowDialog();
-                return;
-            }
-            var utilisateur = db.Utilisateurs.Where(a => a.Identifiant.Equals(identifiant)).FirstOrDefault();
-
-            if (utilisateur != null)
-            {
-                if (SaltHash.VerifyPassword(motdepasse, utilisateur.MotDePasse))
+            try {
+                var identifiant = txtIdentifiant.Text;
+                var motdepasse = txtMotDePasse.Text;
+                if (identifiant == "" || motdepasse == "")
                 {
-                    if (utilisateur.Status == false)
+                    new frmInformation("veuillez svp renseigner les deux champs").ShowDialog();
+                    return;
+                }
+                MetierRvMedical.Utilisateur utilisateur = client.GetUserByIdentifiant(identifiant);
+
+                MessageBox.Show($"{utilisateur.Identifiant}");
+                if (utilisateur != null)
+                {
+                    if (SaltHash.VerifyPassword(motdepasse, utilisateur.MotDePasse))
                     {
-                        new frmEchecExecution("Votre compte est bloquer veuillez svp contacter votre administrateur").ShowDialog();
-                        resetText();
-                        return;
-                    }
-                    user = utilisateur;
-                    var role = db.Role.Where(r => r.IdRole.Equals(utilisateur.IdRole)).FirstOrDefault();
+                        if (utilisateur.Status == false)
+                        {
+                            new frmEchecExecution("Votre compte est bloquer veuillez svp contacter votre administrateur").ShowDialog();
+                            resetText();
+                            return;
+                        }
+                        MetierRvMedical.Utilisateur user = utilisateur;
+                        MetierRvMedical.Role role = await client.GetRoleUserAsync(user);
+                        //    var role = db.Role.Where(r => r.IdRole.Equals(utilisateur.IdRole)).FirstOrDefault();
 
 
                         if (utilisateur.PremiereConnexion == 0)
@@ -120,13 +128,14 @@ namespace WindowsFormsApp1
                             frmChanger.ShowDialog();
                             string nouvelIdentifiant = frmChanger.NouvelIdentifiant;
                             string nouveauMotDePasse = frmChanger.NouveauMotDePasse;
-                             if (!string.IsNullOrEmpty(nouvelIdentifiant) && !string.IsNullOrEmpty(nouveauMotDePasse))
+                            if (!string.IsNullOrEmpty(nouvelIdentifiant) && !string.IsNullOrEmpty(nouveauMotDePasse))
                             {
                                 utilisateur.Identifiant = nouvelIdentifiant;
                                 utilisateur.MotDePasse = SaltHash.HashPassword(nouveauMotDePasse);
                                 utilisateur.PremiereConnexion = 1;
-                                db.Utilisateurs.AddOrUpdate(utilisateur);
-                                db.SaveChanges();
+                                //db.Utilisateurs.AddOrUpdate(utilisateur);
+                                // db.SaveChanges();
+                                await client.UpdateUserAsync(utilisateur);
                             }
                         }
                         resetText();
@@ -153,15 +162,23 @@ namespace WindowsFormsApp1
                             return;
                         }
                     }
-                   
-                
+
+
+                    else
+                    {
+                        new frmEchecExecution("Utilisateur ou mot de passe incorrect").ShowDialog();
+                    }
+                }
                 else
                 {
-                    new frmEchecExecution("Utilisateur ou mot de passe incorrect").ShowDialog();
+                    new frmEchecExecution("Cet identifiant n'existe pas").ShowDialog();
                 }
+
+
             }
-            else
-            {new frmEchecExecution("Cet identifiant n'existe pas").ShowDialog();
+            catch(Exception ex) {
+                Log.Error($"Une erreur est survenue lors de la connexion de l'utilisateur avec l'identifiant '{txtIdentifiant.Text}'.\n Erreur : {ex.Message} .\n type : ${ex.GetType().FullName} .\n Source : ${ex.Source}`\n methode : ${ex.TargetSite} ");
+
             }
         }
 
