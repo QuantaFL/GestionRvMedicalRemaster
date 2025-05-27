@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApp1.config;
 using WindowsFormsApp1.CustomControls;
-using WindowsFormsApp1.MetierRvMedical;
+
 using WindowsFormsApp1.Models;
 using WindowsFormsApp1.views.Admin;
 using WindowsFormsApp1.views.Med;
@@ -46,8 +46,8 @@ namespace WindowsFormsApp1
         {
             this.Close();
         }
-        // bdRdvMedicalContext db = new bdRdvMedicalContext();
-         MetierRvMedical.AuthentificationClient  client = new MetierRvMedical.AuthentificationClient();
+         bdRdvMedicalContext db = new bdRdvMedicalContext();
+       //  MetierRvMedical.AuthentificationClient  client = new MetierRvMedical.AuthentificationClient();
       //  MetierAuthService.AuthentificationClient authentificationClient = new MetierAuthService.AuthentificationClient();
 
         private void Form1_Load(object sender, EventArgs e)
@@ -102,7 +102,8 @@ namespace WindowsFormsApp1
                     new frmInformation("veuillez svp renseigner les deux champs").ShowDialog();
                     return;
                 }
-                MetierRvMedical.Utilisateur utilisateur = client.GetUserByIdentifiant(identifiant);
+               // MetierRvMedical.Utilisateur utilisateur = client.GetUserByIdentifiant(identifiant);
+               Utilisateur utilisateur = new Utilisateur();
 
                 MessageBox.Show($"{utilisateur.Identifiant}");
                 if (utilisateur != null)
@@ -115,8 +116,8 @@ namespace WindowsFormsApp1
                             resetText();
                             return;
                         }
-                        MetierRvMedical.Utilisateur user = utilisateur;
-                        MetierRvMedical.Role role = await client.GetRoleUserAsync(user);
+                     //   MetierRvMedical.Utilisateur user = utilisateur;
+                    //    MetierRvMedical.Role role = await client.GetRoleUserAsync(user);
                         //    var role = db.Role.Where(r => r.IdRole.Equals(utilisateur.IdRole)).FirstOrDefault();
 
 
@@ -135,32 +136,35 @@ namespace WindowsFormsApp1
                                 utilisateur.PremiereConnexion = 1;
                                 //db.Utilisateurs.AddOrUpdate(utilisateur);
                                 // db.SaveChanges();
-                                await client.UpdateUserAsync(utilisateur);
+                            //    await client.UpdateUserAsync(utilisateur);
                             }
                         }
                         resetText();
 
-                        if (role.LibelleRole.Equals("ADMIN"))
-                        {
-                            this.Hide();
-                            frmDashAdmin frm = new frmDashAdmin();
-                            frm.Show();
-                            return;
-                        }
-                        if (role.LibelleRole.Equals("SECRETAIRE"))
-                        {
-                            this.Hide();
-                            frmDashSecretaire frm = new frmDashSecretaire(this);
-                            frm.Show();
-                            return;
-                        }
-                        if (role.LibelleRole.Equals("MEDECIN"))
-                        {
-                            this.Hide();
-                            frmDashMed frm = new frmDashMed(this);
-                            frm.Show();
-                            return;
-                        }
+                        /*
+                            if (role.LibelleRole.Equals("ADMIN"))
+                           {
+                               this.Hide();
+                               frmDashAdmin frm = new frmDashAdmin();
+                               frm.Show();
+                               return;
+                           }
+                           if (role.LibelleRole.Equals("SECRETAIRE"))
+                           {
+                               this.Hide();
+                               frmDashSecretaire frm = new frmDashSecretaire(this);
+                               frm.Show();
+                               return;
+                           }
+                           if (role.LibelleRole.Equals("MEDECIN"))
+                           {
+                               this.Hide();
+                               frmDashMed frm = new frmDashMed(this);
+                               frm.Show();
+                               return;
+                           }
+
+                         */
                     }
 
 
