@@ -24,7 +24,7 @@ namespace WindowsFormsApp1.views
             
         }
         bdRdvMedicalContext db = new bdRdvMedicalContext();
-        
+        private MedecinService medecinService;
 
         private void btnAjouterUtilisateur_Click(object sender, EventArgs e)
         {

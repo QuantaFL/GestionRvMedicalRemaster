@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ID="df5153e3-92d8-47d4-b35a-33849c8081d4" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:57082/Services/MedecinService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="MedecinService.xsd" MetadataType="Schema" ID="58774abf-56af-4786-aa4c-471c0f7219c8" SourceId="1" SourceUrl="http://localhost:57082/Services/MedecinService.svc?xsd=xsd2" />
+    <MetadataFile FileName="MedecinService1.xsd" MetadataType="Schema" ID="5768023f-35af-4138-a34d-72c7b846ae42" SourceId="1" SourceUrl="http://localhost:57082/Services/MedecinService.svc?xsd=xsd1" />
+    <MetadataFile FileName="MedecinService2.xsd" MetadataType="Schema" ID="ddfb1808-e954-4682-895e-8d402e061b04" SourceId="1" SourceUrl="http://localhost:57082/Services/MedecinService.svc?xsd=xsd0" />
+    <MetadataFile FileName="MedecinService.disco" MetadataType="Disco" ID="ed27f74e-6271-4613-b4f1-71d98aeb7850" SourceId="1" SourceUrl="http://localhost:57082/Services/MedecinService.svc?disco" />
+    <MetadataFile FileName="MedecinService.wsdl" MetadataType="Wsdl" ID="6f568818-7f91-40c3-a29a-0b96ba0fd162" SourceId="1" SourceUrl="http://localhost:57082/Services/MedecinService.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

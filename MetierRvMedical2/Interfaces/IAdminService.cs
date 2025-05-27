@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace MetierRvMedical2.Interfaces
 {
-    internal interface IAdmin
+    internal interface IAdminService
     {
+
+
     }
 }
