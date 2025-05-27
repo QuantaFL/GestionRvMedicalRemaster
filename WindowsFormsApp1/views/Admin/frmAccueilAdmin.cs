@@ -9,6 +9,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MetierRvMedical2.Services;
 using Serilog;
 using WindowsFormsApp1.CustomControls;
 using WindowsFormsApp1.Models;
