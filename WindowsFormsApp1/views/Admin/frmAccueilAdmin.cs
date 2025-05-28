@@ -22,10 +22,12 @@ namespace WindowsFormsApp1.views
         public frmAccueilAdmin()
         {
             InitializeComponent();
-            
+            medecinService = new MedecinService();
+            secretaireService = new SecretaireService();
         }
         bdRdvMedicalContext db = new bdRdvMedicalContext();
         private MedecinService medecinService;
+        private SecretaireService secretaireService;
 
         private void btnAjouterUtilisateur_Click(object sender, EventArgs e)
         {
@@ -58,8 +60,6 @@ namespace WindowsFormsApp1.views
         private void btnRechercherMedecin_Click(object sender, EventArgs e)
         {
             string message;
-            //frmInformation frmInformation = new frmInformation(message);
-            
             if (string.IsNullOrEmpty(txtRechercherMedecin.Text))
             {
                 message = "valeur saisie invalide";
@@ -73,7 +73,7 @@ namespace WindowsFormsApp1.views
             {
                 try
                 {
-                    var medecin = db.Medecins.Where(m => m.NumeroOrdre == txtRechercherMedecin.Text).FirstOrDefault();
+                    var medecin = medecinService.GetMedecinByNumeroOrdre(txtRechercherMedecin.Text);
                     if (medecin == null)
                     {
                         Log.Information("aucun medecin n'a ce numero d'ordre");
@@ -88,8 +88,6 @@ namespace WindowsFormsApp1.views
                     }
                     else
                     {
-                        // TODO : obtenir son statut si il est actif propose de desactiver sinon proposer d' activer 
-                        //medecin.Status
                         if (medecin.Status == true)
                         {
                             frmMessage frmMessage = new frmMessage("Voulez-vous bloquer ce medecin ?", "medecin trouver");
@@ -98,11 +96,8 @@ namespace WindowsFormsApp1.views
                             {
                                 try
                                 {
-
-                                    medecin.Status = false;
-                                    db.SaveChanges();
-                                    frmAccueilAdmin frmAccueilAdmin = Application.OpenForms["frmAccueilAdmin"] as frmAccueilAdmin;
-                                    frmAccueilAdmin.loadData();
+                                    medecinService.DesactiverMedecin(medecin.NumeroOrdre);
+                                    loadData();
                                     Log.Information("statut du medecin changer");
                                     frmExecutionReussie frmExecutionReussie = new frmExecutionReussie("execution reussie");
                                     frmExecutionReussie.ShowDialog();
@@ -123,11 +118,8 @@ namespace WindowsFormsApp1.views
                             {
                                 try
                                 {
-
-                                    medecin.Status = true;
-                                    db.SaveChanges();
-                                    frmAccueilAdmin frmAccueilAdmin = Application.OpenForms["frmAccueilAdmin"] as frmAccueilAdmin;
-                                    frmAccueilAdmin.loadData();
+                                    medecinService.ActiverMedecin(medecin.NumeroOrdre);
+                                    loadData();
                                     Log.Information("statut du medecin changer");
                                     frmExecutionReussie frmExecutionReussie = new frmExecutionReussie("execution reussie");
                                     frmExecutionReussie.ShowDialog();
@@ -169,7 +161,7 @@ namespace WindowsFormsApp1.views
             {
                 try
                 {
-                    var secretaire = db.Secretaires.Where(m => m.Matricule == txtRerchercherSecretaire.Text).FirstOrDefault();
+                    var secretaire = secretaireService.GetSecretaireByMatricule(txtRerchercherSecretaire.Text);
                     if (secretaire == null)
                     {
                         Log.Information("aucune secretaire n'a ce matricule");
@@ -193,11 +185,8 @@ namespace WindowsFormsApp1.views
                             {
                                 try
                                 {
-
-                                    secretaire.Status = false;
-                                    db.SaveChanges();
-                                    frmAccueilAdmin frmAccueilAdmin = Application.OpenForms["frmAccueilAdmin"] as frmAccueilAdmin;
-                                    frmAccueilAdmin.loadData();
+                                    secretaireService.DesactiverSecretaire(secretaire.Matricule);
+                                    loadData();
                                     Log.Information("statut de la secretaire changer");
                                     frmExecutionReussie frmExecutionReussie = new frmExecutionReussie("execution reussie");
                                     frmExecutionReussie.ShowDialog();
@@ -219,15 +208,12 @@ namespace WindowsFormsApp1.views
                             {
                                 try
                                 {
-
-                                    secretaire.Status = true;
-                                    db.SaveChanges();
-                                    frmAccueilAdmin frmAccueilAdmin = Application.OpenForms["frmAccueilAdmin"] as frmAccueilAdmin;
-                                    frmAccueilAdmin.loadData();
+                                    secretaireService.ActiverSecretaire(secretaire.Matricule);
+                                    loadData();
                                     Log.Information("statut de la secretaire changer");
                                     frmExecutionReussie frmExecutionReussie = new frmExecutionReussie("execution reussie");
                                     frmExecutionReussie.ShowDialog();
-                                    txtRechercherMedecin.Text = string.Empty;
+                                    txtRerchercherSecretaire.Text = string.Empty;
                                 }
                                 catch (Exception ex)
                                 {

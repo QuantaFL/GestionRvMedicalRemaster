@@ -4,19 +4,20 @@ using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MetierRvMedical2.Models;
+using MetierRvMedical2.Services;
 using Serilog;
 using WindowsFormsApp1.CustomControls;
-using WindowsFormsApp1.Models;
 using WindowsFormsApp1.utils;
 
 namespace WindowsFormsApp1.views.Secret
 {
     public partial class frmValiderRdv : Form
     {
-        private readonly MetierRvMedical2.Models.Patient patient;
+        private readonly Patient patient;
         private readonly MetierRvMedical2.Models.Agenda agenda;
         private readonly MetierRvMedical2.Models.bdRdvMedicalContext _bd = new MetierRvMedical2.Models.bdRdvMedicalContext();
-        private readonly MetierRvMedical2.Services.IAgendaService _agendaService = new MetierRvMedical2.Services.IAgendaService();
+        private readonly AgendaService _agendaService = new AgendaService();
 
         public frmValiderRdv(MetierRvMedical2.Models.Patient p, MetierRvMedical2.Models.Agenda a)
         {

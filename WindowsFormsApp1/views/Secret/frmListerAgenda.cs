@@ -7,16 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using WindowsFormsApp1.Models;
-using MetierRvMedical2.Interfaces;
-using MetierRvMedical2.Models;
 using MetierRvMedical2.Services;
+using WindowsFormsApp1.Models;
 
 namespace WindowsFormsApp1.views.Secret
 {
     public partial class frmListerAgenda : Form
     {
-        private readonly IAgendaService _agendaService = new AgendaService();
+        private readonly AgendaService _agendaService = new AgendaService();
 
         public frmListerAgenda()
         {
