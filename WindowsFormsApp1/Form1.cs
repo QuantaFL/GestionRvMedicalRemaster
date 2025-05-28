@@ -16,7 +16,7 @@ using WindowsFormsApp1.views.Admin;
 using WindowsFormsApp1.views.Med;
 using WindowsFormsApp1.views.Secret;
 using Utilisateur = WindowsFormsApp1.Models.Utilisateur;
-using Serilog;
+
 
 namespace WindowsFormsApp1
 {

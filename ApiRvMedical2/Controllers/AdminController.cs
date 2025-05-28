@@ -8,6 +8,7 @@ using System.Web.Http;
 using ApiRvMedical2.interfaces;
 using ApiRvMedical2.Models;
 using ApiRvMedical2.services;
+using Serilog;
 
 namespace ApiRvMedical2.Controllers
 {
