@@ -4,12 +4,8 @@ using System.Linq;
 using System.Net.Mail;
 using System.Net;
 using System.Net.NetworkInformation;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using Serilog;
 using System.IO;
-using WindowsFormsApp1.CustomControls;
 
 namespace WindowsFormsApp1.config
 {
@@ -60,8 +56,8 @@ namespace WindowsFormsApp1.config
             }
             catch (WebException ex)
             {
-                frmEchecExecution frmEchecExecution = new frmEchecExecution("envoie impossible");
-                frmEchecExecution.ShowDialog();
+                //frmEchecExecution frmEchecExecution = new frmEchecExecution("envoie impossible");
+                //frmEchecExecution.ShowDialog();
                 Log.Fatal(ex.ToString());
                // MessageBox.Show(ex.Message);
             }
