@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MetierRvMedical2", "MetierR
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiRvMedical2", "ApiRvMedical2\ApiRvMedical2.csproj", "{04EFC600-B52E-452A-A8E5-25D1EC4177A6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MetierRvMedical2Test", "MetierRvMedical2Test\MetierRvMedical2Test.csproj", "{FFFD2971-D9EE-4493-AD11-1D784ACB8670}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,8 +29,15 @@ Global
 		{04EFC600-B52E-452A-A8E5-25D1EC4177A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{04EFC600-B52E-452A-A8E5-25D1EC4177A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{04EFC600-B52E-452A-A8E5-25D1EC4177A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FFFD2971-D9EE-4493-AD11-1D784ACB8670}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FFFD2971-D9EE-4493-AD11-1D784ACB8670}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FFFD2971-D9EE-4493-AD11-1D784ACB8670}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FFFD2971-D9EE-4493-AD11-1D784ACB8670}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9381A318-4E2A-4D2F-8E20-45F88862AF97}
 	EndGlobalSection
 EndGlobal
