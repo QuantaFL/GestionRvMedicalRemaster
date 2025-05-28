@@ -8,13 +8,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApp1.Models;
+using MetierRvMedical2.Interfaces;
+using MetierRvMedical2.Models;
+using MetierRvMedical2.Services;
 
 namespace WindowsFormsApp1.views.Secret
 {
     public partial class frmListerAgenda : Form
     {
-        bdRdvMedicalContext bd = new bdRdvMedicalContext();
-        
+        private readonly IAgendaService _agendaService = new AgendaService();
+
         public frmListerAgenda()
         {
             InitializeComponent();
@@ -23,21 +26,19 @@ namespace WindowsFormsApp1.views.Secret
 
         private void LoadAgendas()
         {
-           //TODO for cheikh enlever  l'affichage de lheure
-          var agendas = bd.Agenda
-    .Where(ag => ag.Statut.Equals("dispo"))
-    .Select(agenda => new
-    {
-        agenda.DataPlanifier ,
-        agenda.Medecin.NomPrenom,
-        agenda.HeureDebut,
-        agenda.HeureFin,
-    })
-    .ToList();
+            // Use AgendaService to get all agendas
+            var agendas = _agendaService.GetAllAgendas()
+                .Where(ag => ag.Statut.Equals("dispo"))
+                .Select(agenda => new
+                {
+                    agenda.DataPlanifier,
+                    agenda.Medecin.NomPrenom,
+                    agenda.HeureDebut,
+                    agenda.HeureFin,
+                })
+                .ToList();
 
-dgAgendas.DataSource = agendas;
-
-            
+            dgAgendas.DataSource = agendas;
         }
 
         private void frmListerAgenda_Load(object sender, EventArgs e)

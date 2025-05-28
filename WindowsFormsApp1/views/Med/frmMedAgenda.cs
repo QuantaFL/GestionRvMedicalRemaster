@@ -13,12 +13,15 @@ using System.Windows.Forms;
 using Serilog;
 using WindowsFormsApp1.CustomControls;
 using WindowsFormsApp1.Models;
-using static System.Net.Mime.MediaTypeNames;
+using MetierRvMedical2.Models;
+using MetierRvMedical2.Services;
 
 namespace WindowsFormsApp1.views.Med
 {
     public partial class frmMedAgenda : Form
     {
+        private readonly IAgendaService _agendaService;
+
         public frmMedAgenda()
         {
             InitializeComponent();
@@ -26,7 +29,9 @@ namespace WindowsFormsApp1.views.Med
             txtHeureFin.Mask = "00:00";
             txtHeureDebut.ValidatingType = typeof(DateTime);
             txtHeureFin.ValidatingType = typeof(DateTime);
-            
+
+            // Use a concrete implementation or dependency injection as needed
+            _agendaService = new IAgendaService();
         }
 
         private void btnFermer_Click(object sender, EventArgs e)
@@ -39,14 +44,14 @@ namespace WindowsFormsApp1.views.Med
             try
             {
                 Log.Information("Tentative de connexion a la base");
-                using (var context = new bdRdvMedicalContext())
+                using (var context = new Models.bdRdvMedicalContext())
                 {
                     var transaction = context.Database.BeginTransaction();
                     Log.Information("Tentative de recuperation des informations medecin");
 
                     var medecin = context.Personnes
                         .Where(p => p.IdP == 1)
-                        .OfType<Medecin>()
+                        .OfType<Models.Medecin>()
                         .FirstOrDefault();
 
                     if (medecin == null)
@@ -78,7 +83,7 @@ namespace WindowsFormsApp1.views.Med
 
                     try
                     {
-                        var agenda = new Agenda()
+                        var agenda = new MetierRvMedical2.Models.Agenda()
                         {
                             Titre = txtTitreAgenda.Text,
                             Statut = "dispo",
@@ -92,13 +97,12 @@ namespace WindowsFormsApp1.views.Med
 
                         Log.Information("Tentative d'enregistrement de l'agenda");
 
-                        context.Agenda.Add(agenda);
-                        context.SaveChanges();
-                        transaction.Commit();
+                        // Replace direct DbContext usage with service
+                        _agendaService.CreateAgenda(agenda);
 
                         resetForm();
 
-                        new frmInformation("L'ajout a ete effectue avec succes !");
+                        new frmInformation("L'ajout a ete effectue avec succes !").ShowDialog();
                         Log.Information("Agenda ajouter avec succes.");
                     }
                     catch (Exception ex)
