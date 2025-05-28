@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
+using ApiRvMedical2.config;
 using ApiRvMedical2.interfaces;
 using ApiRvMedical2.Models;
 using ApiRvMedical2.services;
@@ -28,8 +29,16 @@ namespace ApiRvMedical2.Controllers
         [Route("api/v1/utilisateurs")]
         public async Task<IHttpActionResult> Get()
         {
-            var utilisateurs = await _adminService.GetAllUtilisateursAsync();
-            return Ok(utilisateurs);
+            try {
+                InstanceLogger.GetInstance().Information("GET api/v1/utilisateurs called");
+                var utilisateurs = await _adminService.GetAllUtilisateursAsync();
+                return Ok(utilisateurs);
+
+            } catch (Exception ex) {
+                InstanceLogger.GetInstance().Error("error while loading user list", ex.Message);
+                throw;
+            }
+           
         }
 
        
