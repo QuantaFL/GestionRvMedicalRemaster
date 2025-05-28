@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Serilog;
 using WindowsFormsApp1.config;
 using WindowsFormsApp1.CustomControls;
 
