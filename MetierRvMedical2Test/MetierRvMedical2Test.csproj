@@ -16,6 +16,11 @@
 
   <ItemGroup>
     <ProjectReference Include="..\MetierRvMedical2\MetierRvMedical2.csproj" />
+    <ProjectReference Include="..\WindowsFormsApp1\AppGroupe2.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="System.Windows.Forms" />
   </ItemGroup>
 
   <ItemGroup>
