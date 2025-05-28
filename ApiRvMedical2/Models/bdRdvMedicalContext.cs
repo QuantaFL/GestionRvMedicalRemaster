@@ -21,21 +21,19 @@ namespace ApiRvMedical2.Models
         {   
         }
 
-       
-        public DbSet<Personne> Personnes {get; set;}
-        public DbSet<Patient> Patients{ get; set; }
 
-        public DbSet<Utilisateur> Utilisateurs {get; set;}
-        public DbSet<Secretaire> Secretaires {get; set;}
-        public DbSet<Medecin> Medecins {get; set;}
-        public DbSet<Agenda> Agenda {get; set;}
-
-        public DbSet<Soin> Soins {get; set;}
-        public DbSet<RendezVous> RendezVous {get; set;}
-        public DbSet<Specialite> Specialite {get; set;}
-        public DbSet<GroupeSanguin> GroupeSanguins {get; set;}
-        public DbSet<MoyenDePaiement> MoyenDePaiements {get; set;}
-        public DbSet<Role> Role { get; set;}
-        public DbSet<Admin> Admin { get; set;}
+        public virtual DbSet<Personne> Personnes { get; set; }
+        public virtual DbSet<Patient> Patients { get; set; }
+        public virtual DbSet<Utilisateur> Utilisateurs { get; set; }
+        public virtual DbSet<Secretaire> Secretaires { get; set; }
+        public virtual DbSet<Medecin> Medecins { get; set; }
+        public virtual DbSet<Agenda> Agenda { get; set; }
+        public virtual DbSet<Soin> Soins { get; set; }
+        public virtual DbSet<RendezVous> RendezVous { get; set; }
+        public virtual DbSet<Specialite> Specialite { get; set; }
+        public virtual DbSet<GroupeSanguin> GroupeSanguins { get; set; }
+        public virtual DbSet<MoyenDePaiement> MoyenDePaiements { get; set; }
+        public virtual DbSet<Role> Role { get; set; }
+        public virtual DbSet<Admin> Admin { get; set; }
     }
 }
