@@ -2,19 +2,19 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
-using WindowsFormsApp1.Models;
+using MetierRvMedical2.Services;
 using Serilog;
-using System.Drawing;
 using WindowsFormsApp1.CustomControls;
 
 namespace WindowsFormsApp1.views.Secret
 {
     public partial class frmRdv : Form
     {
-        readonly Patient patient;
-        Agenda agenda;
+        private readonly AgendaService _agendaService = new AgendaService();
+        readonly MetierRvMedical2.Models.Patient patient;
+        MetierRvMedical2.Models.Agenda agenda;
 
-        public frmRdv(Patient p)
+        public frmRdv(MetierRvMedical2.Models.Patient p)
         {
             InitializeComponent();
             dgAgendaMedecin.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -26,7 +26,7 @@ namespace WindowsFormsApp1.views.Secret
 
             Log.Information("Formulaire de RDV initialisé avec patient {PatientId}", patient.IdP);
         }
-        bdRdvMedicalContext bd = new bdRdvMedicalContext();
+        MetierRvMedical2.Models.bdRdvMedicalContext bd = new MetierRvMedical2.Models.bdRdvMedicalContext();
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -54,7 +54,7 @@ namespace WindowsFormsApp1.views.Secret
                 Log.Information("Chargement des agendas pour la spécialité {Specialite} à partir de {Date}", s, val);
 
                 var medecins = bd.Personnes
-                    .OfType<Medecin>()
+                    .OfType<MetierRvMedical2.Models.Medecin>()
                     .Where(m => m.Specialite.NomSpecialte == s)
                     .ToList();
 
@@ -64,7 +64,7 @@ namespace WindowsFormsApp1.views.Secret
                     new frmInformation("Aucun médecin trouvé pour cette spécialité.").ShowDialog();
                 }
 
-                var agendas = new List<Agenda>();
+                var agendas = new List<MetierRvMedical2.Models.Agenda>();
                 foreach (var medecin in medecins)
                 {
                     var availableAgendas = medecin.agenda
@@ -94,20 +94,20 @@ namespace WindowsFormsApp1.views.Secret
             Log.Information("Changement de sélection dans la spécialité: {Specialite}", cbbSpecialite.Text);
         }
 
-        public List<SelectListViewModel> loadSpecialiteccb()
+        public List<MetierRvMedical2.Models.SelectListViewModel> loadSpecialiteccb()
         {
             try
             {
                 Log.Information("Chargement des spécialités pour le combobox.");
                 var s = bd.Specialite.ToList();
-                List<SelectListViewModel> liste = new List<SelectListViewModel>();
-                SelectListViewModel b = new SelectListViewModel();
+                List<MetierRvMedical2.Models.SelectListViewModel> liste = new List<MetierRvMedical2.Models.SelectListViewModel>();
+                MetierRvMedical2.Models.SelectListViewModel b = new MetierRvMedical2.Models.SelectListViewModel();
                 b.Text = "Selectionner une valeur";
                 b.Value = "";
                 liste.Add(b);
                 foreach (var item in s)
                 {
-                    SelectListViewModel a = new SelectListViewModel();
+                    MetierRvMedical2.Models.SelectListViewModel a = new MetierRvMedical2.Models.SelectListViewModel();
                     a.Text = item.NomSpecialte;
                     a.Value = item.Id.ToString();
                     liste.Add(a);
@@ -120,7 +120,7 @@ namespace WindowsFormsApp1.views.Secret
             {
                 Log.Error(ex, "Erreur lors du chargement des spécialités.");
                 new frmEchecExecution("Erreur lors du chargement des spécialités.").ShowDialog();
-                return new List<SelectListViewModel>();
+                return new List<MetierRvMedical2.Models.SelectListViewModel>();
             }
         }
 
@@ -147,23 +147,13 @@ namespace WindowsFormsApp1.views.Secret
         {
             if (dgAgendaMedecin.SelectedRows.Count > 0)
             {
-                //agenda = (Agenda)dgAgendaMedecin.CurrentRow.Cells[0].Value;
                 var idAgenda = int.Parse(dgAgendaMedecin.CurrentRow.Cells[0].Value.ToString());
-             //MessageBox.Show(idAgenda.ToString());
-                agenda = bd.Agenda
-                    .Where(a => a.IdAgenda == idAgenda)
-                    .FirstOrDefault();
+                // Use AgendaService to get agenda by id
+                agenda = _agendaService.GetAgendaById(idAgenda);
                 Log.Information("Agenda selectionne: {AgendaId}, Date: {AgendaDate}", agenda.IdAgenda, agenda.DataPlanifier);
 
                 frmValiderRdv frmValiderRdv = new frmValiderRdv(patient, agenda);
-
-               // frmDashSecretaire parentForm = Application.OpenForms["frmDashSecretaire"] as frmDashSecretaire;
-               // parentForm.fermer();
-
-               // frmValiderRdv.MdiParent = parentForm;
-               // frmValiderRdv.WindowState = FormWindowState.Maximized;
                 frmValiderRdv.Show();
-
                 Log.Information("Navigation vers le formulaire de validation de RDV.");
                 this.Close();
             }

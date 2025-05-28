@@ -131,12 +131,19 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Service1.svc" />
+    <Content Include="Services\AgendaService.svc" />
+    <Content Include="Services\MedecinService.svc" />
+    <Content Include="Services\SecretaireService.svc" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="config\FactorySeed.cs" />
     <Compile Include="config\fakerUtils.cs" />
     <Compile Include="config\SaltHash.cs" />
+    <Compile Include="Interfaces\IMedecinService.cs" />
+    <Compile Include="Interfaces\IPersonnesServices.cs" />
+    <Compile Include="Interfaces\IRendezVousService.cs" />
+    <Compile Include="Interfaces\ISecretaireService.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Admin.cs" />
     <Compile Include="Models\Agenda.cs" />
@@ -159,6 +166,19 @@
     </Compile>
     <Compile Include="IService1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\AgendaService.svc.cs">
+      <DependentUpon>AgendaService.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Services\IAgendaService.cs" />
+    <Compile Include="Services\IMedecinService.cs" />
+    <Compile Include="Services\ISecretaireService.cs" />
+    <Compile Include="Services\MedecinService.svc.cs">
+      <DependentUpon>MedecinService.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Services\RendezVousService.svc.cs" />
+    <Compile Include="Services\SecretaireService.svc.cs">
+      <DependentUpon>SecretaireService.svc</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -171,6 +191,9 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -1,28 +1,23 @@
 ﻿using Serilog;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Runtime.Remoting.Contexts;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApp1.CustomControls;
-using WindowsFormsApp1.Models;
+using MetierRvMedical2.Services;
 
 namespace WindowsFormsApp1.views.Med
 {
     public partial class frmAccueilMed : Form
     {
+        private readonly IAgendaService _agendaService;
+
         public frmAccueilMed()
         {
             InitializeComponent();
+            _agendaService = new IAgendaService();
             LoadAgenda();
         }
-
-        bdRdvMedicalContext bd = new bdRdvMedicalContext();
 
         private void btnAjouterAgenda_Click(object sender, EventArgs e)
         {
@@ -31,15 +26,16 @@ namespace WindowsFormsApp1.views.Med
             frmMedAgenda frmMedAgenda = new frmMedAgenda();
             frmMedAgenda.ShowDialog();
         }
+
         public void LoadAgenda()
-
         {
-            var medecin = bd.Personnes
-                       .Where(p => p.IdP == FrmConnexion.user.IdP)
-                       .OfType<Medecin>()
-                       .FirstOrDefault();
-            dgAgendaMedecin.DataSource = medecin.agenda.Select(ag => new {ag.DataPlanifier.Value.Date,ag.Creneau,ag.HeureDebut,ag.HeureFin} ).ToList();
+            var allAgendas = _agendaService.GetAllAgendas();
+            var medecinAgendas = allAgendas
+                .Where(ag => ag.IdMedecin == FrmConnexion.user.IdP)
+                .Select(ag => new { ag.DataPlanifier.Value.Date, ag.Creneau, ag.HeureDebut, ag.HeureFin })
+                .ToList();
 
+            dgAgendaMedecin.DataSource = medecinAgendas;
         }
 
         private void btnVoirRdv_Click(object sender, EventArgs e)
@@ -62,18 +58,17 @@ namespace WindowsFormsApp1.views.Med
             Log.Information("clique sur le button rechercher agenda medecin");
             LoadAgenda(txtDateChercher.Value);
         }
+
         public void LoadAgenda(DateTime val)
         {
             try
             {
-                Medecin m = bd.Medecins.Where(a => a.IdP == FrmConnexion.user.IdP).FirstOrDefault();
+                var allAgendas = _agendaService.GetAllAgendas();
+                var medecinAgendas = allAgendas
+                    .Where(a => a.IdMedecin == FrmConnexion.user.IdP && a.DataPlanifier.Value.Date == val.Date)
+                    .ToList();
 
-                    var agendas =m.agenda
-                        .ToList();
-                var agenda = agendas.Where(a => a.DataPlanifier.Value.Date == val.Date.Date).ToList();
-                   
-
-                dgAgendaMedecin.DataSource = agenda;
+                dgAgendaMedecin.DataSource = medecinAgendas;
             }
             catch (Exception ex)
             {
@@ -82,6 +77,4 @@ namespace WindowsFormsApp1.views.Med
             }
         }
     }
-
-   
 }
