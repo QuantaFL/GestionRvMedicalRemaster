@@ -6,11 +6,15 @@ using WindowsFormsApp1.Models;
 using Serilog;
 using System.Drawing;
 using WindowsFormsApp1.CustomControls;
+using MetierRvMedical2.Interfaces;
+using MetierRvMedical2.Models;
+using MetierRvMedical2.Services;
 
 namespace WindowsFormsApp1.views.Secret
 {
     public partial class frmRdv : Form
     {
+        private readonly IAgendaService _agendaService = new AgendaService();
         readonly Patient patient;
         Agenda agenda;
 
@@ -147,23 +151,13 @@ namespace WindowsFormsApp1.views.Secret
         {
             if (dgAgendaMedecin.SelectedRows.Count > 0)
             {
-                //agenda = (Agenda)dgAgendaMedecin.CurrentRow.Cells[0].Value;
                 var idAgenda = int.Parse(dgAgendaMedecin.CurrentRow.Cells[0].Value.ToString());
-             //MessageBox.Show(idAgenda.ToString());
-                agenda = bd.Agenda
-                    .Where(a => a.IdAgenda == idAgenda)
-                    .FirstOrDefault();
+                // Use AgendaService to get agenda by id
+                agenda = _agendaService.GetAgendaById(idAgenda);
                 Log.Information("Agenda selectionne: {AgendaId}, Date: {AgendaDate}", agenda.IdAgenda, agenda.DataPlanifier);
 
                 frmValiderRdv frmValiderRdv = new frmValiderRdv(patient, agenda);
-
-               // frmDashSecretaire parentForm = Application.OpenForms["frmDashSecretaire"] as frmDashSecretaire;
-               // parentForm.fermer();
-
-               // frmValiderRdv.MdiParent = parentForm;
-               // frmValiderRdv.WindowState = FormWindowState.Maximized;
                 frmValiderRdv.Show();
-
                 Log.Information("Navigation vers le formulaire de validation de RDV.");
                 this.Close();
             }

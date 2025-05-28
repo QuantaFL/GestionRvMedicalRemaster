@@ -13,11 +13,12 @@ namespace WindowsFormsApp1.views.Secret
 {
     public partial class frmValiderRdv : Form
     {
-        private readonly Patient patient;
-        private readonly Agenda agenda;
-        private readonly bdRdvMedicalContext _bd = new bdRdvMedicalContext();
+        private readonly MetierRvMedical2.Models.Patient patient;
+        private readonly MetierRvMedical2.Models.Agenda agenda;
+        private readonly MetierRvMedical2.Models.bdRdvMedicalContext _bd = new MetierRvMedical2.Models.bdRdvMedicalContext();
+        private readonly MetierRvMedical2.Services.IAgendaService _agendaService = new MetierRvMedical2.Services.IAgendaService();
 
-        public frmValiderRdv(Patient p, Agenda a)
+        public frmValiderRdv(MetierRvMedical2.Models.Patient p, MetierRvMedical2.Models.Agenda a)
         {
             InitializeComponent();
             patient = p;
@@ -61,7 +62,7 @@ namespace WindowsFormsApp1.views.Secret
                 var patientId = patient.IdP;
                 string codeRdv = generateCodeRdv();
                 string dateRv = agenda.DataPlanifier.Value.ToString("yyyy-MM-dd") + " " + creneau;
-                var rdv = new RendezVous
+                var rdv = new MetierRvMedical2.Models.RendezVous
                 {
                     DateRv = dateRv,
                     HeureRv = creneau,
@@ -111,17 +112,17 @@ namespace WindowsFormsApp1.views.Secret
             cbbCreneaux.Focus();
         }
 
-        private async Task<List<SelectListViewModel>> LoadPaiementsAsync()
+        private async Task<List<MetierRvMedical2.Models.SelectListViewModel>> LoadPaiementsAsync()
         {
             try
             {
                 Log.Information("Chargement des paiements.");
                 var s = await _bd.MoyenDePaiements.ToListAsync();
-                var liste = new List<SelectListViewModel>
+                var liste = new List<MetierRvMedical2.Models.SelectListViewModel>
                 {
-                    new SelectListViewModel { Text = "Selectionner", Value = "" }
+                    new MetierRvMedical2.Models.SelectListViewModel { Text = "Selectionner", Value = "" }
                 };
-                liste.AddRange(s.Select(item => new SelectListViewModel
+                liste.AddRange(s.Select(item => new MetierRvMedical2.Models.SelectListViewModel
                 {
                     Text = item.LibelleMoyenPaiement,
                     Value = item.IdMoy.ToString()
@@ -134,21 +135,21 @@ namespace WindowsFormsApp1.views.Secret
             {
                 Log.Error(ex, "Erreur lors du chargement des paiements.");
                 new frmEchecExecution("Erreur paiement.");
-                return new List<SelectListViewModel>();
+                return new List<MetierRvMedical2.Models.SelectListViewModel>();
             }
         }
 
-        private async Task<List<SelectListViewModel>> LoadSoinsAsync()
+        private async Task<List<MetierRvMedical2.Models.SelectListViewModel>> LoadSoinsAsync()
         {
             try
             {
                 Log.Information("Chargement des soins.");
                 var s = await _bd.Soins.ToListAsync();
-                var liste = new List<SelectListViewModel>
+                var liste = new List<MetierRvMedical2.Models.SelectListViewModel>
                 {
-                    new SelectListViewModel { Text = "Selectionner", Value = "" }
+                    new MetierRvMedical2.Models.SelectListViewModel { Text = "Selectionner", Value = "" }
                 };
-                liste.AddRange(s.Select(item => new SelectListViewModel
+                liste.AddRange(s.Select(item => new MetierRvMedical2.Models.SelectListViewModel
                 {
                     Text = item.NomSoin,
                     Value = item.IdSoin.ToString()
@@ -161,17 +162,21 @@ namespace WindowsFormsApp1.views.Secret
             {
                 Log.Error(ex, "Erreur lors du chargement des soins.");
                 new frmEchecExecution("Erreur soins.");
-                return new List<SelectListViewModel>();
+                return new List<MetierRvMedical2.Models.SelectListViewModel>();
             }
         }
 
-        private async Task<List<SelectListViewModel>> LoadCreneauxAsync(Agenda agenda)
+        private async Task<List<MetierRvMedical2.Models.SelectListViewModel>> LoadCreneauxAsync(MetierRvMedical2.Models.Agenda agenda)
         {
             try
             {
                 Log.Information("Chargement des créneaux.");
 
-                var creneauxList = new List<SelectListViewModel>();
+                var agendaFromService = _agendaService.GetAgendaById(agenda.IdAgenda);
+                if (agendaFromService != null)
+                    agenda = agendaFromService;
+
+                var creneauxList = new List<MetierRvMedical2.Models.SelectListViewModel>();
                 DateTime startTime = DateTime.Parse(agenda.HeureDebut);
                 DateTime endTime = DateTime.Parse(agenda.HeureFin);
                 int creneauxDurationInMinutes = agenda.Creneau;
@@ -194,7 +199,7 @@ namespace WindowsFormsApp1.views.Secret
 
                     if (!bookedSlots.Contains(slotStartTime))
                     {
-                        creneauxList.Add(new SelectListViewModel
+                        creneauxList.Add(new MetierRvMedical2.Models.SelectListViewModel
                         {
                             Text = formattedSlot,
                             Value = slotStartTime
@@ -219,7 +224,7 @@ namespace WindowsFormsApp1.views.Secret
             {
                 Log.Error(ex, "Erreur lors du chargement des créneaux.");
                 new frmEchecExecution("Erreur créneaux: " + ex.Message).ShowDialog();
-                return new List<SelectListViewModel>();
+                return new List<MetierRvMedical2.Models.SelectListViewModel>();
             }
         }
 
