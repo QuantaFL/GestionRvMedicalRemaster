@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.VisualBasic.Logging;
 using Serilog;
-using WindowsFormsApp1.Models;
 using WindowsFormsApp1.views.Admin;
 using Serilog;
 using WindowsFormsApp1.CustomControls;
+using MetierRvMedical2.Models;
 
 namespace WindowsFormsApp1.views.Secret
 {

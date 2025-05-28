@@ -31,7 +31,7 @@ namespace WindowsFormsApp1.views.Med
             txtHeureFin.ValidatingType = typeof(DateTime);
 
             // Use a concrete implementation or dependency injection as needed
-            _agendaService = new IAgendaService();
+            _agendaService = new AgendaService();
         }
 
         private void btnFermer_Click(object sender, EventArgs e)

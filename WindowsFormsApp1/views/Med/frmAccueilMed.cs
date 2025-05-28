@@ -15,7 +15,7 @@ namespace WindowsFormsApp1.views.Med
         public frmAccueilMed()
         {
             InitializeComponent();
-            _agendaService = new IAgendaService();
+            _agendaService = new AgendaService();
             LoadAgenda();
         }
 

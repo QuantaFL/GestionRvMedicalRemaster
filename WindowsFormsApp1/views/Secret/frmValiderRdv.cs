@@ -167,7 +167,7 @@ namespace WindowsFormsApp1.views.Secret
             }
         }
 
-        private async Task<List<MetierRvMedical2.Models.SelectListViewModel>> LoadCreneauxAsync(MetierRvMedical2.Models.Agenda agenda)
+        public async Task<List<MetierRvMedical2.Models.SelectListViewModel>> LoadCreneauxAsync(MetierRvMedical2.Models.Agenda agenda)
         {
             try
             {

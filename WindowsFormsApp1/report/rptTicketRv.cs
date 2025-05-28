@@ -134,7 +134,7 @@ namespace WindowsFormsApp1.report {
             return rpt;
         }
         
-        public virtual string GetCustomizedCacheKey(RequestContext request) {
+        public virtual string GetCustomizedCacheKey(CrystalDecisions.Shared.RequestContext request) {
             String key = null;
             // // The following is the code used to generate the default
             // // cache key for caching report jobs in the ASP.NET Cache.
