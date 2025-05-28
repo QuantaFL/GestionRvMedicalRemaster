@@ -21,7 +21,7 @@ namespace ApiRvMedical2.services
             _db = db;
         }
 
-       
+
 
 
         /// <summary>
@@ -35,29 +35,30 @@ namespace ApiRvMedical2.services
         /// </returns>
         public async Task<List<UserDto>> GetAllUtilisateursAsync()
         {
-            try {
+            try
+            {
+                var utilisateurs = await _db.Utilisateurs
+                    .Include("Role")
+                    .Where(u => u.Role.LibelleRole != "ADMIN")
+                    .ToListAsync();
 
-                return await _db.Utilisateurs
-               .Include("Role")
-               .Where(u => u.Role.LibelleRole != "ADMIN")
-               .Select(u => new UserDto
-               {
-                   NomPrenom = u.NomPrenom,
-                   DateNaissance = u.DateNaissance,
-                   Addresse = u.Addresse,
-                   Email = u.Email,
-                   LibelleRole = u.Role.LibelleRole,
-                   Status = u.Status,
-                   Tel = u.Tel
-               })
-               .ToListAsync();
-
-
-
-            } catch (Exception ex) {
-                throw ex;
+                return utilisateurs.Select(u => new UserDto
+                {
+                    NomPrenom = u.NomPrenom,
+                    DateNaissance = u.DateNaissance,
+                    Addresse = u.Addresse,
+                    Email = u.Email,
+                    LibelleRole = u.Role.LibelleRole,
+                    Status = u.Status,
+                    Tel = u.Tel
+                }).ToList();
+            }
+            catch (Exception ex)
+            {
+                throw; // Ou log ex si besoin
             }
         }
-       
+
+
     }
 }
