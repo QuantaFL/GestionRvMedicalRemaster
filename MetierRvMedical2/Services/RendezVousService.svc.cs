@@ -37,8 +37,9 @@ namespace MetierRvMedical2.Services
             return _db.RendezVous.FirstOrDefault(rv => rv.IdRendezVous == id);
         }
 
-        public void AddRendezVous(RendezVous rendezVous)
+        public void AddRendezVous(String DateRv, String HeureRv, int? IdSoin, int? IdPatient, int? IdMedecin, int? IdAgenda, string CodeRdv)
         {
+            RendezVous rendezVous = new RendezVous {DateRv=DateRv, HeureRv = HeureRv,IdAgenda = IdAgenda, CodeRdv = CodeRdv, IdMedecin = IdMedecin, IdPatient = IdPatient, IdSoin = IdSoin };
             _db.RendezVous.Add(rendezVous);
             _db.SaveChanges();
         }

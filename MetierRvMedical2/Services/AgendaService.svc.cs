@@ -57,11 +57,24 @@ namespace MetierRvMedical2.Services
         /// Crée un nouvel agenda.
         /// </summary>
         /// <param name="agenda">Objet agenda à créer</param>
-        public void CreateAgenda(Agenda agenda)
+        public void CreateAgenda(DateTime? dataPlanifier,string heureDebut,string heureFin,string lieu,string titre,string statut,int creneau,int idMedecin)
         {
+            var agenda = new Agenda
+            {
+                DataPlanifier = dataPlanifier,
+                HeureDebut = heureDebut,
+                HeureFin = heureFin,
+                Lieu = lieu,
+                Titre = titre,
+                Statut = statut,
+                Creneau = creneau,
+                IdMedecin = idMedecin
+            };
+
             _db.Agenda.Add(agenda);
             _db.SaveChanges();
         }
+
 
         /// <summary>
         /// Met à jour un agenda existant.

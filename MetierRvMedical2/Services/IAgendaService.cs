@@ -21,7 +21,7 @@ namespace MetierRvMedical2.Services
         Agenda GetAgendaById(int id);
 
         [OperationContract]
-        void CreateAgenda(Agenda agenda);
+        void CreateAgenda(DateTime? dataPlanifier, string heureDebut, string heureFin, string lieu, string titre, string statut, int creneau, int idMedecin);
 
         [OperationContract]
         void UpdateAgenda(Agenda agenda);

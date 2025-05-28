@@ -21,7 +21,7 @@ namespace MetierRvMedical2.Services
         RendezVous GetRendezVousById(int id);
 
         [OperationContract]
-        void AddRendezVous(RendezVous rendezVous);
+        void AddRendezVous(String DateRv, String HeureRv, int? IdSoin, int? IdPatient, int? IdMedecin, int? IdAgenda, string CodeRdv);
 
         [OperationContract]
         void UpdateRendezVous(RendezVous rendezVous);
