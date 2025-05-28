@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using MetierRvMedical2.Models;
 
 namespace MetierRvMedical2.Services
 {
@@ -13,5 +14,14 @@ namespace MetierRvMedical2.Services
     {
         [OperationContract]
         void DoWork();
+
+        [OperationContract]
+        Secretaire GetSecretaireByMatricule(string matricule);
+
+        [OperationContract]
+        void ActiverSecretaire(string matricule);
+
+        [OperationContract]
+        void DesactiverSecretaire(string matricule);
     }
 }
