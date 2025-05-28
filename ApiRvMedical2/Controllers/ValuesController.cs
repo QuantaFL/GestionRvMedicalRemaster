@@ -4,21 +4,25 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using Newtonsoft.Json;
 
 namespace ApiRvMedical2.Controllers
 {
     public class ValuesController : ApiController
     {
         // GET api/values
-        public IEnumerable<string> Get()
+        public IHttpActionResult Get()
         {
-            return new string[] { "value1", "value2" };
+
+            var obj = new { Message = "Hello" };
+            return Ok(obj);
         }
 
         // GET api/values/5
         public string Get(int id)
         {
-            return "value";
+            var obj = new { Message = "Hello from Web API" };
+            return JsonConvert.SerializeObject(obj);
         }
 
         // POST api/values
