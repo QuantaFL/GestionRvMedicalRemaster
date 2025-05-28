@@ -4,6 +4,7 @@ using System.Linq;
 using System.Windows.Forms;
 using MetierRvMedical2.Models;
 using MetierRvMedical2.Services;
+using MetierRvMedical2.Utils;
 using Moq;
 using WindowsFormsApp1.views.Secret;
 
@@ -96,6 +97,7 @@ namespace MetierRvMedical2Test
             Assert.AreEqual("Dr. House", result[0].Medecin.NomPrenom);
         }
 
+
         [TestMethod]
         public void Can_Create_Agenda()
         {
@@ -105,15 +107,60 @@ namespace MetierRvMedical2Test
             mockContext.Setup(c => c.Agenda).Returns(mockSet.Object);
 
             var service = new AgendaService(mockContext.Object);
-            var agenda = new Agenda { IdAgenda = 3, Titre = "Test Agenda" };
+
+            Agenda captured = null;
+            mockSet.Setup(m => m.Add(It.IsAny<Agenda>()))
+                   .Callback<Agenda>(r => captured = r);
 
             // Act
-            service.CreateAgenda(agenda);
+            DateTime datePlanifier = DateTime.Now;
+            service.CreateAgenda(datePlanifier,"8:00", "18:30", "dakar", "Seminaire", "dispo", 45, 1);
 
             // Assert
-            mockSet.Verify(m => m.Add(It.Is<Agenda>(a => a == agenda)), Times.Once);
+            mockSet.Verify(m => m.Add(It.IsAny<Agenda>()), Times.Once);
             mockContext.Verify(m => m.SaveChanges(), Times.Once);
+
+            Assert.IsNotNull(captured);
+            Assert.AreEqual(datePlanifier, captured.DataPlanifier);
+            Assert.AreEqual("8:00", captured.HeureDebut);
+            Assert.AreEqual("18:30", captured.HeureFin);
+            Assert.AreEqual(1, captured.IdMedecin);
+            Assert.AreEqual("dakar", captured.Lieu);
+            Assert.AreEqual("Seminaire", captured.Titre);
+            Assert.AreEqual("dispo", captured.Statut);
+            Assert.AreEqual(45, captured.Creneau);
         }
+
+        [TestMethod]
+        public void Can_Create_RendezVous()
+        {
+            // Arrange
+            var mockSet = new Mock<DbSet<RendezVous>>();
+            var mockContext = new Mock<bdRdvMedicalContext>();
+            mockContext.Setup(c => c.RendezVous).Returns(mockSet.Object);
+
+            var service = new RendezVousService(mockContext.Object);
+
+            RendezVous captured = null;
+            mockSet.Setup(m => m.Add(It.IsAny<RendezVous>()))
+                   .Callback<RendezVous>(r => captured = r);
+
+            // Act
+            service.AddRendezVous( "21/10/2025", "8h30", 1, 1, 1, 1, "123");
+
+            // Assert
+            mockSet.Verify(m => m.Add(It.IsAny<RendezVous>()), Times.Once);
+            mockContext.Verify(m => m.SaveChanges(), Times.Once);
+
+            Assert.IsNotNull(captured);
+            Assert.AreEqual("8h30", captured.HeureRv);
+            Assert.AreEqual("21/10/2025", captured.DateRv);
+            Assert.AreEqual(1, captured.IdMedecin);
+            Assert.AreEqual(1, captured.IdPatient);
+            Assert.AreEqual(1, captured.IdSoin);
+            Assert.AreEqual("123", captured.CodeRdv);
+        }
+
 
 
         [TestMethod]
@@ -226,6 +273,27 @@ namespace MetierRvMedical2Test
             }
         }
 
+        [TestMethod]
+        public void GenerateCreneaux_ReturnsExpectedCreneaux()
+        {
+            // Arrange
+            string heureDebut = "08:00";
+            string heureFin = "10:00";
+            int creneauMinutes = 30;
+            var bookedHeures = new List<string> { "08:30" };
+
+            // Act
+            var result = CreneauxGenerator.GenerateCreneaux(heureDebut, heureFin, creneauMinutes, bookedHeures);
+
+            // Assert
+            Assert.AreEqual(3, result.Count);
+            Assert.AreEqual("08:00 - 08:30", result[0].Text);
+            Assert.AreEqual("08:00", result[0].Value);
+            Assert.AreEqual("09:00 - 09:30", result[1].Text);
+            Assert.AreEqual("09:00", result[1].Value);
+            Assert.AreEqual("09:30 - 10:00", result[2].Text);
+            Assert.AreEqual("09:30", result[2].Value);
+        }
 
         [TestClass]
         public class SecretaireServiceTests
