@@ -151,6 +151,7 @@
     <Content Include="Service1.svc" />
     <Content Include="Services\AgendaService.svc" />
     <Content Include="Services\MedecinService.svc" />
+    <Content Include="Services\RendezVousService.svc" />
     <Content Include="Services\SecretaireService.svc" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -190,11 +191,14 @@
     </Compile>
     <Compile Include="Services\IAgendaService.cs" />
     <Compile Include="Services\IMedecinService.cs" />
+    <Compile Include="Services\IRendezVousService.cs" />
     <Compile Include="Services\ISecretaireService.cs" />
     <Compile Include="Services\MedecinService.svc.cs">
       <DependentUpon>MedecinService.svc</DependentUpon>
     </Compile>
-    <Compile Include="Services\RendezVousService.svc.cs" />
+    <Compile Include="Services\RendezVousService.svc.cs">
+      <DependentUpon>RendezVousService.svc</DependentUpon>
+    </Compile>
     <Compile Include="Services\SecretaireService.svc.cs">
       <DependentUpon>SecretaireService.svc</DependentUpon>
     </Compile>

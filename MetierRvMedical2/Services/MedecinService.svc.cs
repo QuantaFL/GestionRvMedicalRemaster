@@ -12,7 +12,17 @@ namespace MetierRvMedical2.Services
     // NOTE: In order to launch WCF Test Client for testing this service, please select MedecinService.svc or MedecinService.svc.cs at the Solution Explorer and start debugging.
     public class MedecinService : IMedecinService
     {
-        private  bdRdvMedicalContext _db = new bdRdvMedicalContext();
+        private bdRdvMedicalContext _db;
+
+        public MedecinService()
+        {
+            _db = new bdRdvMedicalContext();
+        }
+
+        public MedecinService(bdRdvMedicalContext context)
+        {
+            _db = context;
+        }
 
         /// <summary>
         /// cette methode permet d'activer un médecin en fonction de son numéro d'ordre.

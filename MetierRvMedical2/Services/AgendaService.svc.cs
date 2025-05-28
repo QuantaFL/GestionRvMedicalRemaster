@@ -1,11 +1,13 @@
-﻿using MetierRvMedical2.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
-using System.Data.Entity;
+using MetierRvMedical2.Models;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
 
 namespace MetierRvMedical2.Services
 {
@@ -13,7 +15,16 @@ namespace MetierRvMedical2.Services
     // NOTE: In order to launch WCF Test Client for testing this service, please select AgendaService.svc or AgendaService.svc.cs at the Solution Explorer and start debugging.
     public class AgendaService : IAgendaService
     {
-        private bdRdvMedicalContext _db = new bdRdvMedicalContext();
+        private bdRdvMedicalContext _db;
+
+        public AgendaService(bdRdvMedicalContext context)
+        {
+            _db = context;
+        }
+        public AgendaService()
+        {
+            _db = new bdRdvMedicalContext();
+        }
 
         public void DoWork()
         {
@@ -23,9 +34,13 @@ namespace MetierRvMedical2.Services
         /// Récupère tous les agendas avec leurs médecins associés.
         /// </summary>
         /// <returns>Liste des agendas</returns>
-        public IEnumerable<Agenda> GetAllAgendas()
+        public virtual IEnumerable<Agenda> GetAllAgendas()
         {
+            #if DEBUG
+            return _db.Agenda.ToList(); // Testing fallback
+            #else
             return _db.Agenda.Include(a => a.Medecin).ToList();
+            #endif
         }
 
         /// <summary>
@@ -33,7 +48,7 @@ namespace MetierRvMedical2.Services
         /// </summary>
         /// <param name="id">Identifiant de l'agenda</param>
         /// <returns>Agenda trouvé ou null</returns>
-        public Agenda GetAgendaById(int id)
+        public virtual Agenda GetAgendaById(int id)
         {
             return _db.Agenda.Include(a => a.Medecin).FirstOrDefault(a => a.IdAgenda == id);
         }
@@ -84,5 +99,7 @@ namespace MetierRvMedical2.Services
                 .Where(a => a.IdMedecin == medecinId)
                 .ToList();
         }
+
     }
+
 }

@@ -1,13 +1,31 @@
-using MetierRvMedical2.Interfaces;
-using MetierRvMedical2.Models;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
+using System.ServiceModel;
+using System.Text;
+using MetierRvMedical2.Models;
 
 namespace MetierRvMedical2.Services
 {
+    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "RendezVousService" in code, svc and config file together.
+    // NOTE: In order to launch WCF Test Client for testing this service, please select RendezVousService.svc or RendezVousService.svc.cs at the Solution Explorer and start debugging.
     public class RendezVousService : IRendezVousService
     {
+        public void DoWork()
+        {
+        }
         private readonly bdRdvMedicalContext _db = new bdRdvMedicalContext();
+
+        public RendezVousService()
+        {
+            _db = new bdRdvMedicalContext();
+        }
+
+        public RendezVousService(bdRdvMedicalContext context)
+        {
+            _db = context;
+        }
 
         public IEnumerable<RendezVous> GetAllRendezVous()
         {
@@ -44,5 +62,7 @@ namespace MetierRvMedical2.Services
                 _db.SaveChanges();
             }
         }
+
+   
     }
 }

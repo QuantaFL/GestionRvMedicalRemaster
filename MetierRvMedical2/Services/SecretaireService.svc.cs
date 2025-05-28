@@ -12,7 +12,7 @@ namespace MetierRvMedical2.Services
     // NOTE: In order to launch WCF Test Client for testing this service, please select SecretaireService.svc or SecretaireService.svc.cs at the Solution Explorer and start debugging.
     public class SecretaireService : ISecretaireService
     {
-        private readonly bdRdvMedicalContext _db = new bdRdvMedicalContext();
+        private readonly bdRdvMedicalContext _db;
 
         public void AddSecretaire(Secretaire secretaire)
         {
@@ -22,6 +22,17 @@ namespace MetierRvMedical2.Services
         public void DoWork()
         {
         }
+
+        public SecretaireService()
+        {
+            _db = new bdRdvMedicalContext();
+        }
+
+        public SecretaireService(bdRdvMedicalContext context)
+        {
+            _db = context;
+        }
+
 
         public Secretaire GetSecretaireByMatricule(string matricule)
         {
