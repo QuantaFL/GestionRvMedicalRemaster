@@ -20,7 +20,7 @@ namespace WindowsFormsApp1.views.Med
 {
     public partial class frmMedAgenda : Form
     {
-        private readonly IAgendaService _agendaService;
+        private readonly AgendaService _agendaService;
 
         public frmMedAgenda()
         {
@@ -83,22 +83,11 @@ namespace WindowsFormsApp1.views.Med
 
                     try
                     {
-                        var agenda = new MetierRvMedical2.Models.Agenda()
-                        {
-                            Titre = txtTitreAgenda.Text,
-                            Statut = "dispo",
-                            Lieu = txtLieu.Text,
-                            Creneau = creneau,
-                            HeureDebut = txtHeureDebut.Text,
-                            HeureFin = txtHeureFin.Text,
-                            DataPlanifier = txtDateAgenda.Value.Date,
-                            IdMedecin = medecin.IdP
-                        };
 
                         Log.Information("Tentative d'enregistrement de l'agenda");
 
                         // Replace direct DbContext usage with service
-                        _agendaService.CreateAgenda(agenda);
+                        _agendaService.CreateAgenda(txtDateAgenda.Value.Date, txtHeureDebut.Text, txtHeureFin.Text, txtLieu.Text, txtTitreAgenda.Text, "dispo", creneau, medecin.IdP);
 
                         resetForm();
 

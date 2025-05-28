@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MetierRvMedical2.Models;
 using MetierRvMedical2.Services;
+using MetierRvMedical2.Utils;
 using Serilog;
 using WindowsFormsApp1.CustomControls;
 using WindowsFormsApp1.utils;
@@ -18,6 +19,7 @@ namespace WindowsFormsApp1.views.Secret
         private readonly MetierRvMedical2.Models.Agenda agenda;
         private readonly MetierRvMedical2.Models.bdRdvMedicalContext _bd = new MetierRvMedical2.Models.bdRdvMedicalContext();
         private readonly AgendaService _agendaService = new AgendaService();
+        private readonly RendezVousService _rendezVousService = new RendezVousService();
 
         public frmValiderRdv(MetierRvMedical2.Models.Patient p, MetierRvMedical2.Models.Agenda a)
         {
@@ -63,19 +65,7 @@ namespace WindowsFormsApp1.views.Secret
                 var patientId = patient.IdP;
                 string codeRdv = generateCodeRdv();
                 string dateRv = agenda.DataPlanifier.Value.ToString("yyyy-MM-dd") + " " + creneau;
-                var rdv = new MetierRvMedical2.Models.RendezVous
-                {
-                    DateRv = dateRv,
-                    HeureRv = creneau,
-                    IdSoin = int.Parse(soinId),
-                    IdPatient = patientId,
-                    IdMedecin = agenda.IdMedecin,
-                    IdAgenda = agenda.IdAgenda,
-                    CodeRdv = codeRdv,
-                };
-
-                _bd.RendezVous.Add(rdv);
-                await _bd.SaveChangesAsync();
+                _rendezVousService.AddRendezVous(dateRv,creneau,int.Parse(soinId),patientId,agenda.IdMedecin,agenda.IdAgenda,codeRdv);
 
                 Log.Information("Rdv confirme pour patient: {PatientId} a {HeureRv}", patientId, creneau);
 
@@ -182,7 +172,7 @@ namespace WindowsFormsApp1.views.Secret
                 DateTime endTime = DateTime.Parse(agenda.HeureFin);
                 int creneauxDurationInMinutes = agenda.Creneau;
 
-                var allAppointments = await _bd.RendezVous.ToListAsync();
+                var allAppointments = _rendezVousService.GetAllRendezVous();
 
                 var appointmentsForSelectedDate = allAppointments
                     .Where(r => DateTime.Parse(r.DateRv).Date == agenda.DataPlanifier.Value.Date)
@@ -192,23 +182,11 @@ namespace WindowsFormsApp1.views.Secret
                     .Select(r => r.HeureRv)
                     .ToList();
 
-                while (startTime.AddMinutes(creneauxDurationInMinutes) <= endTime)
-                {
-                    DateTime endSlot = startTime.AddMinutes(creneauxDurationInMinutes);
-                    string formattedSlot = $"{startTime:HH:mm} - {endSlot:HH:mm}";
-                    string slotStartTime = startTime.ToString("HH:mm");
-
-                    if (!bookedSlots.Contains(slotStartTime))
-                    {
-                        creneauxList.Add(new MetierRvMedical2.Models.SelectListViewModel
-                        {
-                            Text = formattedSlot,
-                            Value = slotStartTime
-                        });
-                    }
-
-                    startTime = endSlot;
-                }
+                creneauxList = CreneauxGenerator.GenerateCreneaux(
+                    agenda.HeureDebut,
+                    agenda.HeureFin,
+                    agenda.Creneau,
+                    bookedSlots);
                 if (creneauxList.Count == 0)
                 {
                     agenda.Statut = "non dispo";
