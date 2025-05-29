@@ -151,8 +151,10 @@
     <Content Include="Service1.svc" />
     <Content Include="Services\AgendaService.svc" />
     <Content Include="Services\MedecinService.svc" />
+    <Content Include="Services\MoyenPaiementService.svc" />
     <Content Include="Services\RendezVousService.svc" />
     <Content Include="Services\SecretaireService.svc" />
+    <Content Include="Services\SoinService.svc" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -191,16 +193,24 @@
     </Compile>
     <Compile Include="Services\IAgendaService.cs" />
     <Compile Include="Services\IMedecinService.cs" />
+    <Compile Include="Services\IMoyenPaiementService.cs" />
     <Compile Include="Services\IRendezVousService.cs" />
     <Compile Include="Services\ISecretaireService.cs" />
+    <Compile Include="Services\ISoinService.cs" />
     <Compile Include="Services\MedecinService.svc.cs">
       <DependentUpon>MedecinService.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Services\MoyenPaiementService.svc.cs">
+      <DependentUpon>MoyenPaiementService.svc</DependentUpon>
     </Compile>
     <Compile Include="Services\RendezVousService.svc.cs">
       <DependentUpon>RendezVousService.svc</DependentUpon>
     </Compile>
     <Compile Include="Services\SecretaireService.svc.cs">
       <DependentUpon>SecretaireService.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Services\SoinService.svc.cs">
+      <DependentUpon>SoinService.svc</DependentUpon>
     </Compile>
     <Compile Include="Tests\Models\bdRdvMedicalContextTest.cs" />
   </ItemGroup>
@@ -250,7 +260,7 @@
   </ProjectExtensions>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
-      <ErrorText>Ce projet fait référence à des packages NuGet qui sont manquants sur cet ordinateur. Utilisez l'option de restauration des packages NuGet pour les télécharger. Pour plus d'informations, consultez http://go.microsoft.com/fwlink/?LinkID=322105. Le fichier manquant est : {0}.</ErrorText>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.5.1\build\EntityFramework.props'))" />
     <Error Condition="!Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.5.1\build\EntityFramework.targets'))" />
