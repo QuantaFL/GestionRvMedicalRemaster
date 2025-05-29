@@ -37,7 +37,7 @@ namespace MetierRvMedical2.Services
         public virtual IEnumerable<Agenda> GetAllAgendas()
         {
             #if DEBUG
-            return _db.Agenda.ToList(); // Testing fallback
+            return _db.Agenda.ToList();
             #else
             return _db.Agenda.Include(a => a.Medecin).ToList();
             #endif

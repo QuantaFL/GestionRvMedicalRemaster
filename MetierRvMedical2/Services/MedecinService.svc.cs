@@ -66,6 +66,26 @@ namespace MetierRvMedical2.Services
             return _db.Medecins.FirstOrDefault(m => m.NumeroOrdre == numeroOrdre);
         }
 
+        public IEnumerable<Medecin> GetAllMedecins(string numeroOrdre)
+        {
+            return _db.Medecins.ToList();
+        }
 
+        public Medecin GetMedecinBySpecialite(String specialite)
+        {
+            if (specialite == null)
+            {
+                throw new ArgumentNullException(nameof(specialite), "La spécialité ne peut pas être nulle.");
+            }
+            return _db.Medecins.FirstOrDefault(m => m.Specialite.CodeSpecialte == specialite);
+        }
+        public IEnumerable<Medecin> GetMedecinsBySpecialite(String specialite)
+        {
+            if (specialite == null)
+            {
+                throw new ArgumentNullException(nameof(specialite), "La spécialité ne peut pas être nulle.");
+            }
+            return _db.Medecins.Where(m => m.Specialite.CodeSpecialte == specialite).ToList();
+        }
     }
 }

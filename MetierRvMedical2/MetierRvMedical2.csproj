@@ -155,6 +155,7 @@
     <Content Include="Services\RendezVousService.svc" />
     <Content Include="Services\SecretaireService.svc" />
     <Content Include="Services\SoinService.svc" />
+    <Content Include="Services\SpecialiteService.svc" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -197,6 +198,7 @@
     <Compile Include="Services\IRendezVousService.cs" />
     <Compile Include="Services\ISecretaireService.cs" />
     <Compile Include="Services\ISoinService.cs" />
+    <Compile Include="Services\ISpecialiteService.cs" />
     <Compile Include="Services\MedecinService.svc.cs">
       <DependentUpon>MedecinService.svc</DependentUpon>
     </Compile>
@@ -211,6 +213,9 @@
     </Compile>
     <Compile Include="Services\SoinService.svc.cs">
       <DependentUpon>SoinService.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Services\SpecialiteService.svc.cs">
+      <DependentUpon>SpecialiteService.svc</DependentUpon>
     </Compile>
     <Compile Include="Tests\Models\bdRdvMedicalContextTest.cs" />
   </ItemGroup>
