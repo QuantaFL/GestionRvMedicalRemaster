@@ -1,5 +1,4 @@
-﻿using Org.BouncyCastle.Security;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,12 +7,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MetierRvMedical2.Services;
+using Org.BouncyCastle.Security;
 using WindowsFormsApp1.Models;
 
 namespace WindowsFormsApp1.views.Med
 {
     public partial class frmRdvMed : Form
     {
+
+        private readonly RendezVousService _rendezVousService = new RendezVousService();
         public frmRdvMed()
         {
             InitializeComponent();
@@ -32,7 +35,7 @@ namespace WindowsFormsApp1.views.Med
             
            Medecin currentMedecin = (Medecin)FrmConnexion.user;
             var date = DateTime.Now.Date.ToString();
-            var rdvs = bd.RendezVous.Where(r=> r.IdMedecin == currentMedecin.IdP
+            var rdvs = _rendezVousService.GetAllRendezVous().Where(r=> r.IdMedecin == currentMedecin.IdP
            ).ToList();
                 dgRdvMedecin.DataSource = rdvs.Where(rv=>DateTime.Parse(rv.DateRv).Date.ToString()==date).Select(rdv => new
                 {
@@ -45,6 +48,11 @@ namespace WindowsFormsApp1.views.Med
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void dgRdvMedecin_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }

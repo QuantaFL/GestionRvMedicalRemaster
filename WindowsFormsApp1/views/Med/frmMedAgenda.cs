@@ -21,6 +21,7 @@ namespace WindowsFormsApp1.views.Med
     public partial class frmMedAgenda : Form
     {
         private readonly AgendaService _agendaService;
+        private readonly MedecinService _medecinService;
 
         public frmMedAgenda()
         {
@@ -30,8 +31,8 @@ namespace WindowsFormsApp1.views.Med
             txtHeureDebut.ValidatingType = typeof(DateTime);
             txtHeureFin.ValidatingType = typeof(DateTime);
 
-            // Use a concrete implementation or dependency injection as needed
             _agendaService = new AgendaService();
+            _medecinService = new MedecinService();
         }
 
         private void btnFermer_Click(object sender, EventArgs e)
@@ -44,15 +45,11 @@ namespace WindowsFormsApp1.views.Med
             try
             {
                 Log.Information("Tentative de connexion a la base");
-                using (var context = new Models.bdRdvMedicalContext())
-                {
-                    var transaction = context.Database.BeginTransaction();
+
                     Log.Information("Tentative de recuperation des informations medecin");
 
-                    var medecin = context.Personnes
-                        .Where(p => p.IdP == 1)
-                        .OfType<Models.Medecin>()
-                        .FirstOrDefault();
+
+                    var medecin = _medecinService.GetMedecinById(1);
 
                     if (medecin == null)
                     {
@@ -97,9 +94,8 @@ namespace WindowsFormsApp1.views.Med
                     catch (Exception ex)
                     {
                         Log.Fatal($"Echec de l'action lors de l'ajout de l'agenda: {ex.Message} - {ex.Source}");
-                        transaction.Rollback();
                     }
-                }
+                
             }
             catch (Exception ex)
             {
