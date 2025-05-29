@@ -152,7 +152,9 @@
     <Content Include="Services\AgendaService.svc" />
     <Content Include="Services\MedecinService.svc" />
     <Content Include="Services\MoyenPaiementService.svc" />
+    <Content Include="Services\PatientService.svc" />
     <Content Include="Services\RendezVousService.svc" />
+    <Content Include="Services\RoleService.svc" />
     <Content Include="Services\SecretaireService.svc" />
     <Content Include="Services\SoinService.svc" />
     <Content Include="Services\SpecialiteService.svc" />
@@ -195,7 +197,9 @@
     <Compile Include="Services\IAgendaService.cs" />
     <Compile Include="Services\IMedecinService.cs" />
     <Compile Include="Services\IMoyenPaiementService.cs" />
+    <Compile Include="Services\IPatientService.cs" />
     <Compile Include="Services\IRendezVousService.cs" />
+    <Compile Include="Services\IRoleService.cs" />
     <Compile Include="Services\ISecretaireService.cs" />
     <Compile Include="Services\ISoinService.cs" />
     <Compile Include="Services\ISpecialiteService.cs" />
@@ -205,8 +209,14 @@
     <Compile Include="Services\MoyenPaiementService.svc.cs">
       <DependentUpon>MoyenPaiementService.svc</DependentUpon>
     </Compile>
+    <Compile Include="Services\PatientService.svc.cs">
+      <DependentUpon>PatientService.svc</DependentUpon>
+    </Compile>
     <Compile Include="Services\RendezVousService.svc.cs">
       <DependentUpon>RendezVousService.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Services\RoleService.svc.cs">
+      <DependentUpon>RoleService.svc</DependentUpon>
     </Compile>
     <Compile Include="Services\SecretaireService.svc.cs">
       <DependentUpon>SecretaireService.svc</DependentUpon>

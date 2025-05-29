@@ -58,5 +58,22 @@ namespace MetierRvMedical2.Services
                 _db.SaveChanges();
             }
         }
+
+        public IEnumerable<Secretaire> GetAllSecretaires()
+        {
+            return _db.Secretaires.ToList();
+        }
+
+        public int CountSecretaires()
+        {
+            try
+            {
+                return _db.Secretaires.Count();
+            }
+            catch (Exception ex)
+            {
+                return 0;
+            }
+        }
     }
 }

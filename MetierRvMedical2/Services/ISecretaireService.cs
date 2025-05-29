@@ -23,5 +23,11 @@ namespace MetierRvMedical2.Services
 
         [OperationContract]
         void DesactiverSecretaire(string matricule);
+
+        [OperationContract]
+        IEnumerable<Secretaire> GetAllSecretaires();
+
+        [OperationContract]
+        int CountSecretaires();
     }
 }
