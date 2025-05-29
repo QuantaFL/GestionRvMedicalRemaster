@@ -7,17 +7,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MetierRvMedical2.Models;
+using MetierRvMedical2.Services;
 using Microsoft.VisualBasic.Logging;
 using Serilog;
-using WindowsFormsApp1.views.Admin;
 using Serilog;
 using WindowsFormsApp1.CustomControls;
-using MetierRvMedical2.Models;
+using WindowsFormsApp1.views.Admin;
 
 namespace WindowsFormsApp1.views.Secret
 {
     public partial class frmAcceuilSecret : Form
     {
+
+        private readonly AgendaService _agendaService = new AgendaService();
+        private readonly RendezVousService _rendezVousService = new RendezVousService();
+        //private readonly PatientService _patientService = new PatientService(); TODO
         public frmAcceuilSecret()
         {
             InitializeComponent();
@@ -27,8 +32,8 @@ namespace WindowsFormsApp1.views.Secret
 
         private void AfficheStats()
         {
-            var agendaList = bd.Agenda.ToList();
-            var rendezvous = bd.RendezVous.ToList();
+            var agendaList = _agendaService.GetAllAgendas();
+            var rendezvous = _rendezVousService.GetAllRendezVous();
             lblNbRv.Text = rendezvous.Where(r => r.DateRv.Contains(DateTime.Now.Date.ToString())).ToList().Count().ToString();
             //FrmConnexion.user
             lblNbAgenda.Text = agendaList.Where(a => a.DataPlanifier.Value.Date == DateTime.Now.Date).ToList().Count.ToString();

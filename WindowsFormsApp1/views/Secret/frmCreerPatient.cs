@@ -8,14 +8,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MetierRvMedical2.Models;
+using MetierRvMedical2.Services;
 using WindowsFormsApp1.CustomControls;
-using WindowsFormsApp1.Models;
 using WindowsFormsApp1.views.Admin;
 
 namespace WindowsFormsApp1.views.Secret
 {
     public partial class frmCreerPatient : Form
     {
+
+        private readonly PatientService _patientService = new PatientService();
         public frmCreerPatient()
         {
             InitializeComponent();
@@ -39,7 +42,7 @@ namespace WindowsFormsApp1.views.Secret
             GroupeSanguin groupe = bd.GroupeSanguins.Find(idG);
             patient.GroupeSanguin = groupe.CodeGroupeSanguin;
             patient.Poids = float.Parse(txtPoids.Text);
-            bd.Patients.Add(patient);
+            _patientService.AddPatient(patient);
             try
             {
                 bd.SaveChanges();

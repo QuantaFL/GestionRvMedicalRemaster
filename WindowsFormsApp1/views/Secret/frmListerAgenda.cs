@@ -24,7 +24,6 @@ namespace WindowsFormsApp1.views.Secret
 
         private void LoadAgendas()
         {
-            // Use AgendaService to get all agendas
             var agendas = _agendaService.GetAllAgendas()
                 .Where(ag => ag.Statut.Equals("dispo"))
                 .Select(agenda => new

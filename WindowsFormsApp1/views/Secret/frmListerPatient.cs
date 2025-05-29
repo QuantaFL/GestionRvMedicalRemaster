@@ -7,19 +7,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MetierRvMedical2.Services;
 using WindowsFormsApp1.Models;
 
 namespace WindowsFormsApp1.views.Secret
 {
     public partial class frmListerPatient : Form
     {
+
+        private readonly PatientService _patientService = new PatientService();
         public frmListerPatient()
         {
             InitializeComponent();
             LoadAllPatient();
         }
 
-        bdRdvMedicalContext bd = new bdRdvMedicalContext();
 
         private void groupBox1_Enter(object sender, EventArgs e)
         {
@@ -33,13 +35,18 @@ namespace WindowsFormsApp1.views.Secret
 
         private void LoadAllPatient()
         {
-            dgPatients.DataSource = bd.Patients.Select(p => new
+            dgPatients.DataSource = _patientService.GetAllPatients().Select(p => new
             {
                 p.NomPrenom,
                 p.Addresse,
                 p.Email,
                 p.Tel,
             }).ToList();
+        }
+
+        private void btnRechercherPatient_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

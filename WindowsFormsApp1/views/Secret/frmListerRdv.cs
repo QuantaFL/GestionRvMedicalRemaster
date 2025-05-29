@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MetierRvMedical2.Services;
 using WindowsFormsApp1.Models;
 
 namespace WindowsFormsApp1.views.Secret
@@ -14,6 +15,7 @@ namespace WindowsFormsApp1.views.Secret
     public partial class frmListerRdv : Form
     {
         bdRdvMedicalContext bd = new bdRdvMedicalContext();
+        private readonly RendezVousService _rendezVousService = new RendezVousService();
         public frmListerRdv()
         {
             InitializeComponent();
@@ -28,13 +30,13 @@ namespace WindowsFormsApp1.views.Secret
 
         private void LoadRdv()
         {
-            dgRdv.DataSource = bd.RendezVous.Select(rdv => new
+            dgRdv.DataSource = _rendezVousService.GetAllRendezVous().Select(rdv => new
             {
                 PatientNomPrenom = rdv.Patient.NomPrenom,
                 MedecinNomPrenom = rdv.Medecin.NomPrenom,
                 rdv.Soin.NomSoin,
                 rdv.DateRv,
-                
+
 
             }).ToList();
         }

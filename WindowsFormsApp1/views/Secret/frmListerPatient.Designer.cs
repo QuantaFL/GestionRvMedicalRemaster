@@ -106,6 +106,7 @@
             this.btnRechercherPatient.TabIndex = 17;
             this.btnRechercherPatient.Text = "&Rechercher un Patient";
             this.btnRechercherPatient.UseVisualStyleBackColor = true;
+            this.btnRechercherPatient.Click += new System.EventHandler(this.btnRechercherPatient_Click);
             // 
             // dgPatients
             // 
