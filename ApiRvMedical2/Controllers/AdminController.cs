@@ -30,12 +30,12 @@ namespace ApiRvMedical2.Controllers
         public async Task<IHttpActionResult> Get()
         {
             try {
-                InstanceLogger.GetInstance().Information("GET api/v1/utilisateurs called");
+                //InstanceLogger.GetInstance().Information("GET api/v1/utilisateurs called");
                 var utilisateurs = await _adminService.GetAllUtilisateursAsync();
                 return Ok(utilisateurs);
 
             } catch (Exception ex) {
-                InstanceLogger.GetInstance().Error("error while loading user list", ex.Message);
+                //InstanceLogger.GetInstance().Error("error while loading user list", ex.Message);
                 throw;
             }
            
