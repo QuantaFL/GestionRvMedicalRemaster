@@ -24,10 +24,12 @@ namespace MetierRvMedical2.Services
         void DesactiverMedecin(string numeroOrdre);
 
         [OperationContract]
-        IEnumerable<Medecin> GetAllMedecins(string numeroOrdre);
+        IEnumerable<Medecin> GetAllMedecins();
 
         [OperationContract]
         Medecin GetMedecinBySpecialite(String specialite);
+        [OperationContract]
+        Medecin GetMedecinById(int id);
 
         [OperationContract]
         IEnumerable<Medecin> GetMedecinsBySpecialite(String specialite);

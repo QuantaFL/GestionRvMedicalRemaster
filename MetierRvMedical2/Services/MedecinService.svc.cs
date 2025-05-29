@@ -66,7 +66,8 @@ namespace MetierRvMedical2.Services
             return _db.Medecins.FirstOrDefault(m => m.NumeroOrdre == numeroOrdre);
         }
 
-        public IEnumerable<Medecin> GetAllMedecins(string numeroOrdre)
+
+        public IEnumerable<Medecin> GetAllMedecins()
         {
             return _db.Medecins.ToList();
         }
@@ -86,6 +87,21 @@ namespace MetierRvMedical2.Services
                 throw new ArgumentNullException(nameof(specialite), "La spécialité ne peut pas être nulle.");
             }
             return _db.Medecins.Where(m => m.Specialite.CodeSpecialte == specialite).ToList();
+        }
+
+        public Medecin GetMedecinById(int id)
+        {
+            return _db.Medecins.FirstOrDefault(m => m.IdP == id);
+        }
+
+        public void CreateMedecin(Medecin medecin)
+        {
+            if (medecin == null)
+            {
+                throw new ArgumentNullException(nameof(medecin), "Le médecin ne peut pas être nul.");
+            }
+            _db.Medecins.Add(medecin);
+            _db.SaveChanges();
         }
     }
 }
