@@ -11,6 +11,8 @@ namespace WindowsFormsApp1.views.Secret
     public partial class frmRdv : Form
     {
         private readonly AgendaService _agendaService = new AgendaService();
+        private readonly MedecinService _medecinService = new MedecinService();
+        private readonly SpecialiteService _specialiteService = new SpecialiteService();
         readonly MetierRvMedical2.Models.Patient patient;
         MetierRvMedical2.Models.Agenda agenda;
 
@@ -53,10 +55,7 @@ namespace WindowsFormsApp1.views.Secret
 
                 Log.Information("Chargement des agendas pour la spécialité {Specialite} à partir de {Date}", s, val);
 
-                var medecins = bd.Personnes
-                    .OfType<MetierRvMedical2.Models.Medecin>()
-                    .Where(m => m.Specialite.NomSpecialte == s)
-                    .ToList();
+                var medecins = _medecinService.GetMedecinsBySpecialite(s).ToList();
 
                 if (medecins.Count == 0)
                 {
@@ -99,7 +98,8 @@ namespace WindowsFormsApp1.views.Secret
             try
             {
                 Log.Information("Chargement des spécialités pour le combobox.");
-                var s = bd.Specialite.ToList();
+
+                var s = _specialiteService.GetAllSpecialites();
                 List<MetierRvMedical2.Models.SelectListViewModel> liste = new List<MetierRvMedical2.Models.SelectListViewModel>();
                 MetierRvMedical2.Models.SelectListViewModel b = new MetierRvMedical2.Models.SelectListViewModel();
                 b.Text = "Selectionner une valeur";
@@ -148,7 +148,6 @@ namespace WindowsFormsApp1.views.Secret
             if (dgAgendaMedecin.SelectedRows.Count > 0)
             {
                 var idAgenda = int.Parse(dgAgendaMedecin.CurrentRow.Cells[0].Value.ToString());
-                // Use AgendaService to get agenda by id
                 agenda = _agendaService.GetAgendaById(idAgenda);
                 Log.Information("Agenda selectionne: {AgendaId}, Date: {AgendaDate}", agenda.IdAgenda, agenda.DataPlanifier);
 
