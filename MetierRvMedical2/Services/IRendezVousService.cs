@@ -14,6 +14,7 @@ namespace MetierRvMedical2.Services
     {
         [OperationContract]
         void DoWork();
+
         [OperationContract]
         IEnumerable<RendezVous> GetAllRendezVous();
 
@@ -28,5 +29,8 @@ namespace MetierRvMedical2.Services
 
         [OperationContract]
         void DeleteRendezVous(int id);
+
+        [OperationContract]
+        int CountRendezVous();
     }
 }

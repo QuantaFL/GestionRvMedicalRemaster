@@ -64,6 +64,9 @@ namespace MetierRvMedical2.Services
             }
         }
 
-   
+        public int CountRendezVous()
+        {
+            return _db.RendezVous.Count();
+        }
     }
 }
