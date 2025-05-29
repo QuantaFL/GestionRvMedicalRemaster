@@ -5,20 +5,21 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Net.Mail;
 using System.Net;
+using System.Net.Mail;
 using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Services.Description;
 using System.Windows.Forms;
+using Elasticsearch.Net;
+using MetierRvMedical2.Models;
+using MetierRvMedical2.Services;
 using Microsoft.VisualBasic.Logging;
 using Serilog;
-using WindowsFormsApp1.Models;
-using Log = Serilog.Log;
-using Elasticsearch.Net;
 using WindowsFormsApp1.config;
-using System.Web.Services.Description;
 using WindowsFormsApp1.CustomControls;
+using Log = Serilog.Log;
 
 namespace WindowsFormsApp1.views.Admin
 {
@@ -30,7 +31,11 @@ namespace WindowsFormsApp1.views.Admin
         // TODO : dans le resetForm ajouter la fonction pour vider des champs
 
 
-        bdRdvMedicalContext db = new bdRdvMedicalContext();
+        private readonly MedecinService _medecinService = new MedecinService();
+        private readonly PatientService _patientService = new PatientService();
+        private readonly SpecialiteService _specialiteService = new SpecialiteService();
+        private readonly RoleService _roleService = new RoleService();
+        //bdRdvMedicalContext db = new bdRdvMedicalContext();
         // Log.Information("Lancement de lapplication...");
        
       
@@ -94,7 +99,7 @@ namespace WindowsFormsApp1.views.Admin
         }
         public List<SelectListViewModel> loadSpecialiteccb()
         {
-            var s = db.Specialite.ToList();
+            var s = _specialiteService.GetAllSpecialites();
             List<SelectListViewModel> liste = new List<SelectListViewModel>();
             SelectListViewModel b = new SelectListViewModel();
             b.Text = "Selectionner une valeur";
@@ -219,7 +224,7 @@ namespace WindowsFormsApp1.views.Admin
                 frmInformationMessage.ShowDialog();
                 return;
             }
-            var med = db.Medecins.Where(m => m.NumeroOrdre == txtNumeroOrdre.Text
+            var med = _medecinService.GetAllMedecins().Where(m => m.NumeroOrdre == txtNumeroOrdre.Text
             || m.Email == txtEmail.Text || m.Tel == txtNumeroTelephone.Text
             ).FirstOrDefault();
             if (med != null)
@@ -244,9 +249,9 @@ namespace WindowsFormsApp1.views.Admin
                 frmEchecExecution.ShowDialog();
                 return;
             }
-         
-    
-                var role  = db.Role.Where(r=> r.CodeRole=="MED").FirstOrDefault();
+
+
+                var role = _roleService.GetRoleByCode("MED");
                 int IdRole = role.IdRole;
                 int IdSpecialite = int.Parse(cbbSpecialite.SelectedValue.ToString());
                 Guid myuuid = Guid.NewGuid();
@@ -268,9 +273,9 @@ namespace WindowsFormsApp1.views.Admin
                 medecin.PremiereConnexion = 0;
                 medecin.IdSpecialite = IdSpecialite;
                 medecin.NumeroOrdre = txtNumeroOrdre.Text;
-                db.Medecins.Add(medecin);
+                
                 try {
-                    db.SaveChanges();
+                    _medecinService.CreateMedecin(medecin);
                     Log.Information("medecin ajouter");
                     sendMail(txtEmail.Text, mdpTmp, identfiantTmp);
                     Log.Information($" mail envoyer à {txtEmail.Text}");

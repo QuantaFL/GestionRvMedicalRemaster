@@ -4,27 +4,30 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Net.Mail;
 using System.Net;
+using System.Net.Mail;
 using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MetierRvMedical2.Models;
+using MetierRvMedical2.Services;
 using Serilog;
-using WindowsFormsApp1.Models;
-using WindowsFormsApp1.views.Secret;
 using WindowsFormsApp1.config;
 using WindowsFormsApp1.CustomControls;
+using WindowsFormsApp1.views.Secret;
 
 namespace WindowsFormsApp1.views.Admin
 {
     public partial class frmAdminAjouterSecretaire : Form
     {
+
+        private readonly SecretaireService _secretaireService = new SecretaireService();
+        private readonly RoleService _roleService = new RoleService();
         public frmAdminAjouterSecretaire()
         {
             InitializeComponent();
         }
-        bdRdvMedicalContext db = new bdRdvMedicalContext();
         string message;
         private void frmAdminAjouterSecretaire_Load(object sender, EventArgs e)
         {
@@ -147,7 +150,7 @@ namespace WindowsFormsApp1.views.Admin
         private string generateMatricule()
         {
             string matricule;
-            var nbrSecretaire = db.Secretaires.Count();
+            var nbrSecretaire = _secretaireService.CountSecretaires();
             if (nbrSecretaire == 0)
             {
                 nbrSecretaire = 1;
@@ -186,7 +189,7 @@ namespace WindowsFormsApp1.views.Admin
                 frmInformationMessage.ShowDialog();
                 return;
             }
-            var sec = db.Secretaires.Where(s=> s.TelephoneFixe == txtTelephoneFixe.Text
+            var sec = _secretaireService.GetAllSecretaires().Where(s=> s.TelephoneFixe == txtTelephoneFixe.Text
             || s.Email == txtEmail.Text || s.Tel == txtNumeroTelephone.Text
             ).FirstOrDefault();
             if (sec != null)
@@ -211,7 +214,7 @@ namespace WindowsFormsApp1.views.Admin
                 frmEchecExecution.ShowDialog();
                 return;
             }
-            var role = db.Role.Where(r => r.CodeRole == "SEC").FirstOrDefault();
+            var role = _roleService.GetRoleByCode("SEC");
             int IdRole = role.IdRole;
             Guid myuuid = Guid.NewGuid();
             Guid myuuid2 = Guid.NewGuid();
@@ -236,8 +239,7 @@ namespace WindowsFormsApp1.views.Admin
 
                 secretaire.Matricule = generateMatricule();
                 secretaire.TelephoneFixe = txtTelephoneFixe.Text;
-                db.Secretaires.Add(secretaire);
-                db.SaveChanges();
+                _secretaireService.AddSecretaire(secretaire);
 
 
                 Log.Information("ajout de la secretaire");
