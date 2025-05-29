@@ -16,12 +16,13 @@ namespace WindowsFormsApp1.views.Secret
     public partial class frmValiderRdv : Form
     {
         private readonly Patient patient;
-        private readonly MetierRvMedical2.Models.Agenda agenda;
-        private readonly MetierRvMedical2.Models.bdRdvMedicalContext _bd = new MetierRvMedical2.Models.bdRdvMedicalContext();
+        private readonly Agenda agenda;
         private readonly AgendaService _agendaService = new AgendaService();
+        private readonly MoyenPaiementService _moyenPaiementService = new MoyenPaiementService();
+        private readonly SoinService _soinService = new SoinService();
         private readonly RendezVousService _rendezVousService = new RendezVousService();
 
-        public frmValiderRdv(MetierRvMedical2.Models.Patient p, MetierRvMedical2.Models.Agenda a)
+        public frmValiderRdv(Patient p, Agenda a)
         {
             InitializeComponent();
             patient = p;
@@ -65,7 +66,7 @@ namespace WindowsFormsApp1.views.Secret
                 var patientId = patient.IdP;
                 string codeRdv = generateCodeRdv();
                 string dateRv = agenda.DataPlanifier.Value.ToString("yyyy-MM-dd") + " " + creneau;
-                _rendezVousService.AddRendezVous(dateRv,creneau,int.Parse(soinId),patientId,agenda.IdMedecin,agenda.IdAgenda,codeRdv);
+                _rendezVousService.AddRendezVous(dateRv, creneau, int.Parse(soinId), patientId, agenda.IdMedecin, agenda.IdAgenda, codeRdv);
 
                 Log.Information("Rdv confirme pour patient: {PatientId} a {HeureRv}", patientId, creneau);
 
@@ -74,20 +75,21 @@ namespace WindowsFormsApp1.views.Secret
 
                new frmExecutionReussie("Rdv valide avec succes.").ShowDialog();
 
-                try {
-                    var lastRdv = _bd.RendezVous.Where(r => r.CodeRdv == codeRdv).FirstOrDefault();
-                    if (lastRdv != null) { 
+                try
+                {
+                    var lastRdv = _rendezVousService.GetAllRendezVous().Where(r => r.CodeRdv == codeRdv).FirstOrDefault();
+                    if (lastRdv != null)
+                    {
                         frmRptPrintRecuRdv frmRptPrintRecuRdv = new frmRptPrintRecuRdv(lastRdv.IdRendezVous);
                         frmRptPrintRecuRdv.Show();
                         var frmRdv = Application.OpenForms["frmValiderRdv"] as frmValiderRdv;
                         frmRdv.Close();
                     }
                 }
-                catch (Exception ex) { 
-                Log.Error($"{ex.Message} erreur lors de la reucperation du rdv par son code ");
-                
+                catch (Exception ex)
+                {
+                    Log.Error($"{ex.Message} erreur lors de la reucperation du rdv par son code ");
                 }
-                
             }
             catch (Exception ex)
             {
@@ -108,7 +110,7 @@ namespace WindowsFormsApp1.views.Secret
             try
             {
                 Log.Information("Chargement des paiements.");
-                var s = await _bd.MoyenDePaiements.ToListAsync();
+                var s = await Task.Run(() => _moyenPaiementService.GetAllMoyenDePaiements().ToList());
                 var liste = new List<MetierRvMedical2.Models.SelectListViewModel>
                 {
                     new MetierRvMedical2.Models.SelectListViewModel { Text = "Selectionner", Value = "" }
@@ -135,7 +137,7 @@ namespace WindowsFormsApp1.views.Secret
             try
             {
                 Log.Information("Chargement des soins.");
-                var s = await _bd.Soins.ToListAsync();
+                var s = await Task.Run(() => _soinService.GetAllSoins().ToList());
                 var liste = new List<MetierRvMedical2.Models.SelectListViewModel>
                 {
                     new MetierRvMedical2.Models.SelectListViewModel { Text = "Selectionner", Value = "" }
@@ -163,7 +165,7 @@ namespace WindowsFormsApp1.views.Secret
             {
                 Log.Information("Chargement des créneaux.");
 
-                var agendaFromService = _agendaService.GetAgendaById(agenda.IdAgenda);
+                var agendaFromService = await Task.Run(() => _agendaService.GetAgendaById(agenda.IdAgenda));
                 if (agendaFromService != null)
                     agenda = agendaFromService;
 
@@ -190,8 +192,7 @@ namespace WindowsFormsApp1.views.Secret
                 if (creneauxList.Count == 0)
                 {
                     agenda.Statut = "non dispo";
-                    _bd.Entry(agenda).State = EntityState.Modified;
-                    await _bd.SaveChangesAsync();
+                    await Task.Run(() => _agendaService.UpdateAgenda(agenda));
                     new frmInformation("L'agenda nest plus disponible: nombre de creneaux remplis").ShowDialog();
                     Log.Information("Aucun créneau disponible, statut de l'agenda mis à jour à false.");
                     this.Close();
@@ -211,8 +212,7 @@ namespace WindowsFormsApp1.views.Secret
         {
             var soinId = cbbSoins.SelectedValue?.ToString();
             if (soinId == null) return;
-
-            var soin = _bd.Soins.FirstOrDefault(s => s.IdSoin.ToString() == soinId);
+            var soin = _soinService.GetAllSoins().FirstOrDefault(s => s.IdSoin.ToString() == soinId);
             if (soin != null)
             {
                 txtCout.Text = soin.CoutSoin.ToString();
@@ -222,7 +222,7 @@ namespace WindowsFormsApp1.views.Secret
         private string generateCodeRdv()
         {
             string codeRdv ;
-            var nbrRdv = _bd.RendezVous.Count();
+            var nbrRdv = _rendezVousService.CountRendezVous();
             if (nbrRdv == 0)
             {
                 nbrRdv = 1;
