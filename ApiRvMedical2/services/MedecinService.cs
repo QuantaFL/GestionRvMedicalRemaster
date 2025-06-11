@@ -200,6 +200,40 @@ namespace ApiRvMedical2.services
         }
 
         /// <summary>
+        /// permet d'obtenir la liste des medecins 
+        /// </summary>
+        /// <returns></returns>
+        public async Task<List<GetMedecinDto>> GetAllMedecin()
+        {
+            try {
+
+                var utilisateurs = await _db.Medecins
+                  //   .Include("Role")
+                    // .Where(u => u.Role.LibelleRole != "ADMIN")
+                     .ToListAsync();
+
+               return utilisateurs.Select(u => new GetMedecinDto {
+                  NomPrenom = u.NomPrenom,
+                  Addresse = u.Addresse,
+                  DateNaissance = u.DateNaissance,
+                  Email = u.Email,
+                  LibelleSpecialite = u.Specialite.NomSpecialte,
+                  NumeroOrdre = u.NumeroOrdre,
+                  Id = u.IdP,
+                  Status = u.Status,
+                  Tel = u.Tel,
+               
+               }).ToList();
+
+
+            } catch (Exception ex) {
+                throw;
+            
+            }
+
+        }
+
+        /// <summary>
         /// Recherche un médecin par son numéro d'ordre de manière asynchrone.
         /// </summary>
         /// <param name="NumerOrdre">Le numéro d'ordre du médecin à rechercher.</param>
