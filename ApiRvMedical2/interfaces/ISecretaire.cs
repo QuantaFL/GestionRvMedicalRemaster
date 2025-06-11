@@ -15,5 +15,7 @@ namespace ApiRvMedical2.interfaces
         Task<bool> DebloquerSecretaire(string identifiant);
         Task<List<GetSecretaireDto>> GetAllSecretaire();
         Task<List<GetSecretaireDto>> GetAllActiveSecretaire();
+        Task<List<GetSecretaireDto>> GetAllDactSecretaire();
+
     }
 }

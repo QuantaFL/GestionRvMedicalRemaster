@@ -108,6 +108,36 @@ namespace ApiRvMedical2.services
         }
 
         /// <summary>
+        /// 
+        /// retourne la liste de toutes les secretiares inactives 
+        /// </summary>
+        /// <returns></returns>
+        public async Task<List<GetSecretaireDto>> GetAllDactSecretaire()
+        {
+            try {
+
+                var secret =  await _db.Secretaires
+                .Where(s => s.Status != true)
+                .ToListAsync();
+
+                return secret.Select(s => new GetSecretaireDto {
+                    Addresse = s.Addresse,
+                    DateNaissance = s.DateNaissance,
+                    Email = s.Email,
+                    Matricule = s.Matricule,
+                    NomPrenom = s.NomPrenom,
+                    TelephoneFixe = s.TelephoneFixe,
+                    Id = s.IdP,
+                    Status = s.Status,
+                    Tel = s.Tel
+
+                }).ToList();
+
+            }
+            catch (Exception ex) { throw ex; }   
+        }
+
+        /// <summary>
         /// cette methode retourne la liste de toutes les secretaires 
         /// </summary>
         /// <returns></returns>

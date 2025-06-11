@@ -26,11 +26,27 @@ namespace ApiRvMedical2.Controllers
             _secretService = new SecretaireService(_db);
         }
         /// <summary>
+        /// récupre la liste de toues les secretaires inactives 
+        /// </summary>
+        /// <returns>un status code 200 une fois la liste récupérer </returns>
+        [HttpGet]
+        [Route("api/v1/secretaires/inactives")]
+        public async Task<List<GetSecretaireDto>> GetAllDActiveSecretaire()
+        {
+            try
+            {
+                return await _secretService.GetAllDactSecretaire();
+
+            }
+            catch (Exception ex) { throw; }
+
+        }
+        /// <summary>
         /// récupre la liste de toues les secretaires actives 
         /// </summary>
         /// <returns>un status code 200 une fois la liste récupérer </returns>
         [HttpGet]
-        [Route("api/v1/secretaires/active")]
+        [Route("api/v1/secretaires/actives")]
         public async Task<List<GetSecretaireDto>> GetAllActiveSecretaire()
         {
             try {
