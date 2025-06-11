@@ -18,6 +18,7 @@ namespace ApiRvMedical2.interfaces
         bool CheckUniqueField(string numerOrdre, string telephone, string email);
         Role FindMedRoleId();
         Specialite FindSpecialiteById(int IdSpecialite);
+        Task<List<GetMedecinDto>> GetAllMedecin();
        
     }
 }
