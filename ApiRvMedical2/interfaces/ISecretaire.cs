@@ -13,5 +13,6 @@ namespace ApiRvMedical2.interfaces
         Task<GetSecretaireDto> GetSecretaireByTelOrMatricule(string identifiant);
         Task<bool> BloquerSecretaire(string identifiant);
         Task<bool> DebloquerSecretaire(string identifiant);
+        Task<List<GetSecretaireDto>> getAllSecretaire();
     }
 }
