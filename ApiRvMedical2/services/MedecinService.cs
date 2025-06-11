@@ -246,6 +246,44 @@ namespace ApiRvMedical2.services
         }
 
         /// <summary>
+        /// cette method affiche la liste de tous les medecina ayant un statu inactif 
+        /// </summary>
+        /// <returns>retourne la liste de tous les medecins inactifs</returns>
+        public async Task<List<GetMedecinDto>> GetAllDactiveMedecin()
+        {
+            try
+            {
+
+                var utilisateurs = await _db.Medecins
+                     //   .Include("Role")
+                     // .Where(u => u.Role.LibelleRole != "ADMIN")
+                     .Where(m => m.Status !=true)
+                     .ToListAsync();
+
+                return utilisateurs.Select(u => new GetMedecinDto
+                {
+                    NomPrenom = u.NomPrenom,
+                    Addresse = u.Addresse,
+                    DateNaissance = u.DateNaissance,
+                    Email = u.Email,
+                    LibelleSpecialite = u.Specialite.NomSpecialte,
+                    NumeroOrdre = u.NumeroOrdre,
+                    Id = u.IdP,
+                    Status = u.Status,
+                    Tel = u.Tel,
+
+                }).ToList();
+
+
+            }
+            catch (Exception ex)
+            {
+                throw;
+
+            }
+        }
+
+        /// <summary>
         /// permet d'obtenir la liste des medecins 
         /// </summary>
         /// <returns></returns>
