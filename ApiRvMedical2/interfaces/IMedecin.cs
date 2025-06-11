@@ -20,6 +20,8 @@ namespace ApiRvMedical2.interfaces
         Specialite FindSpecialiteById(int IdSpecialite);
         Task<List<GetMedecinDto>> GetAllMedecin();
         Task<List<GetMedecinDto>> GetAllActiveMedecin();
+        Task<List<GetMedecinDto>> GetAllDactiveMedecin();
+
        
     }
 }
