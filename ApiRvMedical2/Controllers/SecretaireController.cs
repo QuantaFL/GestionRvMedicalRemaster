@@ -7,6 +7,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using ApiRvMedical2.config;
+using ApiRvMedical2.dto.get;
 using ApiRvMedical2.Models;
 using ApiRvMedical2.services;
 using MySqlX.XDevAPI.Common;
@@ -23,6 +24,20 @@ namespace ApiRvMedical2.Controllers
         {
             _db = new bdRdvMedicalContext();
             _secretService = new SecretaireService(_db);
+        }
+
+        [HttpGet]
+        [Route("api/v1/secretaires")]
+        public async Task<List<GetSecretaireDto>> GetAllSecretaire()
+        {
+            try { 
+            
+                return await _secretService.GetAllSecretaire();
+            
+            } catch (Exception ex) {
+                throw;
+            
+            }
         }
         /// <summary>
         ///  recupère une secretaire à partir de son numéro de téléphone fixe ou de son matricule.
