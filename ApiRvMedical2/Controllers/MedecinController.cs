@@ -7,6 +7,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using ApiRvMedical2.config;
+using ApiRvMedical2.dto.get;
 using ApiRvMedical2.dto.post;
 using ApiRvMedical2.Models;
 using ApiRvMedical2.services;
@@ -22,6 +23,17 @@ namespace ApiRvMedical2.Controllers
         {
             _db = new bdRdvMedicalContext();
             _medService = new MedecinService(_db);
+        }
+
+        [HttpGet]
+        [Route("api/v1/medecins")]
+        public async Task<List<GetMedecinDto>> GetAllMedecin()
+        {
+            try {
+
+                return await _medService.GetAllMedecin();
+
+            } catch (Exception ex) { throw; }
         }
         /// <summary>
         /// Ajoute un medecin à partir d'un objet dto medecin contenant les informations telles que nom prenom
