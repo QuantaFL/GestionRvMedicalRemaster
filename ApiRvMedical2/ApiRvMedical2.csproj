@@ -234,6 +234,7 @@
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="dto\get\GetMedecinDto.cs" />
     <Compile Include="dto\get\GetSecretaireDto.cs" />
+    <Compile Include="dto\post\PostDtoMedecin.cs" />
     <Compile Include="dto\UserDto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -241,6 +242,7 @@
     <Compile Include="interfaces\IAdmin.cs" />
     <Compile Include="interfaces\IMedecin.cs" />
     <Compile Include="interfaces\ISecretaire.cs" />
+    <Compile Include="interfaces\ISpecialite.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Admin.cs" />
     <Compile Include="Models\Agenda.cs" />

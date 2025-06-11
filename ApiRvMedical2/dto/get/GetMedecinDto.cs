@@ -15,6 +15,7 @@ namespace ApiRvMedical2.dto.get
             public bool Status { get; set; }
             public string NumeroOrdre { get; set; }
             public string LibelleSpecialite { get; set; }
+            public int? Id { get; set; }
       
     }
 }

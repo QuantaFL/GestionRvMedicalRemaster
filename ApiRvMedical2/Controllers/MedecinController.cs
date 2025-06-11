@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using ApiRvMedical2.config;
+using ApiRvMedical2.dto.post;
 using ApiRvMedical2.Models;
 using ApiRvMedical2.services;
 using Serilog;
@@ -21,6 +23,92 @@ namespace ApiRvMedical2.Controllers
             _db = new bdRdvMedicalContext();
             _medService = new MedecinService(_db);
         }
+        /// <summary>
+        /// Ajoute un medecin à partir d'un objet dto medecin contenant les informations telles que nom prenom
+        /// date de naissance etc... utilise la méthode AddMedecin du service medecin pour l'ajout
+        /// </summary>
+        /// <param name="dtoMedecin">L'objet dto a donné en paramètre</param>
+        /// <returns>
+        /// un 404 si la spécialité donnée n'est pas référencée 
+        /// 409 si  une des valeurs uniques ( numero ordre telephone et email ont été trouvés )
+        /// 201 si tout se passe bien 
+        /// 500 en cas d'erreur serveur 
+        /// </returns>
+        /// <exception cref="Exception"></exception>
+
+        [HttpPost]
+        [Route("api/v1/Addmedecin")]
+        public async Task<IHttpActionResult> AddMedecin([FromBody] PostDtoMedecin dtoMedecin)
+        {
+            try {
+
+                /*
+                 * if (_medService.FindRoleById(dtoMedecin.IdRole) == null)
+                {
+                    return Content(HttpStatusCode.NotFound, new
+                    {
+                        message ="vous avez renseigné un id erroné pour le role"
+                    });
+                }
+                 
+                 */
+
+                if (_medService.FindSpecialiteById(dtoMedecin.IdSpecialite) == null)
+                {
+                    return Content(HttpStatusCode.NotFound, new
+                    {
+                        message = "vous avez renseigné un id erroné pour la specialité"
+                    });
+                }
+
+                if (!_medService.CheckUniqueField(dtoMedecin.NumeroOrdre, dtoMedecin.Telephone, dtoMedecin.Email))
+                {
+                    return Content(HttpStatusCode.Conflict, new
+                    {
+                        message = "Données dupliquées",
+                        details = "Le numéro d'ordre, le numéro de téléphone et l'email doivent être uniques pour chaque médecin."
+                    });
+                }
+                var Addedmedecin = await  _medService.AddMedecin(dtoMedecin);
+
+                if (Addedmedecin != null)
+                {
+                    return Content(HttpStatusCode.Created, new
+                    {
+                        message = "medecin ajouter avec succes ",
+                        medecin = Addedmedecin
+                    });
+                }
+                return InternalServerError(new Exception("Impossible d'ajouter le médecin."));
+
+            }
+            catch (DbEntityValidationException ex)
+            {
+                var errorMessages = new List<string>();
+
+                foreach (var validationErrors in ex.EntityValidationErrors)
+                {
+                    foreach (var validationError in validationErrors.ValidationErrors)
+                    {
+                        string errorMsg = $"Propriété: {validationError.PropertyName} Erreur: {validationError.ErrorMessage}";
+                        errorMessages.Add(errorMsg);
+                        Console.WriteLine(errorMsg);
+                        Log.Error(errorMsg); 
+                    }
+                }
+
+                string fullErrorMessage = string.Join("; ", errorMessages);
+                throw new Exception("Échec de la validation EF : " + fullErrorMessage);
+            }
+            catch (Exception ex) { 
+                Log.Error(ex.Message);
+                return InternalServerError(ex);
+
+
+
+            }
+        }
+      
 
         [HttpGet]
         [Route("api/v1/medecin/{numeroOrdre}")]
@@ -51,6 +139,16 @@ namespace ApiRvMedical2.Controllers
                 throw;
             }
         }
+        /// <summary>
+        ///  Bloque un médecin identifié par son numéro d'ordre.
+        /// </summary>
+        /// <param name="numeroOrdre"> le numero d'ordre du medecin à bloquer </param>
+        /// <returns>
+        /// Une réponse HTTP indiquant le résultat de l'opération :
+        /// - 200 avec un message de confirmation si le médecin a été bloqué avec succès
+        /// -   404  si aucun médecin correspondant n'a été trouvé.
+        /// — Une exception est levée en cas d'erreur inattendue.
+        /// </returns>
 
         [HttpGet]
         [Route("api/v1/medecin/bloquer/{numeroOrdre}")]
@@ -78,7 +176,16 @@ namespace ApiRvMedical2.Controllers
                 throw;
             }
         }
-
+        /// <summary>
+        ///  débloque un médecin identifié par son numéro d'ordre.
+        /// </summary>
+        /// <param name="numeroOrdre"> le numero d'ordre du medecin à débloquer </param>
+        /// <returns>
+        /// Une réponse HTTP indiquant le résultat de l'opération :
+        /// - 200 avec un message de confirmation si le médecin a été débloqué avec succès
+        /// -   404  si aucun médecin correspondant n'a été trouvé.
+        /// — Une exception est levée en cas d'erreur inattendue.
+        /// </returns>
         [HttpGet]
         [Route("api/v1/medecin/debloquer/{numeroOrdre}")]
         public async Task<IHttpActionResult> debloquer(string numeroOrdre)
