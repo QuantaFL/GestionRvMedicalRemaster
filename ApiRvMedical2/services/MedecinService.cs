@@ -188,15 +188,61 @@ namespace ApiRvMedical2.services
                 throw ex;
             }
         }
-
+        /// <summary>
+        /// cette methode retourne le role du médecin
+        /// </summary>
+        /// <returns></returns>
         public Role FindMedRoleId()
         {
             return _db.Role.Where(r => r.CodeRole.Equals("MED")).FirstOrDefault();
         }
+        /// <summary>
+        /// cette methode retourne la spécialité de l'id donné 
+        /// </summary>
+        /// <param name="IdSpecialite"> id de la specialité </param>
+        /// <returns></returns>
 
         public Specialite FindSpecialiteById(int IdSpecialite)
         {
            return _db.Specialite.Find(IdSpecialite);
+        }
+
+        /// <summary>
+        /// cette methode retourne la liste de tous les médecins avec un statut actif
+        /// </summary>
+        /// <returns>une liste de GetMedecinDto </returns>
+        public async Task<List<GetMedecinDto>> GetAllActiveMedecin()
+        {
+            try
+            {
+
+                var utilisateurs = await _db.Medecins
+                     //   .Include("Role")
+                     // .Where(u => u.Role.LibelleRole != "ADMIN")
+                     .Where(m => m.Status == true)
+                     .ToListAsync();
+
+                return utilisateurs.Select(u => new GetMedecinDto
+                {
+                    NomPrenom = u.NomPrenom,
+                    Addresse = u.Addresse,
+                    DateNaissance = u.DateNaissance,
+                    Email = u.Email,
+                    LibelleSpecialite = u.Specialite.NomSpecialte,
+                    NumeroOrdre = u.NumeroOrdre,
+                    Id = u.IdP,
+                    Status = u.Status,
+                    Tel = u.Tel,
+
+                }).ToList();
+
+
+            }
+            catch (Exception ex)
+            {
+                throw;
+
+            }
         }
 
         /// <summary>

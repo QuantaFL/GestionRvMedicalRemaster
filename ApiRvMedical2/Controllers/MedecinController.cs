@@ -26,6 +26,19 @@ namespace ApiRvMedical2.Controllers
         }
 
         [HttpGet]
+        [Route("api/v1/medecins/actif")]
+        public async Task<List<GetMedecinDto>> GetAllActiveMedecin()
+        {
+            try {
+                return await _medService.GetAllActiveMedecin();
+            
+            }catch (Exception ex) {
+                throw;
+            
+            }
+        }
+
+        [HttpGet]
         [Route("api/v1/medecins")]
         public async Task<List<GetMedecinDto>> GetAllMedecin()
         {
