@@ -25,7 +25,10 @@ namespace ApiRvMedical2.Controllers
             _medService = new MedecinService(_db);
         }
 
-
+        /// <summary>
+        /// recupère la liste de tous les medecins incatif
+        /// </summary>
+        /// <returns>retourne un status code 200 une fois la liste récupérer </returns>
         [HttpGet]
         [Route("api/v1/medecins/inactif")]
         public async Task<List<GetMedecinDto>> GetAllDactiveMedecin()
@@ -43,7 +46,10 @@ namespace ApiRvMedical2.Controllers
         }
 
 
-
+        /// <summary>
+        /// recupère tous les medecins actifs 
+        /// </summary>
+        /// <returns>retourne un status code  200 une fois la liste récupérer </returns>
         [HttpGet]
         [Route("api/v1/medecins/actif")]
         public async Task<List<GetMedecinDto>> GetAllActiveMedecin()
@@ -56,6 +62,10 @@ namespace ApiRvMedical2.Controllers
             
             }
         }
+        /// <summary>
+        /// recupère la liste de tous les médecins
+        /// </summary>
+        /// <returns>retoure une status code 200 une fois la liste récupérer</returns>
 
         [HttpGet]
         [Route("api/v1/medecins")]
