@@ -106,7 +106,7 @@ namespace WindowsFormsApp1
                // MetierRvMedical.Utilisateur utilisateur = client.GetUserByIdentifiant(identifiant);
                Utilisateur utilisateur = new Utilisateur();
 
-                MessageBox.Show($"{utilisateur.Identifiant}");
+                MessageBox.Show("dddddddddd");
                 if (utilisateur != null)
                 {
                     if (SaltHash.VerifyPassword(motdepasse, utilisateur.MotDePasse))
@@ -183,7 +183,6 @@ namespace WindowsFormsApp1
             }
             catch(Exception ex) {
                 Log.Error($"Une erreur est survenue lors de la connexion de l'utilisateur avec l'identifiant '{txtIdentifiant.Text}'.\n Erreur : {ex.Message} .\n type : ${ex.GetType().FullName} .\n Source : ${ex.Source}`\n methode : ${ex.TargetSite} ");
-
             }
         }
 
