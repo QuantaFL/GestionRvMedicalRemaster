@@ -8,6 +8,7 @@ using WindowsFormsApp1.ApiConsumer.Models; // For ApiResponse<T>
 using Newtonsoft.Json; // For Newtonsoft
 using System.Text.Json; // For System.Text.Json
 using System.IO;
+using System.Windows.Forms;
 
 namespace WindowsFormsApp1.ApiConsumer.Services
 {
@@ -21,6 +22,8 @@ namespace WindowsFormsApp1.ApiConsumer.Services
         protected BaseApiService(HttpClient httpClient, string baseUrl, SerializerType defaultSerializer = SerializerType.NewtonsoftJson)
         {
             HttpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
+
+            httpClient.Timeout = TimeSpan.FromSeconds(20);
             BaseUrl = baseUrl?.TrimEnd('/') ?? throw new ArgumentNullException(nameof(baseUrl));
             DefaultSerializer = defaultSerializer;
         }
@@ -39,30 +42,44 @@ namespace WindowsFormsApp1.ApiConsumer.Services
             var finalSerializer = serializerType ?? DefaultSerializer;
             var requestUri = BuildRequestUri(endpoint);
             HttpContent content = SerializeRequest(data, finalSerializer);
+            
 
             var response = await HttpClient.PostAsync(requestUri, content);
+            
             return await HandleResponse<TResponse>(response, finalSerializer);
         }
 
         protected async Task PostAsync<TRequest>(string endpoint, TRequest data, SerializerType? serializerType = null)
         {
-            var finalSerializer = serializerType ?? DefaultSerializer;
-            var requestUri = BuildRequestUri(endpoint);
-            HttpContent content = SerializeRequest(data, finalSerializer);
+            try
+            {
+                var finalSerializer = serializerType ?? DefaultSerializer;
+                var requestUri = BuildRequestUri(endpoint);
+                HttpContent content = SerializeRequest(data, finalSerializer);
 
-            var response = await HttpClient.PostAsync(requestUri, content);
-            await HandleResponse(response); // No TResponse expected, just check for success
+                var response = await HttpClient.PostAsync(requestUri, content);
+                await HandleResponse(response); // No TResponse expected, just check for success
+            }catch(Exception e)
+            {
+                throw e;
+            }
         }
 
 
         protected async Task<TResponse> PutAsync<TRequest, TResponse>(string endpoint, TRequest data, SerializerType? serializerType = null)
         {
-            var finalSerializer = serializerType ?? DefaultSerializer;
-            var requestUri = BuildRequestUri(endpoint);
-            HttpContent content = SerializeRequest(data, finalSerializer);
+            try
+            {
+                var finalSerializer = serializerType ?? DefaultSerializer;
+                var requestUri = BuildRequestUri(endpoint);
+                HttpContent content = SerializeRequest(data, finalSerializer);
 
-            var response = await HttpClient.PutAsync(requestUri, content);
-            return await HandleResponse<TResponse>(response, finalSerializer);
+                var response = await HttpClient.PutAsync(requestUri, content);
+                return await HandleResponse<TResponse>(response, finalSerializer);
+            }catch(Exception e)
+            {
+                throw e;
+            }
         }
 
         protected async Task PutAsync<TRequest>(string endpoint, TRequest data, SerializerType? serializerType = null)

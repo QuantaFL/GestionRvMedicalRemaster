@@ -9,6 +9,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Serilog;
+using WindowsFormsApp1.ApiConsumer.Models;
+using WindowsFormsApp1.ApiConsumer.Requests;
 using WindowsFormsApp1.config;
 using WindowsFormsApp1.CustomControls;
 
@@ -104,85 +106,37 @@ namespace WindowsFormsApp1
                     return;
                 }
                // MetierRvMedical.Utilisateur utilisateur = client.GetUserByIdentifiant(identifiant);
-               Utilisateur utilisateur = new Utilisateur();
+               //Utilisateur utilisateur = new Utilisateur();
 
-                MessageBox.Show("dddddddddd");
-                if (utilisateur != null)
+                MessageBox.Show($"{identifiant}{motdepasse}");
+                LoginRequest loginRequest = new LoginRequest
                 {
-                    if (SaltHash.VerifyPassword(motdepasse, utilisateur.MotDePasse))
-                    {
-                        if (utilisateur.Status == false)
-                        {
-                            new frmEchecExecution("Votre compte est bloquer veuillez svp contacter votre administrateur").ShowDialog();
-                            resetText();
-                            return;
-                        }
-                     //   MetierRvMedical.Utilisateur user = utilisateur;
-                    //    MetierRvMedical.Role role = await client.GetRoleUserAsync(user);
-                        //    var role = db.Role.Where(r => r.IdRole.Equals(utilisateur.IdRole)).FirstOrDefault();
-
-
-                        if (utilisateur.PremiereConnexion == 0)
-                        {
-                            MessageBox.Show("Bienvenue, veuillez changer vos informations de connexion.");
-                            this.Hide();
-                            frmChangerIdentifiants frmChanger = new frmChangerIdentifiants();
-                            frmChanger.ShowDialog();
-                            string nouvelIdentifiant = frmChanger.NouvelIdentifiant;
-                            string nouveauMotDePasse = frmChanger.NouveauMotDePasse;
-                            if (!string.IsNullOrEmpty(nouvelIdentifiant) && !string.IsNullOrEmpty(nouveauMotDePasse))
-                            {
-                                utilisateur.Identifiant = nouvelIdentifiant;
-                                utilisateur.MotDePasse = SaltHash.HashPassword(nouveauMotDePasse);
-                                utilisateur.PremiereConnexion = 1;
-                                //db.Utilisateurs.AddOrUpdate(utilisateur);
-                                // db.SaveChanges();
-                            //    await client.UpdateUserAsync(utilisateur);
-                            }
-                        }
-                        resetText();
-
-                        /*
-                            if (role.LibelleRole.Equals("ADMIN"))
-                           {
-                               this.Hide();
-                               frmDashAdmin frm = new frmDashAdmin();
-                               frm.Show();
-                               return;
-                           }
-                           if (role.LibelleRole.Equals("SECRETAIRE"))
-                           {
-                               this.Hide();
-                               frmDashSecretaire frm = new frmDashSecretaire(this);
-                               frm.Show();
-                               return;
-                           }
-                           if (role.LibelleRole.Equals("MEDECIN"))
-                           {
-                               this.Hide();
-                               frmDashMed frm = new frmDashMed(this);
-                               frm.Show();
-                               return;
-                           }
-
-                         */
-                    }
-
-
-                    else
-                    {
-                        new frmEchecExecution("Utilisateur ou mot de passe incorrect").ShowDialog();
-                    }
+                    Email = identifiant,
+                    Password = motdepasse
+                };
+                Log.Information($"Attempting to log in user: {identifiant}");
+                Log.Information($"Attempting to log in user: {identifiant}");
+                MessageBox.Show($"Tentative de connexion pour l'utilisateur : {loginRequest.Email}");
+                LoginResponseData data = await ApiConsumer.ApiClientContainer.AuthService.LoginAsync(loginRequest);
+                
+                if (data != null) { 
+                    Log.Information($"Login successful for user: {data.User.Email}");
+                    MessageBox.Show($"Bienvenue {data.User.Email}");
                 }
                 else
                 {
-                    new frmEchecExecution("Cet identifiant n'existe pas").ShowDialog();
+                    Log.Warning($"Login failed for user: {identifiant}. Data returned was null.");
+                    new frmEchecExecution("Identifiant ou mot de passe incorrect").ShowDialog();
+                    return;
                 }
 
 
             }
             catch(Exception ex) {
+                MessageBox.Show("Une erreur est survenue lors de la connexion. "+ex);
+                Console.WriteLine("Une erreur est survenue lors de la connexion. "+ex);
                 Log.Error($"Une erreur est survenue lors de la connexion de l'utilisateur avec l'identifiant '{txtIdentifiant.Text}'.\n Erreur : {ex.Message} .\n type : ${ex.GetType().FullName} .\n Source : ${ex.Source}`\n methode : ${ex.TargetSite} ");
+
             }
         }
 
