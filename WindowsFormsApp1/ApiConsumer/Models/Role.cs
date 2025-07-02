@@ -14,6 +14,10 @@ namespace WindowsFormsApp1.ApiConsumer.Models
         [JsonPropertyName("libelle_role")]
         public string LibelleRole { get; set; }
 
+        [JsonProperty("code_role")]
+        [JsonPropertyName("code_role")]
+        public string CodeRole { get; set; }
+
         // Timestamps that might be present on full Role objects from /api/roles endpoint
         [JsonProperty("created_at")]
         [JsonPropertyName("created_at")]

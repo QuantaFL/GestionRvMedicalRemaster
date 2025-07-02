@@ -25,7 +25,7 @@ namespace WindowsFormsApp1
 {
     public partial class FrmConnexion : Form
     {
-        public static Utilisateur user;
+        public static LoginResponseData user;
         private CustomControlBox customControlBox;
         public FrmConnexion()
         {
@@ -121,7 +121,26 @@ namespace WindowsFormsApp1
                 
                 if (data != null) { 
                     Log.Information($"Login successful for user: {data.User.Email}");
-                    MessageBox.Show($"Bienvenue {data.User.Email}");
+                    MessageBox.Show($"Bienvenue {data.User.Role.CodeRole}");
+                    MessageBox.Show($"Bienvenue {data.User.Role.LibelleRole}");
+                    user = data;
+                    
+                    if (user.User.Role.CodeRole.Equals("ADMIN"))
+                    {
+                        frmDashAdmin frmDashAdmin = new frmDashAdmin();
+
+                        frmDashAdmin.Show();
+                    } else if (user.User.Role.CodeRole.Equals("MEDECIN")) {
+                        frmDashMed frmDashMed = new frmDashMed(this);
+                        frmDashMed.Show();
+                    }
+                    else
+                    {
+                        frmDashSecretaire frmDashSecretaire = new frmDashSecretaire(this);
+                        frmDashSecretaire.Show();
+                    }
+                        this.Hide();
+
                 }
                 else
                 {

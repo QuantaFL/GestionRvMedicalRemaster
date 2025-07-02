@@ -18,7 +18,7 @@ namespace WindowsFormsApp1.views.Admin
         public frmDashAdmin()
         {
             InitializeComponent();
-            lblNomUtilisateur.Text = FrmConnexion.user.NomPrenom;
+            lblNomUtilisateur.Text = FrmConnexion.user.User.NomPrenom;
             customControlBox = new CustomControlBox();
             customControlBox.Dock = DockStyle.Top;
             customControlBox.MinimizeClick += CustomControlBox_MinimizeClick;

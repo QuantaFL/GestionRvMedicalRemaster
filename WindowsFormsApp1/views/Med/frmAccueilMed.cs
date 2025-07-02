@@ -31,7 +31,7 @@ namespace WindowsFormsApp1.views.Med
         {
             var allAgendas = _agendaService.GetAllAgendas();
             var medecinAgendas = allAgendas
-                .Where(ag => ag.IdMedecin == FrmConnexion.user.IdP)
+                .Where(ag => ag.IdMedecin == FrmConnexion.user.User.Id)
                 .Select(ag => new { ag.DataPlanifier.Value.Date, ag.Creneau, ag.HeureDebut, ag.HeureFin })
                 .ToList();
 
@@ -65,14 +65,14 @@ namespace WindowsFormsApp1.views.Med
             {
                 var allAgendas = _agendaService.GetAllAgendas();
                 var medecinAgendas = allAgendas
-                    .Where(a => a.IdMedecin == FrmConnexion.user.IdP && a.DataPlanifier.Value.Date == val.Date)
+                    .Where(a => a.IdMedecin == FrmConnexion.user.User.Id && a.DataPlanifier.Value.Date == val.Date)
                     .ToList();
 
                 dgAgendaMedecin.DataSource = medecinAgendas;
             }
             catch (Exception ex)
             {
-                Log.Error(ex, "Erreur lors du chargement des agendas pour le medecin {s}", FrmConnexion.user.NomPrenom);
+                Log.Error(ex, "Erreur lors du chargement des agendas pour le medecin {s}", FrmConnexion.user.User.NomPrenom);
                 new frmEchecExecution("Erreur lors du chargement des agendas.").ShowDialog();
             }
         }

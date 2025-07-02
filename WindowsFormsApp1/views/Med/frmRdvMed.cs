@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MetierRvMedical2.Services;
 using Org.BouncyCastle.Security;
+using WindowsFormsApp1.ApiConsumer.Models;
 using WindowsFormsApp1.Models;
 
 namespace WindowsFormsApp1.views.Med
@@ -30,17 +31,18 @@ namespace WindowsFormsApp1.views.Med
 
         }
 
-        private void loadRdv()
+        private async void loadRdv()
         {
             
-           Medecin currentMedecin = (Medecin)FrmConnexion.user;
+           MedecinDetails currentMedecin = FrmConnexion.user.User.MedecinDetails;
             var date = DateTime.Now.Date.ToString();
-            var rdvs = _rendezVousService.GetAllRendezVous().Where(r=> r.IdMedecin == currentMedecin.IdP
-           ).ToList();
-                dgRdvMedecin.DataSource = rdvs.Where(rv=>DateTime.Parse(rv.DateRv).Date.ToString()==date).Select(rdv => new
+            List<ApiConsumer.Models.RendezVous> rdvs = await ApiConsumer.ApiClientContainer.RendezVousService.ListRendezVousAsync();
+            rdvs.Where(r => r.Id == currentMedecin.Id).ToList();
+
+            dgRdvMedecin.DataSource = rdvs.Where(rv=>rv.DateRendezVous.Date.ToString()==date).Select(rdv => new
                 {
-                   Heure = rdv.HeureRv,
-                   DateRv = rdv.DateRv,
+                   Heure = rdv.HeureRendezVous,
+                   DateRv = rdv.DateRendezVous,
                    Patient=rdv.Patient.NomPrenom,
                    Soin = rdv.Soin.NomSoin,
 
