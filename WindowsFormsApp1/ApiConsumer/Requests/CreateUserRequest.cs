@@ -26,25 +26,29 @@ namespace WindowsFormsApp1.ApiConsumer.Requests
         [JsonPropertyName("role_id")]
         public int RoleId { get; set; }
 
-        [JsonProperty("telephone")]
-        [JsonPropertyName("telephone")]
-        public string Telephone { get; set; }
+        [JsonProperty("tel")]
+        [JsonPropertyName("tel")]
+        public string Tel { get; set; }
 
-        [JsonProperty("adresse")]
-        [JsonPropertyName("adresse")]
-        public string Adresse { get; set; }
+        [JsonProperty("addresse")]
+        [JsonPropertyName("addresse")]
+        public string Addresse { get; set; }
 
         [JsonProperty("date_naissance")]
         [JsonPropertyName("date_naissance")]
-        public DateTime? DateNaissance { get; set; }
+        public string DateNaissance { get; set; } // Format as "yyyy-MM-dd"
 
-        [JsonProperty("genre")]
-        [JsonPropertyName("genre")]
-        public string Genre { get; set; }
+        [JsonProperty("identifiant")]
+        [JsonPropertyName("identifiant")]
+        public string Identifiant { get; set; }
 
-        [JsonProperty("photo")]
-        [JsonPropertyName("photo")]
-        public string Photo { get; set; }
+        [JsonProperty("status")]
+        [JsonPropertyName("status")]
+        public bool? Status { get; set; }
+
+        [JsonProperty("premiere_connexion")]
+        [JsonPropertyName("premiere_connexion")]
+        public int? PremiereConnexion { get; set; }
 
         [JsonProperty("medecin_details")]
         [JsonPropertyName("medecin_details")]
@@ -59,17 +63,23 @@ namespace WindowsFormsApp1.ApiConsumer.Requests
     {
         [JsonProperty("specialite_id")]
         [JsonPropertyName("specialite_id")]
-        public int SpecialiteId { get; set; }
+        public int? SpecialiteId { get; set; }
 
-        [JsonProperty("numero_licence")]
-        [JsonPropertyName("numero_licence")]
-        public string NumeroLicence { get; set; }
+        [JsonProperty("numero_ordre")]
+        [JsonPropertyName("numero_ordre")]
+        public string NumeroOrdre { get; set; }
     }
 
     public class SecretaireDetailsRequest
     {
-        [JsonProperty("date_embauche")]
-        [JsonPropertyName("date_embauche")]
-        public DateTime DateEmbauche { get; set; }
+        [JsonProperty("telephone_fixe")]
+        [JsonPropertyName("telephone_fixe")]
+        public string TelephoneFixe { get; set; }
+
+        [JsonProperty("matricule")]
+        [JsonPropertyName("matricule")]
+        public string Matricule { get; set; }
+
+
     }
 }

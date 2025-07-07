@@ -17,6 +17,7 @@ using MetierRvMedical2.Models;
 using MetierRvMedical2.Services;
 using Microsoft.VisualBasic.Logging;
 using Serilog;
+using WindowsFormsApp1.ApiConsumer.Requests;
 using WindowsFormsApp1.config;
 using WindowsFormsApp1.CustomControls;
 using Log = Serilog.Log;
@@ -30,11 +31,6 @@ namespace WindowsFormsApp1.views.Admin
         // TODO : Verifier si le mail se termine par @gmail.com
         // TODO : dans le resetForm ajouter la fonction pour vider des champs
 
-
-        private readonly MedecinService _medecinService = new MedecinService();
-        private readonly PatientService _patientService = new PatientService();
-        private readonly SpecialiteService _specialiteService = new SpecialiteService();
-        private readonly RoleService _roleService = new RoleService();
         //bdRdvMedicalContext db = new bdRdvMedicalContext();
         // Log.Information("Lancement de lapplication...");
        
@@ -81,25 +77,38 @@ namespace WindowsFormsApp1.views.Admin
             int age = now.Year - dateDonne.Year;
             return age >= 20 ? 1 : 0;
         }
-        public void  ResetForm()
+   
+
+
+            public async void ResetForm()
         {
-           
-            cbbSpecialite.ValueMember = "Value";
-            cbbSpecialite.DisplayMember = "Text";
-            cbbSpecialite.DataSource = loadSpecialiteccb();
-            txtAdresse.Focus();
-            txtAdresse.Text = string.Empty;
-           // txtDateNaissance.Value = DateTime.Now;
-            txtEmail.Text = string.Empty;
-            txtNumeroOrdre.Text  = string.Empty ;
-            txtNumeroTelephone.Text = string.Empty ;
-            txtNomPrenom.Text = string.Empty ;
-            SetDatePickerLimits();
-            
+            try
+            {
+                var specialites = await loadSpecialiteccb();
+                cbbSpecialite.ValueMember = "Value";
+                cbbSpecialite.DisplayMember = "Text";
+                cbbSpecialite.DataSource = specialites;
+
+                txtAdresse.Text = string.Empty;
+                txtEmail.Text = string.Empty;
+                txtNumeroOrdre.Text = string.Empty;
+                txtNumeroTelephone.Text = string.Empty;
+                txtNomPrenom.Text = string.Empty;
+                txtAdresse.Focus();
+
+                SetDatePickerLimits();
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, "Erreur lors du chargement des spécialités.");
+            }
         }
-        public List<SelectListViewModel> loadSpecialiteccb()
+
+            
+        
+        public async Task<List<SelectListViewModel>> loadSpecialiteccb()
         {
-            var s = _specialiteService.GetAllSpecialites();
+            var s = await ApiConsumer.ApiClientContainer.SpecialiteService.ListSpecialitesAsync();
             List<SelectListViewModel> liste = new List<SelectListViewModel>();
             SelectListViewModel b = new SelectListViewModel();
             b.Text = "Selectionner une valeur";
@@ -108,12 +117,15 @@ namespace WindowsFormsApp1.views.Admin
             foreach (var item in s)
             {
                 SelectListViewModel a = new SelectListViewModel();
-                a.Text = item.NomSpecialte;
+                a.Text = item.NomSpecialite;
                 a.Value = item.Id.ToString();
                 liste.Add(a);
 
+                //MessageBox.Show($"{item.NomSpecialite}");
+
             }
             return liste;
+            
         }
 
 
@@ -214,7 +226,7 @@ namespace WindowsFormsApp1.views.Admin
          }
 
          
-        private void btnValiderAjoutUtilisateur_Click_1(object sender, EventArgs e)
+        private async void btnValiderAjoutUtilisateur_Click_1(object sender, EventArgs e)
         {
             if (chechkInput())
             {
@@ -224,10 +236,11 @@ namespace WindowsFormsApp1.views.Admin
                 frmInformationMessage.ShowDialog();
                 return;
             }
-            var med = _medecinService.GetAllMedecins().Where(m => m.NumeroOrdre == txtNumeroOrdre.Text
-            || m.Email == txtEmail.Text || m.Tel == txtNumeroTelephone.Text
+            var med = await ApiConsumer.ApiClientContainer.MedecinService.ListMedecinsAsync();
+            var medList = med.Where(m => m.NumeroOrdre == txtNumeroOrdre.Text
+            || m.User.Email == txtEmail.Text || m.User.Telephone == txtNumeroTelephone.Text
             ).FirstOrDefault();
-            if (med != null)
+            if (medList != null)
             {
                 frmEchecExecution frmEchecExecution = new frmEchecExecution("le numero d'ordre\n le numero \n ou l'email sont déjà utiliser");
                 frmEchecExecution.ShowDialog();
@@ -251,8 +264,8 @@ namespace WindowsFormsApp1.views.Admin
             }
 
 
-                var role = _roleService.GetRoleByCode("MED");
-                int IdRole = role.IdRole;
+            var role = await ApiConsumer.ApiClientContainer.RoleService.GetRoleAsync(2);
+            int IdRole = role.Id;
                 int IdSpecialite = int.Parse(cbbSpecialite.SelectedValue.ToString());
                 Guid myuuid = Guid.NewGuid();
                 Guid myuuid2 = Guid.NewGuid();
@@ -275,7 +288,33 @@ namespace WindowsFormsApp1.views.Admin
                 medecin.NumeroOrdre = txtNumeroOrdre.Text;
                 
                 try {
-                    _medecinService.CreateMedecin(medecin);
+                    CreateUserRequest requestUser = new CreateUserRequest
+                    {
+                        NomPrenom = txtNomPrenom.Text,
+                        Email = txtEmail.Text,
+                        Password = mdpTmp,
+                        PasswordConfirmation = mdpTmp,
+                        RoleId = IdRole,
+                        Tel = txtNumeroTelephone.Text,
+                        Addresse = txtAdresse.Text,
+                        DateNaissance = txtDateNaissance.Value.ToString("yyyy-MM-dd"),
+                        Identifiant = txtEmail.Text,
+                        PremiereConnexion = 0,
+                        Status = true,
+                        MedecinDetails = new MedecinDetailsRequest
+                        {
+                            SpecialiteId = IdSpecialite,
+                            NumeroOrdre = txtNumeroOrdre.Text,
+
+                        }
+                    };
+                    var createdMedecin = await ApiConsumer.ApiClientContainer.UserService.CreateUserAsync(requestUser);
+                if(createdMedecin == null)
+                {
+                    frmEchecExecution frmEchecExecution = new frmEchecExecution("Une erreur est survenue lors de la création de l'utilisateur");
+                    frmEchecExecution.ShowDialog();
+                    return;
+                }
                     Log.Information("medecin ajouter");
                     sendMail(txtEmail.Text, mdpTmp, identfiantTmp);
                     Log.Information($" mail envoyer à {txtEmail.Text}");

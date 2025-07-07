@@ -19,9 +19,9 @@ namespace WindowsFormsApp1.ApiConsumer.Models
         [JsonPropertyName("specialite_id")]
         public int? SpecialiteId { get; set; }
 
-        [JsonProperty("numero_licence")]
-        [JsonPropertyName("numero_licence")]
-        public string NumeroLicence { get; set; }
+        [JsonProperty("numero_ordre")]
+        [JsonPropertyName("numero_ordre")]
+        public string NumeroOrdre { get; set; }
 
         [JsonProperty("user")] // Relation loaded for Medecin objects
         [JsonPropertyName("user")]
