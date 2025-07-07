@@ -39,11 +39,26 @@ namespace WindowsFormsApp1.views
         {
             loadData();
         }
-        public void loadData()
+
+        public async Task loadData()
         {
-          dgUtilisateur.DataSource = db.Utilisateurs.Select(users => new { users.NomPrenom, users.DateNaissance, users.Addresse,users.Email,users.Role.LibelleRole,users.Status,users.Tel}  ).
-                Where(users => users.LibelleRole != "ADMIN")
+           
+            var users = await ApiConsumer.ApiClientContainer.UserService.ListUsersAsync();
+
+          
+            var filteredUsers = users
+                .Where(u => ! u.Role.CodeRole.Equals("ADMIN"))
+                .Select(u => new
+                {
+                    u.Id,
+                    u.NomPrenom,
+                    u.DateNaissance,
+                    u.Email,
+                    u.Role.CodeRole,
+                  })
                 .ToList();
+
+            dgUtilisateur.DataSource = filteredUsers;
         }
 
         private void btnAjouterSecretaire_Click(object sender, EventArgs e)
