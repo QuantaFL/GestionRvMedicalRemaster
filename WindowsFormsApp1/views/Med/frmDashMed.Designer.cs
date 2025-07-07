@@ -31,7 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDashMed));
             this.panel4 = new System.Windows.Forms.Panel();
             this.btnDeconnexion = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
+            this.txtUser = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.button1 = new System.Windows.Forms.Button();
@@ -59,7 +59,7 @@
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(114)))), ((int)(((byte)(144)))));
             this.panel4.Controls.Add(this.btnDeconnexion);
-            this.panel4.Controls.Add(this.label5);
+            this.panel4.Controls.Add(this.txtUser);
             this.panel4.Controls.Add(this.label6);
             this.panel4.Controls.Add(this.pictureBox3);
             this.panel4.Controls.Add(this.button1);
@@ -90,16 +90,16 @@
             this.btnDeconnexion.UseVisualStyleBackColor = false;
             this.btnDeconnexion.Click += new System.EventHandler(this.btnDeconnexion_Click);
             // 
-            // label5
+            // txtUser
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label5.Location = new System.Drawing.Point(190, 101);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(66, 29);
-            this.label5.TabIndex = 13;
-            this.label5.Text = "Ouly";
+            this.txtUser.AutoSize = true;
+            this.txtUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtUser.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.txtUser.Location = new System.Drawing.Point(190, 101);
+            this.txtUser.Name = "txtUser";
+            this.txtUser.Size = new System.Drawing.Size(66, 29);
+            this.txtUser.TabIndex = 13;
+            this.txtUser.Text = "Ouly";
             // 
             // label6
             // 
@@ -309,7 +309,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label txtUser;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btnDeconnexion;
     }

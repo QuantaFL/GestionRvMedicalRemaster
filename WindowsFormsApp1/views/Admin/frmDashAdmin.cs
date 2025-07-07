@@ -89,5 +89,10 @@ namespace WindowsFormsApp1.views.Admin
         {
 
         }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

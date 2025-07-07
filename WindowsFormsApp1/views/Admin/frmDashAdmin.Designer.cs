@@ -35,11 +35,11 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.lblNomUtilisateur = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.btnListeUtilisateur = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.panel2.SuspendLayout();
@@ -99,6 +99,7 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(404, 192);
             this.panel2.TabIndex = 9;
+            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // lblNomUtilisateur
             // 
@@ -121,17 +122,6 @@
             this.label2.Size = new System.Drawing.Size(165, 32);
             this.label2.TabIndex = 10;
             this.label2.Text = "Bienvenue :";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label4.Location = new System.Drawing.Point(3, 20);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(203, 55);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "Doc Toc";
             // 
             // pictureBox5
             // 
@@ -177,6 +167,17 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(406, 89);
             this.panel1.TabIndex = 0;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label4.Location = new System.Drawing.Point(3, 20);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(203, 55);
+            this.label4.TabIndex = 6;
+            this.label4.Text = "Doc Toc";
             // 
             // frmDashAdmin
             // 

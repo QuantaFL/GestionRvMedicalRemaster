@@ -137,7 +137,7 @@
             this.btnValiderAjoutUtilisateur.TabIndex = 12;
             this.btnValiderAjoutUtilisateur.Text = "Valider l\'Ajout";
             this.btnValiderAjoutUtilisateur.UseVisualStyleBackColor = true;
-            this.btnValiderAjoutUtilisateur.Click += new System.EventHandler(this.btnValiderAjoutUtilisateur_Click);
+            this.btnValiderAjoutUtilisateur.Click += new System.EventHandler(this.btnValiderAjoutUtilisateur_ClickAsync);
             // 
             // txtCrenneau
             // 

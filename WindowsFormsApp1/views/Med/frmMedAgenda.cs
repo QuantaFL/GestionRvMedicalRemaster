@@ -1,20 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Data.Entity;
-using System.Drawing;
-using System.Linq;
-using System.Runtime.Remoting.Contexts;
-using System.Text;
-using System.Threading.Tasks;
-using System.Transactions;
 using System.Windows.Forms;
-using Serilog;
-using WindowsFormsApp1.CustomControls;
-using WindowsFormsApp1.Models;
-using MetierRvMedical2.Models;
 using MetierRvMedical2.Services;
+using Serilog;
+using WindowsFormsApp1.ApiConsumer.Models;
+using WindowsFormsApp1.ApiConsumer.Requests;
+using WindowsFormsApp1.CustomControls;
 
 namespace WindowsFormsApp1.views.Med
 {
@@ -22,6 +12,7 @@ namespace WindowsFormsApp1.views.Med
     {
         private readonly AgendaService _agendaService;
         private readonly MedecinService _medecinService;
+        private readonly User medecinActuelle = FrmConnexion.user.User;
 
         public frmMedAgenda()
         {
@@ -30,9 +21,8 @@ namespace WindowsFormsApp1.views.Med
             txtHeureFin.Mask = "00:00";
             txtHeureDebut.ValidatingType = typeof(DateTime);
             txtHeureFin.ValidatingType = typeof(DateTime);
-
-            _agendaService = new AgendaService();
-            _medecinService = new MedecinService();
+            //_agendaService = new AgendaService();
+            //_medecinService = new MedecinService();
         }
 
         private void btnFermer_Click(object sender, EventArgs e)
@@ -40,7 +30,7 @@ namespace WindowsFormsApp1.views.Med
             this.Close();
         }
 
-        private void btnValiderAjoutUtilisateur_Click(object sender, EventArgs e)
+        private async void btnValiderAjoutUtilisateur_ClickAsync(object sender, EventArgs e)
         {
             try
             {
@@ -49,7 +39,7 @@ namespace WindowsFormsApp1.views.Med
                     Log.Information("Tentative de recuperation des informations medecin");
 
 
-                    var medecin = _medecinService.GetMedecinById(1);
+                    var medecin =  await ApiConsumer.ApiClientContainer.UserService.GetUserAsync(medecinActuelle.Id);
 
                     if (medecin == null)
                     {
@@ -83,10 +73,31 @@ namespace WindowsFormsApp1.views.Med
 
                         Log.Information("Tentative d'enregistrement de l'agenda");
 
-                        // Replace direct DbContext usage with service
-                        _agendaService.CreateAgenda(txtDateAgenda.Value.Date, txtHeureDebut.Text, txtHeureFin.Text, txtLieu.Text, txtTitreAgenda.Text, "dispo", creneau, medecin.IdP);
+                     CreateAgendaRequest request = new CreateAgendaRequest { 
+                    HeureDebut = txtHeureDebut.Text,
+                    HeureFin = txtHeureFin.Text,
+                        DataPlanifier = txtDateAgenda.Value.ToString("yyyy-MM-dd"),
+                    MedecinId = medecin.Id,
+                    Lieu = txtLieu.Text,
+                    Titre = txtTitreAgenda.Text,
+                    Statut= "DISPONIBLE",
+                    Creneau = creneau
+                    };
+                    MessageBox.Show($"{medecin.Id}");
+                   var response =  await ApiConsumer.ApiClientContainer.AgendaService.CreateAgendaAsync(request);
+                    if(response == null)
+                    {
 
                         resetForm();
+
+                        new frmInformation("Erreur lors de lajour !").ShowDialog();
+                        Log.Information($"Erreur durant la creation de agenda {response}");
+                    }
+               
+                    Log.Debug($"{response}");
+
+
+                    resetForm();
 
                         new frmInformation("L'ajout a ete effectue avec succes !").ShowDialog();
                         Log.Information("Agenda ajouter avec succes.");
@@ -103,6 +114,8 @@ namespace WindowsFormsApp1.views.Med
                 Log.Fatal($"Erreur generale lors de la tentative de creation: {ex.Message} {ex.InnerException}");
             }
         }
+
+
 
         private void resetForm()
         {
@@ -145,6 +158,11 @@ namespace WindowsFormsApp1.views.Med
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void frmMedAgenda_Load(object sender, EventArgs e)
         {
 
         }

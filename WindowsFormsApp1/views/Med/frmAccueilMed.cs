@@ -5,18 +5,22 @@ using System.Linq;
 using System.Windows.Forms;
 using WindowsFormsApp1.CustomControls;
 using MetierRvMedical2.Services;
+using WindowsFormsApp1.ApiConsumer.Models;
+using System.Threading.Tasks;
 
 namespace WindowsFormsApp1.views.Med
 {
     public partial class frmAccueilMed : Form
     {
         private readonly IAgendaService _agendaService;
+        private readonly User medecinActuel;
 
         public frmAccueilMed()
         {
             InitializeComponent();
             _agendaService = new AgendaService();
-            LoadAgenda();
+            LoadAgendaAsync();
+            medecinActuel = FrmConnexion.user.User;
         }
 
         private void btnAjouterAgenda_Click(object sender, EventArgs e)
@@ -27,12 +31,12 @@ namespace WindowsFormsApp1.views.Med
             frmMedAgenda.ShowDialog();
         }
 
-        public void LoadAgenda()
+        public async Task LoadAgendaAsync()
         {
-            var allAgendas = _agendaService.GetAllAgendas();
-            var medecinAgendas = allAgendas
-                .Where(ag => ag.IdMedecin == FrmConnexion.user.User.Id)
-                .Select(ag => new { ag.DataPlanifier.Value.Date, ag.Creneau, ag.HeureDebut, ag.HeureFin })
+            var allAgendas = await ApiConsumer.ApiClientContainer.AgendaService.ListAgendasAsync();
+
+            var medecinAgendas = allAgendas.Where(a => a.MedecinId == medecinActuel.Id)
+                .Select(ag => new { ag.DataPlanifier, ag.Creneau, ag.HeureDebut, ag.HeureFin })
                 .ToList();
 
             dgAgendaMedecin.DataSource = medecinAgendas;

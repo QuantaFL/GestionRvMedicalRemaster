@@ -1,14 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using MetierRvMedical2.Services;
-using Org.BouncyCastle.Security;
 using WindowsFormsApp1.ApiConsumer.Models;
 using WindowsFormsApp1.Models;
 

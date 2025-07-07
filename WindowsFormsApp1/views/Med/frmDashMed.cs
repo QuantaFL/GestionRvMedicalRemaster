@@ -28,6 +28,7 @@ namespace WindowsFormsApp1.views.Med
             Controls.Add(customControlBox);
             InitializeComponent();
             frmConnexionInstance = f;
+            txtUser.Text = FrmConnexion.user.User.NomPrenom;
         }
         private void CustomControlBox_MinimizeClick(object sender, EventArgs e)
         {
@@ -63,7 +64,6 @@ namespace WindowsFormsApp1.views.Med
 
         private void btnRdvMedecin_Click(object sender, EventArgs e)
         {
-           // CustomNavigatorMdi.push(this, btnListerAgenda, new frmRdvMed()); 
             frmRdvMed frmRdvMed = new frmRdvMed();  
             frmRdvMed.Show();
             
