@@ -1,4 +1,7 @@
-﻿using System;
+﻿using MetierRvMedical2.Models;
+using MetierRvMedical2.Services;
+using Serilog;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,9 +13,7 @@ using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using MetierRvMedical2.Models;
-using MetierRvMedical2.Services;
-using Serilog;
+using WindowsFormsApp1.ApiConsumer.Requests;
 using WindowsFormsApp1.config;
 using WindowsFormsApp1.CustomControls;
 using WindowsFormsApp1.views.Secret;
@@ -22,8 +23,6 @@ namespace WindowsFormsApp1.views.Admin
     public partial class frmAdminAjouterSecretaire : Form
     {
 
-        private readonly SecretaireService _secretaireService = new SecretaireService();
-        private readonly RoleService _roleService = new RoleService();
         public frmAdminAjouterSecretaire()
         {
             InitializeComponent();
@@ -34,6 +33,8 @@ namespace WindowsFormsApp1.views.Admin
             ResetForm();
 
         }
+
+
         /// <summary>
         /// cette fonction verifie la saisie des entrées utilisateurs.
         /// Retourne true si un seul champ est vide , null ou 
@@ -42,9 +43,9 @@ namespace WindowsFormsApp1.views.Admin
         /// <returns></returns>
         public bool chechkInput()
         {
-            return   string.IsNullOrWhiteSpace(txtNomPrenom.Text) ||
+            return string.IsNullOrWhiteSpace(txtNomPrenom.Text) ||
                      string.IsNullOrWhiteSpace(txtEmail.Text) ||
-                     string.IsNullOrWhiteSpace(txtNumeroTelephone.Text)||
+                     string.IsNullOrWhiteSpace(txtNumeroTelephone.Text) ||
                      string.IsNullOrEmpty(txtTelephoneFixe.Text)
                      ;
 
@@ -119,7 +120,7 @@ namespace WindowsFormsApp1.views.Admin
             catch (WebException ex)
             {
                 Log.Error(ex.ToString());
-                frmEchecExecution frmEchecExecution = new frmEchecExecution("erreur lors de l'envoie du mail");  
+                frmEchecExecution frmEchecExecution = new frmEchecExecution("erreur lors de l'envoie du mail");
                 frmEchecExecution.ShowDialog();
 
             }
@@ -141,7 +142,7 @@ namespace WindowsFormsApp1.views.Admin
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
-           
+
         }
         /// <summary>
         /// cette fonction genere un matricule de manière automatique en le codifiant 
@@ -150,12 +151,13 @@ namespace WindowsFormsApp1.views.Admin
         private string generateMatricule()
         {
             string matricule;
-            var nbrSecretaire = _secretaireService.CountSecretaires();
+            var nbrSecretaire = 12457;
             if (nbrSecretaire == 0)
             {
                 nbrSecretaire = 1;
             }
-            else {
+            else
+            {
                 nbrSecretaire++;
             }
             return matricule = "HL-DKR-" + DateTime.Now.Year + "-" + nbrSecretaire;
@@ -179,7 +181,7 @@ namespace WindowsFormsApp1.views.Admin
             }
         }
 
-        private void btnValiderAjoutUtilisateur_Click(object sender, EventArgs e)
+        private async void btnValiderAjoutUtilisateur_Click(object sender, EventArgs e)
         {
             if (chechkInput())
             {
@@ -189,9 +191,14 @@ namespace WindowsFormsApp1.views.Admin
                 frmInformationMessage.ShowDialog();
                 return;
             }
-            var sec = _secretaireService.GetAllSecretaires().Where(s=> s.TelephoneFixe == txtTelephoneFixe.Text
-            || s.Email == txtEmail.Text || s.Tel == txtNumeroTelephone.Text
-            ).FirstOrDefault();
+            var listeSecretaires = await ApiConsumer.ApiClientContainer.SecretaireService.ListSecretairesAsync();
+
+            var sec = listeSecretaires.FirstOrDefault(s =>
+                s.User.Telephone == txtTelephoneFixe.Text ||
+                s.User.Email == txtEmail.Text ||
+                s.User.Telephone == txtNumeroTelephone.Text
+            );
+
             if (sec != null)
             {
                 frmEchecExecution frmEchecExecution = new frmEchecExecution("le telephone fixe\n le numero \n ou l'email sont déjà utiliser");
@@ -214,8 +221,11 @@ namespace WindowsFormsApp1.views.Admin
                 frmEchecExecution.ShowDialog();
                 return;
             }
-            var role = _roleService.GetRoleByCode("SEC");
-            int IdRole = role.IdRole;
+            var role = await ApiConsumer.ApiClientContainer.RoleService.GetRoleAsync(3);
+           
+            MessageBox.Show(role.CodeRole);
+
+            int IdRole = role.Id;
             Guid myuuid = Guid.NewGuid();
             Guid myuuid2 = Guid.NewGuid();
             string mdpTmp = myuuid.ToString().Substring(0, 8);
@@ -239,7 +249,41 @@ namespace WindowsFormsApp1.views.Admin
 
                 secretaire.Matricule = generateMatricule();
                 secretaire.TelephoneFixe = txtTelephoneFixe.Text;
-                _secretaireService.AddSecretaire(secretaire);
+                CreateUserRequest userRequest = new CreateUserRequest
+                {
+                    Email = secretaire.Email,
+
+                    NomPrenom = secretaire.NomPrenom,
+
+                    MedecinDetails = null,
+                    Password = secretaire.MotDePasse,
+                    RoleId = secretaire.IdRole,
+                    SecretaireDetails = new SecretaireDetailsRequest
+                    {
+                        Matricule = secretaire.Matricule,
+                        TelephoneFixe = secretaire.TelephoneFixe,
+
+                    },
+                    PremiereConnexion = 0,
+                    Identifiant = secretaire.Identifiant,
+                    DateNaissance = secretaire.DateNaissance.ToString("yyyy-mm-dd"),
+                    Addresse = secretaire.Addresse,
+                    Status = secretaire.Status,
+                    Tel = secretaire.Tel,
+                    PasswordConfirmation = secretaire.MotDePasse
+                    
+                };
+
+                   var result = await ApiConsumer.ApiClientContainer.UserService.CreateUserAsync(userRequest);
+                if (result==null)
+                {
+                    frmEchecExecution frmee = new frmEchecExecution("echeccccccccc");
+                    frmee.ShowDialog();
+                }
+                
+
+
+              
 
 
                 Log.Information("ajout de la secretaire");
@@ -250,19 +294,20 @@ namespace WindowsFormsApp1.views.Admin
                 frmExecutionReussie.ShowDialog();
                 ResetForm();
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
                 Log.Error($" l' erreur {ex} lors de l'ajout de secretaire ");
             }
 
-            
-           
+
+
 
         }
 
         private void btnFermer_Click(object sender, EventArgs e)
         {
             this.Close();
-            frmAccueilAdmin frmAccueilAdmin =  Application.OpenForms["frmAccueilAdmin"] as frmAccueilAdmin;
+            frmAccueilAdmin frmAccueilAdmin = Application.OpenForms["frmAccueilAdmin"] as frmAccueilAdmin;
             frmAccueilAdmin.loadData();
 
         }
