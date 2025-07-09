@@ -13,10 +13,10 @@ namespace WindowsFormsApp1.views.Secret
         private readonly AgendaService _agendaService = new AgendaService();
         private readonly MedecinService _medecinService = new MedecinService();
         private readonly SpecialiteService _specialiteService = new SpecialiteService();
-        readonly MetierRvMedical2.Models.Patient patient;
+        readonly ApiConsumer.Models.Patient patient;
         MetierRvMedical2.Models.Agenda agenda;
 
-        public frmRdv(MetierRvMedical2.Models.Patient p)
+        public frmRdv(ApiConsumer.Models.Patient p)
         {
             InitializeComponent();
             dgAgendaMedecin.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -26,7 +26,7 @@ namespace WindowsFormsApp1.views.Secret
             patient = p;
             SetDatePickerLimits();
 
-            Log.Information("Formulaire de RDV initialisé avec patient {PatientId}", patient.IdP);
+            Log.Information("Formulaire de RDV initialisé avec patient {PatientId}", patient.Id);
         }
         MetierRvMedical2.Models.bdRdvMedicalContext bd = new MetierRvMedical2.Models.bdRdvMedicalContext();
 
