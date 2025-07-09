@@ -60,7 +60,20 @@ namespace WindowsFormsApp1.views.Med
         private void btnRechercherAgenda_Click(object sender, EventArgs e)
         {
             Log.Information("clique sur le button rechercher agenda medecin");
-            LoadAgenda(txtDateChercher.Value);
+            try
+            {
+                var allAgendas = _agendaService.GetAllAgendas();
+                var medecinAgendas = allAgendas
+                    .Where(a => a.IdMedecin == FrmConnexion.user.User.Id && a.DataPlanifier.Value.Date == txtDateChercher.Value.Date)
+                    .ToList();
+
+                dgAgendaMedecin.DataSource = medecinAgendas;
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, "Erreur lors du chargement des agendas pour le medecin {s}", FrmConnexion.user.User.NomPrenom);
+                new frmEchecExecution("Erreur lors du chargement des agendas.").ShowDialog();
+            }
         }
 
         public void LoadAgenda(DateTime val)
@@ -79,6 +92,11 @@ namespace WindowsFormsApp1.views.Med
                 Log.Error(ex, "Erreur lors du chargement des agendas pour le medecin {s}", FrmConnexion.user.User.NomPrenom);
                 new frmEchecExecution("Erreur lors du chargement des agendas.").ShowDialog();
             }
+        }
+
+        private void txtDateChercher_ValueChanged(object sender, EventArgs e)
+        {
+            LoadAgenda(txtDateChercher.Value);
         }
     }
 }
