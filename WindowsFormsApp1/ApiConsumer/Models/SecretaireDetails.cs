@@ -22,6 +22,10 @@ namespace WindowsFormsApp1.ApiConsumer.Models
         [JsonPropertyName("user")]
         public User User { get; set; }
 
+        [JsonProperty("matricule")] // Relation loaded for Secretaire objects
+        [JsonPropertyName("matricule")]
+        public String matricule { get; set; }
+
         // Timestamps that might be present on full Secretaire objects
         [JsonProperty("created_at")]
         [JsonPropertyName("created_at")]

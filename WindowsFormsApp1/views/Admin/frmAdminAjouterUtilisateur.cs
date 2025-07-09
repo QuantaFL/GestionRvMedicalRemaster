@@ -300,7 +300,7 @@ namespace WindowsFormsApp1.views.Admin
                         DateNaissance = txtDateNaissance.Value.ToString("yyyy-MM-dd"),
                         Identifiant = txtEmail.Text,
                         PremiereConnexion = 0,
-                        Status = true,
+                        Statut = true,
                         MedecinDetails = new MedecinDetailsRequest
                         {
                             SpecialiteId = IdSpecialite,

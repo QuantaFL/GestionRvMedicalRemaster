@@ -9,5 +9,9 @@ namespace WindowsFormsApp1.ApiConsumer.Requests
         [JsonProperty("date_embauche")]
         [JsonPropertyName("date_embauche")]
         public DateTime? DateEmbauche { get; set; }
+
+        [JsonProperty("matricule")]
+        [JsonPropertyName("matricule")]
+        public String matricule { get; set; }
     }
 }

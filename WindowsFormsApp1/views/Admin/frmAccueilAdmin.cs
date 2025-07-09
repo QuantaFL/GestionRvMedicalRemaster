@@ -22,12 +22,9 @@ namespace WindowsFormsApp1.views
         public frmAccueilAdmin()
         {
             InitializeComponent();
-            medecinService = new MedecinService();
-            secretaireService = new SecretaireService();
+           
         }
-        bdRdvMedicalContext db = new bdRdvMedicalContext();
-        private MedecinService medecinService;
-        private SecretaireService secretaireService;
+      
 
         private void btnAjouterUtilisateur_Click(object sender, EventArgs e)
         {
@@ -72,9 +69,10 @@ namespace WindowsFormsApp1.views
             frmAdminAjouterSecretaire.ShowDialog();
         }
         
-        private void btnRechercherMedecin_Click(object sender, EventArgs e)
+        private async void btnRechercherMedecin_Click(object sender, EventArgs e)
         {
             string message;
+
             if (string.IsNullOrEmpty(txtRechercherMedecin.Text))
             {
                 message = "valeur saisie invalide";
@@ -82,170 +80,197 @@ namespace WindowsFormsApp1.views
                 frmInformation.ShowDialog();
                 Log.Information("valeur saisie invalide lors de la recherche du medecin");
                 return;
-
             }
-            else
+
+            try
             {
-                try
+                var medecins = await ApiConsumer.ApiClientContainer.MedecinService.ListMedecinsAsync();
+                if(medecins.Count > 0)
                 {
-                    var medecin = medecinService.GetMedecinByNumeroOrdre(txtRechercherMedecin.Text);
-                    if (medecin == null)
-                    {
-                        Log.Information("aucun medecin n'a ce numero d'ordre");
-                        message = "aucun medecin n'a ce numero d'ordre ";
-                        frmMessage frmMessage = new frmMessage("Voulez-vous l'ajouter ?", message);
-                        frmMessage.ShowDialog();
-                        if (frmMessage.CustomDialogResult == DialogResult.Yes) { 
-                            frmAdminAjouterUtilisateur frmAdminAjouterUtilisateur = new frmAdminAjouterUtilisateur();
-                            frmAdminAjouterUtilisateur.ShowDialog();
-                        }
-                        return;
-                    }
-                    else
-                    {
-                        if (medecin.Status == true)
-                        {
-                            frmMessage frmMessage = new frmMessage("Voulez-vous bloquer ce medecin ?", "medecin trouver");
-                            frmMessage.ShowDialog();
-                            if (frmMessage.CustomDialogResult == DialogResult.Yes)
-                            {
-                                try
-                                {
-                                    medecinService.DesactiverMedecin(medecin.NumeroOrdre);
-                                    loadData();
-                                    Log.Information("statut du medecin changer");
-                                    frmExecutionReussie frmExecutionReussie = new frmExecutionReussie("execution reussie");
-                                    frmExecutionReussie.ShowDialog();
-                                    txtRechercherMedecin.Text = string.Empty;
-                                }
-                                catch (Exception ex)
-                                {
-                                    Log.Error($"{ex.Message} lors du changement de status");
-
-                                }
-                            }
-                        }
-                        else {
-
-                            frmMessage frmMessage = new frmMessage("Voulez-vous Debloquer ce medecin ?", "medecin trouver");
-                            frmMessage.ShowDialog();
-                            if (frmMessage.CustomDialogResult == DialogResult.Yes)
-                            {
-                                try
-                                {
-                                    medecinService.ActiverMedecin(medecin.NumeroOrdre);
-                                    loadData();
-                                    Log.Information("statut du medecin changer");
-                                    frmExecutionReussie frmExecutionReussie = new frmExecutionReussie("execution reussie");
-                                    frmExecutionReussie.ShowDialog();
-                                    txtRechercherMedecin.Text = string.Empty;
-                                }
-                                catch (Exception ex)
-                                {
-                                    Log.Error($"{ex.Message} lors du changement de status");
-
-                                }
-                            }
-
-                        }
-                    }
+                    MessageBox.Show("riennnnnnn");
+                  
                 }
-                catch (Exception ex)
+                if (medecins == null || !medecins.Any())
                 {
-                    Log.Error($" l 'erreur {ex.Message} est survenue lors de la recherche du medecin ");
+                    Log.Warning("La liste des médecins est vide ou nulle");
+                    MessageBox.Show("Erreur de récupération des médecins depuis le serveur.");
+                    return;
                 }
-
-            }
+                foreach (var m in medecins)
+                {
+                    Console.WriteLine(m.NumeroOrdre);
+                }
+                var medecin = medecins.FirstOrDefault(m => m.NumeroOrdre != null &&
+                                                           m.NumeroOrdre.Equals(txtRechercherMedecin.Text.ToUpper().Trim()));
                 
+
+                if (medecin == null)
+                {
+                    Log.Information("Aucun médecin trouvé avec ce numéro d'ordre");
+                    message = "Aucun médecin n'a ce numéro d'ordre.";
+                    frmMessage frmMessage = new frmMessage("Voulez-vous l'ajouter ?", message);
+                    frmMessage.ShowDialog();
+
+                    if (frmMessage.CustomDialogResult == DialogResult.Yes)
+                    {
+                        frmAdminAjouterUtilisateur frmAdminAjouterUtilisateur = new frmAdminAjouterUtilisateur();
+                        frmAdminAjouterUtilisateur.ShowDialog();
+                    }
+
+                    return;
+                }
+
+                // On log pour s'assurer que la donnée est bien là
+                Log.Information($"Médecin trouvé : {medecin.User.NomPrenom}, Numéro Ordre : {medecin.NumeroOrdre}");
+
+                if (medecin.User == null)
+                {
+                    Log.Error("L'objet 'User' du médecin est nul.");
+                    MessageBox.Show("Erreur : Données du médecin incomplètes.");
+                    return;
+                }
+
+                if (medecin.User.Statut == true)
+                {
+                    frmMessage frmMessage = new frmMessage("Voulez-vous bloquer ce médecin ?", "Médecin trouvé");
+                    frmMessage.ShowDialog();
+
+                    if (frmMessage.CustomDialogResult == DialogResult.Yes)
+                    {
+                        try
+                        {
+                            medecin.User.Statut = false;
+                            await loadData();
+                            Log.Information("Statut du médecin changé à 'bloqué'");
+                            frmExecutionReussie frmExecutionReussie = new frmExecutionReussie("Exécution réussie");
+                            frmExecutionReussie.ShowDialog();
+                            txtRechercherMedecin.Text = string.Empty;
+                        }
+                        catch (Exception ex)
+                        {
+                            Log.Error($"Erreur lors du changement de statut : {ex.Message}");
+                        }
+                    }
+                }
+                else
+                {
+                    frmMessage frmMessage = new frmMessage("Voulez-vous débloquer ce médecin ?", "Médecin trouvé");
+                    frmMessage.ShowDialog();
+
+                    if (frmMessage.CustomDialogResult == DialogResult.Yes)
+                    {
+                        try
+                        {
+                            medecin.User.Statut = true;
+                            await loadData();
+                            Log.Information("Statut du médecin changé à 'actif'");
+                            frmExecutionReussie frmExecutionReussie = new frmExecutionReussie("Exécution réussie");
+                            frmExecutionReussie.ShowDialog();
+                            txtRechercherMedecin.Text = string.Empty;
+                        }
+                        catch (Exception ex)
+                        {
+                            Log.Error($"Erreur lors du changement de statut : {ex.Message}");
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.Error($"L'erreur {ex.Message} est survenue lors de la recherche du médecin.");
+            }
+
+
 
         }
 
         private void btnRechercherSecretaire_Click(object sender, EventArgs e)
         {
-            string message;
-            if (string.IsNullOrEmpty(txtRerchercherSecretaire.Text))
-            {
-                message = "valeur saisie invalide";
-                frmInformation frmInformation = new frmInformation(message);
-                frmInformation.ShowDialog();
-                Log.Information("valeur saisie invalide lors de la recherche de la secretaire");
-                return;
+            //string message;
+            //if (string.IsNullOrEmpty(txtRerchercherSecretaire.Text))
+            //{
+            //    message = "valeur saisie invalide";
+            //    frmInformation frmInformation = new frmInformation(message);
+            //    frmInformation.ShowDialog();
+            //    Log.Information("valeur saisie invalide lors de la recherche de la secretaire");
+            //    return;
 
-            }
-            else
-            {
-                try
-                {
-                    var secretaire = secretaireService.GetSecretaireByMatricule(txtRerchercherSecretaire.Text);
-                    if (secretaire == null)
-                    {
-                        Log.Information("aucune secretaire n'a ce matricule");
-                        message = "aucune secretaire n'a ce matricule";
-                        frmMessage frmMessage = new frmMessage("Voulez-vous l'ajouter ?", message);
-                        frmMessage.ShowDialog();
-                        if (frmMessage.CustomDialogResult == DialogResult.Yes)
-                        {
-                            frmAdminAjouterSecretaire frmAdminAjouterSecretaire = new frmAdminAjouterSecretaire();
-                            frmAdminAjouterSecretaire.ShowDialog();
-                        }
-                        return;
-                    }
-                    else
-                    {
-                        if (secretaire.Status == true)
-                        {
-                            frmMessage frmMessage = new frmMessage("Voulez-vous bloquer cette secretaire ?", "secretaire trouvée");
-                            frmMessage.ShowDialog();
-                            if (frmMessage.CustomDialogResult == DialogResult.Yes)
-                            {
-                                try
-                                {
-                                    secretaireService.DesactiverSecretaire(secretaire.Matricule);
-                                    loadData();
-                                    Log.Information("statut de la secretaire changer");
-                                    frmExecutionReussie frmExecutionReussie = new frmExecutionReussie("execution reussie");
-                                    frmExecutionReussie.ShowDialog();
-                                    txtRerchercherSecretaire.Text = string.Empty;
-                                }
-                                catch (Exception ex)
-                                {
-                                    Log.Error($"{ex.Message} lors du changement de status");
+            //}
+            //else
+            //{
+            //    try
+            //    {
+            //        var secretaire = ApiConsumer.ApiClientContainer.SecretaireService.ListSecretairesAsync().Res;
+            //        //var secretaire = secretaireService.GetSecretaireByMatricule(txtRerchercherSecretaire.Text);
+            //        if (secretaire == null)
+            //        {
+            //            Log.Information("aucune secretaire n'a ce matricule");
+            //            message = "aucune secretaire n'a ce matricule";
+            //            frmMessage frmMessage = new frmMessage("Voulez-vous l'ajouter ?", message);
+            //            frmMessage.ShowDialog();
+            //            if (frmMessage.CustomDialogResult == DialogResult.Yes)
+            //            {
+            //                frmAdminAjouterSecretaire frmAdminAjouterSecretaire = new frmAdminAjouterSecretaire();
+            //                frmAdminAjouterSecretaire.ShowDialog();
+            //            }
+            //            return;
+            //        }
+            //        else
+            //        {
+            //            if (secretaire.Status == true)
+            //            {
+            //                frmMessage frmMessage = new frmMessage("Voulez-vous bloquer cette secretaire ?", "secretaire trouvée");
+            //                frmMessage.ShowDialog();
+            //                if (frmMessage.CustomDialogResult == DialogResult.Yes)
+            //                {
+            //                    try
+            //                    {
+            //                        secretaireService.DesactiverSecretaire(secretaire.Matricule);
+            //                        loadData();
+            //                        Log.Information("statut de la secretaire changer");
+            //                        frmExecutionReussie frmExecutionReussie = new frmExecutionReussie("execution reussie");
+            //                        frmExecutionReussie.ShowDialog();
+            //                        txtRerchercherSecretaire.Text = string.Empty;
+            //                    }
+            //                    catch (Exception ex)
+            //                    {
+            //                        Log.Error($"{ex.Message} lors du changement de status");
 
-                                }
-                            }
-                        }
-                        else
-                        {
+            //                    }
+            //                }
+            //            }
+            //            else
+            //            {
 
-                            frmMessage frmMessage = new frmMessage("Voulez-vous Debloquer cette secretaire ?", "secretaire trouvée");
-                            frmMessage.ShowDialog();
-                            if (frmMessage.CustomDialogResult == DialogResult.Yes)
-                            {
-                                try
-                                {
-                                    secretaireService.ActiverSecretaire(secretaire.Matricule);
-                                    loadData();
-                                    Log.Information("statut de la secretaire changer");
-                                    frmExecutionReussie frmExecutionReussie = new frmExecutionReussie("execution reussie");
-                                    frmExecutionReussie.ShowDialog();
-                                    txtRerchercherSecretaire.Text = string.Empty;
-                                }
-                                catch (Exception ex)
-                                {
-                                    Log.Error($"{ex.Message} lors du changement de status");
+            //                frmMessage frmMessage = new frmMessage("Voulez-vous Debloquer cette secretaire ?", "secretaire trouvée");
+            //                frmMessage.ShowDialog();
+            //                if (frmMessage.CustomDialogResult == DialogResult.Yes)
+            //                {
+            //                    try
+            //                    {
+            //                        secretaireService.ActiverSecretaire(secretaire.Matricule);
+            //                        loadData();
+            //                        Log.Information("statut de la secretaire changer");
+            //                        frmExecutionReussie frmExecutionReussie = new frmExecutionReussie("execution reussie");
+            //                        frmExecutionReussie.ShowDialog();
+            //                        txtRerchercherSecretaire.Text = string.Empty;
+            //                    }
+            //                    catch (Exception ex)
+            //                    {
+            //                        Log.Error($"{ex.Message} lors du changement de status");
 
-                                }
-                            }
+            //                    }
+            //                }
 
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Log.Error($" l 'erreur {ex.Message} est survenue lors de la recherche du medecin ");
-                }
+            //            }
+            //        }
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        Log.Error($" l 'erreur {ex.Message} est survenue lors de la recherche du medecin ");
+            //    }
 
-            }
+            //}
 
         }
 
@@ -254,6 +279,11 @@ namespace WindowsFormsApp1.views
             frmAccueilAdmin frm = Application.OpenForms["frmAccueilAdmin"] as frmAccueilAdmin;
            // this.ctrlBox1 = new CtrlBox(frm);
            // this.ctrlBox1.closeForm();
+        }
+
+        private void btnBloquerUtilisateur_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

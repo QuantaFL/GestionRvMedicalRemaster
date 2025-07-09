@@ -268,7 +268,7 @@ namespace WindowsFormsApp1.views.Admin
                     Identifiant = secretaire.Identifiant,
                     DateNaissance = secretaire.DateNaissance.ToString("yyyy-mm-dd"),
                     Addresse = secretaire.Addresse,
-                    Status = secretaire.Status,
+                    Statut = secretaire.Status,
                     Tel = secretaire.Tel,
                     PasswordConfirmation = secretaire.MotDePasse
                     
