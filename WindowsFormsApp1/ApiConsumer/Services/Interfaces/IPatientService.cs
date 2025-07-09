@@ -7,7 +7,7 @@ namespace WindowsFormsApp1.ApiConsumer.Services
 {
     public interface IPatientService
     {
-        Task<List<Patient>> ListPatientsAsync(string search = null);
+        Task<List<Patient>> ListPatientsAsync();
         Task<Patient> CreatePatientAsync(CreatePatientRequest request);
         Task<Patient> GetPatientAsync(int patientId);
         Task<Patient> UpdatePatientAsync(int patientId, UpdatePatientRequest request);
