@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MetierRvMedical2.Services;
 using Serilog;
+using WindowsFormsApp1.ApiConsumer.Requests;
 using WindowsFormsApp1.CustomControls;
 using WindowsFormsApp1.Models;
 using WindowsFormsApp1.views.Admin;
@@ -122,7 +123,6 @@ namespace WindowsFormsApp1.views
                     return;
                 }
 
-                // On log pour s'assurer que la donnée est bien là
                 Log.Information($"Médecin trouvé : {medecin.User.NomPrenom}, Numéro Ordre : {medecin.NumeroOrdre}");
 
                 if (medecin.User == null)
@@ -141,7 +141,31 @@ namespace WindowsFormsApp1.views
                     {
                         try
                         {
-                            medecin.User.Statut = false;
+                            UpdateUserRequest updateUserRequest = new UpdateUserRequest
+                            {
+                                
+                               NomPrenom = medecin.User.NomPrenom,
+                               Adresse = medecin.User.Adresse,
+                               DateNaissance = medecin.User.DateNaissance,
+                               Telephone= medecin.User.Telephone,
+                               Statut = !medecin.User.Statut,
+                               Email = medecin.User.Email,
+                               Genre = medecin.User.Genre,
+                               MedecinDetails = new MedecinDetailsRequest
+                               {
+                                   NumeroOrdre = medecin.NumeroOrdre,
+                                   SpecialiteId= medecin.SpecialiteId
+                               },
+                               RoleId = medecin.User.RoleId,
+                               Photo = null,
+                               SecretaireDetails = null
+
+                               
+                              
+                            };
+
+                            await ApiConsumer.ApiClientContainer.UserService.UpdateUserAsync(medecin.Id, updateUserRequest);
+                           
                             await loadData();
                             Log.Information("Statut du médecin changé à 'bloqué'");
                             frmExecutionReussie frmExecutionReussie = new frmExecutionReussie("Exécution réussie");

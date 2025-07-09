@@ -34,6 +34,10 @@ namespace WindowsFormsApp1.ApiConsumer.Requests
         [JsonPropertyName("genre")]
         public string Genre { get; set; }
 
+        [JsonProperty("status")]
+        [JsonPropertyName("status")]
+        public bool? Statut { get; set; }
+
         [JsonProperty("photo")]
         [JsonPropertyName("photo")]
         public string Photo { get; set; }
