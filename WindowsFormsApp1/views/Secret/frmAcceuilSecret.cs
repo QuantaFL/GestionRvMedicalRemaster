@@ -72,7 +72,9 @@ namespace WindowsFormsApp1.views.Secret
                 {
                     var patientx = await ApiConsumer.ApiClientContainer.PatientService.ListPatientsAsync();
                     var filteredUser = patientx
-                        .Where(m => m.Telephone == txtTelephone.Text).FirstOrDefault();
+                        .Where(m => m.Telephone == txtTelephone.Text).FirstOrDefault()
+
+                        ;
 
 
                     if (patientx != null)

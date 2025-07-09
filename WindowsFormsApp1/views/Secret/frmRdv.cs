@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using MetierRvMedical2.Services;
 using Serilog;
@@ -20,13 +21,18 @@ namespace WindowsFormsApp1.views.Secret
         {
             InitializeComponent();
             dgAgendaMedecin.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            cbbSpecialite.ValueMember = "Value";
-            cbbSpecialite.DisplayMember = "Text";
-            cbbSpecialite.DataSource = loadSpecialiteccb();
+           
             patient = p;
             SetDatePickerLimits();
-
+            ResetForm();
             Log.Information("Formulaire de RDV initialisé avec patient {PatientId}", patient.Id);
+        }
+        public async void ResetForm()
+        {
+            cbbSpecialite.ValueMember = "Value";
+            cbbSpecialite.DisplayMember = "Text";
+            cbbSpecialite.DataSource = await loadSpecialiteccb();
+
         }
         MetierRvMedical2.Models.bdRdvMedicalContext bd = new MetierRvMedical2.Models.bdRdvMedicalContext();
 
@@ -93,25 +99,25 @@ namespace WindowsFormsApp1.views.Secret
             Log.Information("Changement de sélection dans la spécialité: {Specialite}", cbbSpecialite.Text);
         }
 
-        public List<MetierRvMedical2.Models.SelectListViewModel> loadSpecialiteccb()
+        public async Task<List<ApiConsumer.Models.SelectListViewModel>> loadSpecialiteccb()
         {
             try
             {
                 Log.Information("Chargement des spécialités pour le combobox.");
-
-                var s = _specialiteService.GetAllSpecialites();
-                List<MetierRvMedical2.Models.SelectListViewModel> liste = new List<MetierRvMedical2.Models.SelectListViewModel>();
-                MetierRvMedical2.Models.SelectListViewModel b = new MetierRvMedical2.Models.SelectListViewModel();
+                 
+                var s = await ApiConsumer.ApiClientContainer.SpecialiteService.ListSpecialitesAsync();
+                List<ApiConsumer.Models.SelectListViewModel> liste = new List<ApiConsumer.Models.SelectListViewModel>();
+                ApiConsumer.Models.SelectListViewModel b = new ApiConsumer.Models.SelectListViewModel();
                 b.Text = "Selectionner une valeur";
                 b.Value = "";
                 liste.Add(b);
                 foreach (var item in s)
                 {
-                    MetierRvMedical2.Models.SelectListViewModel a = new MetierRvMedical2.Models.SelectListViewModel();
-                    a.Text = item.NomSpecialte;
+                    ApiConsumer.Models.SelectListViewModel a = new ApiConsumer.Models.SelectListViewModel();
+                    a.Text = item.NomSpecialite;
                     a.Value = item.Id.ToString();
                     liste.Add(a);
-                }
+                } 
 
                 Log.Information("Spécialités chargées: {NombreSpecialites}", s.Count);
                 return liste;
@@ -120,7 +126,7 @@ namespace WindowsFormsApp1.views.Secret
             {
                 Log.Error(ex, "Erreur lors du chargement des spécialités.");
                 new frmEchecExecution("Erreur lors du chargement des spécialités.").ShowDialog();
-                return new List<MetierRvMedical2.Models.SelectListViewModel>();
+                return new List<ApiConsumer.Models.SelectListViewModel>();
             }
         }
 
