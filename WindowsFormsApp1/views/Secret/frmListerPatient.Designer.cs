@@ -49,11 +49,11 @@
             this.groupBox1.Controls.Add(this.txtEmail);
             this.groupBox1.Controls.Add(this.txtTelephone);
             this.groupBox1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.groupBox1.Location = new System.Drawing.Point(21, 16);
+            this.groupBox1.Location = new System.Drawing.Point(19, 13);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 1, 3, 1);
-            this.groupBox1.Size = new System.Drawing.Size(1013, 168);
+            this.groupBox1.Size = new System.Drawing.Size(900, 134);
             this.groupBox1.TabIndex = 16;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Rechercher";
@@ -61,35 +61,35 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(22, 85);
+            this.label2.Location = new System.Drawing.Point(20, 68);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(48, 20);
+            this.label2.Size = new System.Drawing.Size(41, 16);
             this.label2.TabIndex = 22;
             this.label2.Text = "Email";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(22, 31);
+            this.label1.Location = new System.Drawing.Point(20, 25);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(84, 20);
+            this.label1.Size = new System.Drawing.Size(73, 16);
             this.label1.TabIndex = 21;
             this.label1.Text = "Telephone";
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(27, 108);
+            this.txtEmail.Location = new System.Drawing.Point(24, 86);
             this.txtEmail.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(703, 26);
+            this.txtEmail.Size = new System.Drawing.Size(625, 22);
             this.txtEmail.TabIndex = 20;
             // 
             // txtTelephone
             // 
-            this.txtTelephone.Location = new System.Drawing.Point(27, 54);
+            this.txtTelephone.Location = new System.Drawing.Point(24, 43);
             this.txtTelephone.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.txtTelephone.Name = "txtTelephone";
-            this.txtTelephone.Size = new System.Drawing.Size(703, 26);
+            this.txtTelephone.Size = new System.Drawing.Size(625, 22);
             this.txtTelephone.TabIndex = 19;
             // 
             // btnRechercherPatient
@@ -99,10 +99,10 @@
             this.btnRechercherPatient.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnRechercherPatient.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRechercherPatient.ForeColor = System.Drawing.Color.White;
-            this.btnRechercherPatient.Location = new System.Drawing.Point(1050, 31);
-            this.btnRechercherPatient.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.btnRechercherPatient.Location = new System.Drawing.Point(933, 25);
+            this.btnRechercherPatient.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnRechercherPatient.Name = "btnRechercherPatient";
-            this.btnRechercherPatient.Size = new System.Drawing.Size(220, 40);
+            this.btnRechercherPatient.Size = new System.Drawing.Size(196, 32);
             this.btnRechercherPatient.TabIndex = 17;
             this.btnRechercherPatient.Text = "&Rechercher un Patient";
             this.btnRechercherPatient.UseVisualStyleBackColor = true;
@@ -113,11 +113,12 @@
             this.dgPatients.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(214)))), ((int)(((byte)(220)))), ((int)(((byte)(234)))));
             this.dgPatients.CausesValidation = false;
             this.dgPatients.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgPatients.Location = new System.Drawing.Point(-9, 188);
+            this.dgPatients.Location = new System.Drawing.Point(102, 216);
+            this.dgPatients.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgPatients.Name = "dgPatients";
             this.dgPatients.RowHeadersWidth = 62;
             this.dgPatients.RowTemplate.Height = 28;
-            this.dgPatients.Size = new System.Drawing.Size(698, 955);
+            this.dgPatients.Size = new System.Drawing.Size(1067, 500);
             this.dgPatients.TabIndex = 19;
             // 
             // btnRetour
@@ -127,10 +128,10 @@
             this.btnRetour.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnRetour.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRetour.ForeColor = System.Drawing.Color.White;
-            this.btnRetour.Location = new System.Drawing.Point(1050, 99);
-            this.btnRetour.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.btnRetour.Location = new System.Drawing.Point(933, 79);
+            this.btnRetour.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnRetour.Name = "btnRetour";
-            this.btnRetour.Size = new System.Drawing.Size(220, 40);
+            this.btnRetour.Size = new System.Drawing.Size(196, 32);
             this.btnRetour.TabIndex = 21;
             this.btnRetour.Text = "R&etour";
             this.btnRetour.UseVisualStyleBackColor = true;
@@ -139,27 +140,30 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = global::WindowsFormsApp1.Properties.Resources.rdv;
-            this.pictureBox2.Location = new System.Drawing.Point(627, 188);
+            this.pictureBox2.Location = new System.Drawing.Point(-8, 150);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(1739, 1296);
+            this.pictureBox2.Size = new System.Drawing.Size(2143, 1037);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 20;
             this.pictureBox2.TabStop = false;
             // 
             // frmListerPatient
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(114)))), ((int)(((byte)(144)))));
-            this.ClientSize = new System.Drawing.Size(1364, 771);
+            this.ClientSize = new System.Drawing.Size(1212, 827);
             this.ControlBox = false;
             this.Controls.Add(this.dgPatients);
             this.Controls.Add(this.btnRetour);
-            this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.btnRechercherPatient);
             this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.pictureBox2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "frmListerPatient";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Load += new System.EventHandler(this.frmListerPatient_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgPatients)).EndInit();
