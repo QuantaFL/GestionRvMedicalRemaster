@@ -18,34 +18,36 @@ namespace WindowsFormsApp1.views.Secret
     public partial class frmCreerPatient : Form
     {
 
-        private readonly PatientService _patientService = new PatientService();
+       // private readonly PatientService _patientService = new PatientService();
         public frmCreerPatient()
         {
             InitializeComponent();
             RessetForm();
         }
-        bdRdvMedicalContext bd = new bdRdvMedicalContext();
-        private void button1_Click(object sender, EventArgs e)
+      //  bdRdvMedicalContext bd = new bdRdvMedicalContext();
+        private async void button1_Click(object sender, EventArgs e)
         {
             if (!ValiderPatient())
             {
                 return;
             }
-            Patient patient = new Patient();
+            ApiConsumer.Requests.CreatePatientRequest patient = new ApiConsumer.Requests.CreatePatientRequest() ;
             patient.NomPrenom = txtNomPrenom.Text;
-            patient.Tel = txtNumeroTelephone.Text;
+            patient.Telephone = txtNumeroTelephone.Text;
             patient.DateNaissance = DateTime.Parse(txtDateNaissance.Text);
             patient.Email = txtEmail.Text;
-            patient.Addresse = txtAdresse.Text;
-            patient.Taille = float.Parse(txtTaille.Text);
+            patient.Adresse = txtAdresse.Text;
+            patient.taille = float.Parse(txtTaille.Text);
             int idG = int.Parse(cbbGroupeSanguin.SelectedValue.ToString());
-            GroupeSanguin groupe = bd.GroupeSanguins.Find(idG);
-            patient.GroupeSanguin = groupe.CodeGroupeSanguin;
-            patient.Poids = float.Parse(txtPoids.Text);
-            _patientService.AddPatient(patient);
+          //GroupeSanguin groupe = bd.GroupeSanguins.Find(idG);
+            patient.GroupeSanguinId = idG;
+            patient.poids = float.Parse(txtPoids.Text);
+            // _patientService.AddPatient(patient);
             try
             {
-                bd.SaveChanges();
+                await ApiConsumer.ApiClientContainer.PatientService.CreatePatientAsync(patient);
+
+                //  bd.SaveChanges();
                 //TODO remplacer le message box par le message box cree par Rben//okay cest fait
                 new frmInformation("Enregistrement du document patient avec succes").ShowDialog();
                 
@@ -127,30 +129,36 @@ namespace WindowsFormsApp1.views.Secret
             return true;
         }
 
-        public List<SelectListViewModel> loadGroupeCbb()
+        public async Task<List<SelectListViewModel>> loadGroupeCbb()
         {
-            var groupes = bd.GroupeSanguins.ToList();
-            List<SelectListViewModel> newliste = new List<SelectListViewModel>();
-            SelectListViewModel g = new SelectListViewModel();
-            g.Text = "Selectionnez un groupe ";
-            g.Value = "";
-            newliste.Add(g);
+            try {
+                var groupes = await ApiConsumer.ApiClientContainer.GroupeSanguinService.ListGroupeSanguinsAsync();
+                List<SelectListViewModel> newliste = new List<SelectListViewModel>();
+                SelectListViewModel g = new SelectListViewModel();
+                g.Text = "Selectionnez un groupe ";
+                g.Value = "";
+                newliste.Add(g);
 
-            foreach (var groupe in groupes)
-            {
-                SelectListViewModel s = new SelectListViewModel();
-                s.Text = groupe.CodeGroupeSanguin;
-                s.Value = groupe.IdGroupeSanguin.ToString();
-                newliste.Add((s));
+                foreach (var groupe in groupes)
+                {
+                    SelectListViewModel s = new SelectListViewModel();
+                    s.Text = groupe.LibelleGroupeSanguin;
+                    s.Value = groupe.Id.ToString();
+                    newliste.Add((s));
+                }
+                return newliste;
+
+            } catch (Exception ex) {
+                throw ex;
+            
             }
-            return newliste;
 
         }
-        public void RessetForm()
+        public async void RessetForm()
         {
             cbbGroupeSanguin.ValueMember = "Value";
             cbbGroupeSanguin.DisplayMember = "Text";
-            cbbGroupeSanguin.DataSource = loadGroupeCbb();
+            cbbGroupeSanguin.DataSource = await loadGroupeCbb();
 
         }
 
