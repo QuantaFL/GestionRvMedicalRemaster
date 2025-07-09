@@ -15,14 +15,14 @@ namespace WindowsFormsApp1.views.Secret
 {
     public partial class frmValiderRdv : Form
     {
-        private readonly Patient patient;
+        private readonly ApiConsumer.Models.Patient patient;
         private readonly Agenda agenda;
         private readonly AgendaService _agendaService = new AgendaService();
         private readonly MoyenPaiementService _moyenPaiementService = new MoyenPaiementService();
         private readonly SoinService _soinService = new SoinService();
         private readonly RendezVousService _rendezVousService = new RendezVousService();
 
-        public frmValiderRdv(Patient p, Agenda a)
+        public frmValiderRdv(ApiConsumer.Models.Patient p, Agenda a)
         {
             InitializeComponent();
             patient = p;
@@ -63,7 +63,7 @@ namespace WindowsFormsApp1.views.Secret
 
                 var creneau = cbbCreneaux.SelectedValue.ToString();
                 var soinId = cbbSoins.SelectedValue.ToString();
-                var patientId = patient.IdP;
+                var patientId = patient.Id;
                 string codeRdv = generateCodeRdv();
                 string dateRv = agenda.DataPlanifier.Value.ToString("yyyy-MM-dd") + " " + creneau;
                 _rendezVousService.AddRendezVous(dateRv, creneau, int.Parse(soinId), patientId, agenda.IdMedecin, agenda.IdAgenda, codeRdv);
