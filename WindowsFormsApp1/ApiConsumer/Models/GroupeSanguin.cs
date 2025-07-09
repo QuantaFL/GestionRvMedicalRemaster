@@ -10,8 +10,8 @@ namespace WindowsFormsApp1.ApiConsumer.Models
         [JsonPropertyName("id")]
         public int Id { get; set; }
 
-        [JsonProperty("libelle_groupe_sanguin")]
-        [JsonPropertyName("libelle_groupe_sanguin")]
+        [JsonProperty("code_groupe_sanguin")]
+        [JsonPropertyName("code_groupe_sanguin")]
         public string LibelleGroupeSanguin { get; set; }
 
         [JsonProperty("created_at")]
