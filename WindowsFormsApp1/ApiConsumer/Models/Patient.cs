@@ -23,12 +23,12 @@ namespace WindowsFormsApp1.ApiConsumer.Models
         [JsonPropertyName("genre")]
         public string Genre { get; set; }
 
-        [JsonProperty("adresse")]
-        [JsonPropertyName("adresse")]
+        [JsonProperty("addresse")]
+        [JsonPropertyName("addresse")]
         public string Adresse { get; set; }
 
-        [JsonProperty("telephone")]
-        [JsonPropertyName("telephone")]
+        [JsonProperty("tel")]
+        [JsonPropertyName("tel")]
         public string Telephone { get; set; }
 
         [JsonProperty("email")]
@@ -39,11 +39,11 @@ namespace WindowsFormsApp1.ApiConsumer.Models
         [JsonPropertyName("groupe_sanguin_id")]
         public int? GroupeSanguinId { get; set; }
 
-        [JsonProperty("groupe_sanguin")] // Potential relation if API sends it
+        [JsonProperty("groupe_sanguin")] 
         [JsonPropertyName("groupe_sanguin")]
         public GroupeSanguin GroupeSanguin { get; set; }
 
-        [JsonProperty("rendez_vous")] // Relation from GET /api/patients/{patient}
+        [JsonProperty("rendez_vous")] 
         [JsonPropertyName("rendez_vous")]
         public List<RendezVous> RendezVous { get; set; }
 
