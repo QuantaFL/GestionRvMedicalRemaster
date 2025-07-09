@@ -42,8 +42,8 @@ namespace WindowsFormsApp1.ApiConsumer.Requests
         [JsonPropertyName("identifiant")]
         public string Identifiant { get; set; }
 
-        [JsonProperty("statut")]
-        [JsonPropertyName("statut")]
+        [JsonProperty("status")]
+        [JsonPropertyName("status")]
         public bool? Statut { get; set; }
 
         [JsonProperty("premiere_connexion")]

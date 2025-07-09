@@ -42,18 +42,20 @@ namespace WindowsFormsApp1.views
            
             var users = await ApiConsumer.ApiClientContainer.UserService.ListUsersAsync();
 
-          
+
             var filteredUsers = users
-                .Where(u => ! u.Role.CodeRole.Equals("ADMIN"))
-                .Select(u => new
-                {
-                    u.Id,
-                    u.NomPrenom,
-                    u.DateNaissance,
-                    u.Email,
-                    u.Role.CodeRole,
-                  })
-                .ToList();
+     .Where(u => !u.Role.CodeRole.Equals("ADMIN"))
+     .Select(u => new
+     {
+         u.Id,
+         u.NomPrenom,
+         u.DateNaissance,
+         u.Email,
+         u.Role.CodeRole,
+         Statut = (bool)u.Statut ? "Actif" : "Inactif"
+     })
+     .ToList();
+
 
             dgUtilisateur.DataSource = filteredUsers;
         }
