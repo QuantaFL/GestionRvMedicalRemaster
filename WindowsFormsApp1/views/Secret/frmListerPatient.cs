@@ -20,7 +20,7 @@ namespace WindowsFormsApp1.views.Secret
         public frmListerPatient()
         {
             InitializeComponent();
-            LoadAllPatient();
+          //  LoadAllPatient();
         }
 
 
