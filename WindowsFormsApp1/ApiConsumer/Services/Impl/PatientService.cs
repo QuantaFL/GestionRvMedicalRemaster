@@ -13,14 +13,10 @@ namespace WindowsFormsApp1.ApiConsumer.Services
         {
         }
 
-        public async Task<List<Patient>> ListPatientsAsync(string search = null)
+        public async Task<List<Patient>> ListPatientsAsync()
         {
-            var queryParams = new Dictionary<string, string>();
-            if (!string.IsNullOrEmpty(search))
-            {
-                queryParams["search"] = search;
-            }
-            return await GetAsync<List<Patient>>("patients", queryParams);
+           
+            return await GetAsync<List<Patient>>("patients");
         }
 
         public async Task<Patient> CreatePatientAsync(CreatePatientRequest request)
