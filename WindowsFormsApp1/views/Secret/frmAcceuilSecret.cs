@@ -23,11 +23,13 @@ namespace WindowsFormsApp1.views.Secret
         private readonly AgendaService _agendaService = new AgendaService();
         private readonly RendezVousService _rendezVousService = new RendezVousService();
         //private readonly PatientService _patientService = new PatientService(); TODO
-        public frmAcceuilSecret()
+        private  List<ApiConsumer.Models.Patient> listApiPatient;
+        public  frmAcceuilSecret()
         {
             InitializeComponent();
             AfficheStats();
             txtEmail.Focus();
+           // listApiPatient = await ApiConsumer.ApiClientContainer.PatientService.ListPatientsAsync();
         }
 
         private void AfficheStats()
@@ -43,19 +45,23 @@ namespace WindowsFormsApp1.views.Secret
 
         bdRdvMedicalContext bd = new bdRdvMedicalContext();
 
-        private void btnRechercherPatient_Click(object sender, EventArgs e)
+        private async void btnRechercherPatient_Click(object sender, EventArgs e)
         {
-            using (var context = new bdRdvMedicalContext())
-            {
+            // var patients = await ApiConsumer.ApiClientContainer.PatientService.ListPatientsAsync();
+            // var filteredUsers = patients
+            // .Where(m => m.Telephone == txtTelephone.Text);
+
+            try {
+
                 if (!string.IsNullOrEmpty(txtEmail.Text))
                 {
-                    var patient = context.Patients
-                        .Where(p => p.Email == txtEmail.Text)
-                        .FirstOrDefault();
+                    var patientx = await ApiConsumer.ApiClientContainer.PatientService.ListPatientsAsync();
+                    var filteredUser = patientx
+                        .Where(m => m.Email == txtEmail.Text).FirstOrDefault();
 
-                    if (patient != null)
+                    if (patientx != null)
                     {
-                        ShowPatientTrouvePrompt(patient);
+                        ShowPatientTrouvePrompt(filteredUser);
                     }
                     else
                     {
@@ -64,13 +70,14 @@ namespace WindowsFormsApp1.views.Secret
                 }
                 else if (!string.IsNullOrEmpty(txtTelephone.Text))
                 {
-                    var patient = context.Patients
-                        .Where(p => p.Tel == txtTelephone.Text)
-                        .FirstOrDefault();
+                    var patientx = await ApiConsumer.ApiClientContainer.PatientService.ListPatientsAsync();
+                    var filteredUser = patientx
+                        .Where(m => m.Telephone == txtTelephone.Text).FirstOrDefault();
 
-                    if (patient != null)
+
+                    if (patientx != null)
                     {
-                        ShowPatientTrouvePrompt(patient);
+                        ShowPatientTrouvePrompt(filteredUser);
                     }
                     else
                     {
@@ -82,10 +89,20 @@ namespace WindowsFormsApp1.views.Secret
                     frmInformation frmInformation = new frmInformation("Veuillez svp remplir un champ");
                     frmInformation.ShowDialog();
                 }
+
+
             }
+            catch(Exception ex) {
+                throw ex;
+            }
+
+
+            
+               
+           
         }
 
-        private static void ShowPatientTrouvePrompt(Patient patient)
+        private static void ShowPatientTrouvePrompt(ApiConsumer.Models.Patient patient)
         {
           
             frmMessage frmMessage = new frmMessage("Voulez-vous prendre rendez-vous","patient trouvé");
