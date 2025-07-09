@@ -14,7 +14,11 @@ namespace WindowsFormsApp1.ApiConsumer.Models
         [JsonPropertyName("nom_specialite")]
         public string NomSpecialite { get; set; }
 
-        
+        [JsonProperty("code_specialite")]
+        [JsonPropertyName("code_specialite")]
+        public string CodeSpecialite { get; set; }
+
+
         [JsonProperty("created_at")]
         [JsonPropertyName("created_at")]
         public DateTime? CreatedAt { get; set; }
