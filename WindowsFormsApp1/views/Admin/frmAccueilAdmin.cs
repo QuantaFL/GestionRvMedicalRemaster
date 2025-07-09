@@ -184,95 +184,113 @@ namespace WindowsFormsApp1.views
 
         }
 
-        private void btnRechercherSecretaire_Click(object sender, EventArgs e)
+        private async void  btnRechercherSecretaire_Click(object sender, EventArgs e)
         {
-            //string message;
-            //if (string.IsNullOrEmpty(txtRerchercherSecretaire.Text))
-            //{
-            //    message = "valeur saisie invalide";
-            //    frmInformation frmInformation = new frmInformation(message);
-            //    frmInformation.ShowDialog();
-            //    Log.Information("valeur saisie invalide lors de la recherche de la secretaire");
-            //    return;
+       
+            string message;
 
-            //}
-            //else
-            //{
-            //    try
-            //    {
-            //        var secretaire = ApiConsumer.ApiClientContainer.SecretaireService.ListSecretairesAsync().Res;
-            //        //var secretaire = secretaireService.GetSecretaireByMatricule(txtRerchercherSecretaire.Text);
-            //        if (secretaire == null)
-            //        {
-            //            Log.Information("aucune secretaire n'a ce matricule");
-            //            message = "aucune secretaire n'a ce matricule";
-            //            frmMessage frmMessage = new frmMessage("Voulez-vous l'ajouter ?", message);
-            //            frmMessage.ShowDialog();
-            //            if (frmMessage.CustomDialogResult == DialogResult.Yes)
-            //            {
-            //                frmAdminAjouterSecretaire frmAdminAjouterSecretaire = new frmAdminAjouterSecretaire();
-            //                frmAdminAjouterSecretaire.ShowDialog();
-            //            }
-            //            return;
-            //        }
-            //        else
-            //        {
-            //            if (secretaire.Status == true)
-            //            {
-            //                frmMessage frmMessage = new frmMessage("Voulez-vous bloquer cette secretaire ?", "secretaire trouvée");
-            //                frmMessage.ShowDialog();
-            //                if (frmMessage.CustomDialogResult == DialogResult.Yes)
-            //                {
-            //                    try
-            //                    {
-            //                        secretaireService.DesactiverSecretaire(secretaire.Matricule);
-            //                        loadData();
-            //                        Log.Information("statut de la secretaire changer");
-            //                        frmExecutionReussie frmExecutionReussie = new frmExecutionReussie("execution reussie");
-            //                        frmExecutionReussie.ShowDialog();
-            //                        txtRerchercherSecretaire.Text = string.Empty;
-            //                    }
-            //                    catch (Exception ex)
-            //                    {
-            //                        Log.Error($"{ex.Message} lors du changement de status");
+            if (string.IsNullOrEmpty(txtRerchercherSecretaire.Text))
+            {
+                message = "Valeur saisie invalide";
+                frmInformation frmInformation = new frmInformation(message);
+                frmInformation.ShowDialog();
+                Log.Information("Valeur saisie invalide lors de la recherche de la secrétaire");
+                return;
+            }
 
-            //                    }
-            //                }
-            //            }
-            //            else
-            //            {
+            try
+            {
+                var secretaires = await ApiConsumer.ApiClientContainer.SecretaireService.ListSecretairesAsync();
+                foreach (var s in secretaires)
+                {
+                   
+                    Console.WriteLine(s.matricule);
+                }
 
-            //                frmMessage frmMessage = new frmMessage("Voulez-vous Debloquer cette secretaire ?", "secretaire trouvée");
-            //                frmMessage.ShowDialog();
-            //                if (frmMessage.CustomDialogResult == DialogResult.Yes)
-            //                {
-            //                    try
-            //                    {
-            //                        secretaireService.ActiverSecretaire(secretaire.Matricule);
-            //                        loadData();
-            //                        Log.Information("statut de la secretaire changer");
-            //                        frmExecutionReussie frmExecutionReussie = new frmExecutionReussie("execution reussie");
-            //                        frmExecutionReussie.ShowDialog();
-            //                        txtRerchercherSecretaire.Text = string.Empty;
-            //                    }
-            //                    catch (Exception ex)
-            //                    {
-            //                        Log.Error($"{ex.Message} lors du changement de status");
 
-            //                    }
-            //                }
+                if (secretaires == null || !secretaires.Any())
+                {
+                    Log.Warning("La liste des secrétaires est vide ou nulle.");
+                    MessageBox.Show("Erreur de récupération des secrétaires depuis le serveur.");
+                    return;
+                }
 
-            //            }
-            //        }
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        Log.Error($" l 'erreur {ex.Message} est survenue lors de la recherche du medecin ");
-            //    }
+                string matriculeRecherche = txtRerchercherSecretaire.Text.Trim().ToUpper();
 
-            //}
+                var secretaire = secretaires.FirstOrDefault(s =>
+                    !string.IsNullOrEmpty(s.matricule) &&
+                    s.matricule.ToUpper() == matriculeRecherche);
 
+                if (secretaire == null)
+                {
+                    Log.Information("Aucune secrétaire trouvée avec ce matricule");
+                    message = "Aucune secrétaire n'a ce matricule";
+                    frmMessage frmMessage = new frmMessage("Voulez-vous l'ajouter ?", message);
+                    frmMessage.ShowDialog();
+
+                    if (frmMessage.CustomDialogResult == DialogResult.Yes)
+                    {
+                        frmAdminAjouterSecretaire frmAdminAjouterSecretaire = new frmAdminAjouterSecretaire();
+                        frmAdminAjouterSecretaire.ShowDialog();
+                    }
+
+                    return;
+                }
+
+                // Contrôle du statut
+                if (secretaire.User.Statut == true)
+                {
+                    frmMessage frmMessage = new frmMessage("Voulez-vous bloquer cette secrétaire ?", "Secrétaire trouvée");
+                    frmMessage.ShowDialog();
+
+                    if (frmMessage.CustomDialogResult == DialogResult.Yes)
+                    {
+                        try
+                        {
+                            secretaire.User.Statut = false; // ou appeler l'API de désactivation ici
+                            loadData();
+                            Log.Information("Statut de la secrétaire changé à 'bloqué'");
+                            frmExecutionReussie frmExecutionReussie = new frmExecutionReussie("Exécution réussie");
+                            frmExecutionReussie.ShowDialog();
+                            txtRerchercherSecretaire.Text = string.Empty;
+                        }
+                        catch (Exception ex)
+                        {
+                            Log.Error($"{ex.Message} lors du changement de statut");
+                        }
+                    }
+                }
+                else
+                {
+                    frmMessage frmMessage = new frmMessage("Voulez-vous débloquer cette secrétaire ?", "Secrétaire trouvée");
+                    frmMessage.ShowDialog();
+
+                    if (frmMessage.CustomDialogResult == DialogResult.Yes)
+                    {
+                        try
+                        {
+                            secretaire.User.Statut = true; // ou appeler l'API d'activation ici
+                             loadData();
+                            Log.Information("Statut de la secrétaire changé à 'actif'");
+                            frmExecutionReussie frmExecutionReussie = new frmExecutionReussie("Exécution réussie");
+                            frmExecutionReussie.ShowDialog();
+                            txtRerchercherSecretaire.Text = string.Empty;
+                        }
+                        catch (Exception ex)
+                        {
+                            Log.Error($"{ex.Message} lors du changement de statut");
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.Error($"L'erreur {ex.Message} est survenue lors de la recherche de la secrétaire");
+            }
         }
+
+
+        
 
         private void ctrlBox1_Load(object sender, EventArgs e)
         {
