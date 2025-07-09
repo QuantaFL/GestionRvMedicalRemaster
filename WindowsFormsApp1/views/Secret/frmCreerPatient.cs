@@ -129,19 +129,20 @@ namespace WindowsFormsApp1.views.Secret
             return true;
         }
 
-        public async Task<List<SelectListViewModel>> loadGroupeCbb()
+        public async Task<List<ApiConsumer.Models.SelectListViewModel>> loadGroupeCbb()
         {
             try {
+                
                 var groupes = await ApiConsumer.ApiClientContainer.GroupeSanguinService.ListGroupeSanguinsAsync();
-                List<SelectListViewModel> newliste = new List<SelectListViewModel>();
-                SelectListViewModel g = new SelectListViewModel();
+                List <ApiConsumer.Models.SelectListViewModel> newliste = new List<ApiConsumer.Models.SelectListViewModel>();
+                ApiConsumer.Models.SelectListViewModel g = new ApiConsumer.Models.SelectListViewModel();
                 g.Text = "Selectionnez un groupe ";
                 g.Value = "";
                 newliste.Add(g);
 
                 foreach (var groupe in groupes)
                 {
-                    SelectListViewModel s = new SelectListViewModel();
+                    ApiConsumer.Models.SelectListViewModel s = new ApiConsumer.Models.SelectListViewModel();
                     s.Text = groupe.LibelleGroupeSanguin;
                     s.Value = groupe.Id.ToString();
                     newliste.Add((s));

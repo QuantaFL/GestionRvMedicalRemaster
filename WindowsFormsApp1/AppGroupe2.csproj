@@ -212,6 +212,7 @@
     <Compile Include="ApiConsumer\Models\Role.cs" />
     <Compile Include="ApiConsumer\Models\SecretaireDetails.cs" />
     <Compile Include="ApiConsumer\Models\SelectListItem.cs" />
+    <Compile Include="ApiConsumer\Models\SelectListViewModel.cs" />
     <Compile Include="ApiConsumer\Models\Soin.cs" />
     <Compile Include="ApiConsumer\Models\Specialite.cs" />
     <Compile Include="ApiConsumer\Models\User.cs" />
